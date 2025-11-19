@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<system name="$${FILENAME}">
+ <component
+   name="$${FILENAME}"
+   displayName="$${FILENAME}"
+   version="1.0"
+   description=""
+   tags=""
+   categories="" />
+ <parameter name="bonusData"><![CDATA[bonusData 
+{
+   element system_on_chip_inst
+   {
+      datum _sortIndex
+      {
+         value = "0";
+         type = "int";
+      }
+   }
+   element system_on_chip_inst_clk_bfm
+   {
+      datum _sortIndex
+      {
+         value = "1";
+         type = "int";
+      }
+   }
+   element system_on_chip_inst_memory_bfm
+   {
+      datum _sortIndex
+      {
+         value = "3";
+         type = "int";
+      }
+   }
+   element system_on_chip_inst_reg_button_external_connection_bfm
+   {
+      datum _sortIndex
+      {
+         value = "4";
+         type = "int";
+      }
+   }
+   element system_on_chip_inst_reg_leds_external_connection_bfm
+   {
+      datum _sortIndex
+      {
+         value = "5";
+         type = "int";
+      }
+   }
+   element system_on_chip_inst_reg_switches_external_connection_bfm
+   {
+      datum _sortIndex
+      {
+         value = "6";
+         type = "int";
+      }
+   }
+   element system_on_chip_inst_reset_bfm
+   {
+      datum _sortIndex
+      {
+         value = "2";
+         type = "int";
+      }
+   }
+   element system_on_chip_inst_timer_irq_bfm
+   {
+      datum _sortIndex
+      {
+         value = "7";
+         type = "int";
+      }
+   }
+   element system_on_chip_inst_uart_irq_bfm
+   {
+      datum _sortIndex
+      {
+         value = "8";
+         type = "int";
+      }
+   }
+}
+]]></parameter>
+ <parameter name="clockCrossingAdapter" value="HANDSHAKE" />
+ <parameter name="device" value="5CSEMA5F31C6" />
+ <parameter name="deviceFamily" value="Cyclone V" />
+ <parameter name="deviceSpeedGrade" value="6" />
+ <parameter name="fabricMode" value="QSYS" />
+ <parameter name="generateLegacySim" value="false" />
+ <parameter name="generationId" value="0" />
+ <parameter name="globalResetBus" value="false" />
+ <parameter name="hdlLanguage" value="VERILOG" />
+ <parameter name="hideFromIPCatalog" value="false" />
+ <parameter name="lockedInterfaceDefinition" value="" />
+ <parameter name="maxAdditionalLatency" value="1" />
+ <parameter name="projectName" value="SystemOnChip.qpf" />
+ <parameter name="sopcBorderPoints" value="false" />
+ <parameter name="systemHash" value="0" />
+ <parameter name="testBenchDutName" value="system_on_chip" />
+ <parameter name="timeStamp" value="0" />
+ <parameter name="useTestBenchNamingPattern" value="true" />
+ <instanceScript></instanceScript>
+ <module
+   name="system_on_chip_inst"
+   kind="system_on_chip"
+   version="1.0"
+   enabled="1">
+  <parameter name="AUTO_CLK_CLOCK_DOMAIN" value="1" />
+  <parameter name="AUTO_CLK_CLOCK_RATE" value="0" />
+  <parameter name="AUTO_CLK_RESET_DOMAIN" value="1" />
+  <parameter name="AUTO_DEVICE" value="5CSEMA5F31C6" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone V" />
+  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="6" />
+  <parameter name="AUTO_GENERATION_ID" value="0" />
+  <parameter name="AUTO_UNIQUE_ID" value="system_on_chip" />
+ </module>
+ <module
+   name="system_on_chip_inst_clk_bfm"
+   kind="altera_avalon_clock_source"
+   version="18.0"
+   enabled="1">
+  <parameter name="CLOCK_RATE" value="50000000" />
+  <parameter name="CLOCK_UNIT" value="1" />
+ </module>
+ <module
+   name="system_on_chip_inst_memory_bfm"
+   kind="altera_conduit_bfm"
+   version="18.0"
+   enabled="1">
+  <parameter name="CLOCKED_SIGNAL" value="false" />
+  <parameter name="ENABLE_RESET" value="false" />
+  <parameter name="SIGNAL_DIRECTIONS">input,input,input,input,input,input,input,input,bidir,bidir,bidir,input,input,input,input,output</parameter>
+  <parameter name="SIGNAL_ROLES">mem_a,mem_ba,mem_cas_n,mem_ck,mem_ck_n,mem_cke,mem_cs_n,mem_dm,mem_dq,mem_dqs,mem_dqs_n,mem_odt,mem_ras_n,mem_reset_n,mem_we_n,oct_rzqin</parameter>
+  <parameter name="SIGNAL_WIDTHS">13,3,1,1,1,1,1,1,8,1,1,1,1,1,1,1</parameter>
+ </module>
+ <module
+   name="system_on_chip_inst_reg_button_external_connection_bfm"
+   kind="altera_conduit_bfm"
+   version="18.0"
+   enabled="1">
+  <parameter name="CLOCKED_SIGNAL" value="false" />
+  <parameter name="ENABLE_RESET" value="false" />
+  <parameter name="SIGNAL_DIRECTIONS" value="output" />
+  <parameter name="SIGNAL_ROLES" value="export" />
+  <parameter name="SIGNAL_WIDTHS" value="8" />
+ </module>
+ <module
+   name="system_on_chip_inst_reg_leds_external_connection_bfm"
+   kind="altera_conduit_bfm"
+   version="18.0"
+   enabled="1">
+  <parameter name="CLOCKED_SIGNAL" value="false" />
+  <parameter name="ENABLE_RESET" value="false" />
+  <parameter name="SIGNAL_DIRECTIONS" value="input" />
+  <parameter name="SIGNAL_ROLES" value="export" />
+  <parameter name="SIGNAL_WIDTHS" value="8" />
+ </module>
+ <module
+   name="system_on_chip_inst_reg_switches_external_connection_bfm"
+   kind="altera_conduit_bfm"
+   version="18.0"
+   enabled="1">
+  <parameter name="CLOCKED_SIGNAL" value="false" />
+  <parameter name="ENABLE_RESET" value="false" />
+  <parameter name="SIGNAL_DIRECTIONS" value="input" />
+  <parameter name="SIGNAL_ROLES" value="export" />
+  <parameter name="SIGNAL_WIDTHS" value="10" />
+ </module>
+ <module
+   name="system_on_chip_inst_reset_bfm"
+   kind="altera_avalon_reset_source"
+   version="18.0"
+   enabled="1">
+  <parameter name="ASSERT_HIGH_RESET" value="0" />
+  <parameter name="INITIAL_RESET_CYCLES" value="50" />
+ </module>
+ <module
+   name="system_on_chip_inst_timer_irq_bfm"
+   kind="altera_avalon_interrupt_sink"
+   version="18.0"
+   enabled="1">
+  <parameter name="ASSERT_HIGH_IRQ" value="1" />
+  <parameter name="ASYNCHRONOUS_INTERRUPT" value="0" />
+  <parameter name="AV_IRQ_W" value="1" />
+  <parameter name="VHDL_ID" value="0" />
+ </module>
+ <module
+   name="system_on_chip_inst_uart_irq_bfm"
+   kind="altera_avalon_interrupt_sink"
+   version="18.0"
+   enabled="1">
+  <parameter name="ASSERT_HIGH_IRQ" value="1" />
+  <parameter name="ASYNCHRONOUS_INTERRUPT" value="0" />
+  <parameter name="AV_IRQ_W" value="1" />
+  <parameter name="VHDL_ID" value="1" />
+ </module>
+ <connection
+   kind="clock"
+   version="18.0"
+   start="system_on_chip_inst_clk_bfm.clk"
+   end="system_on_chip_inst.clk" />
+ <connection
+   kind="clock"
+   version="18.0"
+   start="system_on_chip_inst_clk_bfm.clk"
+   end="system_on_chip_inst_reset_bfm.clk" />
+ <connection
+   kind="clock"
+   version="18.0"
+   start="system_on_chip_inst_clk_bfm.clk"
+   end="system_on_chip_inst_timer_irq_bfm.clock_reset" />
+ <connection
+   kind="clock"
+   version="18.0"
+   start="system_on_chip_inst_clk_bfm.clk"
+   end="system_on_chip_inst_uart_irq_bfm.clock_reset" />
+ <connection
+   kind="conduit"
+   version="18.0"
+   start="system_on_chip_inst_memory_bfm.conduit"
+   end="system_on_chip_inst.memory">
+  <parameter name="endPort" value="" />
+  <parameter name="endPortLSB" value="0" />
+  <parameter name="startPort" value="" />
+  <parameter name="startPortLSB" value="0" />
+  <parameter name="width" value="0" />
+ </connection>
+ <connection
+   kind="conduit"
+   version="18.0"
+   start="system_on_chip_inst_reg_button_external_connection_bfm.conduit"
+   end="system_on_chip_inst.reg_button_external_connection">
+  <parameter name="endPort" value="" />
+  <parameter name="endPortLSB" value="0" />
+  <parameter name="startPort" value="" />
+  <parameter name="startPortLSB" value="0" />
+  <parameter name="width" value="0" />
+ </connection>
+ <connection
+   kind="conduit"
+   version="18.0"
+   start="system_on_chip_inst_reg_leds_external_connection_bfm.conduit"
+   end="system_on_chip_inst.reg_leds_external_connection">
+  <parameter name="endPort" value="" />
+  <parameter name="endPortLSB" value="0" />
+  <parameter name="startPort" value="" />
+  <parameter name="startPortLSB" value="0" />
+  <parameter name="width" value="0" />
+ </connection>
+ <connection
+   kind="conduit"
+   version="18.0"
+   start="system_on_chip_inst_reg_switches_external_connection_bfm.conduit"
+   end="system_on_chip_inst.reg_switches_external_connection">
+  <parameter name="endPort" value="" />
+  <parameter name="endPortLSB" value="0" />
+  <parameter name="startPort" value="" />
+  <parameter name="startPortLSB" value="0" />
+  <parameter name="width" value="0" />
+ </connection>
+ <connection
+   kind="interrupt"
+   version="18.0"
+   start="system_on_chip_inst_timer_irq_bfm.irq"
+   end="system_on_chip_inst.timer_irq">
+  <parameter name="irqNumber" value="0" />
+ </connection>
+ <connection
+   kind="interrupt"
+   version="18.0"
+   start="system_on_chip_inst_uart_irq_bfm.irq"
+   end="system_on_chip_inst.uart_irq">
+  <parameter name="irqNumber" value="0" />
+ </connection>
+ <connection
+   kind="reset"
+   version="18.0"
+   start="system_on_chip_inst_reset_bfm.reset"
+   end="system_on_chip_inst_timer_irq_bfm.clock_reset_reset" />
+ <connection
+   kind="reset"
+   version="18.0"
+   start="system_on_chip_inst_reset_bfm.reset"
+   end="system_on_chip_inst_uart_irq_bfm.clock_reset_reset" />
+ <connection
+   kind="reset"
+   version="18.0"
+   start="system_on_chip_inst_reset_bfm.reset"
+   end="system_on_chip_inst.reset" />
+ <interconnectRequirement for="$system" name="qsys_mm.clockCrossingAdapter" value="HANDSHAKE" />
+ <interconnectRequirement for="$system" name="qsys_mm.enableEccProtection" value="FALSE" />
+ <interconnectRequirement for="$system" name="qsys_mm.insertDefaultSlave" value="FALSE" />
+ <interconnectRequirement for="$system" name="qsys_mm.maxAdditionalLatency" value="1" />
+</system>

@@ -1,0 +1,389 @@
+Info: Starting: Create testbench Platform Designer system
+Info: C:/Users/nicva/Empotrados/Proyecto2-Empotrados/SystemOnChip/system_on_chip2/testbench/system_on_chip.ipx
+Info: qsys-generate C:\Users\nicva\Empotrados\Proyecto2-Empotrados\SystemOnChip\system_on_chip.qsys --testbench=STANDARD --output-directory=C:\Users\nicva\Empotrados\Proyecto2-Empotrados\SystemOnChip --family="Cyclone V" --part=5CSEMA5F31C6
+Progress: Loading SystemOnChip/system_on_chip.qsys
+Progress: Reading input file
+Progress: Adding ARM [altera_hps 18.0]
+Progress: Parameterizing module ARM
+Progress: Adding FIFO [altera_avalon_fifo 18.0]
+Progress: Parameterizing module FIFO
+Progress: Adding NIOS [altera_nios2_gen2 18.0]
+Progress: Parameterizing module NIOS
+Progress: Adding RAM [altera_avalon_onchip_memory2 18.0]
+Progress: Parameterizing module RAM
+Progress: Adding REG_7_SEGMENTS [altera_avalon_pio 18.0]
+Progress: Parameterizing module REG_7_SEGMENTS
+Progress: Adding REG_BUTTONS [altera_avalon_pio 18.0]
+Progress: Parameterizing module REG_BUTTONS
+Progress: Adding REG_SWITCHES [altera_avalon_pio 18.0]
+Progress: Parameterizing module REG_SWITCHES
+Progress: Adding TIMER [altera_avalon_timer 18.0]
+Progress: Parameterizing module TIMER
+Progress: Adding UART [altera_avalon_jtag_uart 18.0]
+Progress: Parameterizing module UART
+Progress: Adding clk_0 [clock_source 18.0]
+Progress: Parameterizing module clk_0
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Info: system_on_chip.ARM: HPS Main PLL counter settings: n = 0  m = 73
+Info: system_on_chip.ARM: HPS peripherial PLL counter settings: n = 0  m = 39
+Warning: system_on_chip.ARM: "Configuration/HPS-to-FPGA user 0 clock frequency" (desired_cfg_clk_mhz) requested 100.0 MHz, but only achieved 97.368421 MHz
+Warning: system_on_chip.ARM: 1 or more output clock frequencies cannot be achieved precisely, consider revising desired output clock frequencies.
+Warning: system_on_chip.ARM: ODT is disabled. Enabling ODT (Mode Register 1) may improve signal integrity
+Warning: system_on_chip.ARM: set_interface_assignment: Interface "hps_io" does not exist
+Info: system_on_chip.REG_BUTTONS: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: system_on_chip.UART: JTAG UART IP input clock need to be at least double (2x) the operating frequency of JTAG TCK on board
+Warning: system_on_chip.ARM: ARM.h2f_mpu_events must be exported, or connected to a matching conduit.
+Warning: system_on_chip.FIFO: Interrupt sender FIFO.in_irq is not connected to an interrupt receiver
+Warning: system_on_chip.FIFO: FIFO.in_csr must be connected to an Avalon-MM master
+Info: qsys-generate succeeded.
+Info: Loading IP catalog for testbench.
+Progress: 
+Progress: 
+Progress: 
+Progress: (2) searching C:/intelfpga_lite/18.0/quartus/sopc_builder/bin/root_components.ipx (ipx file)
+Info: Reading index C:\intelfpga_lite\18.0\quartus\sopc_builder\bin\root_components.ipx
+Info: C:\intelfpga_lite\18.0\quartus\sopc_builder\bin\root_components.ipx: Loading now from components.ipx
+Info: Reading index C:\intelfpga_lite\18.0\quartus\sopc_builder\bin\ip_component_categories.ipx
+Info: C:\intelfpga_lite\18.0\quartus\sopc_builder\bin\ip_component_categories.ipx described 0 plugins, 0 paths, in 0.00 seconds
+Info: C:/intelfpga_lite/18.0/quartus/sopc_builder/bin/ip_component_categories.ipx matched 1 files in 0.00 seconds
+Info: C:/Users/nicva/Empotrados/Proyecto2-Empotrados/SystemOnChip/system_on_chip2/testbench/ip/**/* matched 0 files in 0.00 seconds
+Info: Reading index C:\Users\nicva\Empotrados\Proyecto2-Empotrados\SystemOnChip\system_on_chip2\testbench\system_on_chip.ipx
+Progress: Loading SystemOnChip/system_on_chip.qsys
+Info: C:/Users/nicva/Empotrados/Proyecto2-Empotrados/SystemOnChip/* matched 14 files in 0.00 seconds
+Info: C:/Users/nicva/Empotrados/Proyecto2-Empotrados/SystemOnChip/ip/**/* matched 0 files in 0.00 seconds
+Info: C:/Users/nicva/Empotrados/Proyecto2-Empotrados/SystemOnChip/*/* matched 334 files in 0.01 seconds
+Info: C:\Users\nicva\Empotrados\Proyecto2-Empotrados\SystemOnChip\system_on_chip2\testbench\system_on_chip.ipx described 0 plugins, 3 paths, in 0.02 seconds
+Info: C:/Users/nicva/Empotrados/Proyecto2-Empotrados/SystemOnChip/system_on_chip2/testbench/* matched 4 files in 0.02 seconds
+Info: C:/Users/nicva/Empotrados/Proyecto2-Empotrados/SystemOnChip/system_on_chip2/testbench/*/* matched 0 files in 0.00 seconds
+Info: C:/Users/nicva/.altera.quartus/ip/18.0/**/* matched 0 files in 0.00 seconds
+Info: C:/intelfpga_lite/18.0/quartus/sopc_builder/bin/$$QUARTUS_IP_PROJECTDIR/* matched 0 files in 0.00 seconds
+Info: C:/intelfpga_lite/18.0/quartus/sopc_builder/bin/$$QUARTUS_IP_USERDIR/* matched 0 files in 0.00 seconds
+Info: C:/intelfpga_lite/18.0/quartus/sopc_builder/bin/$$QUARTUS_IP_GLOBALDIR/* matched 0 files in 0.00 seconds
+Info: Reading index C:\intelfpga_lite\18.0\ip\altera\altera_components.ipx
+Info: C:\intelfpga_lite\18.0\ip\altera\altera_components.ipx described 2031 plugins, 0 paths, in 0.05 seconds
+Info: C:/intelfpga_lite/18.0/ip/**/* matched 138 files in 0.05 seconds
+Info: C:/intelfpga_lite/ip/**/* matched 0 files in 0.00 seconds
+Info: Reading index C:\intelfpga_lite\18.0\quartus\sopc_builder\builtin.ipx
+Info: C:\intelfpga_lite\18.0\quartus\sopc_builder\builtin.ipx described 83 plugins, 0 paths, in 0.00 seconds
+Info: C:/intelfpga_lite/18.0/quartus/sopc_builder/**/* matched 8 files in 0.00 seconds
+Info: Reading index C:\intelfpga_lite\18.0\quartus\common\librarian\factories\index.ipx
+Info: C:\intelfpga_lite\18.0\quartus\common\librarian\factories\index.ipx described 151 plugins, 0 paths, in 0.02 seconds
+Info: C:/intelfpga_lite/18.0/quartus/common/librarian/factories/**/* matched 4 files in 0.02 seconds
+Info: C:/intelfpga_lite/18.0/quartus/sopc_builder/bin/$IP_IPX_PATH matched 1 files in 0.00 seconds
+Info: C:\intelfpga_lite\18.0\quartus\sopc_builder\bin\root_components.ipx described 0 plugins, 13 paths, in 0.09 seconds
+Info: C:/intelfpga_lite/18.0/quartus/sopc_builder/bin/root_components.ipx matched 1 files in 0.09 seconds
+Progress: 
+Progress: 
+Progress: 
+Info: Running script C:/intelfpga_lite/18.0/quartus/sopc_builder/bin/tbgen.tcl
+Info: send_message Info TB_Gen: QSYS Testbench Generator Rev: $Revision: #1 $
+Info: TB_Gen: QSYS Testbench Generator Rev: $Revision: #1 $
+Info: get_module_property NAME
+Info: send_message Info TB_Gen: System design is: system_on_chip
+Info: TB_Gen: System design is: system_on_chip
+Info: get_interfaces 
+Info: get_connections 
+Info: get_interface_property clk EXPORT_OF
+Info: get_instance_property clk_0 CLASS_NAME
+Info: get_instance_assignment clk_0 testbench.partner.map.clk_in
+Info: get_interface_property memory EXPORT_OF
+Info: get_instance_property ARM CLASS_NAME
+Info: get_instance_assignment ARM testbench.partner.map.memory
+Info: get_interface_property reg_button_external_connection EXPORT_OF
+Info: get_instance_property REG_BUTTONS CLASS_NAME
+Info: get_instance_assignment REG_BUTTONS testbench.partner.map.external_connection
+Info: get_interface_property reg_leds_external_connection EXPORT_OF
+Info: get_instance_property REG_7_SEGMENTS CLASS_NAME
+Info: get_instance_assignment REG_7_SEGMENTS testbench.partner.map.external_connection
+Info: get_interface_property reg_switches_external_connection EXPORT_OF
+Info: get_instance_property REG_SWITCHES CLASS_NAME
+Info: get_instance_assignment REG_SWITCHES testbench.partner.map.external_connection
+Info: get_interface_property reset EXPORT_OF
+Info: get_instance_property clk_0 CLASS_NAME
+Info: get_instance_assignment clk_0 testbench.partner.map.clk_in_reset
+Info: get_interface_property timer_irq EXPORT_OF
+Info: get_instance_property TIMER CLASS_NAME
+Info: get_instance_assignment TIMER testbench.partner.map.irq
+Info: get_interface_property uart_irq EXPORT_OF
+Info: get_instance_property UART CLASS_NAME
+Info: get_instance_assignment UART testbench.partner.map.irq
+Info: send_message Info TB_Gen: Creating testbench system : system_on_chip_tb with all standard BFMs
+Info: TB_Gen: Creating testbench system : system_on_chip_tb with all standard BFMs
+Info: create_system system_on_chip_tb
+Info: add_instance system_on_chip_inst system_on_chip 
+Info: set_use_testbench_naming_pattern true system_on_chip
+Info: get_instance_interfaces system_on_chip_inst
+Info: get_instance_interface_property system_on_chip_inst clk CLASS_NAME
+Info: get_instance_interface_property system_on_chip_inst memory CLASS_NAME
+Info: get_instance_interface_property system_on_chip_inst reg_button_external_connection CLASS_NAME
+Info: get_instance_interface_property system_on_chip_inst reg_leds_external_connection CLASS_NAME
+Info: get_instance_interface_property system_on_chip_inst reg_switches_external_connection CLASS_NAME
+Info: get_instance_interface_property system_on_chip_inst reset CLASS_NAME
+Info: get_instance_interface_property system_on_chip_inst timer_irq CLASS_NAME
+Info: get_instance_interface_property system_on_chip_inst uart_irq CLASS_NAME
+Info: get_instance_interface_property system_on_chip_inst clk CLASS_NAME
+Info: send_message Info TB_Gen: clock_sink found: clk
+Info: TB_Gen: clock_sink found: clk
+Info: get_instance_interface_property system_on_chip_inst clk CLASS_NAME
+Info: add_instance system_on_chip_inst_clk_bfm altera_avalon_clock_source 
+Info: get_instance_property system_on_chip_inst_clk_bfm CLASS_NAME
+Info: get_instance_interface_parameter_value system_on_chip_inst clk clockRate
+Info: set_instance_parameter_value system_on_chip_inst_clk_bfm CLOCK_RATE 50000000.0
+Info: set_instance_parameter_value system_on_chip_inst_clk_bfm CLOCK_UNIT 1
+Info: get_instance_property system_on_chip_inst_clk_bfm CLASS_NAME
+Info: get_instance_interface_property system_on_chip_inst clk CLASS_NAME
+Info: get_instance_interfaces system_on_chip_inst_clk_bfm
+Info: get_instance_interface_property system_on_chip_inst_clk_bfm clk CLASS_NAME
+Info: add_connection system_on_chip_inst_clk_bfm.clk system_on_chip_inst.clk
+Info: get_instance_interface_property system_on_chip_inst reset CLASS_NAME
+Info: send_message Info TB_Gen: reset_sink found: reset
+Info: TB_Gen: reset_sink found: reset
+Info: get_instance_interface_property system_on_chip_inst reset CLASS_NAME
+Info: add_instance system_on_chip_inst_reset_bfm altera_avalon_reset_source 
+Info: get_instance_property system_on_chip_inst_reset_bfm CLASS_NAME
+Info: get_instance_interface_ports system_on_chip_inst reset
+Info: get_instance_interface_port_property system_on_chip_inst reset reset_reset_n ROLE
+Info: get_instance_interface_port_property system_on_chip_inst reset reset_reset_n ROLE
+Info: set_instance_parameter_value system_on_chip_inst_reset_bfm ASSERT_HIGH_RESET 0
+Info: set_instance_parameter_value system_on_chip_inst_reset_bfm INITIAL_RESET_CYCLES 50
+Info: get_instance_property system_on_chip_inst_reset_bfm CLASS_NAME
+Info: get_instance_interfaces system_on_chip_inst_reset_bfm
+Info: get_instance_interface_property system_on_chip_inst_reset_bfm clk CLASS_NAME
+Info: get_instance_interface_property system_on_chip_inst_reset_bfm reset CLASS_NAME
+Info: get_instance_property system_on_chip_inst_reset_bfm CLASS_NAME
+Info: get_instance_interface_parameter_value system_on_chip_inst reset associatedClock
+Info: get_instance_interfaces system_on_chip_inst_clk_bfm
+Info: get_instance_interface_property system_on_chip_inst_clk_bfm clk CLASS_NAME
+Info: send_message Warning TB_Gen: system_on_chip_inst_reset_bfm is not associated to any clock; connecting system_on_chip_inst_reset_bfm to 'system_on_chip_inst_clk_bfm.clk'
+Warning: TB_Gen: system_on_chip_inst_reset_bfm is not associated to any clock; connecting system_on_chip_inst_reset_bfm to 'system_on_chip_inst_clk_bfm.clk'
+Info: add_connection system_on_chip_inst_clk_bfm.clk system_on_chip_inst_reset_bfm.clk
+Info: get_instance_interface_property system_on_chip_inst reset CLASS_NAME
+Info: get_instance_interfaces system_on_chip_inst_reset_bfm
+Info: get_instance_interface_property system_on_chip_inst_reset_bfm clk CLASS_NAME
+Info: get_instance_interface_property system_on_chip_inst_reset_bfm reset CLASS_NAME
+Info: add_connection system_on_chip_inst_reset_bfm.reset system_on_chip_inst.reset
+Info: get_instance_interface_property system_on_chip_inst memory CLASS_NAME
+Info: send_message Info TB_Gen: conduit_end found: memory
+Info: TB_Gen: conduit_end found: memory
+Info: get_instance_interface_property system_on_chip_inst memory CLASS_NAME
+Info: add_instance system_on_chip_inst_memory_bfm altera_conduit_bfm 
+Info: get_instance_property system_on_chip_inst_memory_bfm CLASS_NAME
+Info: get_instance_interface_parameter_value system_on_chip_inst memory associatedClock
+Info: get_instance_interface_parameter_value system_on_chip_inst memory associatedReset
+Info: get_instance_interface_ports system_on_chip_inst memory
+Info: get_instance_interface_port_property system_on_chip_inst memory memory_mem_a ROLE
+Info: get_instance_interface_port_property system_on_chip_inst memory memory_mem_a WIDTH
+Info: get_instance_interface_port_property system_on_chip_inst memory memory_mem_a DIRECTION
+Info: get_instance_interface_port_property system_on_chip_inst memory memory_mem_ba ROLE
+Info: get_instance_interface_port_property system_on_chip_inst memory memory_mem_ba WIDTH
+Info: get_instance_interface_port_property system_on_chip_inst memory memory_mem_ba DIRECTION
+Info: get_instance_interface_port_property system_on_chip_inst memory memory_mem_cas_n ROLE
+Info: get_instance_interface_port_property system_on_chip_inst memory memory_mem_cas_n WIDTH
+Info: get_instance_interface_port_property system_on_chip_inst memory memory_mem_cas_n DIRECTION
+Info: get_instance_interface_port_property system_on_chip_inst memory memory_mem_ck ROLE
+Info: get_instance_interface_port_property system_on_chip_inst memory memory_mem_ck WIDTH
+Info: get_instance_interface_port_property system_on_chip_inst memory memory_mem_ck DIRECTION
+Info: get_instance_interface_port_property system_on_chip_inst memory memory_mem_ck_n ROLE
+Info: get_instance_interface_port_property system_on_chip_inst memory memory_mem_ck_n WIDTH
+Info: get_instance_interface_port_property system_on_chip_inst memory memory_mem_ck_n DIRECTION
+Info: get_instance_interface_port_property system_on_chip_inst memory memory_mem_cke ROLE
+Info: get_instance_interface_port_property system_on_chip_inst memory memory_mem_cke WIDTH
+Info: get_instance_interface_port_property system_on_chip_inst memory memory_mem_cke DIRECTION
+Info: get_instance_interface_port_property system_on_chip_inst memory memory_mem_cs_n ROLE
+Info: get_instance_interface_port_property system_on_chip_inst memory memory_mem_cs_n WIDTH
+Info: get_instance_interface_port_property system_on_chip_inst memory memory_mem_cs_n DIRECTION
+Info: get_instance_interface_port_property system_on_chip_inst memory memory_mem_dm ROLE
+Info: get_instance_interface_port_property system_on_chip_inst memory memory_mem_dm WIDTH
+Info: get_instance_interface_port_property system_on_chip_inst memory memory_mem_dm DIRECTION
+Info: get_instance_interface_port_property system_on_chip_inst memory memory_mem_dq ROLE
+Info: get_instance_interface_port_property system_on_chip_inst memory memory_mem_dq WIDTH
+Info: get_instance_interface_port_property system_on_chip_inst memory memory_mem_dq DIRECTION
+Info: get_instance_interface_port_property system_on_chip_inst memory memory_mem_dqs ROLE
+Info: get_instance_interface_port_property system_on_chip_inst memory memory_mem_dqs WIDTH
+Info: get_instance_interface_port_property system_on_chip_inst memory memory_mem_dqs DIRECTION
+Info: get_instance_interface_port_property system_on_chip_inst memory memory_mem_dqs_n ROLE
+Info: get_instance_interface_port_property system_on_chip_inst memory memory_mem_dqs_n WIDTH
+Info: get_instance_interface_port_property system_on_chip_inst memory memory_mem_dqs_n DIRECTION
+Info: get_instance_interface_port_property system_on_chip_inst memory memory_mem_odt ROLE
+Info: get_instance_interface_port_property system_on_chip_inst memory memory_mem_odt WIDTH
+Info: get_instance_interface_port_property system_on_chip_inst memory memory_mem_odt DIRECTION
+Info: get_instance_interface_port_property system_on_chip_inst memory memory_mem_ras_n ROLE
+Info: get_instance_interface_port_property system_on_chip_inst memory memory_mem_ras_n WIDTH
+Info: get_instance_interface_port_property system_on_chip_inst memory memory_mem_ras_n DIRECTION
+Info: get_instance_interface_port_property system_on_chip_inst memory memory_mem_reset_n ROLE
+Info: get_instance_interface_port_property system_on_chip_inst memory memory_mem_reset_n WIDTH
+Info: get_instance_interface_port_property system_on_chip_inst memory memory_mem_reset_n DIRECTION
+Info: get_instance_interface_port_property system_on_chip_inst memory memory_mem_we_n ROLE
+Info: get_instance_interface_port_property system_on_chip_inst memory memory_mem_we_n WIDTH
+Info: get_instance_interface_port_property system_on_chip_inst memory memory_mem_we_n DIRECTION
+Info: get_instance_interface_port_property system_on_chip_inst memory memory_oct_rzqin ROLE
+Info: get_instance_interface_port_property system_on_chip_inst memory memory_oct_rzqin WIDTH
+Info: get_instance_interface_port_property system_on_chip_inst memory memory_oct_rzqin DIRECTION
+Info: set_instance_parameter_value system_on_chip_inst_memory_bfm CLOCKED_SIGNAL 0
+Info: set_instance_parameter_value system_on_chip_inst_memory_bfm ENABLE_RESET 0
+Info: set_instance_parameter_value system_on_chip_inst_memory_bfm SIGNAL_ROLES mem_a mem_ba mem_cas_n mem_ck mem_ck_n mem_cke mem_cs_n mem_dm mem_dq mem_dqs mem_dqs_n mem_odt mem_ras_n mem_reset_n mem_we_n oct_rzqin
+Info: set_instance_parameter_value system_on_chip_inst_memory_bfm SIGNAL_WIDTHS 13 3 1 1 1 1 1 1 8 1 1 1 1 1 1 1
+Info: set_instance_parameter_value system_on_chip_inst_memory_bfm SIGNAL_DIRECTIONS input input input input input input input input bidir bidir bidir input input input input output
+Info: get_instance_property system_on_chip_inst_memory_bfm CLASS_NAME
+Info: get_instance_interface_property system_on_chip_inst memory CLASS_NAME
+Info: get_instance_interfaces system_on_chip_inst_memory_bfm
+Info: get_instance_interface_property system_on_chip_inst_memory_bfm conduit CLASS_NAME
+Info: add_connection system_on_chip_inst_memory_bfm.conduit system_on_chip_inst.memory
+Info: get_instance_interface_property system_on_chip_inst reg_button_external_connection CLASS_NAME
+Info: send_message Info TB_Gen: conduit_end found: reg_button_external_connection
+Info: TB_Gen: conduit_end found: reg_button_external_connection
+Info: get_instance_interface_property system_on_chip_inst reg_button_external_connection CLASS_NAME
+Info: add_instance system_on_chip_inst_reg_button_external_connection_bfm altera_conduit_bfm 
+Info: get_instance_property system_on_chip_inst_reg_button_external_connection_bfm CLASS_NAME
+Info: get_instance_interface_parameter_value system_on_chip_inst reg_button_external_connection associatedClock
+Info: get_instance_interface_parameter_value system_on_chip_inst reg_button_external_connection associatedReset
+Info: get_instance_interface_ports system_on_chip_inst reg_button_external_connection
+Info: get_instance_interface_port_property system_on_chip_inst reg_button_external_connection reg_button_external_connection_export ROLE
+Info: get_instance_interface_port_property system_on_chip_inst reg_button_external_connection reg_button_external_connection_export WIDTH
+Info: get_instance_interface_port_property system_on_chip_inst reg_button_external_connection reg_button_external_connection_export DIRECTION
+Info: set_instance_parameter_value system_on_chip_inst_reg_button_external_connection_bfm CLOCKED_SIGNAL 0
+Info: set_instance_parameter_value system_on_chip_inst_reg_button_external_connection_bfm ENABLE_RESET 0
+Info: set_instance_parameter_value system_on_chip_inst_reg_button_external_connection_bfm SIGNAL_ROLES export
+Info: set_instance_parameter_value system_on_chip_inst_reg_button_external_connection_bfm SIGNAL_WIDTHS 8
+Info: set_instance_parameter_value system_on_chip_inst_reg_button_external_connection_bfm SIGNAL_DIRECTIONS output
+Info: get_instance_property system_on_chip_inst_reg_button_external_connection_bfm CLASS_NAME
+Info: get_instance_interface_property system_on_chip_inst reg_button_external_connection CLASS_NAME
+Info: get_instance_interfaces system_on_chip_inst_reg_button_external_connection_bfm
+Info: get_instance_interface_property system_on_chip_inst_reg_button_external_connection_bfm conduit CLASS_NAME
+Info: add_connection system_on_chip_inst_reg_button_external_connection_bfm.conduit system_on_chip_inst.reg_button_external_connection
+Info: get_instance_interface_property system_on_chip_inst reg_leds_external_connection CLASS_NAME
+Info: send_message Info TB_Gen: conduit_end found: reg_leds_external_connection
+Info: TB_Gen: conduit_end found: reg_leds_external_connection
+Info: get_instance_interface_property system_on_chip_inst reg_leds_external_connection CLASS_NAME
+Info: add_instance system_on_chip_inst_reg_leds_external_connection_bfm altera_conduit_bfm 
+Info: get_instance_property system_on_chip_inst_reg_leds_external_connection_bfm CLASS_NAME
+Info: get_instance_interface_parameter_value system_on_chip_inst reg_leds_external_connection associatedClock
+Info: get_instance_interface_parameter_value system_on_chip_inst reg_leds_external_connection associatedReset
+Info: get_instance_interface_ports system_on_chip_inst reg_leds_external_connection
+Info: get_instance_interface_port_property system_on_chip_inst reg_leds_external_connection reg_leds_external_connection_export ROLE
+Info: get_instance_interface_port_property system_on_chip_inst reg_leds_external_connection reg_leds_external_connection_export WIDTH
+Info: get_instance_interface_port_property system_on_chip_inst reg_leds_external_connection reg_leds_external_connection_export DIRECTION
+Info: set_instance_parameter_value system_on_chip_inst_reg_leds_external_connection_bfm CLOCKED_SIGNAL 0
+Info: set_instance_parameter_value system_on_chip_inst_reg_leds_external_connection_bfm ENABLE_RESET 0
+Info: set_instance_parameter_value system_on_chip_inst_reg_leds_external_connection_bfm SIGNAL_ROLES export
+Info: set_instance_parameter_value system_on_chip_inst_reg_leds_external_connection_bfm SIGNAL_WIDTHS 8
+Info: set_instance_parameter_value system_on_chip_inst_reg_leds_external_connection_bfm SIGNAL_DIRECTIONS input
+Info: get_instance_property system_on_chip_inst_reg_leds_external_connection_bfm CLASS_NAME
+Info: get_instance_interface_property system_on_chip_inst reg_leds_external_connection CLASS_NAME
+Info: get_instance_interfaces system_on_chip_inst_reg_leds_external_connection_bfm
+Info: get_instance_interface_property system_on_chip_inst_reg_leds_external_connection_bfm conduit CLASS_NAME
+Info: add_connection system_on_chip_inst_reg_leds_external_connection_bfm.conduit system_on_chip_inst.reg_leds_external_connection
+Info: get_instance_interface_property system_on_chip_inst reg_switches_external_connection CLASS_NAME
+Info: send_message Info TB_Gen: conduit_end found: reg_switches_external_connection
+Info: TB_Gen: conduit_end found: reg_switches_external_connection
+Info: get_instance_interface_property system_on_chip_inst reg_switches_external_connection CLASS_NAME
+Info: add_instance system_on_chip_inst_reg_switches_external_connection_bfm altera_conduit_bfm 
+Info: get_instance_property system_on_chip_inst_reg_switches_external_connection_bfm CLASS_NAME
+Info: get_instance_interface_parameter_value system_on_chip_inst reg_switches_external_connection associatedClock
+Info: get_instance_interface_parameter_value system_on_chip_inst reg_switches_external_connection associatedReset
+Info: get_instance_interface_ports system_on_chip_inst reg_switches_external_connection
+Info: get_instance_interface_port_property system_on_chip_inst reg_switches_external_connection reg_switches_external_connection_export ROLE
+Info: get_instance_interface_port_property system_on_chip_inst reg_switches_external_connection reg_switches_external_connection_export WIDTH
+Info: get_instance_interface_port_property system_on_chip_inst reg_switches_external_connection reg_switches_external_connection_export DIRECTION
+Info: set_instance_parameter_value system_on_chip_inst_reg_switches_external_connection_bfm CLOCKED_SIGNAL 0
+Info: set_instance_parameter_value system_on_chip_inst_reg_switches_external_connection_bfm ENABLE_RESET 0
+Info: set_instance_parameter_value system_on_chip_inst_reg_switches_external_connection_bfm SIGNAL_ROLES export
+Info: set_instance_parameter_value system_on_chip_inst_reg_switches_external_connection_bfm SIGNAL_WIDTHS 10
+Info: set_instance_parameter_value system_on_chip_inst_reg_switches_external_connection_bfm SIGNAL_DIRECTIONS input
+Info: get_instance_property system_on_chip_inst_reg_switches_external_connection_bfm CLASS_NAME
+Info: get_instance_interface_property system_on_chip_inst reg_switches_external_connection CLASS_NAME
+Info: get_instance_interfaces system_on_chip_inst_reg_switches_external_connection_bfm
+Info: get_instance_interface_property system_on_chip_inst_reg_switches_external_connection_bfm conduit CLASS_NAME
+Info: add_connection system_on_chip_inst_reg_switches_external_connection_bfm.conduit system_on_chip_inst.reg_switches_external_connection
+Info: get_instance_interface_property system_on_chip_inst timer_irq CLASS_NAME
+Info: send_message Info TB_Gen: interrupt_sender found: timer_irq
+Info: TB_Gen: interrupt_sender found: timer_irq
+Info: get_instance_interface_property system_on_chip_inst timer_irq CLASS_NAME
+Info: add_instance system_on_chip_inst_timer_irq_bfm altera_avalon_interrupt_sink 
+Info: get_instance_property system_on_chip_inst_timer_irq_bfm CLASS_NAME
+Info: get_instance_interface_ports system_on_chip_inst timer_irq
+Info: get_instance_interface_port_property system_on_chip_inst timer_irq timer_irq_irq ROLE
+Info: get_instance_interface_port_property system_on_chip_inst timer_irq timer_irq_irq WIDTH
+Info: set_instance_parameter_value system_on_chip_inst_timer_irq_bfm AV_IRQ_W 1
+Info: set_instance_parameter_value system_on_chip_inst_timer_irq_bfm ASSERT_HIGH_IRQ 1
+Info: set_instance_parameter_value system_on_chip_inst_timer_irq_bfm VHDL_ID 0
+Info: get_instance_property system_on_chip_inst_timer_irq_bfm CLASS_NAME
+Info: get_instance_interfaces system_on_chip_inst_timer_irq_bfm
+Info: get_instance_interface_property system_on_chip_inst_timer_irq_bfm clock_reset CLASS_NAME
+Info: get_instance_interface_property system_on_chip_inst_timer_irq_bfm clock_reset_reset CLASS_NAME
+Info: get_instance_interface_property system_on_chip_inst_timer_irq_bfm irq CLASS_NAME
+Info: get_instance_property system_on_chip_inst_timer_irq_bfm CLASS_NAME
+Info: get_instance_interface_parameter_value system_on_chip_inst timer_irq associatedClock
+Info: get_instance_interface_property system_on_chip_inst clk CLASS_NAME
+Info: get_instance_interfaces system_on_chip_inst_clk_bfm
+Info: get_instance_interface_property system_on_chip_inst_clk_bfm clk CLASS_NAME
+Info: add_connection system_on_chip_inst_clk_bfm.clk system_on_chip_inst_timer_irq_bfm.clock_reset
+Info: get_instance_interfaces system_on_chip_inst_timer_irq_bfm
+Info: get_instance_interface_property system_on_chip_inst_timer_irq_bfm clock_reset CLASS_NAME
+Info: get_instance_interface_property system_on_chip_inst_timer_irq_bfm clock_reset_reset CLASS_NAME
+Info: get_instance_interface_property system_on_chip_inst_timer_irq_bfm irq CLASS_NAME
+Info: get_instance_property system_on_chip_inst_timer_irq_bfm CLASS_NAME
+Info: get_instance_interface_parameter_value system_on_chip_inst timer_irq associatedReset
+Info: get_instance_interface_property system_on_chip_inst reset CLASS_NAME
+Info: get_instance_interfaces system_on_chip_inst_reset_bfm
+Info: get_instance_interface_property system_on_chip_inst_reset_bfm clk CLASS_NAME
+Info: get_instance_interface_property system_on_chip_inst_reset_bfm reset CLASS_NAME
+Info: add_connection system_on_chip_inst_reset_bfm.reset system_on_chip_inst_timer_irq_bfm.clock_reset_reset
+Info: get_instance_interface_property system_on_chip_inst timer_irq CLASS_NAME
+Info: get_instance_interfaces system_on_chip_inst_timer_irq_bfm
+Info: get_instance_interface_property system_on_chip_inst_timer_irq_bfm clock_reset CLASS_NAME
+Info: get_instance_interface_property system_on_chip_inst_timer_irq_bfm clock_reset_reset CLASS_NAME
+Info: get_instance_interface_property system_on_chip_inst_timer_irq_bfm irq CLASS_NAME
+Info: add_connection system_on_chip_inst_timer_irq_bfm.irq system_on_chip_inst.timer_irq
+Info: get_instance_interface_property system_on_chip_inst uart_irq CLASS_NAME
+Info: send_message Info TB_Gen: interrupt_sender found: uart_irq
+Info: TB_Gen: interrupt_sender found: uart_irq
+Info: get_instance_interface_property system_on_chip_inst uart_irq CLASS_NAME
+Info: add_instance system_on_chip_inst_uart_irq_bfm altera_avalon_interrupt_sink 
+Info: get_instance_property system_on_chip_inst_uart_irq_bfm CLASS_NAME
+Info: get_instance_interface_ports system_on_chip_inst uart_irq
+Info: get_instance_interface_port_property system_on_chip_inst uart_irq uart_irq_irq ROLE
+Info: get_instance_interface_port_property system_on_chip_inst uart_irq uart_irq_irq WIDTH
+Info: set_instance_parameter_value system_on_chip_inst_uart_irq_bfm AV_IRQ_W 1
+Info: set_instance_parameter_value system_on_chip_inst_uart_irq_bfm ASSERT_HIGH_IRQ 1
+Info: set_instance_parameter_value system_on_chip_inst_uart_irq_bfm VHDL_ID 1
+Info: get_instance_property system_on_chip_inst_uart_irq_bfm CLASS_NAME
+Info: get_instance_interfaces system_on_chip_inst_uart_irq_bfm
+Info: get_instance_interface_property system_on_chip_inst_uart_irq_bfm clock_reset CLASS_NAME
+Info: get_instance_interface_property system_on_chip_inst_uart_irq_bfm clock_reset_reset CLASS_NAME
+Info: get_instance_interface_property system_on_chip_inst_uart_irq_bfm irq CLASS_NAME
+Info: get_instance_property system_on_chip_inst_uart_irq_bfm CLASS_NAME
+Info: get_instance_interface_parameter_value system_on_chip_inst uart_irq associatedClock
+Info: get_instance_interface_property system_on_chip_inst clk CLASS_NAME
+Info: get_instance_interfaces system_on_chip_inst_clk_bfm
+Info: get_instance_interface_property system_on_chip_inst_clk_bfm clk CLASS_NAME
+Info: add_connection system_on_chip_inst_clk_bfm.clk system_on_chip_inst_uart_irq_bfm.clock_reset
+Info: get_instance_interfaces system_on_chip_inst_uart_irq_bfm
+Info: get_instance_interface_property system_on_chip_inst_uart_irq_bfm clock_reset CLASS_NAME
+Info: get_instance_interface_property system_on_chip_inst_uart_irq_bfm clock_reset_reset CLASS_NAME
+Info: get_instance_interface_property system_on_chip_inst_uart_irq_bfm irq CLASS_NAME
+Info: get_instance_property system_on_chip_inst_uart_irq_bfm CLASS_NAME
+Info: get_instance_interface_parameter_value system_on_chip_inst uart_irq associatedReset
+Info: get_instance_interface_property system_on_chip_inst reset CLASS_NAME
+Info: get_instance_interfaces system_on_chip_inst_reset_bfm
+Info: get_instance_interface_property system_on_chip_inst_reset_bfm clk CLASS_NAME
+Info: get_instance_interface_property system_on_chip_inst_reset_bfm reset CLASS_NAME
+Info: add_connection system_on_chip_inst_reset_bfm.reset system_on_chip_inst_uart_irq_bfm.clock_reset_reset
+Info: get_instance_interface_property system_on_chip_inst uart_irq CLASS_NAME
+Info: get_instance_interfaces system_on_chip_inst_uart_irq_bfm
+Info: get_instance_interface_property system_on_chip_inst_uart_irq_bfm clock_reset CLASS_NAME
+Info: get_instance_interface_property system_on_chip_inst_uart_irq_bfm clock_reset_reset CLASS_NAME
+Info: get_instance_interface_property system_on_chip_inst_uart_irq_bfm irq CLASS_NAME
+Info: add_connection system_on_chip_inst_uart_irq_bfm.irq system_on_chip_inst.uart_irq
+Info: send_message Info TB_Gen: Saving testbench system: system_on_chip_tb.qsys
+Info: TB_Gen: Saving testbench system: system_on_chip_tb.qsys
+Info: save_system system_on_chip_tb.qsys
+Info: send_message Info TB_Gen: TBGEN SUCCESSFUL
+Info: TB_Gen: TBGEN SUCCESSFUL
+Info: Testbench system: C:/Users/nicva/Empotrados/Proyecto2-Empotrados/SystemOnChip/system_on_chip2/testbench/system_on_chip_tb.qsys
+Info: Done
+Error: There were errors creating the testbench system.
+Info: Stopping: Create testbench Platform Designer system

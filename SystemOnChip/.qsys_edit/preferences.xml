@@ -3,11 +3,11 @@
  <debug showDebugMenu="0" />
  <systemtable filter="All Interfaces">
   <columns>
-   <connections preferredWidth="143" />
+   <connections preferredWidth="191" />
    <irq preferredWidth="34" />
   </columns>
  </systemtable>
- <library
-   expandedCategories="Library,Project,Library/Interface Protocols/Serial,Library/University Program,Library/University Program/Communications,Library/Interface Protocols" />
+ <library expandedCategories="Library,Project" />
  <window width="1920" height="1020" x="0" y="0" />
+ <generation path="system_on_chip2" synthesis="VERILOG" greybox="0" />
 </preferences>
