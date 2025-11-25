@@ -1,0 +1,212 @@
+
+**** Build of configuration Debug for project ARM_HPS_Audio_Filters ****
+
+Nothing to build for project ARM_HPS_Audio_Filters
+02:03:56 **** Clean-only build of configuration Debug for project ARM_HPS_Audio_Filters ****
+make clean 
+clean     ./src/audio_filter.o ./src/main_arm.o ./src/nios_bridge.o ./src/sd_manager.o     ./src/audio_filter.d ./src/main_arm.d ./src/nios_bridge.d ./src/sd_manager.d   ARM_HPS_Audio_Filters.axf 
+' '
+02:03:56 **** Build of configuration Debug for project ARM_HPS_Audio_Filters ****
+make all 
+'Building file: ../src/audio_filter.c'
+'Invoking: GCC C Compiler'
+arm-altera-eabi-gcc -O0 -g -Wall -MMD -MP -MF"src/audio_filter.d" -MT"src/audio_filter.o" -c -o "src/audio_filter.o" "../src/audio_filter.c"
+'Finished building: ../src/audio_filter.c'
+' '
+'Building file: ../src/main_arm.c'
+'Invoking: GCC C Compiler'
+arm-altera-eabi-gcc -O0 -g -Wall -MMD -MP -MF"src/main_arm.d" -MT"src/main_arm.o" -c -o "src/main_arm.o" "../src/main_arm.c"
+'Finished building: ../src/main_arm.c'
+' '
+'Building file: ../src/nios_bridge.c'
+'Invoking: GCC C Compiler'
+arm-altera-eabi-gcc -O0 -g -Wall -MMD -MP -MF"src/nios_bridge.d" -MT"src/nios_bridge.o" -c -o "src/nios_bridge.o" "../src/nios_bridge.c"
+'Finished building: ../src/nios_bridge.c'
+' '
+'Building file: ../src/sd_manager.c'
+'Invoking: GCC C Compiler'
+arm-altera-eabi-gcc -O0 -g -Wall -MMD -MP -MF"src/sd_manager.d" -MT"src/sd_manager.o" -c -o "src/sd_manager.o" "../src/sd_manager.c"
+'Finished building: ../src/sd_manager.c'
+' '
+'Building target: ARM_HPS_Audio_Filters.axf'
+'Invoking: GCC C Linker'
+arm-altera-eabi-gcc  -o "ARM_HPS_Audio_Filters.axf"  ./src/audio_filter.o ./src/main_arm.o ./src/nios_bridge.o ./src/sd_manager.o   
+c:/intelfpga/18.0/embedded/host_tools/mentor/gnu/arm/baremetal/bin/../lib/gcc/arm-altera-eabi/6.2.0/../../../../arm-altera-eabi/bin/ld.exe: warning: cannot find entry symbol _start; defaulting to 00008018
+'Finished building target: ARM_HPS_Audio_Filters.axf'
+' '
+02:05:50 **** Incremental Build of configuration Debug for project ARM_HPS_Audio_Filters ****
+make all 
+make: Nothing to be done for 'all'.
+02:06:08 **** Incremental Build of configuration Debug for project ARM_HPS_Audio_Filters ****
+make all 
+'Building file: ../src/audio_filter.c'
+'Invoking: GCC C Compiler'
+arm-altera-eabi-gcc -O0 -g -Wall -MMD -MP -MF"src/audio_filter.d" -MT"src/audio_filter.o" -c -o "src/audio_filter.o" "../src/audio_filter.c"
+'Finished building: ../src/audio_filter.c'
+' '
+'Building target: ARM_HPS_Audio_Filters.axf'
+'Invoking: GCC C Linker'
+arm-altera-eabi-gcc  -o "ARM_HPS_Audio_Filters.axf"  ./src/audio_filter.o ./src/main_arm.o ./src/nios_bridge.o ./src/sd_manager.o   
+c:/intelfpga/18.0/embedded/host_tools/mentor/gnu/arm/baremetal/bin/../lib/gcc/arm-altera-eabi/6.2.0/../../../../arm-altera-eabi/bin/ld.exe: warning: cannot find entry symbol _start; defaulting to 00008018
+'Finished building target: ARM_HPS_Audio_Filters.axf'
+' '
+02:08:37 **** Incremental Build of configuration Debug for project ARM_HPS_Audio_Filters ****
+make all 
+'Building file: ../src/main_arm.c'
+'Invoking: GCC C Compiler'
+arm-altera-eabi-gcc -O0 -g -Wall -MMD -MP -MF"src/main_arm.d" -MT"src/main_arm.o" -c -o "src/main_arm.o" "../src/main_arm.c"
+../src/main_arm.c: In function 'main':
+../src/main_arm.c:29:5: warning: implicit declaration of function 'HPS_iniciar_perifericos' [-Wimplicit-function-declaration]
+     HPS_iniciar_perifericos();
+     ^~~~~~~~~~~~~~~~~~~~~~~
+../src/main_arm.c:34:9: warning: implicit declaration of function 'HPS_mostrar_error' [-Wimplicit-function-declaration]
+         HPS_mostrar_error(0xF0); // Muestra código F0 en display de 7 seg.
+         ^~~~~~~~~~~~~~~~~
+../src/main_arm.c:56:34: warning: implicit declaration of function 'HPS_read_filter_switch' [-Wimplicit-function-declaration]
+         current_filter_setting = HPS_read_filter_switch();
+                                  ^~~~~~~~~~~~~~~~~~~~~~
+../src/main_arm.c: At top level:
+../src/main_arm.c:79:6: warning: conflicting types for 'HPS_iniciar_perifericos'
+ void HPS_iniciar_perifericos() {
+      ^~~~~~~~~~~~~~~~~~~~~~~
+../src/main_arm.c:29:5: note: previous implicit declaration of 'HPS_iniciar_perifericos' was here
+     HPS_iniciar_perifericos();
+     ^~~~~~~~~~~~~~~~~~~~~~~
+../src/main_arm.c:84:10: error: conflicting types for 'HPS_read_filter_switch'
+ filtro_t HPS_read_filter_switch() {
+          ^~~~~~~~~~~~~~~~~~~~~~
+../src/main_arm.c:56:34: note: previous implicit declaration of 'HPS_read_filter_switch' was here
+         current_filter_setting = HPS_read_filter_switch();
+                                  ^~~~~~~~~~~~~~~~~~~~~~
+../src/main_arm.c:91:6: warning: conflicting types for 'HPS_mostrar_error'
+ void HPS_mostrar_error(uint8_t error_code) {
+      ^~~~~~~~~~~~~~~~~
+../src/main_arm.c:34:9: note: previous implicit declaration of 'HPS_mostrar_error' was here
+         HPS_mostrar_error(0xF0); // Muestra código F0 en display de 7 seg.
+         ^~~~~~~~~~~~~~~~~
+make: *** [src/subdir.mk:29: src/main_arm.o] Error 1
+02:10:05 **** Incremental Build of configuration Debug for project ARM_HPS_Audio_Filters ****
+make all 
+'Building file: ../src/main_arm.c'
+'Invoking: GCC C Compiler'
+arm-altera-eabi-gcc -O0 -g -Wall -MMD -MP -MF"src/main_arm.d" -MT"src/main_arm.o" -c -o "src/main_arm.o" "../src/main_arm.c"
+../src/main_arm.c: In function 'main':
+../src/main_arm.c:29:5: warning: implicit declaration of function 'HPS_iniciar_perifericos' [-Wimplicit-function-declaration]
+     HPS_iniciar_perifericos();
+     ^~~~~~~~~~~~~~~~~~~~~~~
+../src/main_arm.c:34:9: warning: implicit declaration of function 'HPS_mostrar_error' [-Wimplicit-function-declaration]
+         HPS_mostrar_error(0xF0); // Muestra código F0 en display de 7 seg.
+         ^~~~~~~~~~~~~~~~~
+../src/main_arm.c:56:34: warning: implicit declaration of function 'HPS_read_filter_switch' [-Wimplicit-function-declaration]
+         current_filter_setting = HPS_read_filter_switch();
+                                  ^~~~~~~~~~~~~~~~~~~~~~
+../src/main_arm.c: At top level:
+../src/main_arm.c:79:6: warning: conflicting types for 'HPS_iniciar_perifericos'
+ void HPS_iniciar_perifericos() {
+      ^~~~~~~~~~~~~~~~~~~~~~~
+../src/main_arm.c:29:5: note: previous implicit declaration of 'HPS_iniciar_perifericos' was here
+     HPS_iniciar_perifericos();
+     ^~~~~~~~~~~~~~~~~~~~~~~
+../src/main_arm.c:84:10: error: conflicting types for 'HPS_read_filter_switch'
+ filtro_t HPS_read_filter_switch() {
+          ^~~~~~~~~~~~~~~~~~~~~~
+../src/main_arm.c:56:34: note: previous implicit declaration of 'HPS_read_filter_switch' was here
+         current_filter_setting = HPS_read_filter_switch();
+                                  ^~~~~~~~~~~~~~~~~~~~~~
+../src/main_arm.c:91:6: warning: conflicting types for 'HPS_mostrar_error'
+ void HPS_mostrar_error(uint8_t error_code) {
+      ^~~~~~~~~~~~~~~~~
+../src/main_arm.c:34:9: note: previous implicit declaration of 'HPS_mostrar_error' was here
+         HPS_mostrar_error(0xF0); // Muestra código F0 en display de 7 seg.
+         ^~~~~~~~~~~~~~~~~
+make: *** [src/subdir.mk:29: src/main_arm.o] Error 1
+02:10:11 **** Incremental Build of configuration Debug for project ARM_HPS_Audio_Filters ****
+make all 
+'Building file: ../src/main_arm.c'
+'Invoking: GCC C Compiler'
+arm-altera-eabi-gcc -O0 -g -Wall -MMD -MP -MF"src/main_arm.d" -MT"src/main_arm.o" -c -o "src/main_arm.o" "../src/main_arm.c"
+'Finished building: ../src/main_arm.c'
+' '
+'Building file: ../src/nios_bridge.c'
+'Invoking: GCC C Compiler'
+arm-altera-eabi-gcc -O0 -g -Wall -MMD -MP -MF"src/nios_bridge.d" -MT"src/nios_bridge.o" -c -o "src/nios_bridge.o" "../src/nios_bridge.c"
+'Finished building: ../src/nios_bridge.c'
+' '
+'Building file: ../src/sd_manager.c'
+'Invoking: GCC C Compiler'
+arm-altera-eabi-gcc -O0 -g -Wall -MMD -MP -MF"src/sd_manager.d" -MT"src/sd_manager.o" -c -o "src/sd_manager.o" "../src/sd_manager.c"
+../src/sd_manager.c: In function 'SD_MANAGER_read_audio_chunk':
+../src/sd_manager.c:42:52: warning: implicit declaration of function 'sin' [-Wimplicit-function-declaration]
+         buffer->samples[i] = (int16_t)(amplitude * sin(2.0 * 3.14159265 * (g_current_sample_index + i) * 109.0 / 48000.0));
+                                                    ^~~
+../src/sd_manager.c:42:52: warning: incompatible implicit declaration of built-in function 'sin'
+../src/sd_manager.c:42:52: note: include '<math.h>' or provide a declaration of 'sin'
+'Finished building: ../src/sd_manager.c'
+' '
+'Building target: ARM_HPS_Audio_Filters.axf'
+'Invoking: GCC C Linker'
+arm-altera-eabi-gcc  -o "ARM_HPS_Audio_Filters.axf"  ./src/audio_filter.o ./src/main_arm.o ./src/nios_bridge.o ./src/sd_manager.o   
+c:/intelfpga/18.0/embedded/host_tools/mentor/gnu/arm/baremetal/bin/../lib/gcc/arm-altera-eabi/6.2.0/../../../../arm-altera-eabi/bin/ld.exe: warning: cannot find entry symbol _start; defaulting to 00008018
+./src/sd_manager.o: In function `SD_MANAGER_read_audio_chunk':
+C:\Users\kkzhe\OneDrive - Estudiantes ITCR\Escritorio\Proyecto2-Empotrados\ARM\ARM_HPS_Audio_Filters\Debug/../src/sd_manager.c:42: undefined reference to `sin'
+collect2.exe: error: ld returned 1 exit status
+make: *** [makefile:32: ARM_HPS_Audio_Filters.axf] Error 1
+02:10:57 **** Incremental Build of configuration Debug for project ARM_HPS_Audio_Filters ****
+make all 
+'Building file: ../src/sd_manager.c'
+'Invoking: GCC C Compiler'
+arm-altera-eabi-gcc -O0 -g -Wall -MMD -MP -MF"src/sd_manager.d" -MT"src/sd_manager.o" -c -o "src/sd_manager.o" "../src/sd_manager.c"
+'Finished building: ../src/sd_manager.c'
+' '
+'Building target: ARM_HPS_Audio_Filters.axf'
+'Invoking: GCC C Linker'
+arm-altera-eabi-gcc  -o "ARM_HPS_Audio_Filters.axf"  ./src/audio_filter.o ./src/main_arm.o ./src/nios_bridge.o ./src/sd_manager.o   
+c:/intelfpga/18.0/embedded/host_tools/mentor/gnu/arm/baremetal/bin/../lib/gcc/arm-altera-eabi/6.2.0/../../../../arm-altera-eabi/bin/ld.exe: warning: cannot find entry symbol _start; defaulting to 00008018
+./src/sd_manager.o: In function `SD_MANAGER_read_audio_chunk':
+C:\Users\kkzhe\OneDrive - Estudiantes ITCR\Escritorio\Proyecto2-Empotrados\ARM\ARM_HPS_Audio_Filters\Debug/../src/sd_manager.c:43: undefined reference to `sin'
+collect2.exe: error: ld returned 1 exit status
+make: *** [makefile:32: ARM_HPS_Audio_Filters.axf] Error 1
+02:11:38 **** Incremental Build of configuration Debug for project ARM_HPS_Audio_Filters ****
+make all 
+'Building target: ARM_HPS_Audio_Filters.axf'
+'Invoking: GCC C Linker'
+arm-altera-eabi-gcc  -o "ARM_HPS_Audio_Filters.axf"  ./src/audio_filter.o ./src/main_arm.o ./src/nios_bridge.o ./src/sd_manager.o   
+c:/intelfpga/18.0/embedded/host_tools/mentor/gnu/arm/baremetal/bin/../lib/gcc/arm-altera-eabi/6.2.0/../../../../arm-altera-eabi/bin/ld.exe: warning: cannot find entry symbol _start; defaulting to 00008018
+./src/sd_manager.o: In function `SD_MANAGER_read_audio_chunk':
+C:\Users\kkzhe\OneDrive - Estudiantes ITCR\Escritorio\Proyecto2-Empotrados\ARM\ARM_HPS_Audio_Filters\Debug/../src/sd_manager.c:43: undefined reference to `sin'
+collect2.exe: error: ld returned 1 exit status
+make: *** [makefile:32: ARM_HPS_Audio_Filters.axf] Error 1
+02:12:03 **** Incremental Build of configuration Debug for project ARM_HPS_Audio_Filters ****
+make all 
+'Building target: ARM_HPS_Audio_Filters.axf'
+'Invoking: GCC C Linker'
+arm-altera-eabi-gcc  -o "ARM_HPS_Audio_Filters.axf"  ./src/audio_filter.o ./src/main_arm.o ./src/nios_bridge.o ./src/sd_manager.o   
+c:/intelfpga/18.0/embedded/host_tools/mentor/gnu/arm/baremetal/bin/../lib/gcc/arm-altera-eabi/6.2.0/../../../../arm-altera-eabi/bin/ld.exe: warning: cannot find entry symbol _start; defaulting to 00008018
+./src/sd_manager.o: In function `SD_MANAGER_read_audio_chunk':
+C:\Users\kkzhe\OneDrive - Estudiantes ITCR\Escritorio\Proyecto2-Empotrados\ARM\ARM_HPS_Audio_Filters\Debug/../src/sd_manager.c:43: undefined reference to `sin'
+collect2.exe: error: ld returned 1 exit status
+make: *** [makefile:32: ARM_HPS_Audio_Filters.axf] Error 1
+02:12:45 **** Incremental Build of configuration Debug for project ARM_HPS_Audio_Filters ****
+make all 
+'Building target: ARM_HPS_Audio_Filters.axf'
+'Invoking: GCC C Linker'
+arm-altera-eabi-gcc  -o "ARM_HPS_Audio_Filters.axf"  ./src/audio_filter.o ./src/main_arm.o ./src/nios_bridge.o ./src/sd_manager.o   
+c:/intelfpga/18.0/embedded/host_tools/mentor/gnu/arm/baremetal/bin/../lib/gcc/arm-altera-eabi/6.2.0/../../../../arm-altera-eabi/bin/ld.exe: warning: cannot find entry symbol _start; defaulting to 00008018
+./src/sd_manager.o: In function `SD_MANAGER_read_audio_chunk':
+C:\Users\kkzhe\OneDrive - Estudiantes ITCR\Escritorio\Proyecto2-Empotrados\ARM\ARM_HPS_Audio_Filters\Debug/../src/sd_manager.c:43: undefined reference to `sin'
+collect2.exe: error: ld returned 1 exit status
+make: *** [makefile:32: ARM_HPS_Audio_Filters.axf] Error 1
+02:14:54 **** Incremental Build of configuration Debug for project ARM_HPS_Audio_Filters ****
+make all 
+'Building target: ARM_HPS_Audio_Filters.axf'
+'Invoking: GCC C Linker'
+arm-altera-eabi-gcc  -o "ARM_HPS_Audio_Filters.axf"  ./src/audio_filter.o ./src/main_arm.o ./src/nios_bridge.o ./src/sd_manager.o  -lm 
+c:/intelfpga/18.0/embedded/host_tools/mentor/gnu/arm/baremetal/bin/../lib/gcc/arm-altera-eabi/6.2.0/../../../../arm-altera-eabi/bin/ld.exe: warning: cannot find entry symbol _start; defaulting to 00008018
+'Finished building target: ARM_HPS_Audio_Filters.axf'
+' '
+02:15:22 **** Incremental Build of configuration Debug for project ARM_HPS_Audio_Filters ****
+make all 
+make: Nothing to be done for 'all'.
+12:42:17 **** Incremental Build of configuration Debug for project ARM_HPS_Audio_Filters ****
+make all 
+make: Nothing to be done for 'all'.

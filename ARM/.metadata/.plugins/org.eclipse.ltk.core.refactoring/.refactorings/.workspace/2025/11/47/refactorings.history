@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Delete resource &apos;ARM_HPS_Audio_Filters/src/main_arm.c&apos;" deleteContents="false" description="Delete resource &apos;ARM_HPS_Audio_Filters/src/main_arm.c&apos;" element1="/ARM_HPS_Audio_Filters/src/main_arm.c" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1763477436061"/>
+</session>
