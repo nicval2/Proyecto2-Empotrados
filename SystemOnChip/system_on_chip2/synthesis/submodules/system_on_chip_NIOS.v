@@ -10,7 +10,7 @@ module system_on_chip_NIOS (
 		input  wire        clk,                                 //                       clk.clk
 		input  wire        reset_n,                             //                     reset.reset_n
 		input  wire        reset_req,                           //                          .reset_req
-		output wire [13:0] d_address,                           //               data_master.address
+		output wire [14:0] d_address,                           //               data_master.address
 		output wire [3:0]  d_byteenable,                        //                          .byteenable
 		output wire        d_read,                              //                          .read
 		input  wire [31:0] d_readdata,                          //                          .readdata

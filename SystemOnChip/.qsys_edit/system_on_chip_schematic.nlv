@@ -1,24 +1,23 @@
 # # File gsaved with Nlview version 6.3.8  2013-12-19 bk=1.2992 VDI=34 GEI=35
 # 
 preplace inst system_on_chip -pg 1 -lvl 1 -y 40 -regy -20
-preplace inst system_on_chip.UART -pg 1 -lvl 3 -y 110
-preplace inst system_on_chip.REG_LEDS -pg 1 -lvl 3 -y 390
+preplace inst system_on_chip.UART -pg 1 -lvl 3 -y 330
 preplace inst system_on_chip.NIOS.clock_bridge -pg 1
-preplace inst system_on_chip.TIMER -pg 1 -lvl 3 -y 490
-preplace inst system_on_chip.clk_0 -pg 1 -lvl 1 -y 30
+preplace inst system_on_chip.TIMER -pg 1 -lvl 3 -y 710
+preplace inst system_on_chip.clk_0 -pg 1 -lvl 1 -y 250
+preplace inst system_on_chip.REG_7_SEGMENTS -pg 1 -lvl 3 -y 230
 preplace inst system_on_chip.NIOS.cpu -pg 1
-preplace inst system_on_chip.RAM -pg 1 -lvl 3 -y 210
-preplace inst system_on_chip.NIOS -pg 1 -lvl 2 -y 70
-preplace inst system_on_chip.REG_BUTTON -pg 1 -lvl 3 -y 290
+preplace inst system_on_chip.RAM -pg 1 -lvl 3 -y 430
+preplace inst system_on_chip.NIOS -pg 1 -lvl 2 -y 290
 preplace inst system_on_chip.NIOS.reset_bridge -pg 1
-preplace netloc EXPORT<net_container>system_on_chip</net_container>(SLAVE)TIMER.irq,(SLAVE)system_on_chip.timer_irq) 1 0 3 NJ 520 NJ 520 NJ
-preplace netloc EXPORT<net_container>system_on_chip</net_container>(SLAVE)clk_0.clk_in,(SLAVE)system_on_chip.clk) 1 0 1 NJ
-preplace netloc FAN_OUT<net_container>system_on_chip</net_container>(SLAVE)TIMER.clk,(MASTER)clk_0.clk,(SLAVE)NIOS.clk,(SLAVE)REG_LEDS.clk,(SLAVE)UART.clk,(SLAVE)REG_BUTTON.clk,(SLAVE)RAM.clk1) 1 1 2 430 440 830
-preplace netloc EXPORT<net_container>system_on_chip</net_container>(SLAVE)system_on_chip.reg_button_external_connection,(SLAVE)REG_BUTTON.external_connection) 1 0 3 NJ 320 NJ 320 NJ
-preplace netloc POINT_TO_POINT<net_container>system_on_chip</net_container>(SLAVE)UART.irq,(MASTER)NIOS.irq) 1 2 1 N
-preplace netloc FAN_OUT<net_container>system_on_chip</net_container>(SLAVE)NIOS.reset,(SLAVE)UART.reset,(SLAVE)TIMER.reset,(SLAVE)REG_BUTTON.reset,(MASTER)clk_0.clk_reset,(SLAVE)RAM.reset1,(SLAVE)REG_LEDS.reset) 1 1 2 410 540 850
-preplace netloc EXPORT<net_container>system_on_chip</net_container>(SLAVE)system_on_chip.reset,(SLAVE)clk_0.clk_in_reset) 1 0 1 NJ
-preplace netloc INTERCONNECT<net_container>system_on_chip</net_container>(SLAVE)UART.avalon_jtag_slave,(SLAVE)RAM.s1,(SLAVE)REG_LEDS.s1,(SLAVE)REG_BUTTON.s1,(MASTER)NIOS.instruction_master,(SLAVE)TIMER.s1,(MASTER)NIOS.data_master,(SLAVE)NIOS.debug_mem_slave) 1 1 2 450 560 810
-preplace netloc EXPORT<net_container>system_on_chip</net_container>(SLAVE)system_on_chip.reg_leds_external_connection,(SLAVE)REG_LEDS.external_connection) 1 0 3 NJ 420 NJ 420 NJ
-levelinfo -pg 1 0 200 1040
-levelinfo -hier system_on_chip 210 240 570 880 1030
+preplace inst system_on_chip.REG_BUTTONS -pg 1 -lvl 3 -y 30
+preplace netloc EXPORT<net_container>system_on_chip</net_container>(SLAVE)clk_0.clk_in_reset,(SLAVE)system_on_chip.reset) 1 0 1 NJ
+preplace netloc POINT_TO_POINT<net_container>system_on_chip</net_container>(MASTER)NIOS.irq,(SLAVE)TIMER.irq) 1 2 1 830
+preplace netloc EXPORT<net_container>system_on_chip</net_container>(SLAVE)system_on_chip.reg_button_external_connection,(SLAVE)REG_BUTTONS.external_connection) 1 0 3 NJ 60 NJ 60 NJ
+preplace netloc INTERCONNECT<net_container>system_on_chip</net_container>(MASTER)NIOS.instruction_master,(SLAVE)NIOS.debug_mem_slave,(SLAVE)REG_BUTTONS.s1,(SLAVE)RAM.s1,(SLAVE)REG_7_SEGMENTS.s1,(MASTER)NIOS.data_master,(SLAVE)TIMER.s1,(SLAVE)UART.avalon_jtag_slave) 1 1 2 450 430 870
+preplace netloc FAN_OUT<net_container>system_on_chip</net_container>(SLAVE)NIOS.reset,(SLAVE)REG_7_SEGMENTS.reset,(SLAVE)REG_BUTTONS.reset,(SLAVE)RAM.reset1,(SLAVE)UART.reset,(SLAVE)TIMER.reset,(MASTER)clk_0.clk_reset) 1 1 2 430 250 850
+preplace netloc FAN_OUT<net_container>system_on_chip</net_container>(SLAVE)REG_BUTTONS.clk,(SLAVE)REG_7_SEGMENTS.clk,(SLAVE)TIMER.clk,(SLAVE)NIOS.clk,(MASTER)clk_0.clk,(SLAVE)RAM.clk1,(SLAVE)UART.clk) 1 1 2 410 210 910
+preplace netloc EXPORT<net_container>system_on_chip</net_container>(SLAVE)system_on_chip.clk,(SLAVE)clk_0.clk_in) 1 0 1 NJ
+preplace netloc EXPORT<net_container>system_on_chip</net_container>(SLAVE)system_on_chip.reg_7_segments_external_connection,(SLAVE)REG_7_SEGMENTS.external_connection) 1 0 3 NJ 230 NJ 230 NJ
+levelinfo -pg 1 0 200 1140
+levelinfo -hier system_on_chip 210 240 590 980 1130

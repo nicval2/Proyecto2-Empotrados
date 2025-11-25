@@ -51,7 +51,46 @@ set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
-set_location_assignment PIN_AF14 -to clk_clk
-set_global_assignment -name QIP_FILE system_on_chip2/synthesis/system_on_chip.qip
 set_location_assignment PIN_AA14 -to reset_reset_n
+set_location_assignment PIN_AF14 -to clk_clk
+set_location_assignment PIN_AA15 -to button_export[1]
+set_location_assignment PIN_W15 -to button_export[2]
+set_location_assignment PIN_Y16 -to button_export[3]
+set_location_assignment PIN_AB12 -to switches_export[0]
+set_location_assignment PIN_AC12 -to switches_export[1]
+set_location_assignment PIN_AF9 -to switches_export[2]
+set_location_assignment PIN_AF10 -to switches_export[3]
+set_location_assignment PIN_AD11 -to switches_export[4]
+set_location_assignment PIN_AD12 -to switches_export[5]
+set_location_assignment PIN_AE11 -to switches_export[6]
+set_location_assignment PIN_AC9 -to switches_export[7]
+set_location_assignment PIN_AE26 -to id7_segment_export[0]
+set_location_assignment PIN_AE27 -to id7_segment_export[1]
+set_location_assignment PIN_AE28 -to id7_segment_export[2]
+set_location_assignment PIN_AG27 -to id7_segment_export[3]
+set_location_assignment PIN_AF28 -to id7_segment_export[4]
+set_location_assignment PIN_AG28 -to id7_segment_export[5]
+set_location_assignment PIN_AH28 -to id7_segment_export[6]
+set_location_assignment PIN_AJ29 -to id7_segment_export[7]
+set_location_assignment PIN_AH29 -to id7_segment_export[8]
+set_location_assignment PIN_AH30 -to id7_segment_export[9]
+set_location_assignment PIN_AG30 -to id7_segment_export[10]
+set_location_assignment PIN_AF29 -to id7_segment_export[11]
+set_location_assignment PIN_AF30 -to id7_segment_export[12]
+set_location_assignment PIN_AD27 -to id7_segment_export[13]
+set_location_assignment PIN_AB23 -to id7_segment_export[14]
+set_location_assignment PIN_AE29 -to id7_segment_export[15]
+set_location_assignment PIN_AD29 -to id7_segment_export[16]
+set_location_assignment PIN_AC28 -to id7_segment_export[17]
+set_location_assignment PIN_AD30 -to id7_segment_export[18]
+set_location_assignment PIN_AC29 -to id7_segment_export[19]
+set_location_assignment PIN_AC30 -to id7_segment_export[20]
+set_location_assignment PIN_AD26 -to id7_segment_export[21]
+set_location_assignment PIN_AC27 -to id7_segment_export[22]
+set_location_assignment PIN_AD25 -to id7_segment_export[23]
+set_location_assignment PIN_AC25 -to id7_segment_export[24]
+set_location_assignment PIN_AB28 -to id7_segment_export[25]
+set_location_assignment PIN_AB25 -to id7_segment_export[26]
+set_location_assignment PIN_AB22 -to id7_segment_export[27]
+set_global_assignment -name QIP_FILE system_on_chip/synthesis/system_on_chip.qip
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

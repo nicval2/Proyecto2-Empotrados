@@ -1,5 +1,5 @@
 Flow report for SystemOnChip
-Tue Nov 18 08:28:26 2025
+Tue Nov 25 09:16:20 2025
 Quartus Prime Version 18.0.0 Build 614 04/24/2018 SJ Lite Edition
 
 
@@ -40,16 +40,16 @@ refer to the applicable agreement for further details.
 +-------------------------------------------------------------------------------+
 ; Flow Summary                                                                  ;
 +---------------------------------+---------------------------------------------+
-; Flow Status                     ; Successful - Tue Nov 18 08:28:19 2025       ;
+; Flow Status                     ; Successful - Tue Nov 25 09:16:12 2025       ;
 ; Quartus Prime Version           ; 18.0.0 Build 614 04/24/2018 SJ Lite Edition ;
 ; Revision Name                   ; SystemOnChip                                ;
 ; Top-level Entity Name           ; system_on_chip                              ;
 ; Family                          ; Cyclone V                                   ;
 ; Device                          ; 5CSEMA5F31C6                                ;
 ; Timing Models                   ; Final                                       ;
-; Logic utilization (in ALMs)     ; 786 / 32,070 ( 2 % )                        ;
-; Total registers                 ; 1120                                        ;
-; Total pins                      ; 19 / 457 ( 4 % )                            ;
+; Logic utilization (in ALMs)     ; 796 / 32,070 ( 2 % )                        ;
+; Total registers                 ; 1208                                        ;
+; Total pins                      ; 46 / 457 ( 10 % )                           ;
 ; Total virtual pins              ; 0                                           ;
 ; Total block memory bits         ; 76,800 / 4,065,280 ( 2 % )                  ;
 ; Total DSP Blocks                ; 0 / 87 ( 0 % )                              ;
@@ -67,7 +67,7 @@ refer to the applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 11/18/2025 08:26:23 ;
+; Start date & time ; 11/25/2025 09:13:25 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; SystemOnChip        ;
 +-------------------+---------------------+
@@ -78,21 +78,21 @@ refer to the applicable agreement for further details.
 +-------------------------------------+------------------------------------------------------------------+---------------+----------------+------------+
 ; Assignment Name                     ; Value                                                            ; Default Value ; Entity Name    ; Section Id ;
 +-------------------------------------+------------------------------------------------------------------+---------------+----------------+------------+
-; COMPILER_SIGNATURE_ID               ; 4930994689394.176347598320120                                    ; --            ; --             ; --         ;
+; COMPILER_SIGNATURE_ID               ; 4930994689394.176408360519148                                    ; --            ; --             ; --         ;
 ; MAX_CORE_JUNCTION_TEMP              ; 85                                                               ; --            ; --             ; --         ;
 ; MIN_CORE_JUNCTION_TEMP              ; 0                                                                ; --            ; --             ; --         ;
-; MISC_FILE                           ; system_on_chip2/synthesis/../system_on_chip.cmp                  ; --            ; --             ; --         ;
-; MISC_FILE                           ; system_on_chip2/synthesis/../../system_on_chip.qsys              ; --            ; --             ; --         ;
+; MISC_FILE                           ; system_on_chip/synthesis/../system_on_chip.cmp                   ; --            ; --             ; --         ;
+; MISC_FILE                           ; system_on_chip/synthesis/../../system_on_chip.qsys               ; --            ; --             ; --         ;
 ; PARTITION_COLOR                     ; -- (Not supported for targeted family)                           ; --            ; system_on_chip ; Top        ;
 ; PARTITION_FITTER_PRESERVATION_LEVEL ; -- (Not supported for targeted family)                           ; --            ; system_on_chip ; Top        ;
 ; PARTITION_NETLIST_TYPE              ; -- (Not supported for targeted family)                           ; --            ; system_on_chip ; Top        ;
 ; POWER_BOARD_THERMAL_MODEL           ; None (CONSERVATIVE)                                              ; --            ; --             ; --         ;
 ; POWER_PRESET_COOLING_SOLUTION       ; 23 MM HEAT SINK WITH 200 LFPM AIRFLOW                            ; --            ; --             ; --         ;
 ; PROJECT_OUTPUT_DIRECTORY            ; output_files                                                     ; --            ; --             ; --         ;
-; SLD_FILE                            ; system_on_chip2/synthesis/system_on_chip.regmap                  ; --            ; --             ; --         ;
-; SLD_FILE                            ; system_on_chip2/synthesis/system_on_chip.debuginfo               ; --            ; --             ; --         ;
-; SLD_INFO                            ; QSYS_NAME system_on_chip HAS_SOPCINFO 1 GENERATION_ID 1763474090 ; --            ; system_on_chip ; --         ;
-; SOPCINFO_FILE                       ; system_on_chip2/synthesis/../../system_on_chip.sopcinfo          ; --            ; --             ; --         ;
+; SLD_FILE                            ; system_on_chip/synthesis/system_on_chip.regmap                   ; --            ; --             ; --         ;
+; SLD_FILE                            ; system_on_chip/synthesis/system_on_chip.debuginfo                ; --            ; --             ; --         ;
+; SLD_INFO                            ; QSYS_NAME system_on_chip HAS_SOPCINFO 1 GENERATION_ID 1764083355 ; --            ; system_on_chip ; --         ;
+; SOPCINFO_FILE                       ; system_on_chip/synthesis/../../system_on_chip.sopcinfo           ; --            ; --             ; --         ;
 ; SYNTHESIS_ONLY_QIP                  ; On                                                               ; --            ; --             ; --         ;
 ; TOP_LEVEL_ENTITY                    ; system_on_chip                                                   ; SystemOnChip  ; --             ; --         ;
 +-------------------------------------+------------------------------------------------------------------+---------------+----------------+------------+
@@ -103,11 +103,11 @@ refer to the applicable agreement for further details.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:00:26     ; 1.0                     ; 4977 MB             ; 00:00:43                           ;
-; Fitter               ; 00:01:19     ; 1.1                     ; 6812 MB             ; 00:04:28                           ;
-; Assembler            ; 00:00:07     ; 1.0                     ; 4856 MB             ; 00:00:06                           ;
-; Timing Analyzer      ; 00:00:06     ; 1.8                     ; 5222 MB             ; 00:00:10                           ;
-; Total                ; 00:01:58     ; --                      ; --                  ; 00:05:27                           ;
+; Analysis & Synthesis ; 00:00:30     ; 1.0                     ; 4982 MB             ; 00:00:37                           ;
+; Fitter               ; 00:02:00     ; 1.1                     ; 6957 MB             ; 00:04:27                           ;
+; Assembler            ; 00:00:11     ; 1.0                     ; 4849 MB             ; 00:00:07                           ;
+; Timing Analyzer      ; 00:00:08     ; 1.8                     ; 5226 MB             ; 00:00:11                           ;
+; Total                ; 00:02:49     ; --                      ; --                  ; 00:05:22                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 

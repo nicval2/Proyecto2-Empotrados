@@ -3,11 +3,12 @@
  <debug showDebugMenu="0" />
  <systemtable filter="All Interfaces">
   <columns>
-   <connections preferredWidth="191" />
+   <connections preferredWidth="143" />
    <irq preferredWidth="34" />
   </columns>
  </systemtable>
- <library expandedCategories="Library,Project" />
- <window width="1920" height="1020" x="0" y="0" />
- <generation path="system_on_chip2" synthesis="VERILOG" greybox="0" />
+ <library
+   expandedCategories="Library/Interface Protocols,Library/Interface Protocols/PCI Express/QSYS Example Designs,Library/Processors and Peripherals,Library/Interface Protocols/PCI Express,Library/Processors and Peripherals/Peripherals,Project,Library" />
+ <window width="1918" height="1018" x="1" y="1" />
+ <generation path="_PROJECT_NAME_" synthesis="VERILOG" greybox="0" />
 </preferences>
