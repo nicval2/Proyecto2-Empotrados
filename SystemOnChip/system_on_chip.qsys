@@ -17,6 +17,30 @@
          type = "int";
       }
    }
+   element Audio
+   {
+      datum _sortIndex
+      {
+         value = "10";
+         type = "int";
+      }
+   }
+   element Audio_Config
+   {
+      datum _sortIndex
+      {
+         value = "11";
+         type = "int";
+      }
+   }
+   element Audio_PLL
+   {
+      datum _sortIndex
+      {
+         value = "12";
+         type = "int";
+      }
+   }
    element FIFO
    {
       datum _sortIndex
@@ -25,11 +49,35 @@
          type = "int";
       }
    }
-   element FIFO.out
+   element FIFO.in
    {
       datum baseAddress
       {
          value = "12384";
+         type = "String";
+      }
+   }
+   element FIFO.in_csr
+   {
+      datum baseAddress
+      {
+         value = "12544";
+         type = "String";
+      }
+   }
+   element FIFO.out
+   {
+      datum baseAddress
+      {
+         value = "12400";
+         type = "String";
+      }
+   }
+   element FIFO.out_csr
+   {
+      datum baseAddress
+      {
+         value = "12416";
          type = "String";
       }
    }
@@ -719,6 +767,47 @@
   <parameter name="usb_mp_clk_div" value="0" />
   <parameter name="use_default_mpu_clk" value="true" />
  </module>
+ <module name="Audio" kind="altera_up_avalon_audio" version="18.0" enabled="1">
+  <parameter name="AUTO_CLK_CLOCK_RATE" value="50000000" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone V" />
+  <parameter name="audio_in" value="false" />
+  <parameter name="audio_out" value="true" />
+  <parameter name="avalon_bus_type" value="Memory Mapped" />
+  <parameter name="dw" value="32" />
+ </module>
+ <module
+   name="Audio_Config"
+   kind="altera_up_avalon_audio_and_video_config"
+   version="18.0"
+   enabled="1">
+  <parameter name="AUTO_CLK_CLOCK_RATE" value="50000000" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone V" />
+  <parameter name="audio_in" value="Microphone to ADC" />
+  <parameter name="bit_length" value="32" />
+  <parameter name="board" value="DE1-SoC" />
+  <parameter name="d5m_resolution" value="2592 x 1944" />
+  <parameter name="dac_enable" value="true" />
+  <parameter name="data_format" value="Left Justified" />
+  <parameter name="device">On-Board Peripherals</parameter>
+  <parameter name="eai" value="true" />
+  <parameter name="exposure" value="false" />
+  <parameter name="line_in_bypass" value="false" />
+  <parameter name="mic_attenuation" value="-6dB" />
+  <parameter name="mic_bypass" value="false" />
+  <parameter name="sampling_rate" value="48 kHz" />
+  <parameter name="video_format" value="NTSC" />
+ </module>
+ <module
+   name="Audio_PLL"
+   kind="altera_up_avalon_audio_pll"
+   version="18.0"
+   enabled="1">
+  <parameter name="AUTO_DEVICE" value="5CSEMA5F31C6" />
+  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="6" />
+  <parameter name="audio_clk_freq" value="18.432" />
+  <parameter name="device_family" value="Cyclone V" />
+  <parameter name="gui_refclk" value="50.0" />
+ </module>
  <module name="FIFO" kind="altera_avalon_fifo" version="18.0" enabled="1">
   <parameter name="avalonMMAvalonMMDataWidth" value="32" />
   <parameter name="avalonMMAvalonSTDataWidth" value="32" />
@@ -730,13 +819,13 @@
   <parameter name="fifoInputInterfaceOptions" value="AVALONMM_WRITE" />
   <parameter name="fifoOutputInterfaceOptions" value="AVALONMM_READ" />
   <parameter name="showHiddenFeatures" value="false" />
-  <parameter name="singleClockMode" value="true" />
+  <parameter name="singleClockMode" value="false" />
   <parameter name="singleResetMode" value="false" />
   <parameter name="symbolsPerBeat" value="2" />
   <parameter name="useBackpressure" value="true" />
   <parameter name="useIRQ" value="true" />
   <parameter name="usePacket" value="true" />
-  <parameter name="useReadControl" value="false" />
+  <parameter name="useReadControl" value="true" />
   <parameter name="useRegister" value="false" />
   <parameter name="useWriteControl" value="true" />
  </module>
@@ -760,7 +849,7 @@
   <parameter name="dataAddrWidth" value="14" />
   <parameter name="dataMasterHighPerformanceAddrWidth" value="1" />
   <parameter name="dataMasterHighPerformanceMapParam" value="" />
-  <parameter name="dataSlaveMapParam"><![CDATA[<address-map><slave name='RAM.s1' start='0x0' end='0x2000' type='altera_avalon_onchip_memory2.s1' /><slave name='NIOS.debug_mem_slave' start='0x2000' end='0x2800' type='altera_nios2_gen2.debug_mem_slave' /><slave name='REG_7_SEGMENTS.s1' start='0x3000' end='0x3010' type='altera_avalon_pio.s1' /><slave name='REG_BUTTONS.s1' start='0x3010' end='0x3020' type='altera_avalon_pio.s1' /><slave name='TIMER.s1' start='0x3020' end='0x3040' type='altera_avalon_timer.s1' /><slave name='UART.avalon_jtag_slave' start='0x3040' end='0x3048' type='altera_avalon_jtag_uart.avalon_jtag_slave' /><slave name='REG_SWITCHES.s1' start='0x3050' end='0x3060' type='altera_avalon_pio.s1' /></address-map>]]></parameter>
+  <parameter name="dataSlaveMapParam"><![CDATA[<address-map><slave name='RAM.s1' start='0x0' end='0x2000' type='altera_avalon_onchip_memory2.s1' /><slave name='NIOS.debug_mem_slave' start='0x2000' end='0x2800' type='altera_nios2_gen2.debug_mem_slave' /><slave name='REG_7_SEGMENTS.s1' start='0x3000' end='0x3010' type='altera_avalon_pio.s1' /><slave name='REG_BUTTONS.s1' start='0x3010' end='0x3020' type='altera_avalon_pio.s1' /><slave name='TIMER.s1' start='0x3020' end='0x3040' type='altera_avalon_timer.s1' /><slave name='UART.avalon_jtag_slave' start='0x3040' end='0x3048' type='altera_avalon_jtag_uart.avalon_jtag_slave' /><slave name='REG_SWITCHES.s1' start='0x3050' end='0x3060' type='altera_avalon_pio.s1' /><slave name='FIFO.out' start='0x3070' end='0x3074' type='altera_avalon_fifo.out' /><slave name='FIFO.out_csr' start='0x3080' end='0x30A0' type='altera_avalon_fifo.out_csr' /></address-map>]]></parameter>
   <parameter name="data_master_high_performance_paddr_base" value="0" />
   <parameter name="data_master_high_performance_paddr_size" value="0" />
   <parameter name="data_master_paddr_base" value="0" />
@@ -799,7 +888,7 @@
   <parameter name="icache_tagramBlockType" value="Automatic" />
   <parameter name="impl" value="Tiny" />
   <parameter name="instAddrWidth" value="14" />
-  <parameter name="instSlaveMapParam"><![CDATA[<address-map><slave name='RAM.s1' start='0x0' end='0x2000' type='altera_avalon_onchip_memory2.s1' /><slave name='NIOS.debug_mem_slave' start='0x2000' end='0x2800' type='altera_nios2_gen2.debug_mem_slave' /><slave name='FIFO.out' start='0x3060' end='0x3064' type='altera_avalon_fifo.out' /></address-map>]]></parameter>
+  <parameter name="instSlaveMapParam"><![CDATA[<address-map><slave name='RAM.s1' start='0x0' end='0x2000' type='altera_avalon_onchip_memory2.s1' /><slave name='NIOS.debug_mem_slave' start='0x2000' end='0x2800' type='altera_nios2_gen2.debug_mem_slave' /></address-map>]]></parameter>
   <parameter name="instructionMasterHighPerformanceAddrWidth" value="1" />
   <parameter name="instructionMasterHighPerformanceMapParam" value="" />
   <parameter name="instruction_master_high_performance_paddr_base" value="0" />
@@ -1055,6 +1144,20 @@
   <parameter name="baseAddress" value="0x2000" />
   <parameter name="defaultConnection" value="false" />
  </connection>
+ <connection kind="avalon" version="18.0" start="NIOS.data_master" end="FIFO.out">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x3070" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="18.0"
+   start="NIOS.data_master"
+   end="FIFO.out_csr">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x3080" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
  <connection kind="avalon" version="18.0" start="NIOS.data_master" end="RAM.s1">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0x0000" />
@@ -1095,19 +1198,28 @@
  <connection
    kind="avalon"
    version="18.0"
-   start="NIOS.instruction_master"
-   end="NIOS.debug_mem_slave">
+   start="ARM.h2f_lw_axi_master"
+   end="FIFO.in">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x2000" />
+  <parameter name="baseAddress" value="0x3060" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="18.0"
+   start="ARM.h2f_lw_axi_master"
+   end="FIFO.in_csr">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x3100" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
    kind="avalon"
    version="18.0"
    start="NIOS.instruction_master"
-   end="FIFO.out">
+   end="NIOS.debug_mem_slave">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x3060" />
+  <parameter name="baseAddress" value="0x2000" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1129,8 +1241,11 @@
  <connection kind="clock" version="18.0" start="clk_0.clk" end="TIMER.clk" />
  <connection kind="clock" version="18.0" start="clk_0.clk" end="UART.clk" />
  <connection kind="clock" version="18.0" start="clk_0.clk" end="REG_SWITCHES.clk" />
+ <connection kind="clock" version="18.0" start="clk_0.clk" end="Audio.clk" />
+ <connection kind="clock" version="18.0" start="clk_0.clk" end="Audio_Config.clk" />
  <connection kind="clock" version="18.0" start="clk_0.clk" end="RAM.clk1" />
  <connection kind="clock" version="18.0" start="clk_0.clk" end="FIFO.clk_in" />
+ <connection kind="clock" version="18.0" start="clk_0.clk" end="FIFO.clk_out" />
  <connection kind="clock" version="18.0" start="clk_0.clk" end="ARM.f2h_axi_clock" />
  <connection
    kind="clock"
@@ -1143,6 +1258,7 @@
    version="18.0"
    start="clk_0.clk"
    end="ARM.h2f_lw_axi_clock" />
+ <connection kind="clock" version="18.0" start="clk_0.clk" end="Audio_PLL.ref_clk" />
  <connection kind="interrupt" version="18.0" start="NIOS.irq" end="TIMER.irq">
   <parameter name="irqNumber" value="2" />
  </connection>
@@ -1156,6 +1272,11 @@
    end="REG_BUTTONS.irq">
   <parameter name="irqNumber" value="1" />
  </connection>
+ <connection
+   kind="reset"
+   version="18.0"
+   start="clk_0.clk_reset"
+   end="Audio_PLL.ref_reset" />
  <connection kind="reset" version="18.0" start="clk_0.clk_reset" end="NIOS.reset" />
  <connection
    kind="reset"
@@ -1174,12 +1295,23 @@
    version="18.0"
    start="clk_0.clk_reset"
    end="REG_SWITCHES.reset" />
+ <connection kind="reset" version="18.0" start="clk_0.clk_reset" end="Audio.reset" />
+ <connection
+   kind="reset"
+   version="18.0"
+   start="clk_0.clk_reset"
+   end="Audio_Config.reset" />
  <connection kind="reset" version="18.0" start="clk_0.clk_reset" end="RAM.reset1" />
  <connection
    kind="reset"
    version="18.0"
    start="clk_0.clk_reset"
    end="FIFO.reset_in" />
+ <connection
+   kind="reset"
+   version="18.0"
+   start="clk_0.clk_reset"
+   end="FIFO.reset_out" />
  <interconnectRequirement for="$system" name="qsys_mm.clockCrossingAdapter" value="HANDSHAKE" />
  <interconnectRequirement for="$system" name="qsys_mm.enableEccProtection" value="FALSE" />
  <interconnectRequirement for="$system" name="qsys_mm.insertDefaultSlave" value="FALSE" />
