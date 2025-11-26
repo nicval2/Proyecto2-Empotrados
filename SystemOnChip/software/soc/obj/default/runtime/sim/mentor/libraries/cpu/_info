@@ -1,0 +1,560 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/GitHubClone/Proyecto2-Empotrados/SystemOnChip/software/soc/obj/default/runtime/sim/mentor
+vsystem_on_chip_NIOS_cpu
+Z1 !s110 1764135435
+!i10b 1
+!s100 ^n:J7PkI>oXHSR3VCz??j0
+IML?Wjehz2F;Xm2X>:f:BX1
+Z2 VDg1SIo80bB@j0V0VzS_@n1
+R0
+Z3 w1764037815
+Z4 8C:/GitHubClone/Proyecto2-Empotrados/SystemOnChip/system_on_chip2/testbench/system_on_chip_tb/simulation/submodules/system_on_chip_NIOS_cpu.v
+Z5 FC:/GitHubClone/Proyecto2-Empotrados/SystemOnChip/system_on_chip2/testbench/system_on_chip_tb/simulation/submodules/system_on_chip_NIOS_cpu.v
+L0 2834
+Z6 OV;L;10.5b;63
+r1
+!s85 0
+31
+Z7 !s108 1764135435.000000
+Z8 !s107 C:/GitHubClone/Proyecto2-Empotrados/SystemOnChip/system_on_chip2/testbench/system_on_chip_tb/simulation/submodules/system_on_chip_NIOS_cpu.v|
+Z9 !s90 -reportprogress|300|C:/GitHubClone/Proyecto2-Empotrados/SystemOnChip/system_on_chip2/testbench/system_on_chip_tb/simulation/submodules/system_on_chip_NIOS_cpu.v|-work|cpu|
+!i113 1
+Z10 o-work cpu
+Z11 tCvgOpt 0
+nsystem_on_chip_@n@i@o@s_cpu
+vsystem_on_chip_NIOS_cpu_debug_slave_sysclk
+R1
+!i10b 1
+!s100 _Go]Y4f@?Tg3lYVnHKPHI3
+InmHLgU^8E>12E@TocNX]G0
+R2
+R0
+R3
+8C:/GitHubClone/Proyecto2-Empotrados/SystemOnChip/system_on_chip2/testbench/system_on_chip_tb/simulation/submodules/system_on_chip_NIOS_cpu_debug_slave_sysclk.v
+FC:/GitHubClone/Proyecto2-Empotrados/SystemOnChip/system_on_chip2/testbench/system_on_chip_tb/simulation/submodules/system_on_chip_NIOS_cpu_debug_slave_sysclk.v
+Z12 L0 21
+R6
+r1
+!s85 0
+31
+R7
+!s107 C:/GitHubClone/Proyecto2-Empotrados/SystemOnChip/system_on_chip2/testbench/system_on_chip_tb/simulation/submodules/system_on_chip_NIOS_cpu_debug_slave_sysclk.v|
+!s90 -reportprogress|300|C:/GitHubClone/Proyecto2-Empotrados/SystemOnChip/system_on_chip2/testbench/system_on_chip_tb/simulation/submodules/system_on_chip_NIOS_cpu_debug_slave_sysclk.v|-work|cpu|
+!i113 1
+R10
+R11
+nsystem_on_chip_@n@i@o@s_cpu_debug_slave_sysclk
+vsystem_on_chip_NIOS_cpu_debug_slave_tck
+Z13 !s110 1764135436
+!i10b 1
+!s100 Cd@f:[YM0ZzUOWD`jkKT93
+IT>a2^K=b>U33fLc^WCMDo2
+R2
+R0
+R3
+8C:/GitHubClone/Proyecto2-Empotrados/SystemOnChip/system_on_chip2/testbench/system_on_chip_tb/simulation/submodules/system_on_chip_NIOS_cpu_debug_slave_tck.v
+FC:/GitHubClone/Proyecto2-Empotrados/SystemOnChip/system_on_chip2/testbench/system_on_chip_tb/simulation/submodules/system_on_chip_NIOS_cpu_debug_slave_tck.v
+R12
+R6
+r1
+!s85 0
+31
+R7
+!s107 C:/GitHubClone/Proyecto2-Empotrados/SystemOnChip/system_on_chip2/testbench/system_on_chip_tb/simulation/submodules/system_on_chip_NIOS_cpu_debug_slave_tck.v|
+!s90 -reportprogress|300|C:/GitHubClone/Proyecto2-Empotrados/SystemOnChip/system_on_chip2/testbench/system_on_chip_tb/simulation/submodules/system_on_chip_NIOS_cpu_debug_slave_tck.v|-work|cpu|
+!i113 1
+R10
+R11
+nsystem_on_chip_@n@i@o@s_cpu_debug_slave_tck
+vsystem_on_chip_NIOS_cpu_debug_slave_wrapper
+R13
+!i10b 1
+!s100 ^<_16;3NgNYT6j>AX7`9Q0
+I`g?adFZ4F[UW>dkc9bg=20
+R2
+R0
+R3
+8C:/GitHubClone/Proyecto2-Empotrados/SystemOnChip/system_on_chip2/testbench/system_on_chip_tb/simulation/submodules/system_on_chip_NIOS_cpu_debug_slave_wrapper.v
+FC:/GitHubClone/Proyecto2-Empotrados/SystemOnChip/system_on_chip2/testbench/system_on_chip_tb/simulation/submodules/system_on_chip_NIOS_cpu_debug_slave_wrapper.v
+R12
+R6
+r1
+!s85 0
+31
+Z14 !s108 1764135436.000000
+!s107 C:/GitHubClone/Proyecto2-Empotrados/SystemOnChip/system_on_chip2/testbench/system_on_chip_tb/simulation/submodules/system_on_chip_NIOS_cpu_debug_slave_wrapper.v|
+!s90 -reportprogress|300|C:/GitHubClone/Proyecto2-Empotrados/SystemOnChip/system_on_chip2/testbench/system_on_chip_tb/simulation/submodules/system_on_chip_NIOS_cpu_debug_slave_wrapper.v|-work|cpu|
+!i113 1
+R10
+R11
+nsystem_on_chip_@n@i@o@s_cpu_debug_slave_wrapper
+vsystem_on_chip_NIOS_cpu_nios2_avalon_reg
+R1
+!i10b 1
+!s100 kzD6jWJ^e@AKS3HM>=Knh2
+Ia4KC?ojoL1FKRFOdIdmJF0
+R2
+R0
+R3
+R4
+R5
+L0 2023
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+nsystem_on_chip_@n@i@o@s_cpu_nios2_avalon_reg
+vsystem_on_chip_NIOS_cpu_nios2_oci
+R1
+!i10b 1
+!s100 SX6Ia6]kL[^=WUgVOj2OJ0
+IX[n7hi_geKJC2:zPW^B@=1
+R2
+R0
+R3
+R4
+R5
+L0 2362
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+nsystem_on_chip_@n@i@o@s_cpu_nios2_oci
+vsystem_on_chip_NIOS_cpu_nios2_oci_break
+R1
+!i10b 1
+!s100 I_CR>Tci>UzYNQHz>Ab]j3
+I;=lK_;f4Voo_c_VmeL9SX0
+R2
+R0
+R3
+R4
+R5
+L0 295
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+nsystem_on_chip_@n@i@o@s_cpu_nios2_oci_break
+vsystem_on_chip_NIOS_cpu_nios2_oci_compute_input_tm_cnt
+R1
+!i10b 1
+!s100 j=ReR7OBm7EdKeEQe=2623
+IXicJ?Ynj8LGa<Jk`Mh^IZ0
+R2
+R0
+R3
+R4
+R5
+L0 1265
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+nsystem_on_chip_@n@i@o@s_cpu_nios2_oci_compute_input_tm_cnt
+vsystem_on_chip_NIOS_cpu_nios2_oci_dbrk
+R1
+!i10b 1
+!s100 2_NI[JQ65@YKokSTEjnG>0
+II^J`KazJF9V]ao9Az;M_03
+R2
+R0
+R3
+R4
+R5
+L0 795
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+nsystem_on_chip_@n@i@o@s_cpu_nios2_oci_dbrk
+vsystem_on_chip_NIOS_cpu_nios2_oci_debug
+R1
+!i10b 1
+!s100 j>YlSPVLd^eQih`gJ>kSL2
+IQgO4XDcf>ePm9zMQGhKel2
+R2
+R0
+R3
+R4
+R5
+L0 153
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+nsystem_on_chip_@n@i@o@s_cpu_nios2_oci_debug
+vsystem_on_chip_NIOS_cpu_nios2_oci_dtrace
+R1
+!i10b 1
+!s100 9Meiz97kbM[fZZ<^b8;U92
+IbXIW5F`6`KCbKFSek_>K03
+R2
+R0
+R3
+R4
+R5
+L0 1183
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+nsystem_on_chip_@n@i@o@s_cpu_nios2_oci_dtrace
+vsystem_on_chip_NIOS_cpu_nios2_oci_fifo
+R1
+!i10b 1
+!s100 7>>3Y0QHzEJ8UO:0CTB9L2
+IK9lLXh?BO9mN8BUoYj[lV1
+R2
+R0
+R3
+R4
+R5
+L0 1427
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+nsystem_on_chip_@n@i@o@s_cpu_nios2_oci_fifo
+vsystem_on_chip_NIOS_cpu_nios2_oci_fifo_cnt_inc
+R1
+!i10b 1
+!s100 f8<RIEa>HclL909;S`gH21
+I7^=lmGl490z1VGS^5M_E_1
+R2
+R0
+R3
+R4
+R5
+L0 1380
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+nsystem_on_chip_@n@i@o@s_cpu_nios2_oci_fifo_cnt_inc
+vsystem_on_chip_NIOS_cpu_nios2_oci_fifo_wrptr_inc
+R1
+!i10b 1
+!s100 Q9KEfPY?NHJ5LlIcGh0bD0
+IT:Icg7nb>nWDD2SD:c3M40
+R2
+R0
+R3
+R4
+R5
+L0 1337
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+nsystem_on_chip_@n@i@o@s_cpu_nios2_oci_fifo_wrptr_inc
+vsystem_on_chip_NIOS_cpu_nios2_oci_im
+R1
+!i10b 1
+!s100 gB2?Cl7o0006`dlf]zI4=3
+IFfRJAojDLh:j5Z[lTmN>D3
+R2
+R0
+R3
+R4
+R5
+L0 1936
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+nsystem_on_chip_@n@i@o@s_cpu_nios2_oci_im
+vsystem_on_chip_NIOS_cpu_nios2_oci_itrace
+R1
+!i10b 1
+!s100 =W_z?Ua@^]@^DcQR];kdJ1
+IS1:oT^W`MjRonA1Bk[@Ik3
+R2
+R0
+R3
+R4
+R5
+L0 982
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+nsystem_on_chip_@n@i@o@s_cpu_nios2_oci_itrace
+vsystem_on_chip_NIOS_cpu_nios2_oci_pib
+R1
+!i10b 1
+!s100 TW5BKOZAo4EAS6Z^ahmS[1
+Ii?I>aQYmb;16kIRNAN_e91
+R2
+R0
+R3
+R4
+R5
+L0 1913
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+nsystem_on_chip_@n@i@o@s_cpu_nios2_oci_pib
+vsystem_on_chip_NIOS_cpu_nios2_oci_td_mode
+R1
+!i10b 1
+!s100 OAWYkGZWI4g5>hFQmT[fb2
+I5eaz@WJUH`TcRkK]BjIl:3
+R2
+R0
+R3
+R4
+R5
+L0 1115
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+nsystem_on_chip_@n@i@o@s_cpu_nios2_oci_td_mode
+vsystem_on_chip_NIOS_cpu_nios2_oci_xbrk
+R1
+!i10b 1
+!s100 enW_MF^Nf63K1_2?aM=6g3
+IS8;X2ea8C15]]Cn?nlkib0
+R2
+R0
+R3
+R4
+R5
+L0 588
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+nsystem_on_chip_@n@i@o@s_cpu_nios2_oci_xbrk
+vsystem_on_chip_NIOS_cpu_nios2_ocimem
+R1
+!i10b 1
+!s100 CXllMU4FSKRI?JZXIl[9k3
+I5z2VzZ7UeUER2=Z=PX;283
+R2
+R0
+R3
+R4
+R5
+L0 2181
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+nsystem_on_chip_@n@i@o@s_cpu_nios2_ocimem
+vsystem_on_chip_NIOS_cpu_nios2_performance_monitors
+R1
+!i10b 1
+!s100 _ajl47gZR>YGAjJVUn7Z11
+IkLYUkZ1MaS5gOSnVaDRcc0
+R2
+R0
+R3
+R4
+R5
+L0 2006
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+nsystem_on_chip_@n@i@o@s_cpu_nios2_performance_monitors
+vsystem_on_chip_NIOS_cpu_ociram_sp_ram_module
+R1
+!i10b 1
+!s100 @jZd_0^`T]]1S8]eHmzQ]2
+I5<94C<J70z4BC3?[IbeF?1
+R2
+R0
+R3
+R4
+R5
+L0 2116
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+nsystem_on_chip_@n@i@o@s_cpu_ociram_sp_ram_module
+vsystem_on_chip_NIOS_cpu_register_bank_a_module
+R1
+!i10b 1
+!s100 gY:V@Yndh=IUkk<Zh>;<@2
+IH@5AF1`WAPF04mlg=<EYl2
+R2
+R0
+R3
+R4
+R5
+R12
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+nsystem_on_chip_@n@i@o@s_cpu_register_bank_a_module
+vsystem_on_chip_NIOS_cpu_register_bank_b_module
+R1
+!i10b 1
+!s100 KKAXSXLf2C05e@M]5<AVO1
+IzoS==lF_^K1b4R[zkb35l2
+R2
+R0
+R3
+R4
+R5
+L0 87
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+nsystem_on_chip_@n@i@o@s_cpu_register_bank_b_module
+vsystem_on_chip_NIOS_cpu_test_bench
+R13
+!i10b 1
+!s100 EcB5f>=APc1[CV:E8`k`<1
+IHV:Zk^Yn4lZ[[of5fQT7z1
+R2
+R0
+R3
+8C:/GitHubClone/Proyecto2-Empotrados/SystemOnChip/system_on_chip2/testbench/system_on_chip_tb/simulation/submodules/system_on_chip_NIOS_cpu_test_bench.v
+FC:/GitHubClone/Proyecto2-Empotrados/SystemOnChip/system_on_chip2/testbench/system_on_chip_tb/simulation/submodules/system_on_chip_NIOS_cpu_test_bench.v
+R12
+R6
+r1
+!s85 0
+31
+R14
+!s107 C:/GitHubClone/Proyecto2-Empotrados/SystemOnChip/system_on_chip2/testbench/system_on_chip_tb/simulation/submodules/system_on_chip_NIOS_cpu_test_bench.v|
+!s90 -reportprogress|300|C:/GitHubClone/Proyecto2-Empotrados/SystemOnChip/system_on_chip2/testbench/system_on_chip_tb/simulation/submodules/system_on_chip_NIOS_cpu_test_bench.v|-work|cpu|
+!i113 1
+R10
+R11
+nsystem_on_chip_@n@i@o@s_cpu_test_bench

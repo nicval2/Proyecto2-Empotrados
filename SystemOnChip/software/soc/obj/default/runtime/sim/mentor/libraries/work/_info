@@ -1,0 +1,30 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/GitHubClone/Proyecto2-Empotrados/SystemOnChip/software/soc/obj/default/runtime/sim/mentor
+vsystem_on_chip_tb
+!s110 1764135438
+!i10b 1
+!s100 PiO9_;i2_FiW>cUkI]>TN1
+I@bjN:[mMg85GFZ=<WSMR32
+VDg1SIo80bB@j0V0VzS_@n1
+R0
+w1764037780
+8C:/GitHubClone/Proyecto2-Empotrados/SystemOnChip/system_on_chip2/testbench/system_on_chip_tb/simulation/system_on_chip_tb.v
+FC:/GitHubClone/Proyecto2-Empotrados/SystemOnChip/system_on_chip2/testbench/system_on_chip_tb/simulation/system_on_chip_tb.v
+L0 6
+OV;L;10.5b;63
+r1
+!s85 0
+31
+!s108 1764135438.000000
+!s107 C:/GitHubClone/Proyecto2-Empotrados/SystemOnChip/system_on_chip2/testbench/system_on_chip_tb/simulation/system_on_chip_tb.v|
+!s90 -reportprogress|300|C:/GitHubClone/Proyecto2-Empotrados/SystemOnChip/system_on_chip2/testbench/system_on_chip_tb/simulation/system_on_chip_tb.v|
+!i113 1
+tCvgOpt 0

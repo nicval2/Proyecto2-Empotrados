@@ -25,7 +25,7 @@
          type = "int";
       }
    }
-   element system_on_chip_inst_memory_bfm
+   element system_on_chip_inst_reg_button_external_connection_bfm
    {
       datum _sortIndex
       {
@@ -33,7 +33,7 @@
          type = "int";
       }
    }
-   element system_on_chip_inst_reg_button_external_connection_bfm
+   element system_on_chip_inst_reg_leds_external_connection_bfm
    {
       datum _sortIndex
       {
@@ -41,19 +41,11 @@
          type = "int";
       }
    }
-   element system_on_chip_inst_reg_leds_external_connection_bfm
-   {
-      datum _sortIndex
-      {
-         value = "5";
-         type = "int";
-      }
-   }
    element system_on_chip_inst_reg_switches_external_connection_bfm
    {
       datum _sortIndex
       {
-         value = "6";
+         value = "5";
          type = "int";
       }
    }
@@ -69,7 +61,7 @@
    {
       datum _sortIndex
       {
-         value = "7";
+         value = "6";
          type = "int";
       }
    }
@@ -77,7 +69,7 @@
    {
       datum _sortIndex
       {
-         value = "8";
+         value = "7";
          type = "int";
       }
    }
@@ -125,17 +117,6 @@
   <parameter name="CLOCK_UNIT" value="1" />
  </module>
  <module
-   name="system_on_chip_inst_memory_bfm"
-   kind="altera_conduit_bfm"
-   version="18.0"
-   enabled="1">
-  <parameter name="CLOCKED_SIGNAL" value="false" />
-  <parameter name="ENABLE_RESET" value="false" />
-  <parameter name="SIGNAL_DIRECTIONS">input,input,input,input,input,input,input,input,bidir,bidir,bidir,input,input,input,input,output</parameter>
-  <parameter name="SIGNAL_ROLES">mem_a,mem_ba,mem_cas_n,mem_ck,mem_ck_n,mem_cke,mem_cs_n,mem_dm,mem_dq,mem_dqs,mem_dqs_n,mem_odt,mem_ras_n,mem_reset_n,mem_we_n,oct_rzqin</parameter>
-  <parameter name="SIGNAL_WIDTHS">13,3,1,1,1,1,1,1,8,1,1,1,1,1,1,1</parameter>
- </module>
- <module
    name="system_on_chip_inst_reg_button_external_connection_bfm"
    kind="altera_conduit_bfm"
    version="18.0"
@@ -155,7 +136,7 @@
   <parameter name="ENABLE_RESET" value="false" />
   <parameter name="SIGNAL_DIRECTIONS" value="input" />
   <parameter name="SIGNAL_ROLES" value="export" />
-  <parameter name="SIGNAL_WIDTHS" value="8" />
+  <parameter name="SIGNAL_WIDTHS" value="32" />
  </module>
  <module
    name="system_on_chip_inst_reg_switches_external_connection_bfm"
@@ -216,17 +197,6 @@
    version="18.0"
    start="system_on_chip_inst_clk_bfm.clk"
    end="system_on_chip_inst_uart_irq_bfm.clock_reset" />
- <connection
-   kind="conduit"
-   version="18.0"
-   start="system_on_chip_inst_memory_bfm.conduit"
-   end="system_on_chip_inst.memory">
-  <parameter name="endPort" value="" />
-  <parameter name="endPortLSB" value="0" />
-  <parameter name="startPort" value="" />
-  <parameter name="startPortLSB" value="0" />
-  <parameter name="width" value="0" />
- </connection>
  <connection
    kind="conduit"
    version="18.0"

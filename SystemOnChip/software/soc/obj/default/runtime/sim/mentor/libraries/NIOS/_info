@@ -1,0 +1,32 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/GitHubClone/Proyecto2-Empotrados/SystemOnChip/software/soc/obj/default/runtime/sim/mentor
+vsystem_on_chip_NIOS
+!s110 1764135437
+!i10b 1
+!s100 4AOWf8o[H60QIm<e`7KJ11
+IG<B0Mf2^2MNPYYN=9GQ262
+VDg1SIo80bB@j0V0VzS_@n1
+R0
+w1764037789
+8C:/GitHubClone/Proyecto2-Empotrados/SystemOnChip/system_on_chip2/testbench/system_on_chip_tb/simulation/submodules/system_on_chip_NIOS.v
+FC:/GitHubClone/Proyecto2-Empotrados/SystemOnChip/system_on_chip2/testbench/system_on_chip_tb/simulation/submodules/system_on_chip_NIOS.v
+L0 9
+OV;L;10.5b;63
+r1
+!s85 0
+31
+!s108 1764135437.000000
+!s107 C:/GitHubClone/Proyecto2-Empotrados/SystemOnChip/system_on_chip2/testbench/system_on_chip_tb/simulation/submodules/system_on_chip_NIOS.v|
+!s90 -reportprogress|300|C:/GitHubClone/Proyecto2-Empotrados/SystemOnChip/system_on_chip2/testbench/system_on_chip_tb/simulation/submodules/system_on_chip_NIOS.v|-work|NIOS|
+!i113 1
+o-work NIOS
+tCvgOpt 0
+nsystem_on_chip_@n@i@o@s
