@@ -9,7 +9,7 @@ z2
 cModel Technology
 Z0 dC:/GitHubClone/Proyecto2-Empotrados/SystemOnChip/software/soc/obj/default/runtime/sim/mentor
 vsystem_on_chip_UART
-Z1 !s110 1764135436
+Z1 !s110 1764200672
 !i10b 1
 !s100 @VGoJX]5U3dI[bGFFjdMY1
 IYgdiS[>nXF;Z;9]7]O31o2
@@ -23,7 +23,7 @@ Z6 OV;L;10.5b;63
 r1
 !s85 0
 31
-Z7 !s108 1764135436.000000
+Z7 !s108 1764200672.000000
 Z8 !s107 C:/GitHubClone/Proyecto2-Empotrados/SystemOnChip/system_on_chip2/testbench/system_on_chip_tb/simulation/submodules/system_on_chip_UART.v|
 Z9 !s90 -reportprogress|300|C:/GitHubClone/Proyecto2-Empotrados/SystemOnChip/system_on_chip2/testbench/system_on_chip_tb/simulation/submodules/system_on_chip_UART.v|-work|UART|
 !i113 1
