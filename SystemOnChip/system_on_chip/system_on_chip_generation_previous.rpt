@@ -2,6 +2,10 @@ Info: Starting: Create block symbol file (.bsf)
 Info: qsys-generate C:\Users\nicva\Empotrados\Proyecto2-Empotrados\SystemOnChip\system_on_chip.qsys --block-symbol-file --output-directory=C:\Users\nicva\Empotrados\Proyecto2-Empotrados\SystemOnChip\system_on_chip --family="Cyclone V" --part=5CSEMA5F31C6
 Progress: Loading SystemOnChip/system_on_chip.qsys
 Progress: Reading input file
+Progress: Adding ARM [altera_hps 18.0]
+Progress: Parameterizing module ARM
+Progress: Adding FIFO [altera_avalon_fifo 18.0]
+Progress: Parameterizing module FIFO
 Progress: Adding NIOS [altera_nios2_gen2 18.0]
 Progress: Parameterizing module NIOS
 Progress: Adding RAM [altera_avalon_onchip_memory2 18.0]
@@ -22,10 +26,19 @@ Progress: Building connections
 Progress: Parameterizing connections
 Progress: Validating
 Progress: Done reading input file
+Info: system_on_chip.ARM: HPS Main PLL counter settings: n = 0  m = 73
+Info: system_on_chip.ARM: HPS peripherial PLL counter settings: n = 0  m = 39
+Warning: system_on_chip.ARM: "Configuration/HPS-to-FPGA user 0 clock frequency" (desired_cfg_clk_mhz) requested 100.0 MHz, but only achieved 97.368421 MHz
+Warning: system_on_chip.ARM: 1 or more output clock frequencies cannot be achieved precisely, consider revising desired output clock frequencies.
+Warning: system_on_chip.ARM: ODT is disabled. Enabling ODT (Mode Register 1) may improve signal integrity
+Warning: system_on_chip.ARM: set_interface_assignment: Interface "hps_io" does not exist
 Info: system_on_chip.REG_BUTTONS: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
 Info: system_on_chip.REG_SWITCHES: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
 Info: system_on_chip.UART: JTAG UART IP input clock need to be at least double (2x) the operating frequency of JTAG TCK on board
-Warning: system_on_chip.REG_BUTTONS: Interrupt sender REG_BUTTONS.irq is not connected to an interrupt receiver
+Warning: system_on_chip.ARM: ARM.h2f_mpu_events must be exported, or connected to a matching conduit.
+Warning: system_on_chip.FIFO: Interrupt sender FIFO.in_irq is not connected to an interrupt receiver
+Warning: system_on_chip.FIFO: FIFO.in must be connected to an Avalon-MM master
+Warning: system_on_chip.FIFO: FIFO.in_csr must be connected to an Avalon-MM master
 Info: qsys-generate succeeded.
 Info: Finished: Create block symbol file (.bsf)
 Info: 
@@ -33,6 +46,10 @@ Info: Starting: Create HDL design files for synthesis
 Info: qsys-generate C:\Users\nicva\Empotrados\Proyecto2-Empotrados\SystemOnChip\system_on_chip.qsys --synthesis=VERILOG --output-directory=C:\Users\nicva\Empotrados\Proyecto2-Empotrados\SystemOnChip\system_on_chip\synthesis --family="Cyclone V" --part=5CSEMA5F31C6
 Progress: Loading SystemOnChip/system_on_chip.qsys
 Progress: Reading input file
+Progress: Adding ARM [altera_hps 18.0]
+Progress: Parameterizing module ARM
+Progress: Adding FIFO [altera_avalon_fifo 18.0]
+Progress: Parameterizing module FIFO
 Progress: Adding NIOS [altera_nios2_gen2 18.0]
 Progress: Parameterizing module NIOS
 Progress: Adding RAM [altera_avalon_onchip_memory2 18.0]
@@ -53,34 +70,55 @@ Progress: Building connections
 Progress: Parameterizing connections
 Progress: Validating
 Progress: Done reading input file
+Info: system_on_chip.ARM: HPS Main PLL counter settings: n = 0  m = 73
+Info: system_on_chip.ARM: HPS peripherial PLL counter settings: n = 0  m = 39
+Warning: system_on_chip.ARM: "Configuration/HPS-to-FPGA user 0 clock frequency" (desired_cfg_clk_mhz) requested 100.0 MHz, but only achieved 97.368421 MHz
+Warning: system_on_chip.ARM: 1 or more output clock frequencies cannot be achieved precisely, consider revising desired output clock frequencies.
+Warning: system_on_chip.ARM: ODT is disabled. Enabling ODT (Mode Register 1) may improve signal integrity
+Warning: system_on_chip.ARM: set_interface_assignment: Interface "hps_io" does not exist
 Info: system_on_chip.REG_BUTTONS: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
 Info: system_on_chip.REG_SWITCHES: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
 Info: system_on_chip.UART: JTAG UART IP input clock need to be at least double (2x) the operating frequency of JTAG TCK on board
-Warning: system_on_chip.REG_BUTTONS: Interrupt sender REG_BUTTONS.irq is not connected to an interrupt receiver
+Warning: system_on_chip.ARM: ARM.h2f_mpu_events must be exported, or connected to a matching conduit.
+Warning: system_on_chip.FIFO: Interrupt sender FIFO.in_irq is not connected to an interrupt receiver
+Warning: system_on_chip.FIFO: FIFO.in must be connected to an Avalon-MM master
+Warning: system_on_chip.FIFO: FIFO.in_csr must be connected to an Avalon-MM master
 Info: system_on_chip: Generating system_on_chip "system_on_chip" for QUARTUS_SYNTH
+Info: ARM: "Running  for module: ARM"
+Info: ARM: HPS Main PLL counter settings: n = 0  m = 73
+Info: ARM: HPS peripherial PLL counter settings: n = 0  m = 39
+Warning: ARM: "Configuration/HPS-to-FPGA user 0 clock frequency" (desired_cfg_clk_mhz) requested 100.0 MHz, but only achieved 97.368421 MHz
+Warning: ARM: 1 or more output clock frequencies cannot be achieved precisely, consider revising desired output clock frequencies.
+Warning: ARM: ODT is disabled. Enabling ODT (Mode Register 1) may improve signal integrity
+Warning: ARM: set_interface_assignment: Interface "hps_io" does not exist
+Info: ARM: "system_on_chip" instantiated altera_hps "ARM"
+Info: FIFO: Starting RTL generation for module 'system_on_chip_FIFO'
+Info: FIFO:   Generation command is [exec C:/intelfpga_lite/18.0/quartus/bin64/perl/bin/perl.exe -I C:/intelfpga_lite/18.0/quartus/bin64/perl/lib -I C:/intelfpga_lite/18.0/quartus/sopc_builder/bin/europa -I C:/intelfpga_lite/18.0/quartus/sopc_builder/bin/perl_lib -I C:/intelfpga_lite/18.0/quartus/sopc_builder/bin -I C:/intelfpga_lite/18.0/quartus/../ip/altera/sopc_builder_ip/common -I C:/intelfpga_lite/18.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_fifo -- C:/intelfpga_lite/18.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_fifo/generate_rtl.pl --name=system_on_chip_FIFO --dir=C:/Users/nicva/AppData/Local/Temp/alt0418_3499298406511391215.dir/0002_FIFO_gen/ --quartus_dir=C:/intelfpga_lite/18.0/quartus --verilog --config=C:/Users/nicva/AppData/Local/Temp/alt0418_3499298406511391215.dir/0002_FIFO_gen//system_on_chip_FIFO_component_configuration.pl  --do_build_sim=0  ]
+Info: FIFO: Done RTL generation for module 'system_on_chip_FIFO'
+Info: FIFO: "system_on_chip" instantiated altera_avalon_fifo "FIFO"
 Info: NIOS: "system_on_chip" instantiated altera_nios2_gen2 "NIOS"
 Info: RAM: Starting RTL generation for module 'system_on_chip_RAM'
-Info: RAM:   Generation command is [exec C:/intelfpga_lite/18.0/quartus/bin64/perl/bin/perl.exe -I C:/intelfpga_lite/18.0/quartus/bin64/perl/lib -I C:/intelfpga_lite/18.0/quartus/sopc_builder/bin/europa -I C:/intelfpga_lite/18.0/quartus/sopc_builder/bin/perl_lib -I C:/intelfpga_lite/18.0/quartus/sopc_builder/bin -I C:/intelfpga_lite/18.0/quartus/../ip/altera/sopc_builder_ip/common -I C:/intelfpga_lite/18.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2 -- C:/intelfpga_lite/18.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2/generate_rtl.pl --name=system_on_chip_RAM --dir=C:/Users/nicva/AppData/Local/Temp/alt0417_4312179983866619727.dir/0060_RAM_gen/ --quartus_dir=C:/intelfpga_lite/18.0/quartus --verilog --config=C:/Users/nicva/AppData/Local/Temp/alt0417_4312179983866619727.dir/0060_RAM_gen//system_on_chip_RAM_component_configuration.pl  --do_build_sim=0  ]
+Info: RAM:   Generation command is [exec C:/intelfpga_lite/18.0/quartus/bin64/perl/bin/perl.exe -I C:/intelfpga_lite/18.0/quartus/bin64/perl/lib -I C:/intelfpga_lite/18.0/quartus/sopc_builder/bin/europa -I C:/intelfpga_lite/18.0/quartus/sopc_builder/bin/perl_lib -I C:/intelfpga_lite/18.0/quartus/sopc_builder/bin -I C:/intelfpga_lite/18.0/quartus/../ip/altera/sopc_builder_ip/common -I C:/intelfpga_lite/18.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2 -- C:/intelfpga_lite/18.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2/generate_rtl.pl --name=system_on_chip_RAM --dir=C:/Users/nicva/AppData/Local/Temp/alt0418_3499298406511391215.dir/0003_RAM_gen/ --quartus_dir=C:/intelfpga_lite/18.0/quartus --verilog --config=C:/Users/nicva/AppData/Local/Temp/alt0418_3499298406511391215.dir/0003_RAM_gen//system_on_chip_RAM_component_configuration.pl  --do_build_sim=0  ]
 Info: RAM: Done RTL generation for module 'system_on_chip_RAM'
 Info: RAM: "system_on_chip" instantiated altera_avalon_onchip_memory2 "RAM"
 Info: REG_7_SEGMENTS: Starting RTL generation for module 'system_on_chip_REG_7_SEGMENTS'
-Info: REG_7_SEGMENTS:   Generation command is [exec C:/intelfpga_lite/18.0/quartus/bin64/perl/bin/perl.exe -I C:/intelfpga_lite/18.0/quartus/bin64/perl/lib -I C:/intelfpga_lite/18.0/quartus/sopc_builder/bin/europa -I C:/intelfpga_lite/18.0/quartus/sopc_builder/bin/perl_lib -I C:/intelfpga_lite/18.0/quartus/sopc_builder/bin -I C:/intelfpga_lite/18.0/quartus/../ip/altera/sopc_builder_ip/common -I C:/intelfpga_lite/18.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- C:/intelfpga_lite/18.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=system_on_chip_REG_7_SEGMENTS --dir=C:/Users/nicva/AppData/Local/Temp/alt0417_4312179983866619727.dir/0061_REG_7_SEGMENTS_gen/ --quartus_dir=C:/intelfpga_lite/18.0/quartus --verilog --config=C:/Users/nicva/AppData/Local/Temp/alt0417_4312179983866619727.dir/0061_REG_7_SEGMENTS_gen//system_on_chip_REG_7_SEGMENTS_component_configuration.pl  --do_build_sim=0  ]
+Info: REG_7_SEGMENTS:   Generation command is [exec C:/intelfpga_lite/18.0/quartus/bin64/perl/bin/perl.exe -I C:/intelfpga_lite/18.0/quartus/bin64/perl/lib -I C:/intelfpga_lite/18.0/quartus/sopc_builder/bin/europa -I C:/intelfpga_lite/18.0/quartus/sopc_builder/bin/perl_lib -I C:/intelfpga_lite/18.0/quartus/sopc_builder/bin -I C:/intelfpga_lite/18.0/quartus/../ip/altera/sopc_builder_ip/common -I C:/intelfpga_lite/18.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- C:/intelfpga_lite/18.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=system_on_chip_REG_7_SEGMENTS --dir=C:/Users/nicva/AppData/Local/Temp/alt0418_3499298406511391215.dir/0004_REG_7_SEGMENTS_gen/ --quartus_dir=C:/intelfpga_lite/18.0/quartus --verilog --config=C:/Users/nicva/AppData/Local/Temp/alt0418_3499298406511391215.dir/0004_REG_7_SEGMENTS_gen//system_on_chip_REG_7_SEGMENTS_component_configuration.pl  --do_build_sim=0  ]
 Info: REG_7_SEGMENTS: Done RTL generation for module 'system_on_chip_REG_7_SEGMENTS'
 Info: REG_7_SEGMENTS: "system_on_chip" instantiated altera_avalon_pio "REG_7_SEGMENTS"
 Info: REG_BUTTONS: Starting RTL generation for module 'system_on_chip_REG_BUTTONS'
-Info: REG_BUTTONS:   Generation command is [exec C:/intelfpga_lite/18.0/quartus/bin64/perl/bin/perl.exe -I C:/intelfpga_lite/18.0/quartus/bin64/perl/lib -I C:/intelfpga_lite/18.0/quartus/sopc_builder/bin/europa -I C:/intelfpga_lite/18.0/quartus/sopc_builder/bin/perl_lib -I C:/intelfpga_lite/18.0/quartus/sopc_builder/bin -I C:/intelfpga_lite/18.0/quartus/../ip/altera/sopc_builder_ip/common -I C:/intelfpga_lite/18.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- C:/intelfpga_lite/18.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=system_on_chip_REG_BUTTONS --dir=C:/Users/nicva/AppData/Local/Temp/alt0417_4312179983866619727.dir/0062_REG_BUTTONS_gen/ --quartus_dir=C:/intelfpga_lite/18.0/quartus --verilog --config=C:/Users/nicva/AppData/Local/Temp/alt0417_4312179983866619727.dir/0062_REG_BUTTONS_gen//system_on_chip_REG_BUTTONS_component_configuration.pl  --do_build_sim=0  ]
+Info: REG_BUTTONS:   Generation command is [exec C:/intelfpga_lite/18.0/quartus/bin64/perl/bin/perl.exe -I C:/intelfpga_lite/18.0/quartus/bin64/perl/lib -I C:/intelfpga_lite/18.0/quartus/sopc_builder/bin/europa -I C:/intelfpga_lite/18.0/quartus/sopc_builder/bin/perl_lib -I C:/intelfpga_lite/18.0/quartus/sopc_builder/bin -I C:/intelfpga_lite/18.0/quartus/../ip/altera/sopc_builder_ip/common -I C:/intelfpga_lite/18.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- C:/intelfpga_lite/18.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=system_on_chip_REG_BUTTONS --dir=C:/Users/nicva/AppData/Local/Temp/alt0418_3499298406511391215.dir/0005_REG_BUTTONS_gen/ --quartus_dir=C:/intelfpga_lite/18.0/quartus --verilog --config=C:/Users/nicva/AppData/Local/Temp/alt0418_3499298406511391215.dir/0005_REG_BUTTONS_gen//system_on_chip_REG_BUTTONS_component_configuration.pl  --do_build_sim=0  ]
 Info: REG_BUTTONS: Done RTL generation for module 'system_on_chip_REG_BUTTONS'
 Info: REG_BUTTONS: "system_on_chip" instantiated altera_avalon_pio "REG_BUTTONS"
 Info: REG_SWITCHES: Starting RTL generation for module 'system_on_chip_REG_SWITCHES'
-Info: REG_SWITCHES:   Generation command is [exec C:/intelfpga_lite/18.0/quartus/bin64/perl/bin/perl.exe -I C:/intelfpga_lite/18.0/quartus/bin64/perl/lib -I C:/intelfpga_lite/18.0/quartus/sopc_builder/bin/europa -I C:/intelfpga_lite/18.0/quartus/sopc_builder/bin/perl_lib -I C:/intelfpga_lite/18.0/quartus/sopc_builder/bin -I C:/intelfpga_lite/18.0/quartus/../ip/altera/sopc_builder_ip/common -I C:/intelfpga_lite/18.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- C:/intelfpga_lite/18.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=system_on_chip_REG_SWITCHES --dir=C:/Users/nicva/AppData/Local/Temp/alt0417_4312179983866619727.dir/0063_REG_SWITCHES_gen/ --quartus_dir=C:/intelfpga_lite/18.0/quartus --verilog --config=C:/Users/nicva/AppData/Local/Temp/alt0417_4312179983866619727.dir/0063_REG_SWITCHES_gen//system_on_chip_REG_SWITCHES_component_configuration.pl  --do_build_sim=0  ]
+Info: REG_SWITCHES:   Generation command is [exec C:/intelfpga_lite/18.0/quartus/bin64/perl/bin/perl.exe -I C:/intelfpga_lite/18.0/quartus/bin64/perl/lib -I C:/intelfpga_lite/18.0/quartus/sopc_builder/bin/europa -I C:/intelfpga_lite/18.0/quartus/sopc_builder/bin/perl_lib -I C:/intelfpga_lite/18.0/quartus/sopc_builder/bin -I C:/intelfpga_lite/18.0/quartus/../ip/altera/sopc_builder_ip/common -I C:/intelfpga_lite/18.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- C:/intelfpga_lite/18.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=system_on_chip_REG_SWITCHES --dir=C:/Users/nicva/AppData/Local/Temp/alt0418_3499298406511391215.dir/0006_REG_SWITCHES_gen/ --quartus_dir=C:/intelfpga_lite/18.0/quartus --verilog --config=C:/Users/nicva/AppData/Local/Temp/alt0418_3499298406511391215.dir/0006_REG_SWITCHES_gen//system_on_chip_REG_SWITCHES_component_configuration.pl  --do_build_sim=0  ]
 Info: REG_SWITCHES: Done RTL generation for module 'system_on_chip_REG_SWITCHES'
 Info: REG_SWITCHES: "system_on_chip" instantiated altera_avalon_pio "REG_SWITCHES"
 Info: TIMER: Starting RTL generation for module 'system_on_chip_TIMER'
-Info: TIMER:   Generation command is [exec C:/intelFPGA_lite/18.0/quartus/bin64//perl/bin/perl.exe -I C:/intelFPGA_lite/18.0/quartus/bin64//perl/lib -I C:/intelfpga_lite/18.0/quartus/sopc_builder/bin/europa -I C:/intelfpga_lite/18.0/quartus/sopc_builder/bin/perl_lib -I C:/intelfpga_lite/18.0/quartus/sopc_builder/bin -I C:/intelfpga_lite/18.0/quartus/../ip/altera/sopc_builder_ip/common -I C:/intelfpga_lite/18.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_timer -- C:/intelfpga_lite/18.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_timer/generate_rtl.pl --name=system_on_chip_TIMER --dir=C:/Users/nicva/AppData/Local/Temp/alt0417_4312179983866619727.dir/0064_TIMER_gen/ --quartus_dir=C:/intelfpga_lite/18.0/quartus --verilog --config=C:/Users/nicva/AppData/Local/Temp/alt0417_4312179983866619727.dir/0064_TIMER_gen//system_on_chip_TIMER_component_configuration.pl  --do_build_sim=0  ]
+Info: TIMER:   Generation command is [exec C:/intelFPGA_lite/18.0/quartus/bin64//perl/bin/perl.exe -I C:/intelFPGA_lite/18.0/quartus/bin64//perl/lib -I C:/intelfpga_lite/18.0/quartus/sopc_builder/bin/europa -I C:/intelfpga_lite/18.0/quartus/sopc_builder/bin/perl_lib -I C:/intelfpga_lite/18.0/quartus/sopc_builder/bin -I C:/intelfpga_lite/18.0/quartus/../ip/altera/sopc_builder_ip/common -I C:/intelfpga_lite/18.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_timer -- C:/intelfpga_lite/18.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_timer/generate_rtl.pl --name=system_on_chip_TIMER --dir=C:/Users/nicva/AppData/Local/Temp/alt0418_3499298406511391215.dir/0007_TIMER_gen/ --quartus_dir=C:/intelfpga_lite/18.0/quartus --verilog --config=C:/Users/nicva/AppData/Local/Temp/alt0418_3499298406511391215.dir/0007_TIMER_gen//system_on_chip_TIMER_component_configuration.pl  --do_build_sim=0  ]
 Info: TIMER: Done RTL generation for module 'system_on_chip_TIMER'
 Info: TIMER: "system_on_chip" instantiated altera_avalon_timer "TIMER"
 Info: UART: Starting RTL generation for module 'system_on_chip_UART'
-Info: UART:   Generation command is [exec C:/intelfpga_lite/18.0/quartus/bin64/perl/bin/perl.exe -I C:/intelfpga_lite/18.0/quartus/bin64/perl/lib -I C:/intelfpga_lite/18.0/quartus/sopc_builder/bin/europa -I C:/intelfpga_lite/18.0/quartus/sopc_builder/bin/perl_lib -I C:/intelfpga_lite/18.0/quartus/sopc_builder/bin -I C:/intelfpga_lite/18.0/quartus/../ip/altera/sopc_builder_ip/common -I C:/intelfpga_lite/18.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_jtag_uart -- C:/intelfpga_lite/18.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_jtag_uart/generate_rtl.pl --name=system_on_chip_UART --dir=C:/Users/nicva/AppData/Local/Temp/alt0417_4312179983866619727.dir/0065_UART_gen/ --quartus_dir=C:/intelfpga_lite/18.0/quartus --verilog --config=C:/Users/nicva/AppData/Local/Temp/alt0417_4312179983866619727.dir/0065_UART_gen//system_on_chip_UART_component_configuration.pl  --do_build_sim=0  ]
+Info: UART:   Generation command is [exec C:/intelfpga_lite/18.0/quartus/bin64/perl/bin/perl.exe -I C:/intelfpga_lite/18.0/quartus/bin64/perl/lib -I C:/intelfpga_lite/18.0/quartus/sopc_builder/bin/europa -I C:/intelfpga_lite/18.0/quartus/sopc_builder/bin/perl_lib -I C:/intelfpga_lite/18.0/quartus/sopc_builder/bin -I C:/intelfpga_lite/18.0/quartus/../ip/altera/sopc_builder_ip/common -I C:/intelfpga_lite/18.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_jtag_uart -- C:/intelfpga_lite/18.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_jtag_uart/generate_rtl.pl --name=system_on_chip_UART --dir=C:/Users/nicva/AppData/Local/Temp/alt0418_3499298406511391215.dir/0008_UART_gen/ --quartus_dir=C:/intelfpga_lite/18.0/quartus --verilog --config=C:/Users/nicva/AppData/Local/Temp/alt0418_3499298406511391215.dir/0008_UART_gen//system_on_chip_UART_component_configuration.pl  --do_build_sim=0  ]
 Info: UART: Done RTL generation for module 'system_on_chip_UART'
 Info: UART: "system_on_chip" instantiated altera_avalon_jtag_uart "UART"
 Info: avalon_st_adapter: Inserting error_adapter: error_adapter_0
@@ -90,23 +128,26 @@ Info: avalon_st_adapter_003: Inserting error_adapter: error_adapter_0
 Info: avalon_st_adapter_004: Inserting error_adapter: error_adapter_0
 Info: avalon_st_adapter_005: Inserting error_adapter: error_adapter_0
 Info: avalon_st_adapter_006: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_007: Inserting error_adapter: error_adapter_0
 Info: mm_interconnect_0: "system_on_chip" instantiated altera_mm_interconnect "mm_interconnect_0"
 Info: irq_mapper: "system_on_chip" instantiated altera_irq_mapper "irq_mapper"
 Info: rst_controller: "system_on_chip" instantiated altera_reset_controller "rst_controller"
+Info: fpga_interfaces: "ARM" instantiated altera_interface_generator "fpga_interfaces"
+Info: hps_io: "ARM" instantiated altera_hps_io "hps_io"
 Info: cpu: Starting RTL generation for module 'system_on_chip_NIOS_cpu'
-Info: cpu:   Generation command is [exec C:/intelFPGA_lite/18.0/quartus/bin64//eperlcmd.exe -I C:/intelFPGA_lite/18.0/quartus/bin64//perl/lib -I C:/intelfpga_lite/18.0/quartus/sopc_builder/bin/europa -I C:/intelfpga_lite/18.0/quartus/sopc_builder/bin/perl_lib -I C:/intelfpga_lite/18.0/quartus/sopc_builder/bin -I C:/intelfpga_lite/18.0/quartus/../ip/altera/nios2_ip/altera_nios2_gen2/cpu_lib -I C:/intelfpga_lite/18.0/quartus/../ip/altera/nios2_ip/altera_nios2_gen2/nios_lib -I C:/intelfpga_lite/18.0/quartus/../ip/altera/nios2_ip/altera_nios2_gen2 -I C:/intelfpga_lite/18.0/quartus/../ip/altera/nios2_ip/altera_nios2_gen2 -- C:/intelfpga_lite/18.0/quartus/../ip/altera/nios2_ip/altera_nios2_gen2/generate_rtl.epl --name=system_on_chip_NIOS_cpu --dir=C:/Users/nicva/AppData/Local/Temp/alt0417_4312179983866619727.dir/0068_cpu_gen/ --quartus_bindir=C:/intelFPGA_lite/18.0/quartus/bin64/ --verilog --config=C:/Users/nicva/AppData/Local/Temp/alt0417_4312179983866619727.dir/0068_cpu_gen//system_on_chip_NIOS_cpu_processor_configuration.pl  --do_build_sim=0  ]
-Info: cpu: # 2025.11.25 08:13:58 (*) Starting Nios II generation
-Info: cpu: # 2025.11.25 08:13:58 (*)   Checking for plaintext license.
-Info: cpu: # 2025.11.25 08:14:00 (*)   Couldn't query license setup in Quartus directory C:/intelFPGA_lite/18.0/quartus/bin64/
-Info: cpu: # 2025.11.25 08:14:00 (*)   Defaulting to contents of LM_LICENSE_FILE environment variable
-Info: cpu: # 2025.11.25 08:14:00 (*)   LM_LICENSE_FILE environment variable is empty
-Info: cpu: # 2025.11.25 08:14:00 (*)   Plaintext license not found.
-Info: cpu: # 2025.11.25 08:14:00 (*)   No license required to generate encrypted Nios II/e.
-Info: cpu: # 2025.11.25 08:14:00 (*)   Elaborating CPU configuration settings
-Info: cpu: # 2025.11.25 08:14:00 (*)   Creating all objects for CPU
-Info: cpu: # 2025.11.25 08:14:01 (*)   Generating RTL from CPU objects
-Info: cpu: # 2025.11.25 08:14:01 (*)   Creating plain-text RTL
-Info: cpu: # 2025.11.25 08:14:01 (*) Done Nios II generation
+Info: cpu:   Generation command is [exec C:/intelFPGA_lite/18.0/quartus/bin64//eperlcmd.exe -I C:/intelFPGA_lite/18.0/quartus/bin64//perl/lib -I C:/intelfpga_lite/18.0/quartus/sopc_builder/bin/europa -I C:/intelfpga_lite/18.0/quartus/sopc_builder/bin/perl_lib -I C:/intelfpga_lite/18.0/quartus/sopc_builder/bin -I C:/intelfpga_lite/18.0/quartus/../ip/altera/nios2_ip/altera_nios2_gen2/cpu_lib -I C:/intelfpga_lite/18.0/quartus/../ip/altera/nios2_ip/altera_nios2_gen2/nios_lib -I C:/intelfpga_lite/18.0/quartus/../ip/altera/nios2_ip/altera_nios2_gen2 -I C:/intelfpga_lite/18.0/quartus/../ip/altera/nios2_ip/altera_nios2_gen2 -- C:/intelfpga_lite/18.0/quartus/../ip/altera/nios2_ip/altera_nios2_gen2/generate_rtl.epl --name=system_on_chip_NIOS_cpu --dir=C:/Users/nicva/AppData/Local/Temp/alt0418_3499298406511391215.dir/0012_cpu_gen/ --quartus_bindir=C:/intelFPGA_lite/18.0/quartus/bin64/ --verilog --config=C:/Users/nicva/AppData/Local/Temp/alt0418_3499298406511391215.dir/0012_cpu_gen//system_on_chip_NIOS_cpu_processor_configuration.pl  --do_build_sim=0  ]
+Info: cpu: # 2025.11.25 21:29:06 (*) Starting Nios II generation
+Info: cpu: # 2025.11.25 21:29:06 (*)   Checking for plaintext license.
+Info: cpu: # 2025.11.25 21:29:07 (*)   Couldn't query license setup in Quartus directory C:/intelFPGA_lite/18.0/quartus/bin64/
+Info: cpu: # 2025.11.25 21:29:07 (*)   Defaulting to contents of LM_LICENSE_FILE environment variable
+Info: cpu: # 2025.11.25 21:29:07 (*)   LM_LICENSE_FILE environment variable is empty
+Info: cpu: # 2025.11.25 21:29:07 (*)   Plaintext license not found.
+Info: cpu: # 2025.11.25 21:29:07 (*)   No license required to generate encrypted Nios II/e.
+Info: cpu: # 2025.11.25 21:29:07 (*)   Elaborating CPU configuration settings
+Info: cpu: # 2025.11.25 21:29:07 (*)   Creating all objects for CPU
+Info: cpu: # 2025.11.25 21:29:08 (*)   Generating RTL from CPU objects
+Info: cpu: # 2025.11.25 21:29:08 (*)   Creating plain-text RTL
+Info: cpu: # 2025.11.25 21:29:08 (*) Done Nios II generation
 Info: cpu: Done RTL generation for module 'system_on_chip_NIOS_cpu'
 Info: cpu: "NIOS" instantiated altera_nios2_gen2_unit "cpu"
 Info: NIOS_data_master_translator: "mm_interconnect_0" instantiated altera_merlin_master_translator "NIOS_data_master_translator"
@@ -118,18 +159,21 @@ Info: router: "mm_interconnect_0" instantiated altera_merlin_router "router"
 Info: router_001: "mm_interconnect_0" instantiated altera_merlin_router "router_001"
 Info: router_002: "mm_interconnect_0" instantiated altera_merlin_router "router_002"
 Info: router_003: "mm_interconnect_0" instantiated altera_merlin_router "router_003"
+Info: router_009: "mm_interconnect_0" instantiated altera_merlin_router "router_009"
 Info: cmd_demux: "mm_interconnect_0" instantiated altera_merlin_demultiplexer "cmd_demux"
 Info: cmd_demux_001: "mm_interconnect_0" instantiated altera_merlin_demultiplexer "cmd_demux_001"
 Info: cmd_mux: "mm_interconnect_0" instantiated altera_merlin_multiplexer "cmd_mux"
 Info: cmd_mux_001: "mm_interconnect_0" instantiated altera_merlin_multiplexer "cmd_mux_001"
 Info: Reusing file C:/Users/nicva/Empotrados/Proyecto2-Empotrados/SystemOnChip/system_on_chip/synthesis/submodules/altera_merlin_arbitrator.sv
 Info: rsp_demux: "mm_interconnect_0" instantiated altera_merlin_demultiplexer "rsp_demux"
+Info: rsp_demux_001: "mm_interconnect_0" instantiated altera_merlin_demultiplexer "rsp_demux_001"
 Info: rsp_mux: "mm_interconnect_0" instantiated altera_merlin_multiplexer "rsp_mux"
 Info: Reusing file C:/Users/nicva/Empotrados/Proyecto2-Empotrados/SystemOnChip/system_on_chip/synthesis/submodules/altera_merlin_arbitrator.sv
 Info: rsp_mux_001: "mm_interconnect_0" instantiated altera_merlin_multiplexer "rsp_mux_001"
 Info: Reusing file C:/Users/nicva/Empotrados/Proyecto2-Empotrados/SystemOnChip/system_on_chip/synthesis/submodules/altera_merlin_arbitrator.sv
 Info: avalon_st_adapter: "mm_interconnect_0" instantiated altera_avalon_st_adapter "avalon_st_adapter"
+Info: border: "hps_io" instantiated altera_interface_generator "border"
 Info: error_adapter_0: "avalon_st_adapter" instantiated error_adapter "error_adapter_0"
-Info: system_on_chip: Done "system_on_chip" with 30 modules, 43 files
+Info: system_on_chip: Done "system_on_chip" with 37 modules, 93 files
 Info: qsys-generate succeeded.
 Info: Finished: Create HDL design files for synthesis
