@@ -238,7 +238,7 @@ module system_on_chip_mm_interconnect_0_router
     end
 
     // ( 0x3050 .. 0x3060 )
-    if ( {address[RG:PAD6],{PAD6{1'b0}}} == 14'h3050   ) begin
+    if ( {address[RG:PAD6],{PAD6{1'b0}}} == 14'h3050  && read_transaction  ) begin
             src_channel = 9'b100000000;
             src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 6;
     end

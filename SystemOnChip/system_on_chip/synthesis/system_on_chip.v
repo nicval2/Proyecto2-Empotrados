@@ -84,11 +84,8 @@ module system_on_chip (
 	wire   [2:0] mm_interconnect_0_timer_s1_address;                   // mm_interconnect_0:TIMER_s1_address -> TIMER:address
 	wire         mm_interconnect_0_timer_s1_write;                     // mm_interconnect_0:TIMER_s1_write -> TIMER:write_n
 	wire  [15:0] mm_interconnect_0_timer_s1_writedata;                 // mm_interconnect_0:TIMER_s1_writedata -> TIMER:writedata
-	wire         mm_interconnect_0_reg_switches_s1_chipselect;         // mm_interconnect_0:REG_SWITCHES_s1_chipselect -> REG_SWITCHES:chipselect
 	wire  [31:0] mm_interconnect_0_reg_switches_s1_readdata;           // REG_SWITCHES:readdata -> mm_interconnect_0:REG_SWITCHES_s1_readdata
 	wire   [1:0] mm_interconnect_0_reg_switches_s1_address;            // mm_interconnect_0:REG_SWITCHES_s1_address -> REG_SWITCHES:address
-	wire         mm_interconnect_0_reg_switches_s1_write;              // mm_interconnect_0:REG_SWITCHES_s1_write -> REG_SWITCHES:write_n
-	wire  [31:0] mm_interconnect_0_reg_switches_s1_writedata;          // mm_interconnect_0:REG_SWITCHES_s1_writedata -> REG_SWITCHES:writedata
 	wire   [1:0] arm_h2f_lw_axi_master_awburst;                        // ARM:h2f_lw_AWBURST -> mm_interconnect_1:ARM_h2f_lw_axi_master_awburst
 	wire   [3:0] arm_h2f_lw_axi_master_arlen;                          // ARM:h2f_lw_ARLEN -> mm_interconnect_1:ARM_h2f_lw_axi_master_arlen
 	wire   [3:0] arm_h2f_lw_axi_master_wstrb;                          // ARM:h2f_lw_WSTRB -> mm_interconnect_1:ARM_h2f_lw_axi_master_wstrb
@@ -447,15 +444,11 @@ module system_on_chip (
 	);
 
 	system_on_chip_REG_SWITCHES reg_switches (
-		.clk        (clk_clk),                                      //                 clk.clk
-		.reset_n    (~rst_controller_reset_out_reset),              //               reset.reset_n
-		.address    (mm_interconnect_0_reg_switches_s1_address),    //                  s1.address
-		.write_n    (~mm_interconnect_0_reg_switches_s1_write),     //                    .write_n
-		.writedata  (mm_interconnect_0_reg_switches_s1_writedata),  //                    .writedata
-		.chipselect (mm_interconnect_0_reg_switches_s1_chipselect), //                    .chipselect
-		.readdata   (mm_interconnect_0_reg_switches_s1_readdata),   //                    .readdata
-		.in_port    (switches_export),                              // external_connection.export
-		.irq        ()                                              //                 irq.irq
+		.clk      (clk_clk),                                    //                 clk.clk
+		.reset_n  (~rst_controller_reset_out_reset),            //               reset.reset_n
+		.address  (mm_interconnect_0_reg_switches_s1_address),  //                  s1.address
+		.readdata (mm_interconnect_0_reg_switches_s1_readdata), //                    .readdata
+		.in_port  (switches_export)                             // external_connection.export
 	);
 
 	system_on_chip_TIMER timer (
@@ -531,10 +524,7 @@ module system_on_chip (
 		.REG_BUTTONS_s1_writedata               (mm_interconnect_0_reg_buttons_s1_writedata),           //                                 .writedata
 		.REG_BUTTONS_s1_chipselect              (mm_interconnect_0_reg_buttons_s1_chipselect),          //                                 .chipselect
 		.REG_SWITCHES_s1_address                (mm_interconnect_0_reg_switches_s1_address),            //                  REG_SWITCHES_s1.address
-		.REG_SWITCHES_s1_write                  (mm_interconnect_0_reg_switches_s1_write),              //                                 .write
 		.REG_SWITCHES_s1_readdata               (mm_interconnect_0_reg_switches_s1_readdata),           //                                 .readdata
-		.REG_SWITCHES_s1_writedata              (mm_interconnect_0_reg_switches_s1_writedata),          //                                 .writedata
-		.REG_SWITCHES_s1_chipselect             (mm_interconnect_0_reg_switches_s1_chipselect),         //                                 .chipselect
 		.TIMER_s1_address                       (mm_interconnect_0_timer_s1_address),                   //                         TIMER_s1.address
 		.TIMER_s1_write                         (mm_interconnect_0_timer_s1_write),                     //                                 .write
 		.TIMER_s1_readdata                      (mm_interconnect_0_timer_s1_readdata),                  //                                 .readdata

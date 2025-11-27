@@ -7,8 +7,7 @@
    <irq preferredWidth="34" />
   </columns>
  </systemtable>
- <library
-   expandedCategories="Library/Interface Protocols/Transceiver PLL,Library,Library/Basic Functions/Clocks; PLLs and Resets,Library/University Program,Library/University Program/Clock,Library/Basic Functions,Library/Basic Functions/Clocks; PLLs and Resets/PLL,Project,Library/Interface Protocols" />
- <window width="2418" height="1308" x="2391" y="-363" />
+ <library expandedCategories="Library,Project" />
+ <window width="1920" height="1020" x="0" y="0" />
  <generation path="_PROJECT_NAME_" synthesis="VERILOG" greybox="0" />
 </preferences>

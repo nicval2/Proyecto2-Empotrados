@@ -136,19 +136,7 @@
 					"strict" : false
 				},
 				{
-					"name" : "button_export[3]",
-					"strict" : false
-				},
-				{
 					"name" : "button_export[0]",
-					"strict" : false
-				},
-				{
-					"name" : "button_export[1]",
-					"strict" : false
-				},
-				{
-					"name" : "button_export[2]",
 					"strict" : false
 				},
 				{
@@ -156,11 +144,23 @@
 					"strict" : false
 				},
 				{
+					"name" : "button_export[1]",
+					"strict" : false
+				},
+				{
 					"name" : "switches_export[1]",
 					"strict" : false
 				},
 				{
+					"name" : "button_export[2]",
+					"strict" : false
+				},
+				{
 					"name" : "switches_export[2]",
+					"strict" : false
+				},
+				{
+					"name" : "button_export[3]",
 					"strict" : false
 				},
 				{
