@@ -60,6 +60,7 @@ void play_tone(int freq, int duration_ms) {
         }
 
         // Filtro pasa bajas
+        filter_lowpass_enable();
         wave_value = filter_lowpass_process(wave_value);
 
 
