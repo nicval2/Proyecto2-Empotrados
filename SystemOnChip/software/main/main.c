@@ -7,13 +7,19 @@
 
 int main()
 {
-    alt_putstr("System initializing...\n");
+    alt_putstr("=== AUDIO PLAYER SoC START ===\n");
 
+    // Initialize modules
     buttons_init();
     switches_init();
+    segment_timer_start();
 
     while (1)
     {
+        // Update timer (MM:SS display)
+        segment_timer_update();
+
+        // Poll switches (filter selection)
         switches_update();
     }
 
