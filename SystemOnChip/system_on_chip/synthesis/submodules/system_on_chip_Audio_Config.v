@@ -32,7 +32,7 @@
 //`define USE_OB_DE2_35_AUTO_INIT
 //`define USE_AUTO_INIT
 
-module system_on_chip_Audio_Config (
+module system_on_chip_AUDIO_CONFIG (
 	// Inputs
 	clk,
 	reset,

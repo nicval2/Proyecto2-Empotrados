@@ -3,6 +3,12 @@ module system_on_chip (
 	button_export,
 	clk_clk,
 	id7_segment_export,
+	lcd_DATA,
+	lcd_ON,
+	lcd_BLON,
+	lcd_EN,
+	lcd_RS,
+	lcd_RW,
 	memory_mem_a,
 	memory_mem_ba,
 	memory_mem_ck,
@@ -20,11 +26,23 @@ module system_on_chip (
 	memory_mem_dm,
 	memory_oct_rzqin,
 	reset_reset_n,
-	switches_export);	
+	switches_export,
+	audio_clk_clk,
+	audio_BCLK,
+	audio_DACDAT,
+	audio_DACLRCK,
+	audio_config_SDAT,
+	audio_config_SCLK);	
 
 	input	[3:0]	button_export;
 	input		clk_clk;
 	output	[31:0]	id7_segment_export;
+	inout	[7:0]	lcd_DATA;
+	output		lcd_ON;
+	output		lcd_BLON;
+	output		lcd_EN;
+	output		lcd_RS;
+	output		lcd_RW;
 	output	[12:0]	memory_mem_a;
 	output	[2:0]	memory_mem_ba;
 	output		memory_mem_ck;
@@ -43,4 +61,10 @@ module system_on_chip (
 	input		memory_oct_rzqin;
 	input		reset_reset_n;
 	input	[7:0]	switches_export;
+	output		audio_clk_clk;
+	input		audio_BCLK;
+	output		audio_DACDAT;
+	input		audio_DACLRCK;
+	inout		audio_config_SDAT;
+	output		audio_config_SCLK;
 endmodule

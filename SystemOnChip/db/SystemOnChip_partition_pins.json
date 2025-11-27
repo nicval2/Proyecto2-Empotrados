@@ -4,6 +4,14 @@
 			"name" : "Top",
 			"pins" : [
 				{
+					"name" : "audio_DACDAT",
+					"strict" : false
+				},
+				{
+					"name" : "audio_config_SCLK",
+					"strict" : false
+				},
+				{
 					"name" : "id7_segment_export[0]",
 					"strict" : false
 				},
@@ -132,11 +140,75 @@
 					"strict" : false
 				},
 				{
+					"name" : "lcd_ON",
+					"strict" : false
+				},
+				{
+					"name" : "lcd_BLON",
+					"strict" : false
+				},
+				{
+					"name" : "lcd_EN",
+					"strict" : false
+				},
+				{
+					"name" : "lcd_RS",
+					"strict" : false
+				},
+				{
+					"name" : "lcd_RW",
+					"strict" : false
+				},
+				{
+					"name" : "audio_config_SDAT",
+					"strict" : false
+				},
+				{
+					"name" : "lcd_DATA[0]",
+					"strict" : false
+				},
+				{
+					"name" : "lcd_DATA[1]",
+					"strict" : false
+				},
+				{
+					"name" : "lcd_DATA[2]",
+					"strict" : false
+				},
+				{
+					"name" : "lcd_DATA[3]",
+					"strict" : false
+				},
+				{
+					"name" : "lcd_DATA[4]",
+					"strict" : false
+				},
+				{
+					"name" : "lcd_DATA[5]",
+					"strict" : false
+				},
+				{
+					"name" : "lcd_DATA[6]",
+					"strict" : false
+				},
+				{
+					"name" : "lcd_DATA[7]",
+					"strict" : false
+				},
+				{
 					"name" : "clk_clk",
 					"strict" : false
 				},
 				{
-					"name" : "button_export[0]",
+					"name" : "reset_reset_n",
+					"strict" : false
+				},
+				{
+					"name" : "audio_DACLRCK",
+					"strict" : false
+				},
+				{
+					"name" : "audio_BCLK",
 					"strict" : false
 				},
 				{
@@ -144,11 +216,15 @@
 					"strict" : false
 				},
 				{
-					"name" : "button_export[1]",
+					"name" : "button_export[0]",
 					"strict" : false
 				},
 				{
-					"name" : "switches_export[1]",
+					"name" : "button_export[3]",
+					"strict" : false
+				},
+				{
+					"name" : "button_export[1]",
 					"strict" : false
 				},
 				{
@@ -156,11 +232,11 @@
 					"strict" : false
 				},
 				{
-					"name" : "switches_export[2]",
+					"name" : "switches_export[1]",
 					"strict" : false
 				},
 				{
-					"name" : "button_export[3]",
+					"name" : "switches_export[2]",
 					"strict" : false
 				},
 				{
@@ -181,10 +257,6 @@
 				},
 				{
 					"name" : "switches_export[7]",
-					"strict" : false
-				},
-				{
-					"name" : "reset_reset_n",
 					"strict" : false
 				}
 			]
