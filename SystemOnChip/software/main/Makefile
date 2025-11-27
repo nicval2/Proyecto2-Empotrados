@@ -144,6 +144,8 @@ ELF := main.elf
 # Paths to C, C++, and assembly source files.
 C_SRCS += main.c
 C_SRCS += filter.c
+C_SRCS += src/7_segment/7_segment.c
+C_SRCS += src/switches/switch.c
 CXX_SRCS :=
 ASM_SRCS :=
 
