@@ -142,7 +142,8 @@ ACDS_VERSION := 18.0
 ELF := boton_switch.elf
 
 # Paths to C, C++, and assembly source files.
-C_SRCS := hello_world_small.c
+C_SRCS += hello_world_small.c
+C_SRCS += filter.c
 CXX_SRCS :=
 ASM_SRCS :=
 

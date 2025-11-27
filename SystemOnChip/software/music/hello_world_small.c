@@ -1,6 +1,7 @@
 #include "sys/alt_stdio.h"
 #include "system.h"
 #include <unistd.h>
+#include "filter.h"
 
 /* --- DIRECCIÓN BASE DEL AUDIO --- */
 // Confirma en system.h si se llama AUDIO_BASE o AUDIO_0_BASE
@@ -57,6 +58,10 @@ void play_tone(int freq, int duration_ms) {
         if (current_sample >= samples_per_cycle) {
             current_sample = 0;
         }
+
+        // Filtro pasa bajas
+        wave_value = filter_lowpass_process(wave_value);
+
 
         wait_for_fifo_space();
         *audio_left_ptr = wave_value;

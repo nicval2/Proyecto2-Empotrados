@@ -3,6 +3,7 @@
 #include "altera_avalon_pio_regs.h"
 #include "sys/alt_irq.h"
 #include <unistd.h>
+#include "filter.h"
 
 /* --- TUS MÁSCARAS QUE YA FUNCIONAN --- */
 #define BUTTON_PLAY_MASK  0x8  // Botón 1 (Bit 3)
@@ -84,12 +85,23 @@ int main()
       /* Solo imprimimos si el valor cambió respecto a la última vez */
       if (switch_val != prev_switch_val)
       {
-          alt_putstr("Filtro (Switches Hex): ");
-          alt_printf("%x\n", switch_val); // Imprime en Hexadecimal
+    	  prev_switch_val = switch_val;
 
-          /* Actualizamos el valor previo */
-          prev_switch_val = switch_val;
+    	      alt_putstr("Filtro seleccionado: ");
+
+    	      if (switch_val == 1)
+    	      {
+    	          filter_lowpass_enable();
+    	          alt_putstr("Pasa-Bajas ACTIVADO\n");
+    	      }
+    	      else
+    	      {
+    	          filter_lowpass_disable();
+    	          alt_putstr("Filtro DESACTIVADO\n");
+    	      }
       }
+
+
 
       /* Pequeña pausa para estabilidad (opcional, ayuda a no saturar la consola) */
       usleep(100000); // 100ms
