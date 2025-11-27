@@ -17,10 +17,7 @@ static int elapsed_ms = 0;
 static int elapsed_s  = 0;
 static int elapsed_m  = 0;
 
-
-// ------------------------------------------------------
 // Write MM:SS to the four 7-segment displays
-// ------------------------------------------------------
 static void display_time_4seg(int minutes, int seconds)
 {
     int m1 = (minutes / 10) % 10;
@@ -37,10 +34,7 @@ static void display_time_4seg(int minutes, int seconds)
     *segments7_ptr = (hex3 << 24) | (hex2 << 16) | (hex1 << 8) | hex0;
 }
 
-
-// ------------------------------------------------------
 // Initialize timer and 7-segment display
-// ------------------------------------------------------
 void segment_timer_start()
 {
     timer_status_ptr = (unsigned int *) TIMER_BASE;
@@ -49,32 +43,22 @@ void segment_timer_start()
 
     alt_putstr("[TIMER] Starting timer...\n");
 
-    if (*timer_status_ptr != 0) {
-        alt_printf("[TIMER] ERROR: status != 0 (%x)\n", *timer_status_ptr);
-        return;
-    }
-
-    // Enable timer: START=1, CONT=1
-    *timer_ctrl_ptr = 0x6;
-
-    // Wait until timer is running
-    while (*timer_status_ptr != 0x2);
-
-    alt_putstr("[TIMER] Timer running.\n");
+    *timer_status_ptr = 0;
+    *timer_ctrl_ptr   = 0x6;
 
     display_time_4seg(0, 0);
 }
 
-
-// ------------------------------------------------------
 // Update timer and display when tick occurs
-// ------------------------------------------------------
 void segment_timer_update()
 {
-    if (*timer_status_ptr == 0x3) {
+    unsigned int status = *timer_status_ptr;
+
+    if (status & 0x1) {
+
+        *timer_status_ptr = 0;
 
         elapsed_ms++;
-        *timer_status_ptr = 0;   // Clear interrupt flag
 
         if (elapsed_ms >= 1000) {
             elapsed_ms = 0;
