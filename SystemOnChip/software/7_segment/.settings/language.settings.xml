@@ -3,7 +3,11 @@
 	<configuration id="preference.org.eclipse.cdt.managedbuilder.core.configurationDataProvider.1081072148" name="Nios II">
 		<extension point="org.eclipse.cdt.core.LanguageSettingsProvider">
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 			<provider class="com.altera.sbtgui.project.importer.Nios2GCCBuiltinSpecsDetector" console="false" env-hash="-1016010389553898139" id="altera.tool.Nios2GCCBuiltinSpecsDetector" keep-relative-paths="false" name="Nios II GCC Built-in Compiler Settings" parameter="${COMMAND} ${FLAGS} -E -P -v -dD &quot;${INPUTS}&quot;" prefer-non-shared="true">
+=======
+			<provider class="com.altera.sbtgui.project.importer.Nios2GCCBuiltinSpecsDetector" console="false" env-hash="1568388612110343190" id="altera.tool.Nios2GCCBuiltinSpecsDetector" keep-relative-paths="false" name="Nios II GCC Built-in Compiler Settings" parameter="${COMMAND} ${FLAGS} -E -P -v -dD &quot;${INPUTS}&quot;" prefer-non-shared="true">
+>>>>>>> Stashed changes
 =======
 			<provider class="com.altera.sbtgui.project.importer.Nios2GCCBuiltinSpecsDetector" console="false" env-hash="1568388612110343190" id="altera.tool.Nios2GCCBuiltinSpecsDetector" keep-relative-paths="false" name="Nios II GCC Built-in Compiler Settings" parameter="${COMMAND} ${FLAGS} -E -P -v -dD &quot;${INPUTS}&quot;" prefer-non-shared="true">
 >>>>>>> Stashed changes
