@@ -99,3 +99,8 @@ gcc wav_info.c -o wav_info
 ```bash
 ./wav_info We_Didnt_Start_the_Fire.wav
 ```
+
+Angstrom linux distribution
+```bash
+https://www.terasic.com.tw/cgi-bin/page/archive.pl?Language=English&CategoryNo=205&No=1081&PartNo=4
+```
