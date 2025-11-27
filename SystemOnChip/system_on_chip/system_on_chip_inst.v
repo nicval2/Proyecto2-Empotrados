@@ -1,13 +1,13 @@
 	system_on_chip u0 (
+		.audio_BCLK         (<connected-to-audio_BCLK>),         //        audio.BCLK
+		.audio_DACDAT       (<connected-to-audio_DACDAT>),       //             .DACDAT
+		.audio_DACLRCK      (<connected-to-audio_DACLRCK>),      //             .DACLRCK
+		.audio_clk_clk      (<connected-to-audio_clk_clk>),      //    audio_clk.clk
+		.audio_config_SDAT  (<connected-to-audio_config_SDAT>),  // audio_config.SDAT
+		.audio_config_SCLK  (<connected-to-audio_config_SCLK>),  //             .SCLK
 		.button_export      (<connected-to-button_export>),      //       button.export
 		.clk_clk            (<connected-to-clk_clk>),            //          clk.clk
 		.id7_segment_export (<connected-to-id7_segment_export>), //  id7_segment.export
-		.lcd_DATA           (<connected-to-lcd_DATA>),           //          lcd.DATA
-		.lcd_ON             (<connected-to-lcd_ON>),             //             .ON
-		.lcd_BLON           (<connected-to-lcd_BLON>),           //             .BLON
-		.lcd_EN             (<connected-to-lcd_EN>),             //             .EN
-		.lcd_RS             (<connected-to-lcd_RS>),             //             .RS
-		.lcd_RW             (<connected-to-lcd_RW>),             //             .RW
 		.memory_mem_a       (<connected-to-memory_mem_a>),       //       memory.mem_a
 		.memory_mem_ba      (<connected-to-memory_mem_ba>),      //             .mem_ba
 		.memory_mem_ck      (<connected-to-memory_mem_ck>),      //             .mem_ck
@@ -26,11 +26,6 @@
 		.memory_oct_rzqin   (<connected-to-memory_oct_rzqin>),   //             .oct_rzqin
 		.reset_reset_n      (<connected-to-reset_reset_n>),      //        reset.reset_n
 		.switches_export    (<connected-to-switches_export>),    //     switches.export
-		.audio_clk_clk      (<connected-to-audio_clk_clk>),      //    audio_clk.clk
-		.audio_BCLK         (<connected-to-audio_BCLK>),         //        audio.BCLK
-		.audio_DACDAT       (<connected-to-audio_DACDAT>),       //             .DACDAT
-		.audio_DACLRCK      (<connected-to-audio_DACLRCK>),      //             .DACLRCK
-		.audio_config_SDAT  (<connected-to-audio_config_SDAT>),  // audio_config.SDAT
-		.audio_config_SCLK  (<connected-to-audio_config_SCLK>)   //             .SCLK
+		.i2c_lcd_export     (<connected-to-i2c_lcd_export>)      //      i2c_lcd.export
 	);
 

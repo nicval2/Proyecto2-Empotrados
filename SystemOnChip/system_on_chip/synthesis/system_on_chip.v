@@ -12,13 +12,8 @@ module system_on_chip (
 		output wire        audio_config_SCLK,  //             .SCLK
 		input  wire [3:0]  button_export,      //       button.export
 		input  wire        clk_clk,            //          clk.clk
+		inout  wire [1:0]  i2c_lcd_export,     //      i2c_lcd.export
 		output wire [31:0] id7_segment_export, //  id7_segment.export
-		inout  wire [7:0]  lcd_DATA,           //          lcd.DATA
-		output wire        lcd_ON,             //             .ON
-		output wire        lcd_BLON,           //             .BLON
-		output wire        lcd_EN,             //             .EN
-		output wire        lcd_RS,             //             .RS
-		output wire        lcd_RW,             //             .RW
 		output wire [12:0] memory_mem_a,       //       memory.mem_a
 		output wire [2:0]  memory_mem_ba,      //             .mem_ba
 		output wire        memory_mem_ck,      //             .mem_ck
@@ -71,13 +66,6 @@ module system_on_chip (
 	wire         mm_interconnect_0_uart_avalon_jtag_slave_read;                     // mm_interconnect_0:UART_avalon_jtag_slave_read -> UART:av_read_n
 	wire         mm_interconnect_0_uart_avalon_jtag_slave_write;                    // mm_interconnect_0:UART_avalon_jtag_slave_write -> UART:av_write_n
 	wire  [31:0] mm_interconnect_0_uart_avalon_jtag_slave_writedata;                // mm_interconnect_0:UART_avalon_jtag_slave_writedata -> UART:av_writedata
-	wire         mm_interconnect_0_lcd_avalon_lcd_slave_chipselect;                 // mm_interconnect_0:LCD_avalon_lcd_slave_chipselect -> LCD:chipselect
-	wire   [7:0] mm_interconnect_0_lcd_avalon_lcd_slave_readdata;                   // LCD:readdata -> mm_interconnect_0:LCD_avalon_lcd_slave_readdata
-	wire         mm_interconnect_0_lcd_avalon_lcd_slave_waitrequest;                // LCD:waitrequest -> mm_interconnect_0:LCD_avalon_lcd_slave_waitrequest
-	wire   [0:0] mm_interconnect_0_lcd_avalon_lcd_slave_address;                    // mm_interconnect_0:LCD_avalon_lcd_slave_address -> LCD:address
-	wire         mm_interconnect_0_lcd_avalon_lcd_slave_read;                       // mm_interconnect_0:LCD_avalon_lcd_slave_read -> LCD:read
-	wire         mm_interconnect_0_lcd_avalon_lcd_slave_write;                      // mm_interconnect_0:LCD_avalon_lcd_slave_write -> LCD:write
-	wire   [7:0] mm_interconnect_0_lcd_avalon_lcd_slave_writedata;                  // mm_interconnect_0:LCD_avalon_lcd_slave_writedata -> LCD:writedata
 	wire  [31:0] mm_interconnect_0_nios_debug_mem_slave_readdata;                   // NIOS:debug_mem_slave_readdata -> mm_interconnect_0:NIOS_debug_mem_slave_readdata
 	wire         mm_interconnect_0_nios_debug_mem_slave_waitrequest;                // NIOS:debug_mem_slave_waitrequest -> mm_interconnect_0:NIOS_debug_mem_slave_waitrequest
 	wire         mm_interconnect_0_nios_debug_mem_slave_debugaccess;                // mm_interconnect_0:NIOS_debug_mem_slave_debugaccess -> NIOS:debug_mem_slave_debugaccess
@@ -118,6 +106,11 @@ module system_on_chip (
 	wire  [15:0] mm_interconnect_0_timer_s1_writedata;                              // mm_interconnect_0:TIMER_s1_writedata -> TIMER:writedata
 	wire  [31:0] mm_interconnect_0_reg_switches_s1_readdata;                        // REG_SWITCHES:readdata -> mm_interconnect_0:REG_SWITCHES_s1_readdata
 	wire   [1:0] mm_interconnect_0_reg_switches_s1_address;                         // mm_interconnect_0:REG_SWITCHES_s1_address -> REG_SWITCHES:address
+	wire         mm_interconnect_0_i2c_s1_chipselect;                               // mm_interconnect_0:I2C_s1_chipselect -> I2C:chipselect
+	wire  [31:0] mm_interconnect_0_i2c_s1_readdata;                                 // I2C:readdata -> mm_interconnect_0:I2C_s1_readdata
+	wire   [1:0] mm_interconnect_0_i2c_s1_address;                                  // mm_interconnect_0:I2C_s1_address -> I2C:address
+	wire         mm_interconnect_0_i2c_s1_write;                                    // mm_interconnect_0:I2C_s1_write -> I2C:write_n
+	wire  [31:0] mm_interconnect_0_i2c_s1_writedata;                                // mm_interconnect_0:I2C_s1_writedata -> I2C:writedata
 	wire   [1:0] arm_h2f_lw_axi_master_awburst;                                     // ARM:h2f_lw_AWBURST -> mm_interconnect_1:ARM_h2f_lw_axi_master_awburst
 	wire   [3:0] arm_h2f_lw_axi_master_arlen;                                       // ARM:h2f_lw_ARLEN -> mm_interconnect_1:ARM_h2f_lw_axi_master_arlen
 	wire   [3:0] arm_h2f_lw_axi_master_wstrb;                                       // ARM:h2f_lw_WSTRB -> mm_interconnect_1:ARM_h2f_lw_axi_master_wstrb
@@ -166,7 +159,7 @@ module system_on_chip (
 	wire         irq_mapper_receiver1_irq;                                          // UART:av_irq -> irq_mapper:receiver1_irq
 	wire         irq_mapper_receiver2_irq;                                          // REG_BUTTONS:irq -> irq_mapper:receiver2_irq
 	wire  [31:0] nios_irq_irq;                                                      // irq_mapper:sender_irq -> NIOS:irq
-	wire         rst_controller_reset_out_reset;                                    // rst_controller:reset_out -> [AUDIO:reset, AUDIO_CONFIG:reset, FIFO:rdreset_n, FIFO:wrreset_n, LCD:reset, NIOS:reset_n, RAM:reset, REG_7_SEGMENTS:reset_n, REG_BUTTONS:reset_n, REG_SWITCHES:reset_n, TIMER:reset_n, UART:rst_n, irq_mapper:reset, mm_interconnect_0:NIOS_reset_reset_bridge_in_reset_reset, mm_interconnect_1:FIFO_reset_in_reset_bridge_in_reset_reset, rst_translator:in_reset]
+	wire         rst_controller_reset_out_reset;                                    // rst_controller:reset_out -> [AUDIO:reset, AUDIO_CONFIG:reset, FIFO:rdreset_n, FIFO:wrreset_n, I2C:reset_n, NIOS:reset_n, RAM:reset, REG_7_SEGMENTS:reset_n, REG_BUTTONS:reset_n, REG_SWITCHES:reset_n, TIMER:reset_n, UART:rst_n, irq_mapper:reset, mm_interconnect_0:NIOS_reset_reset_bridge_in_reset_reset, mm_interconnect_1:FIFO_reset_in_reset_bridge_in_reset_reset, rst_translator:in_reset]
 	wire         rst_controller_reset_out_reset_req;                                // rst_controller:reset_req -> [NIOS:reset_req, RAM:reset_req, rst_translator:reset_req_in]
 	wire         rst_controller_001_reset_out_reset;                                // rst_controller_001:reset_out -> mm_interconnect_1:ARM_h2f_lw_axi_master_agent_clk_reset_reset_bridge_in_reset_reset
 	wire         arm_h2f_reset_reset;                                               // ARM:h2f_rst_n -> rst_controller_001:reset_in0
@@ -409,22 +402,15 @@ module system_on_chip (
 		.wrclk_control_slave_irq          ()                                          //    in_irq.irq
 	);
 
-	system_on_chip_LCD lcd (
-		.clk         (clk_clk),                                            //                clk.clk
-		.reset       (rst_controller_reset_out_reset),                     //              reset.reset
-		.address     (mm_interconnect_0_lcd_avalon_lcd_slave_address),     //   avalon_lcd_slave.address
-		.chipselect  (mm_interconnect_0_lcd_avalon_lcd_slave_chipselect),  //                   .chipselect
-		.read        (mm_interconnect_0_lcd_avalon_lcd_slave_read),        //                   .read
-		.write       (mm_interconnect_0_lcd_avalon_lcd_slave_write),       //                   .write
-		.writedata   (mm_interconnect_0_lcd_avalon_lcd_slave_writedata),   //                   .writedata
-		.readdata    (mm_interconnect_0_lcd_avalon_lcd_slave_readdata),    //                   .readdata
-		.waitrequest (mm_interconnect_0_lcd_avalon_lcd_slave_waitrequest), //                   .waitrequest
-		.LCD_DATA    (lcd_DATA),                                           // external_interface.export
-		.LCD_ON      (lcd_ON),                                             //                   .export
-		.LCD_BLON    (lcd_BLON),                                           //                   .export
-		.LCD_EN      (lcd_EN),                                             //                   .export
-		.LCD_RS      (lcd_RS),                                             //                   .export
-		.LCD_RW      (lcd_RW)                                              //                   .export
+	system_on_chip_I2C i2c (
+		.clk        (clk_clk),                             //                 clk.clk
+		.reset_n    (~rst_controller_reset_out_reset),     //               reset.reset_n
+		.address    (mm_interconnect_0_i2c_s1_address),    //                  s1.address
+		.write_n    (~mm_interconnect_0_i2c_s1_write),     //                    .write_n
+		.writedata  (mm_interconnect_0_i2c_s1_writedata),  //                    .writedata
+		.chipselect (mm_interconnect_0_i2c_s1_chipselect), //                    .chipselect
+		.readdata   (mm_interconnect_0_i2c_s1_readdata),   //                    .readdata
+		.bidir_port (i2c_lcd_export)                       // external_connection.export
 	);
 
 	system_on_chip_NIOS nios (
@@ -561,13 +547,11 @@ module system_on_chip (
 		.FIFO_out_csr_read                               (mm_interconnect_0_fifo_out_csr_read),                               //                                    .read
 		.FIFO_out_csr_readdata                           (mm_interconnect_0_fifo_out_csr_readdata),                           //                                    .readdata
 		.FIFO_out_csr_writedata                          (mm_interconnect_0_fifo_out_csr_writedata),                          //                                    .writedata
-		.LCD_avalon_lcd_slave_address                    (mm_interconnect_0_lcd_avalon_lcd_slave_address),                    //                LCD_avalon_lcd_slave.address
-		.LCD_avalon_lcd_slave_write                      (mm_interconnect_0_lcd_avalon_lcd_slave_write),                      //                                    .write
-		.LCD_avalon_lcd_slave_read                       (mm_interconnect_0_lcd_avalon_lcd_slave_read),                       //                                    .read
-		.LCD_avalon_lcd_slave_readdata                   (mm_interconnect_0_lcd_avalon_lcd_slave_readdata),                   //                                    .readdata
-		.LCD_avalon_lcd_slave_writedata                  (mm_interconnect_0_lcd_avalon_lcd_slave_writedata),                  //                                    .writedata
-		.LCD_avalon_lcd_slave_waitrequest                (mm_interconnect_0_lcd_avalon_lcd_slave_waitrequest),                //                                    .waitrequest
-		.LCD_avalon_lcd_slave_chipselect                 (mm_interconnect_0_lcd_avalon_lcd_slave_chipselect),                 //                                    .chipselect
+		.I2C_s1_address                                  (mm_interconnect_0_i2c_s1_address),                                  //                              I2C_s1.address
+		.I2C_s1_write                                    (mm_interconnect_0_i2c_s1_write),                                    //                                    .write
+		.I2C_s1_readdata                                 (mm_interconnect_0_i2c_s1_readdata),                                 //                                    .readdata
+		.I2C_s1_writedata                                (mm_interconnect_0_i2c_s1_writedata),                                //                                    .writedata
+		.I2C_s1_chipselect                               (mm_interconnect_0_i2c_s1_chipselect),                               //                                    .chipselect
 		.NIOS_debug_mem_slave_address                    (mm_interconnect_0_nios_debug_mem_slave_address),                    //                NIOS_debug_mem_slave.address
 		.NIOS_debug_mem_slave_write                      (mm_interconnect_0_nios_debug_mem_slave_write),                      //                                    .write
 		.NIOS_debug_mem_slave_read                       (mm_interconnect_0_nios_debug_mem_slave_read),                       //                                    .read

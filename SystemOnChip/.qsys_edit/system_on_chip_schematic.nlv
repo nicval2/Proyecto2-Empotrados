@@ -3,20 +3,20 @@
 preplace inst system_on_chip.ARM.rstmgr -pg 1
 preplace inst system_on_chip -pg 1 -lvl 1 -y 40 -regy -20
 preplace inst system_on_chip.ARM.f2s_sdram_ref_clk -pg 1
-preplace inst system_on_chip.RAM -pg 1 -lvl 3 -y 770
+preplace inst system_on_chip.RAM -pg 1 -lvl 3 -y 790
 preplace inst system_on_chip.REG_7_SEGMENTS -pg 1 -lvl 3 -y 570
 preplace inst system_on_chip.ARM.eosc1 -pg 1
 preplace inst system_on_chip.ARM.eosc2 -pg 1
 preplace inst system_on_chip.FIFO -pg 1 -lvl 3 -y 130
 preplace inst system_on_chip.ARM -pg 1 -lvl 2 -y 100
-preplace inst system_on_chip.AUDIO_PLL -pg 1 -lvl 2 -y 660
+preplace inst system_on_chip.AUDIO_PLL -pg 1 -lvl 2 -y 670
 preplace inst system_on_chip.ARM.clk_0 -pg 1
 preplace inst system_on_chip.ARM.i2c0 -pg 1
 preplace inst system_on_chip.ARM.L2 -pg 1
 preplace inst system_on_chip.ARM.usb0 -pg 1
 preplace inst system_on_chip.ARM.axi_ocram -pg 1
 preplace inst system_on_chip.ARM.i2c1 -pg 1
-preplace inst system_on_chip.UART -pg 1 -lvl 3 -y 670
+preplace inst system_on_chip.UART -pg 1 -lvl 3 -y 690
 preplace inst system_on_chip.ARM.usb1 -pg 1
 preplace inst system_on_chip.ARM.i2c2 -pg 1
 preplace inst system_on_chip.NIOS -pg 1 -lvl 2 -y 810
@@ -33,7 +33,7 @@ preplace inst system_on_chip.clk_0 -pg 1 -lvl 1 -y 350
 preplace inst system_on_chip.AUDIO_PLL.reset_from_locked -pg 1
 preplace inst system_on_chip.ARM.l3regs -pg 1
 preplace inst system_on_chip.ARM.sysmgr -pg 1
-preplace inst system_on_chip.TIMER -pg 1 -lvl 3 -y 850
+preplace inst system_on_chip.TIMER -pg 1 -lvl 3 -y 870
 preplace inst system_on_chip.NIOS.reset_bridge -pg 1
 preplace inst system_on_chip.ARM.axi_sdram -pg 1
 preplace inst system_on_chip.ARM.wd_timer0 -pg 1
@@ -64,23 +64,26 @@ preplace inst system_on_chip.AUDIO_PLL.audio_pll -pg 1
 preplace inst system_on_chip.ARM.dcan1 -pg 1
 preplace inst system_on_chip.NIOS.cpu -pg 1
 preplace inst system_on_chip.REG_SWITCHES -pg 1 -lvl 3 -y 30
-preplace inst system_on_chip.AUDIO -pg 1 -lvl 2 -y 350
+preplace inst system_on_chip.AUDIO -pg 1 -lvl 2 -y 300
 preplace inst system_on_chip.ARM.gmac0 -pg 1
 preplace inst system_on_chip.ARM.fpga_interfaces -pg 1
-preplace inst system_on_chip.AUDIO_CONFIG -pg 1 -lvl 2 -y 530
+preplace inst system_on_chip.AUDIO_CONFIG -pg 1 -lvl 2 -y 460
 preplace inst system_on_chip.ARM.gmac1 -pg 1
 preplace inst system_on_chip.ARM.hps_io -pg 1
-preplace netloc FAN_OUT<net_container>system_on_chip</net_container>(MASTER)ARM.h2f_lw_axi_master,(SLAVE)FIFO.in,(SLAVE)FIFO.in_csr) 1 2 1 730
-preplace netloc EXPORT<net_container>system_on_chip</net_container>(SLAVE)REG_7_SEGMENTS.external_connection,(SLAVE)system_on_chip.id7_segment) 1 0 3 NJ 500 NJ 500 NJ
-preplace netloc EXPORT<net_container>system_on_chip</net_container>(SLAVE)system_on_chip.button,(SLAVE)REG_BUTTONS.external_connection) 1 0 3 NJ 480 NJ 480 NJ
-preplace netloc FAN_OUT<net_container>system_on_chip</net_container>(SLAVE)REG_BUTTONS.irq,(MASTER)NIOS.irq,(SLAVE)TIMER.irq,(SLAVE)UART.irq) 1 2 1 770
-preplace netloc EXPORT<net_container>system_on_chip</net_container>(SLAVE)clk_0.clk_in,(SLAVE)system_on_chip.clk) 1 0 1 NJ
-preplace netloc FAN_OUT<net_container>system_on_chip</net_container>(SLAVE)UART.clk,(SLAVE)ARM.f2h_axi_clock,(SLAVE)REG_SWITCHES.clk,(SLAVE)ARM.h2f_axi_clock,(SLAVE)LCD.clk,(SLAVE)REG_BUTTONS.clk,(SLAVE)AUDIO.clk,(SLAVE)FIFO.clk_out,(SLAVE)RAM.clk1,(MASTER)clk_0.clk,(SLAVE)AUDIO_PLL.ref_clk,(SLAVE)TIMER.clk,(SLAVE)FIFO.clk_in,(SLAVE)REG_7_SEGMENTS.clk,(SLAVE)ARM.f2h_sdram0_clock,(SLAVE)AUDIO_CONFIG.clk,(SLAVE)NIOS.clk,(SLAVE)ARM.h2f_lw_axi_clock) 1 1 2 310 320 750
-preplace netloc INTERCONNECT<net_container>system_on_chip</net_container>(SLAVE)TIMER.s1,(SLAVE)REG_7_SEGMENTS.s1,(SLAVE)RAM.s1,(SLAVE)REG_BUTTONS.s1,(MASTER)NIOS.data_master,(SLAVE)NIOS.debug_mem_slave,(MASTER)NIOS.instruction_master,(SLAVE)FIFO.out_csr,(SLAVE)LCD.avalon_lcd_slave,(SLAVE)UART.avalon_jtag_slave,(SLAVE)FIFO.out,(SLAVE)REG_SWITCHES.s1) 1 1 2 330 770 710
-preplace netloc FAN_OUT<net_container>system_on_chip</net_container>(SLAVE)FIFO.reset_in,(SLAVE)REG_BUTTONS.reset,(MASTER)clk_0.clk_reset,(SLAVE)UART.reset,(SLAVE)AUDIO.reset,(SLAVE)REG_SWITCHES.reset,(SLAVE)FIFO.reset_out,(SLAVE)LCD.reset,(SLAVE)TIMER.reset,(SLAVE)AUDIO_CONFIG.reset,(SLAVE)RAM.reset1,(SLAVE)NIOS.reset,(SLAVE)REG_7_SEGMENTS.reset,(SLAVE)AUDIO_PLL.ref_reset) 1 1 2 290 340 790
-preplace netloc EXPORT<net_container>system_on_chip</net_container>(SLAVE)LCD.external_interface,(SLAVE)system_on_chip.lcd) 1 0 3 NJ 300 NJ 300 NJ
-preplace netloc EXPORT<net_container>system_on_chip</net_container>(SLAVE)REG_SWITCHES.external_connection,(SLAVE)system_on_chip.switches) 1 0 3 NJ 60 NJ 60 NJ
-preplace netloc EXPORT<net_container>system_on_chip</net_container>(SLAVE)system_on_chip.memory,(SLAVE)ARM.memory) 1 0 2 NJ 250 NJ
-preplace netloc EXPORT<net_container>system_on_chip</net_container>(SLAVE)system_on_chip.reset,(SLAVE)clk_0.clk_in_reset) 1 0 1 NJ
-levelinfo -pg 1 0 80 1020
-levelinfo -hier system_on_chip 90 120 470 860 1010
+preplace netloc EXPORT<net_container>system_on_chip</net_container>(SLAVE)REG_BUTTONS.external_connection,(SLAVE)system_on_chip.button) 1 0 3 NJ 570 NJ 570 NJ
+preplace netloc FAN_OUT<net_container>system_on_chip</net_container>(SLAVE)REG_7_SEGMENTS.reset,(SLAVE)AUDIO_CONFIG.reset,(SLAVE)RAM.reset1,(SLAVE)TIMER.reset,(SLAVE)AUDIO_PLL.ref_reset,(SLAVE)REG_BUTTONS.reset,(SLAVE)NIOS.reset,(SLAVE)AUDIO.reset,(SLAVE)LCD.reset,(SLAVE)REG_SWITCHES.reset,(SLAVE)UART.reset,(SLAVE)FIFO.reset_in,(SLAVE)FIFO.reset_out,(MASTER)clk_0.clk_reset) 1 1 2 300 610 760
+preplace netloc EXPORT<net_container>system_on_chip</net_container>(SLAVE)clk_0.clk_in_reset,(SLAVE)system_on_chip.reset) 1 0 1 NJ
+preplace netloc EXPORT<net_container>system_on_chip</net_container>(SLAVE)REG_7_SEGMENTS.external_connection,(SLAVE)system_on_chip.id7_segment) 1 0 3 NJ 450 NJ 450 NJ
+preplace netloc EXPORT<net_container>system_on_chip</net_container>(SLAVE)ARM.memory,(SLAVE)system_on_chip.memory) 1 0 2 NJ 250 NJ
+preplace netloc EXPORT<net_container>system_on_chip</net_container>(SLAVE)AUDIO_CONFIG.external_interface,(SLAVE)system_on_chip.audio_config) 1 0 2 NJ 510 NJ
+preplace netloc EXPORT<net_container>system_on_chip</net_container>(SLAVE)system_on_chip.lcd,(SLAVE)LCD.external_interface) 1 0 3 NJ 430 NJ 430 NJ
+preplace netloc FAN_OUT<net_container>system_on_chip</net_container>(SLAVE)REG_SWITCHES.clk,(SLAVE)ARM.h2f_axi_clock,(MASTER)clk_0.clk,(SLAVE)FIFO.clk_out,(SLAVE)ARM.h2f_lw_axi_clock,(SLAVE)REG_BUTTONS.clk,(SLAVE)AUDIO_PLL.ref_clk,(SLAVE)ARM.f2h_axi_clock,(SLAVE)TIMER.clk,(SLAVE)ARM.f2h_sdram0_clock,(SLAVE)UART.clk,(SLAVE)NIOS.clk,(SLAVE)REG_7_SEGMENTS.clk,(SLAVE)AUDIO.clk,(SLAVE)AUDIO_CONFIG.clk,(SLAVE)LCD.clk,(SLAVE)RAM.clk1,(SLAVE)FIFO.clk_in) 1 1 2 320 590 820
+preplace netloc FAN_OUT<net_container>system_on_chip</net_container>(MASTER)NIOS.irq,(SLAVE)TIMER.irq,(SLAVE)REG_BUTTONS.irq,(SLAVE)UART.irq) 1 2 1 840
+preplace netloc EXPORT<net_container>system_on_chip</net_container>(MASTER)system_on_chip.audio_clk,(MASTER)AUDIO_PLL.audio_clk) 1 2 2 NJ 680 NJ
+preplace netloc INTERCONNECT<net_container>system_on_chip</net_container>(SLAVE)FIFO.out,(SLAVE)REG_7_SEGMENTS.s1,(SLAVE)AUDIO.avalon_audio_slave,(MASTER)NIOS.data_master,(MASTER)NIOS.instruction_master,(SLAVE)FIFO.out_csr,(SLAVE)LCD.avalon_lcd_slave,(SLAVE)NIOS.debug_mem_slave,(SLAVE)RAM.s1,(SLAVE)REG_BUTTONS.s1,(SLAVE)TIMER.s1,(SLAVE)REG_SWITCHES.s1,(SLAVE)AUDIO_CONFIG.avalon_av_config_slave,(SLAVE)UART.avalon_jtag_slave) 1 1 2 340 630 740
+preplace netloc EXPORT<net_container>system_on_chip</net_container>(SLAVE)AUDIO.external_interface,(SLAVE)system_on_chip.audio) 1 0 2 NJ 340 NJ
+preplace netloc EXPORT<net_container>system_on_chip</net_container>(SLAVE)system_on_chip.switches,(SLAVE)REG_SWITCHES.external_connection) 1 0 3 NJ 60 NJ 60 NJ
+preplace netloc EXPORT<net_container>system_on_chip</net_container>(SLAVE)system_on_chip.clk,(SLAVE)clk_0.clk_in) 1 0 1 NJ
+preplace netloc FAN_OUT<net_container>system_on_chip</net_container>(SLAVE)FIFO.in_csr,(MASTER)ARM.h2f_lw_axi_master,(SLAVE)FIFO.in) 1 2 1 800
+levelinfo -pg 1 0 90 1110
+levelinfo -hier system_on_chip 100 130 480 870 1020
