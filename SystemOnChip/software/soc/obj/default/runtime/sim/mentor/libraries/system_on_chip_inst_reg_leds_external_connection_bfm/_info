@@ -11,7 +11,7 @@ Z0 dC:/GitHubClone/Proyecto2-Empotrados/SystemOnChip/software/soc/obj/default/ru
 valtera_conduit_bfm_0002
 DXx6 sv_std 3 std 0 22 AD7iAPLo6nTIKk<N0eo=D3
 DXx25 altera_common_sv_packages 13 verbosity_pkg 0 22 :D7o[f<X7;<Phbl]DX6a<1
-!s110 1764200673
+!s110 1764211116
 !i10b 1
 !s100 cmPhNYPk[`HB7I37X6o`53
 IjE8JJAdMe3VRY7kPVl^C>3
@@ -27,7 +27,7 @@ OV;L;10.5b;63
 r1
 !s85 0
 31
-!s108 1764200673.000000
+!s108 1764211116.000000
 !s107 C:/GitHubClone/Proyecto2-Empotrados/SystemOnChip/system_on_chip2/testbench/system_on_chip_tb/simulation/submodules/altera_conduit_bfm_0002.sv|
 !s90 -reportprogress|300|-sv|C:/GitHubClone/Proyecto2-Empotrados/SystemOnChip/system_on_chip2/testbench/system_on_chip_tb/simulation/submodules/altera_conduit_bfm_0002.sv|-L|altera_common_sv_packages|-work|system_on_chip_inst_reg_leds_external_connection_bfm|
 !i113 1

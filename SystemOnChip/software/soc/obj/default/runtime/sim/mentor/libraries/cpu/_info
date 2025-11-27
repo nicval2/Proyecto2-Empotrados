@@ -9,7 +9,7 @@ z2
 cModel Technology
 Z0 dC:/GitHubClone/Proyecto2-Empotrados/SystemOnChip/software/soc/obj/default/runtime/sim/mentor
 vsystem_on_chip_NIOS_cpu
-Z1 !s110 1764200670
+Z1 !s110 1764211114
 !i10b 1
 !s100 ^n:J7PkI>oXHSR3VCz??j0
 IML?Wjehz2F;Xm2X>:f:BX1
@@ -23,7 +23,7 @@ Z6 OV;L;10.5b;63
 r1
 !s85 0
 31
-Z7 !s108 1764200670.000000
+Z7 !s108 1764211114.000000
 Z8 !s107 C:/GitHubClone/Proyecto2-Empotrados/SystemOnChip/system_on_chip2/testbench/system_on_chip_tb/simulation/submodules/system_on_chip_NIOS_cpu.v|
 Z9 !s90 -reportprogress|300|C:/GitHubClone/Proyecto2-Empotrados/SystemOnChip/system_on_chip2/testbench/system_on_chip_tb/simulation/submodules/system_on_chip_NIOS_cpu.v|-work|cpu|
 !i113 1
@@ -31,7 +31,7 @@ Z10 o-work cpu
 Z11 tCvgOpt 0
 nsystem_on_chip_@n@i@o@s_cpu
 vsystem_on_chip_NIOS_cpu_debug_slave_sysclk
-Z12 !s110 1764200671
+R1
 !i10b 1
 !s100 _Go]Y4f@?Tg3lYVnHKPHI3
 InmHLgU^8E>12E@TocNX]G0
@@ -40,12 +40,12 @@ R0
 R3
 8C:/GitHubClone/Proyecto2-Empotrados/SystemOnChip/system_on_chip2/testbench/system_on_chip_tb/simulation/submodules/system_on_chip_NIOS_cpu_debug_slave_sysclk.v
 FC:/GitHubClone/Proyecto2-Empotrados/SystemOnChip/system_on_chip2/testbench/system_on_chip_tb/simulation/submodules/system_on_chip_NIOS_cpu_debug_slave_sysclk.v
-Z13 L0 21
+Z12 L0 21
 R6
 r1
 !s85 0
 31
-Z14 !s108 1764200671.000000
+R7
 !s107 C:/GitHubClone/Proyecto2-Empotrados/SystemOnChip/system_on_chip2/testbench/system_on_chip_tb/simulation/submodules/system_on_chip_NIOS_cpu_debug_slave_sysclk.v|
 !s90 -reportprogress|300|C:/GitHubClone/Proyecto2-Empotrados/SystemOnChip/system_on_chip2/testbench/system_on_chip_tb/simulation/submodules/system_on_chip_NIOS_cpu_debug_slave_sysclk.v|-work|cpu|
 !i113 1
@@ -53,7 +53,7 @@ R10
 R11
 nsystem_on_chip_@n@i@o@s_cpu_debug_slave_sysclk
 vsystem_on_chip_NIOS_cpu_debug_slave_tck
-R12
+R1
 !i10b 1
 !s100 Cd@f:[YM0ZzUOWD`jkKT93
 IT>a2^K=b>U33fLc^WCMDo2
@@ -62,12 +62,12 @@ R0
 R3
 8C:/GitHubClone/Proyecto2-Empotrados/SystemOnChip/system_on_chip2/testbench/system_on_chip_tb/simulation/submodules/system_on_chip_NIOS_cpu_debug_slave_tck.v
 FC:/GitHubClone/Proyecto2-Empotrados/SystemOnChip/system_on_chip2/testbench/system_on_chip_tb/simulation/submodules/system_on_chip_NIOS_cpu_debug_slave_tck.v
-R13
+R12
 R6
 r1
 !s85 0
 31
-R14
+R7
 !s107 C:/GitHubClone/Proyecto2-Empotrados/SystemOnChip/system_on_chip2/testbench/system_on_chip_tb/simulation/submodules/system_on_chip_NIOS_cpu_debug_slave_tck.v|
 !s90 -reportprogress|300|C:/GitHubClone/Proyecto2-Empotrados/SystemOnChip/system_on_chip2/testbench/system_on_chip_tb/simulation/submodules/system_on_chip_NIOS_cpu_debug_slave_tck.v|-work|cpu|
 !i113 1
@@ -75,7 +75,7 @@ R10
 R11
 nsystem_on_chip_@n@i@o@s_cpu_debug_slave_tck
 vsystem_on_chip_NIOS_cpu_debug_slave_wrapper
-R12
+R1
 !i10b 1
 !s100 ^<_16;3NgNYT6j>AX7`9Q0
 I`g?adFZ4F[UW>dkc9bg=20
@@ -84,12 +84,12 @@ R0
 R3
 8C:/GitHubClone/Proyecto2-Empotrados/SystemOnChip/system_on_chip2/testbench/system_on_chip_tb/simulation/submodules/system_on_chip_NIOS_cpu_debug_slave_wrapper.v
 FC:/GitHubClone/Proyecto2-Empotrados/SystemOnChip/system_on_chip2/testbench/system_on_chip_tb/simulation/submodules/system_on_chip_NIOS_cpu_debug_slave_wrapper.v
-R13
+R12
 R6
 r1
 !s85 0
 31
-R14
+R7
 !s107 C:/GitHubClone/Proyecto2-Empotrados/SystemOnChip/system_on_chip2/testbench/system_on_chip_tb/simulation/submodules/system_on_chip_NIOS_cpu_debug_slave_wrapper.v|
 !s90 -reportprogress|300|C:/GitHubClone/Proyecto2-Empotrados/SystemOnChip/system_on_chip2/testbench/system_on_chip_tb/simulation/submodules/system_on_chip_NIOS_cpu_debug_slave_wrapper.v|-work|cpu|
 !i113 1
@@ -502,7 +502,7 @@ R0
 R3
 R4
 R5
-R13
+R12
 R6
 r1
 !s85 0
@@ -537,7 +537,7 @@ R10
 R11
 nsystem_on_chip_@n@i@o@s_cpu_register_bank_b_module
 vsystem_on_chip_NIOS_cpu_test_bench
-R12
+R1
 !i10b 1
 !s100 EcB5f>=APc1[CV:E8`k`<1
 IHV:Zk^Yn4lZ[[of5fQT7z1
@@ -546,12 +546,12 @@ R0
 R3
 8C:/GitHubClone/Proyecto2-Empotrados/SystemOnChip/system_on_chip2/testbench/system_on_chip_tb/simulation/submodules/system_on_chip_NIOS_cpu_test_bench.v
 FC:/GitHubClone/Proyecto2-Empotrados/SystemOnChip/system_on_chip2/testbench/system_on_chip_tb/simulation/submodules/system_on_chip_NIOS_cpu_test_bench.v
-R13
+R12
 R6
 r1
 !s85 0
 31
-R14
+R7
 !s107 C:/GitHubClone/Proyecto2-Empotrados/SystemOnChip/system_on_chip2/testbench/system_on_chip_tb/simulation/submodules/system_on_chip_NIOS_cpu_test_bench.v|
 !s90 -reportprogress|300|C:/GitHubClone/Proyecto2-Empotrados/SystemOnChip/system_on_chip2/testbench/system_on_chip_tb/simulation/submodules/system_on_chip_NIOS_cpu_test_bench.v|-work|cpu|
 !i113 1

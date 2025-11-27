@@ -9,10 +9,10 @@ void display_time_4seg(volatile int *hex_ptr,
                        int minutes, int seconds)
 {
     // Tabla 7 segmentos
-    int seg7_table[10] = {
-        0x3F,0x06,0x5B,0x4F,0x66,
-        0x6D,0x7D,0x07,0x7F,0x6F
-    };
+	int seg7_table[10] = {
+	    0x40, 0x79, 0x24, 0x30, 0x19,
+	    0x12, 0x02, 0x78, 0x00, 0x10
+	};
 
     // Obtener dígitos
     int m1 = (minutes / 10) % 10;
@@ -74,8 +74,6 @@ int song_timer() {
 
 		  // Obtener representacion 7 segmentos del tiempo
 		  display_time_4seg(segments7_ptr, elapsed_m, elapsed_s);
-
-		  alt_printf("Elapsed ms: %i\n", elapsed_ms);
 	  }
 	}
 }
