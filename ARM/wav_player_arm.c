@@ -1,4 +1,4 @@
-// wav_player_arm_stereo_fixed.c
+// wav_player_arm.c
 #define _DEFAULT_SOURCE
 #define _POSIX_C_SOURCE 200809L
 #include <stdio.h>
