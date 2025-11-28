@@ -104,3 +104,11 @@ Angstrom linux distribution
 ```bash
 https://www.terasic.com.tw/cgi-bin/page/archive.pl?Language=English&CategoryNo=205&No=1081&PartNo=4
 ```
+
+```bash
+cat > wav_info.c << 'EOF'
+cat > test_arm_h2f_fifo.c << 'EOF'
+```
+EOF
+
+vi wav_info.c
