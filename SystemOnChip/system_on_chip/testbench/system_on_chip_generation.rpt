@@ -1,16 +1,28 @@
 Info: Starting: Create testbench Platform Designer system
-Info: C:/Users/nicva/Empotrados/Proyecto2-Empotrados/SystemOnChip/system_on_chip/testbench/system_on_chip.ipx
-Info: qsys-generate C:\Users\nicva\Empotrados\Proyecto2-Empotrados\SystemOnChip\system_on_chip.qsys --testbench=STANDARD --output-directory=C:\Users\nicva\Empotrados\Proyecto2-Empotrados\SystemOnChip --family="Cyclone V" --part=5CSEMA5F31C6
+Info: C:/GitHubClone/Proyecto2-Empotrados/SystemOnChip/system_on_chip/testbench/system_on_chip.ipx
+Info: qsys-generate C:\GitHubClone\Proyecto2-Empotrados\SystemOnChip\system_on_chip.qsys --testbench=STANDARD --output-directory=C:\GitHubClone\Proyecto2-Empotrados\SystemOnChip --family="Cyclone V" --part=5CSEMA5F31C6
 Progress: Loading SystemOnChip/system_on_chip.qsys
 Progress: Reading input file
+Progress: Adding ARM [altera_hps 18.0]
+Progress: Parameterizing module ARM
+Progress: Adding Audio [altera_up_avalon_audio 18.0]
+Progress: Parameterizing module Audio
+Progress: Adding Audio_Config [altera_up_avalon_audio_and_video_config 18.0]
+Progress: Parameterizing module Audio_Config
+Progress: Adding Audio_PLL [altera_up_avalon_audio_pll 18.0]
+Progress: Parameterizing module Audio_PLL
+Progress: Adding FIFO [altera_avalon_fifo 18.0]
+Progress: Parameterizing module FIFO
 Progress: Adding NIOS [altera_nios2_gen2 18.0]
 Progress: Parameterizing module NIOS
 Progress: Adding RAM [altera_avalon_onchip_memory2 18.0]
 Progress: Parameterizing module RAM
-Progress: Adding REG_BUTTON [altera_avalon_pio 18.0]
-Progress: Parameterizing module REG_BUTTON
-Progress: Adding REG_LEDS [altera_avalon_pio 18.0]
-Progress: Parameterizing module REG_LEDS
+Progress: Adding REG_7_SEGMENTS [altera_avalon_pio 18.0]
+Progress: Parameterizing module REG_7_SEGMENTS
+Progress: Adding REG_BUTTONS [altera_avalon_pio 18.0]
+Progress: Parameterizing module REG_BUTTONS
+Progress: Adding REG_SWITCHES [altera_avalon_pio 18.0]
+Progress: Parameterizing module REG_SWITCHES
 Progress: Adding TIMER [altera_avalon_timer 18.0]
 Progress: Parameterizing module TIMER
 Progress: Adding UART [altera_avalon_jtag_uart 18.0]
@@ -21,52 +33,54 @@ Progress: Building connections
 Progress: Parameterizing connections
 Progress: Validating
 Progress: Done reading input file
-Info: system_on_chip.REG_BUTTON: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: system_on_chip.REG_BUTTONS: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: system_on_chip.REG_SWITCHES: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
 Info: system_on_chip.UART: JTAG UART IP input clock need to be at least double (2x) the operating frequency of JTAG TCK on board
-Warning: system_on_chip.REG_BUTTON: REG_BUTTON.external_connection must be exported, or connected to a matching conduit.
-Warning: system_on_chip.REG_LEDS: REG_LEDS.external_connection must be exported, or connected to a matching conduit.
+Warning: system_on_chip.FIFO: Interrupt sender FIFO.out_irq is not connected to an interrupt receiver
+Warning: system_on_chip.FIFO: Interrupt sender FIFO.in_irq is not connected to an interrupt receiver
+Warning: system_on_chip.REG_SWITCHES: Interrupt sender REG_SWITCHES.irq is not connected to an interrupt receiver
 Info: qsys-generate succeeded.
 Info: Loading IP catalog for testbench.
 Progress: 
 Progress: 
 Progress: 
-Progress: (2) searching C:/intelfpga_lite/18.0/quartus/sopc_builder/bin/root_components.ipx (ipx file)
-Info: Reading index C:\intelfpga_lite\18.0\quartus\sopc_builder\bin\root_components.ipx
-Info: C:\intelfpga_lite\18.0\quartus\sopc_builder\bin\root_components.ipx: Loading now from components.ipx
-Info: Reading index C:\intelfpga_lite\18.0\quartus\sopc_builder\bin\ip_component_categories.ipx
-Info: C:\intelfpga_lite\18.0\quartus\sopc_builder\bin\ip_component_categories.ipx described 0 plugins, 0 paths, in 0.00 seconds
-Info: C:/intelfpga_lite/18.0/quartus/sopc_builder/bin/ip_component_categories.ipx matched 1 files in 0.00 seconds
-Info: C:/Users/nicva/Empotrados/Proyecto2-Empotrados/SystemOnChip/system_on_chip/testbench/ip/**/* matched 0 files in 0.00 seconds
-Info: Reading index C:\Users\nicva\Empotrados\Proyecto2-Empotrados\SystemOnChip\system_on_chip\testbench\system_on_chip.ipx
+Progress: (2) searching D:/quartus18/quartus/sopc_builder/bin/root_components.ipx (ipx file)
+Info: Reading index D:\quartus18\quartus\sopc_builder\bin\root_components.ipx
+Info: D:\quartus18\quartus\sopc_builder\bin\root_components.ipx: Loading now from components.ipx
+Info: Reading index D:\quartus18\quartus\sopc_builder\bin\ip_component_categories.ipx
+Info: D:\quartus18\quartus\sopc_builder\bin\ip_component_categories.ipx described 0 plugins, 0 paths, in 0,00 seconds
+Info: D:/quartus18/quartus/sopc_builder/bin/ip_component_categories.ipx matched 1 files in 0,00 seconds
+Info: C:/GitHubClone/Proyecto2-Empotrados/SystemOnChip/system_on_chip/testbench/ip/**/* matched 0 files in 0,00 seconds
+Info: Reading index C:\GitHubClone\Proyecto2-Empotrados\SystemOnChip\system_on_chip\testbench\system_on_chip.ipx
 Progress: Loading SystemOnChip/system_on_chip.qsys
-Info: C:/Users/nicva/Empotrados/Proyecto2-Empotrados/SystemOnChip/* matched 10 files in 0.01 seconds
-Info: C:/Users/nicva/Empotrados/Proyecto2-Empotrados/SystemOnChip/ip/**/* matched 0 files in 0.00 seconds
-Info: C:/Users/nicva/Empotrados/Proyecto2-Empotrados/SystemOnChip/*/* matched 17 files in 0.00 seconds
-Info: C:\Users\nicva\Empotrados\Proyecto2-Empotrados\SystemOnChip\system_on_chip\testbench\system_on_chip.ipx described 0 plugins, 3 paths, in 0.01 seconds
+Info: C:/GitHubClone/Proyecto2-Empotrados/SystemOnChip/* matched 16 files in 0,00 seconds
+Info: C:/GitHubClone/Proyecto2-Empotrados/SystemOnChip/ip/**/* matched 0 files in 0,00 seconds
+Info: C:/GitHubClone/Proyecto2-Empotrados/SystemOnChip/*/* matched 545 files in 0,04 seconds
+Info: C:\GitHubClone\Proyecto2-Empotrados\SystemOnChip\system_on_chip\testbench\system_on_chip.ipx described 0 plugins, 3 paths, in 0,05 seconds
 Progress: Loading testbench/system_on_chip_tb.qsys
-Info: C:/Users/nicva/Empotrados/Proyecto2-Empotrados/SystemOnChip/system_on_chip/testbench/* matched 12 files in 0.01 seconds
-Info: C:/Users/nicva/Empotrados/Proyecto2-Empotrados/SystemOnChip/system_on_chip/testbench/*/* matched 9 files in 0.00 seconds
-Info: C:/Users/nicva/.altera.quartus/ip/18.0/**/* matched 0 files in 0.00 seconds
-Info: C:/intelfpga_lite/18.0/quartus/sopc_builder/bin/$$QUARTUS_IP_PROJECTDIR/* matched 0 files in 0.00 seconds
-Info: C:/intelfpga_lite/18.0/quartus/sopc_builder/bin/$$QUARTUS_IP_USERDIR/* matched 0 files in 0.00 seconds
-Info: C:/intelfpga_lite/18.0/quartus/sopc_builder/bin/$$QUARTUS_IP_GLOBALDIR/* matched 0 files in 0.00 seconds
-Info: Reading index C:\intelfpga_lite\18.0\ip\altera\altera_components.ipx
-Info: C:\intelfpga_lite\18.0\ip\altera\altera_components.ipx described 2031 plugins, 0 paths, in 0.05 seconds
-Info: C:/intelfpga_lite/18.0/ip/**/* matched 138 files in 0.07 seconds
-Info: C:/intelfpga_lite/ip/**/* matched 0 files in 0.00 seconds
-Info: Reading index C:\intelfpga_lite\18.0\quartus\sopc_builder\builtin.ipx
-Info: C:\intelfpga_lite\18.0\quartus\sopc_builder\builtin.ipx described 83 plugins, 0 paths, in 0.00 seconds
-Info: C:/intelfpga_lite/18.0/quartus/sopc_builder/**/* matched 8 files in 0.00 seconds
-Info: Reading index C:\intelfpga_lite\18.0\quartus\common\librarian\factories\index.ipx
-Info: C:\intelfpga_lite\18.0\quartus\common\librarian\factories\index.ipx described 151 plugins, 0 paths, in 0.00 seconds
-Info: C:/intelfpga_lite/18.0/quartus/common/librarian/factories/**/* matched 4 files in 0.00 seconds
-Info: C:/intelfpga_lite/18.0/quartus/sopc_builder/bin/$IP_IPX_PATH matched 1 files in 0.00 seconds
-Info: C:\intelfpga_lite\18.0\quartus\sopc_builder\bin\root_components.ipx described 0 plugins, 13 paths, in 0.08 seconds
-Info: C:/intelfpga_lite/18.0/quartus/sopc_builder/bin/root_components.ipx matched 1 files in 0.08 seconds
+Info: C:/GitHubClone/Proyecto2-Empotrados/SystemOnChip/system_on_chip/testbench/* matched 12 files in 0,08 seconds
+Info: C:/GitHubClone/Proyecto2-Empotrados/SystemOnChip/system_on_chip/testbench/*/* matched 9 files in 0,00 seconds
+Info: C:/Users/esteb/.altera.quartus/ip/18.0/**/* matched 0 files in 0,00 seconds
+Info: D:/quartus18/quartus/sopc_builder/bin/$$QUARTUS_IP_PROJECTDIR/* matched 0 files in 0,00 seconds
+Info: D:/quartus18/quartus/sopc_builder/bin/$$QUARTUS_IP_USERDIR/* matched 0 files in 0,00 seconds
+Info: D:/quartus18/quartus/sopc_builder/bin/$$QUARTUS_IP_GLOBALDIR/* matched 0 files in 0,00 seconds
+Info: Reading index D:\quartus18\ip\altera\altera_components.ipx
+Info: D:\quartus18\ip\altera\altera_components.ipx described 2031 plugins, 0 paths, in 0,16 seconds
+Info: D:/quartus18/ip/**/* matched 138 files in 0,16 seconds
+Info: D:/ip/**/* matched 0 files in 0,00 seconds
+Info: Reading index D:\quartus18\quartus\sopc_builder\builtin.ipx
+Info: D:\quartus18\quartus\sopc_builder\builtin.ipx described 83 plugins, 0 paths, in 0,01 seconds
+Info: D:/quartus18/quartus/sopc_builder/**/* matched 8 files in 0,01 seconds
+Info: Reading index D:\quartus18\quartus\common\librarian\factories\index.ipx
+Info: D:\quartus18\quartus\common\librarian\factories\index.ipx described 151 plugins, 0 paths, in 0,01 seconds
+Info: D:/quartus18/quartus/common/librarian/factories/**/* matched 4 files in 0,01 seconds
+Info: D:/quartus18/quartus/sopc_builder/bin/$IP_IPX_PATH matched 1 files in 0,00 seconds
+Info: D:\quartus18\quartus\sopc_builder\bin\root_components.ipx described 0 plugins, 13 paths, in 0,27 seconds
+Info: D:/quartus18/quartus/sopc_builder/bin/root_components.ipx matched 1 files in 0,27 seconds
 Progress: 
 Progress: 
 Progress: 
-Info: Running script C:/intelfpga_lite/18.0/quartus/sopc_builder/bin/tbgen.tcl
+Info: Running script D:/quartus18/quartus/sopc_builder/bin/tbgen.tcl
 Info: send_message Info TB_Gen: QSYS Testbench Generator Rev: $Revision: #1 $
 Info: TB_Gen: QSYS Testbench Generator Rev: $Revision: #1 $
 Info: get_module_property NAME
@@ -74,24 +88,32 @@ Info: send_message Info TB_Gen: System design is: system_on_chip
 Info: TB_Gen: System design is: system_on_chip
 Info: get_interfaces 
 Info: get_connections 
+Info: get_interface_property button EXPORT_OF
+Info: get_instance_property REG_BUTTONS CLASS_NAME
+Info: get_instance_assignment REG_BUTTONS testbench.partner.map.external_connection
 Info: get_interface_property clk EXPORT_OF
 Info: get_instance_property clk_0 CLASS_NAME
 Info: get_instance_assignment clk_0 testbench.partner.map.clk_in
+Info: get_interface_property id7_segment EXPORT_OF
+Info: get_instance_property REG_7_SEGMENTS CLASS_NAME
+Info: get_instance_assignment REG_7_SEGMENTS testbench.partner.map.external_connection
 Info: get_interface_property reset EXPORT_OF
 Info: get_instance_property clk_0 CLASS_NAME
 Info: get_instance_assignment clk_0 testbench.partner.map.clk_in_reset
-Info: get_interface_property timer_irq EXPORT_OF
-Info: get_instance_property TIMER CLASS_NAME
-Info: get_instance_assignment TIMER testbench.partner.map.irq
+Info: get_interface_property switches EXPORT_OF
+Info: get_instance_property REG_SWITCHES CLASS_NAME
+Info: get_instance_assignment REG_SWITCHES testbench.partner.map.external_connection
 Info: send_message Info TB_Gen: Creating testbench system : system_on_chip_tb with all standard BFMs
 Info: TB_Gen: Creating testbench system : system_on_chip_tb with all standard BFMs
 Info: create_system system_on_chip_tb
 Info: add_instance system_on_chip_inst system_on_chip 
 Info: set_use_testbench_naming_pattern true system_on_chip
 Info: get_instance_interfaces system_on_chip_inst
+Info: get_instance_interface_property system_on_chip_inst button CLASS_NAME
 Info: get_instance_interface_property system_on_chip_inst clk CLASS_NAME
+Info: get_instance_interface_property system_on_chip_inst id7_segment CLASS_NAME
 Info: get_instance_interface_property system_on_chip_inst reset CLASS_NAME
-Info: get_instance_interface_property system_on_chip_inst timer_irq CLASS_NAME
+Info: get_instance_interface_property system_on_chip_inst switches CLASS_NAME
 Info: get_instance_interface_property system_on_chip_inst clk CLASS_NAME
 Info: send_message Info TB_Gen: clock_sink found: clk
 Info: TB_Gen: clock_sink found: clk
@@ -133,72 +155,104 @@ Info: get_instance_interfaces system_on_chip_inst_reset_bfm
 Info: get_instance_interface_property system_on_chip_inst_reset_bfm clk CLASS_NAME
 Info: get_instance_interface_property system_on_chip_inst_reset_bfm reset CLASS_NAME
 Info: add_connection system_on_chip_inst_reset_bfm.reset system_on_chip_inst.reset
-Info: get_instance_interface_property system_on_chip_inst timer_irq CLASS_NAME
-Info: send_message Info TB_Gen: interrupt_sender found: timer_irq
-Info: TB_Gen: interrupt_sender found: timer_irq
-Info: get_instance_interface_property system_on_chip_inst timer_irq CLASS_NAME
-Info: add_instance system_on_chip_inst_timer_irq_bfm altera_avalon_interrupt_sink 
-Info: get_instance_property system_on_chip_inst_timer_irq_bfm CLASS_NAME
-Info: get_instance_interface_ports system_on_chip_inst timer_irq
-Info: get_instance_interface_port_property system_on_chip_inst timer_irq timer_irq_irq ROLE
-Info: get_instance_interface_port_property system_on_chip_inst timer_irq timer_irq_irq WIDTH
-Info: set_instance_parameter_value system_on_chip_inst_timer_irq_bfm AV_IRQ_W 1
-Info: set_instance_parameter_value system_on_chip_inst_timer_irq_bfm ASSERT_HIGH_IRQ 1
-Info: set_instance_parameter_value system_on_chip_inst_timer_irq_bfm VHDL_ID 0
-Info: get_instance_property system_on_chip_inst_timer_irq_bfm CLASS_NAME
-Info: get_instance_interfaces system_on_chip_inst_timer_irq_bfm
-Info: get_instance_interface_property system_on_chip_inst_timer_irq_bfm clock_reset CLASS_NAME
-Info: get_instance_interface_property system_on_chip_inst_timer_irq_bfm clock_reset_reset CLASS_NAME
-Info: get_instance_interface_property system_on_chip_inst_timer_irq_bfm irq CLASS_NAME
-Info: get_instance_property system_on_chip_inst_timer_irq_bfm CLASS_NAME
-Info: get_instance_interface_parameter_value system_on_chip_inst timer_irq associatedClock
-Info: get_instance_interface_property system_on_chip_inst clk CLASS_NAME
-Info: get_instance_interfaces system_on_chip_inst_clk_bfm
-Info: get_instance_interface_property system_on_chip_inst_clk_bfm clk CLASS_NAME
-Info: add_connection system_on_chip_inst_clk_bfm.clk system_on_chip_inst_timer_irq_bfm.clock_reset
-Info: get_instance_interfaces system_on_chip_inst_timer_irq_bfm
-Info: get_instance_interface_property system_on_chip_inst_timer_irq_bfm clock_reset CLASS_NAME
-Info: get_instance_interface_property system_on_chip_inst_timer_irq_bfm clock_reset_reset CLASS_NAME
-Info: get_instance_interface_property system_on_chip_inst_timer_irq_bfm irq CLASS_NAME
-Info: get_instance_property system_on_chip_inst_timer_irq_bfm CLASS_NAME
-Info: get_instance_interface_parameter_value system_on_chip_inst timer_irq associatedReset
-Info: get_instance_interface_property system_on_chip_inst reset CLASS_NAME
-Info: get_instance_interfaces system_on_chip_inst_reset_bfm
-Info: get_instance_interface_property system_on_chip_inst_reset_bfm clk CLASS_NAME
-Info: get_instance_interface_property system_on_chip_inst_reset_bfm reset CLASS_NAME
-Info: add_connection system_on_chip_inst_reset_bfm.reset system_on_chip_inst_timer_irq_bfm.clock_reset_reset
-Info: get_instance_interface_property system_on_chip_inst timer_irq CLASS_NAME
-Info: get_instance_interfaces system_on_chip_inst_timer_irq_bfm
-Info: get_instance_interface_property system_on_chip_inst_timer_irq_bfm clock_reset CLASS_NAME
-Info: get_instance_interface_property system_on_chip_inst_timer_irq_bfm clock_reset_reset CLASS_NAME
-Info: get_instance_interface_property system_on_chip_inst_timer_irq_bfm irq CLASS_NAME
-Info: add_connection system_on_chip_inst_timer_irq_bfm.irq system_on_chip_inst.timer_irq
+Info: get_instance_interface_property system_on_chip_inst button CLASS_NAME
+Info: send_message Info TB_Gen: conduit_end found: button
+Info: TB_Gen: conduit_end found: button
+Info: get_instance_interface_property system_on_chip_inst button CLASS_NAME
+Info: add_instance system_on_chip_inst_button_bfm altera_conduit_bfm 
+Info: get_instance_property system_on_chip_inst_button_bfm CLASS_NAME
+Info: get_instance_interface_parameter_value system_on_chip_inst button associatedClock
+Info: get_instance_interface_parameter_value system_on_chip_inst button associatedReset
+Info: get_instance_interface_ports system_on_chip_inst button
+Info: get_instance_interface_port_property system_on_chip_inst button button_export ROLE
+Info: get_instance_interface_port_property system_on_chip_inst button button_export WIDTH
+Info: get_instance_interface_port_property system_on_chip_inst button button_export DIRECTION
+Info: set_instance_parameter_value system_on_chip_inst_button_bfm CLOCKED_SIGNAL 0
+Info: set_instance_parameter_value system_on_chip_inst_button_bfm ENABLE_RESET 0
+Info: set_instance_parameter_value system_on_chip_inst_button_bfm SIGNAL_ROLES export
+Info: set_instance_parameter_value system_on_chip_inst_button_bfm SIGNAL_WIDTHS 4
+Info: set_instance_parameter_value system_on_chip_inst_button_bfm SIGNAL_DIRECTIONS output
+Info: get_instance_property system_on_chip_inst_button_bfm CLASS_NAME
+Info: get_instance_interface_property system_on_chip_inst button CLASS_NAME
+Info: get_instance_interfaces system_on_chip_inst_button_bfm
+Info: get_instance_interface_property system_on_chip_inst_button_bfm conduit CLASS_NAME
+Info: add_connection system_on_chip_inst_button_bfm.conduit system_on_chip_inst.button
+Info: get_instance_interface_property system_on_chip_inst id7_segment CLASS_NAME
+Info: send_message Info TB_Gen: conduit_end found: id7_segment
+Info: TB_Gen: conduit_end found: id7_segment
+Info: get_instance_interface_property system_on_chip_inst id7_segment CLASS_NAME
+Info: add_instance system_on_chip_inst_id7_segment_bfm altera_conduit_bfm 
+Info: get_instance_property system_on_chip_inst_id7_segment_bfm CLASS_NAME
+Info: get_instance_interface_parameter_value system_on_chip_inst id7_segment associatedClock
+Info: get_instance_interface_parameter_value system_on_chip_inst id7_segment associatedReset
+Info: get_instance_interface_ports system_on_chip_inst id7_segment
+Info: get_instance_interface_port_property system_on_chip_inst id7_segment id7_segment_export ROLE
+Info: get_instance_interface_port_property system_on_chip_inst id7_segment id7_segment_export WIDTH
+Info: get_instance_interface_port_property system_on_chip_inst id7_segment id7_segment_export DIRECTION
+Info: set_instance_parameter_value system_on_chip_inst_id7_segment_bfm CLOCKED_SIGNAL 0
+Info: set_instance_parameter_value system_on_chip_inst_id7_segment_bfm ENABLE_RESET 0
+Info: set_instance_parameter_value system_on_chip_inst_id7_segment_bfm SIGNAL_ROLES export
+Info: set_instance_parameter_value system_on_chip_inst_id7_segment_bfm SIGNAL_WIDTHS 32
+Info: set_instance_parameter_value system_on_chip_inst_id7_segment_bfm SIGNAL_DIRECTIONS input
+Info: get_instance_property system_on_chip_inst_id7_segment_bfm CLASS_NAME
+Info: get_instance_interface_property system_on_chip_inst id7_segment CLASS_NAME
+Info: get_instance_interfaces system_on_chip_inst_id7_segment_bfm
+Info: get_instance_interface_property system_on_chip_inst_id7_segment_bfm conduit CLASS_NAME
+Info: add_connection system_on_chip_inst_id7_segment_bfm.conduit system_on_chip_inst.id7_segment
+Info: get_instance_interface_property system_on_chip_inst switches CLASS_NAME
+Info: send_message Info TB_Gen: conduit_end found: switches
+Info: TB_Gen: conduit_end found: switches
+Info: get_instance_interface_property system_on_chip_inst switches CLASS_NAME
+Info: add_instance system_on_chip_inst_switches_bfm altera_conduit_bfm 
+Info: get_instance_property system_on_chip_inst_switches_bfm CLASS_NAME
+Info: get_instance_interface_parameter_value system_on_chip_inst switches associatedClock
+Info: get_instance_interface_parameter_value system_on_chip_inst switches associatedReset
+Info: get_instance_interface_ports system_on_chip_inst switches
+Info: get_instance_interface_port_property system_on_chip_inst switches switches_export ROLE
+Info: get_instance_interface_port_property system_on_chip_inst switches switches_export WIDTH
+Info: get_instance_interface_port_property system_on_chip_inst switches switches_export DIRECTION
+Info: set_instance_parameter_value system_on_chip_inst_switches_bfm CLOCKED_SIGNAL 0
+Info: set_instance_parameter_value system_on_chip_inst_switches_bfm ENABLE_RESET 0
+Info: set_instance_parameter_value system_on_chip_inst_switches_bfm SIGNAL_ROLES export
+Info: set_instance_parameter_value system_on_chip_inst_switches_bfm SIGNAL_WIDTHS 8
+Info: set_instance_parameter_value system_on_chip_inst_switches_bfm SIGNAL_DIRECTIONS output
+Info: get_instance_property system_on_chip_inst_switches_bfm CLASS_NAME
+Info: get_instance_interface_property system_on_chip_inst switches CLASS_NAME
+Info: get_instance_interfaces system_on_chip_inst_switches_bfm
+Info: get_instance_interface_property system_on_chip_inst_switches_bfm conduit CLASS_NAME
+Info: add_connection system_on_chip_inst_switches_bfm.conduit system_on_chip_inst.switches
 Info: send_message Info TB_Gen: Saving testbench system: system_on_chip_tb.qsys
 Info: TB_Gen: Saving testbench system: system_on_chip_tb.qsys
 Info: save_system system_on_chip_tb.qsys
 Info: send_message Info TB_Gen: TBGEN SUCCESSFUL
 Info: TB_Gen: TBGEN SUCCESSFUL
-Info: Testbench system: C:/Users/nicva/Empotrados/Proyecto2-Empotrados/SystemOnChip/system_on_chip/testbench/system_on_chip_tb.qsys
+Info: Testbench system: C:/GitHubClone/Proyecto2-Empotrados/SystemOnChip/system_on_chip/testbench/system_on_chip_tb.qsys
 Info: Done
-Info: qsys-generate C:\Users\nicva\Empotrados\Proyecto2-Empotrados\SystemOnChip\system_on_chip.qsys --simulation=VERILOG --allow-mixed-language-simulation --testbench=STANDARD --testbench-simulation=VERILOG --allow-mixed-language-testbench-simulation --output-directory=C:\Users\nicva\Empotrados\Proyecto2-Empotrados\SystemOnChip\system_on_chip\testbench\system_on_chip_tb\simulation --family="Cyclone V" --part=5CSEMA5F31C6
+Info: qsys-generate C:\GitHubClone\Proyecto2-Empotrados\SystemOnChip\system_on_chip.qsys --simulation=VERILOG --allow-mixed-language-simulation --testbench=STANDARD --testbench-simulation=VERILOG --allow-mixed-language-testbench-simulation --output-directory=C:\GitHubClone\Proyecto2-Empotrados\SystemOnChip\system_on_chip\testbench\system_on_chip_tb\simulation --family="Cyclone V" --part=5CSEMA5F31C6
 Progress: Loading testbench/system_on_chip_tb.qsys
 Progress: Reading input file
 Progress: Adding system_on_chip_inst [system_on_chip 1.0]
 Progress: Parameterizing module system_on_chip_inst
+Progress: Adding system_on_chip_inst_button_bfm [altera_conduit_bfm 18.0]
+Progress: Parameterizing module system_on_chip_inst_button_bfm
 Progress: Adding system_on_chip_inst_clk_bfm [altera_avalon_clock_source 18.0]
 Progress: Parameterizing module system_on_chip_inst_clk_bfm
+Progress: Adding system_on_chip_inst_id7_segment_bfm [altera_conduit_bfm 18.0]
+Progress: Parameterizing module system_on_chip_inst_id7_segment_bfm
 Progress: Adding system_on_chip_inst_reset_bfm [altera_avalon_reset_source 18.0]
 Progress: Parameterizing module system_on_chip_inst_reset_bfm
-Progress: Adding system_on_chip_inst_timer_irq_bfm [altera_avalon_interrupt_sink 18.0]
-Progress: Parameterizing module system_on_chip_inst_timer_irq_bfm
+Progress: Adding system_on_chip_inst_switches_bfm [altera_conduit_bfm 18.0]
+Progress: Parameterizing module system_on_chip_inst_switches_bfm
 Progress: Building connections
 Progress: Parameterizing connections
 Progress: Validating
 Progress: Done reading input file
-Info: system_on_chip_tb.system_on_chip_inst.REG_BUTTON: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: system_on_chip_tb.system_on_chip_inst.REG_BUTTONS: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: system_on_chip_tb.system_on_chip_inst.REG_SWITCHES: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
 Info: system_on_chip_tb.system_on_chip_inst.UART: JTAG UART IP input clock need to be at least double (2x) the operating frequency of JTAG TCK on board
-Warning: system_on_chip_tb.system_on_chip_inst.REG_BUTTON: REG_BUTTON.external_connection must be exported, or connected to a matching conduit.
-Warning: system_on_chip_tb.system_on_chip_inst.REG_LEDS: REG_LEDS.external_connection must be exported, or connected to a matching conduit.
+Warning: system_on_chip_tb.system_on_chip_inst.FIFO: Interrupt sender FIFO.out_irq is not connected to an interrupt receiver
+Warning: system_on_chip_tb.system_on_chip_inst.FIFO: Interrupt sender FIFO.in_irq is not connected to an interrupt receiver
+Warning: system_on_chip_tb.system_on_chip_inst.REG_SWITCHES: Interrupt sender REG_SWITCHES.irq is not connected to an interrupt receiver
 Info: system_on_chip_tb.system_on_chip_inst_clk_bfm: Elaborate: altera_clock_source
 Info: system_on_chip_tb.system_on_chip_inst_clk_bfm:            $Revision: #2 $
 Info: system_on_chip_tb.system_on_chip_inst_clk_bfm:            $Date: 2018/03/09 $
@@ -208,31 +262,43 @@ Info: system_on_chip_tb.system_on_chip_inst_reset_bfm:            $Date: 2018/03
 Info: system_on_chip_tb.system_on_chip_inst_reset_bfm: Reset is negatively asserted.
 Info: system_on_chip_tb: Generating system_on_chip_tb "system_on_chip_tb" for SIM_VERILOG
 Info: system_on_chip_inst: "system_on_chip_tb" instantiated system_on_chip "system_on_chip_inst"
+Info: system_on_chip_inst_button_bfm: "system_on_chip_tb" instantiated altera_conduit_bfm "system_on_chip_inst_button_bfm"
 Info: system_on_chip_inst_clk_bfm: "system_on_chip_tb" instantiated altera_avalon_clock_source "system_on_chip_inst_clk_bfm"
+Info: Reusing file C:/GitHubClone/Proyecto2-Empotrados/SystemOnChip/system_on_chip/testbench/system_on_chip_tb/simulation/submodules/verbosity_pkg.sv
+Info: system_on_chip_inst_id7_segment_bfm: "system_on_chip_tb" instantiated altera_conduit_bfm "system_on_chip_inst_id7_segment_bfm"
+Info: Reusing file C:/GitHubClone/Proyecto2-Empotrados/SystemOnChip/system_on_chip/testbench/system_on_chip_tb/simulation/submodules/verbosity_pkg.sv
 Info: system_on_chip_inst_reset_bfm: "system_on_chip_tb" instantiated altera_avalon_reset_source "system_on_chip_inst_reset_bfm"
-Info: Reusing file C:/Users/nicva/Empotrados/Proyecto2-Empotrados/SystemOnChip/system_on_chip/testbench/system_on_chip_tb/simulation/submodules/verbosity_pkg.sv
-Info: system_on_chip_inst_timer_irq_bfm: "system_on_chip_tb" instantiated altera_avalon_interrupt_sink "system_on_chip_inst_timer_irq_bfm"
-Info: Reusing file C:/Users/nicva/Empotrados/Proyecto2-Empotrados/SystemOnChip/system_on_chip/testbench/system_on_chip_tb/simulation/submodules/verbosity_pkg.sv
-Info: irq_mapper: "system_on_chip_tb" instantiated altera_irq_mapper "irq_mapper"
+Info: Reusing file C:/GitHubClone/Proyecto2-Empotrados/SystemOnChip/system_on_chip/testbench/system_on_chip_tb/simulation/submodules/verbosity_pkg.sv
+Info: system_on_chip_inst_switches_bfm: "system_on_chip_tb" instantiated altera_conduit_bfm "system_on_chip_inst_switches_bfm"
+Info: Reusing file C:/GitHubClone/Proyecto2-Empotrados/SystemOnChip/system_on_chip/testbench/system_on_chip_tb/simulation/submodules/verbosity_pkg.sv
+Info: Audio_PLL: "system_on_chip_inst" instantiated altera_up_avalon_audio_pll "Audio_PLL"
+Info: FIFO: Starting RTL generation for module 'system_on_chip_FIFO'
+Info: FIFO:   Generation command is [exec D:/quartus18/quartus/bin64/perl/bin/perl.exe -I D:/quartus18/quartus/bin64/perl/lib -I D:/quartus18/quartus/sopc_builder/bin/europa -I D:/quartus18/quartus/sopc_builder/bin/perl_lib -I D:/quartus18/quartus/sopc_builder/bin -I D:/quartus18/quartus/../ip/altera/sopc_builder_ip/common -I D:/quartus18/quartus/../ip/altera/sopc_builder_ip/altera_avalon_fifo -- D:/quartus18/quartus/../ip/altera/sopc_builder_ip/altera_avalon_fifo/generate_rtl.pl --name=system_on_chip_FIFO --dir=C:/Users/esteb/AppData/Local/Temp/alt0419_6203101252663113323.dir/0007_FIFO_gen/ --quartus_dir=D:/quartus18/quartus --verilog --config=C:/Users/esteb/AppData/Local/Temp/alt0419_6203101252663113323.dir/0007_FIFO_gen//system_on_chip_FIFO_component_configuration.pl  --do_build_sim=1    --sim_dir=C:/Users/esteb/AppData/Local/Temp/alt0419_6203101252663113323.dir/0007_FIFO_gen/  ]
+Info: FIFO: Done RTL generation for module 'system_on_chip_FIFO'
+Info: FIFO: "system_on_chip_inst" instantiated altera_avalon_fifo "FIFO"
 Info: NIOS: "system_on_chip_inst" instantiated altera_nios2_gen2 "NIOS"
 Info: RAM: Starting RTL generation for module 'system_on_chip_RAM'
-Info: RAM:   Generation command is [exec C:/intelfpga_lite/18.0/quartus/bin64/perl/bin/perl.exe -I C:/intelfpga_lite/18.0/quartus/bin64/perl/lib -I C:/intelfpga_lite/18.0/quartus/sopc_builder/bin/europa -I C:/intelfpga_lite/18.0/quartus/sopc_builder/bin/perl_lib -I C:/intelfpga_lite/18.0/quartus/sopc_builder/bin -I C:/intelfpga_lite/18.0/quartus/../ip/altera/sopc_builder_ip/common -I C:/intelfpga_lite/18.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2 -- C:/intelfpga_lite/18.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2/generate_rtl.pl --name=system_on_chip_RAM --dir=C:/Users/nicva/AppData/Local/Temp/alt0407_1790735172736650578.dir/0033_RAM_gen/ --quartus_dir=C:/intelfpga_lite/18.0/quartus --verilog --config=C:/Users/nicva/AppData/Local/Temp/alt0407_1790735172736650578.dir/0033_RAM_gen//system_on_chip_RAM_component_configuration.pl  --do_build_sim=1    --sim_dir=C:/Users/nicva/AppData/Local/Temp/alt0407_1790735172736650578.dir/0033_RAM_gen/  ]
+Info: RAM:   Generation command is [exec D:/quartus18/quartus/bin64/perl/bin/perl.exe -I D:/quartus18/quartus/bin64/perl/lib -I D:/quartus18/quartus/sopc_builder/bin/europa -I D:/quartus18/quartus/sopc_builder/bin/perl_lib -I D:/quartus18/quartus/sopc_builder/bin -I D:/quartus18/quartus/../ip/altera/sopc_builder_ip/common -I D:/quartus18/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2 -- D:/quartus18/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2/generate_rtl.pl --name=system_on_chip_RAM --dir=C:/Users/esteb/AppData/Local/Temp/alt0419_6203101252663113323.dir/0008_RAM_gen/ --quartus_dir=D:/quartus18/quartus --verilog --config=C:/Users/esteb/AppData/Local/Temp/alt0419_6203101252663113323.dir/0008_RAM_gen//system_on_chip_RAM_component_configuration.pl  --do_build_sim=1    --sim_dir=C:/Users/esteb/AppData/Local/Temp/alt0419_6203101252663113323.dir/0008_RAM_gen/  ]
 Info: RAM: Done RTL generation for module 'system_on_chip_RAM'
 Info: RAM: "system_on_chip_inst" instantiated altera_avalon_onchip_memory2 "RAM"
-Info: REG_BUTTON: Starting RTL generation for module 'system_on_chip_REG_BUTTON'
-Info: REG_BUTTON:   Generation command is [exec C:/intelfpga_lite/18.0/quartus/bin64/perl/bin/perl.exe -I C:/intelfpga_lite/18.0/quartus/bin64/perl/lib -I C:/intelfpga_lite/18.0/quartus/sopc_builder/bin/europa -I C:/intelfpga_lite/18.0/quartus/sopc_builder/bin/perl_lib -I C:/intelfpga_lite/18.0/quartus/sopc_builder/bin -I C:/intelfpga_lite/18.0/quartus/../ip/altera/sopc_builder_ip/common -I C:/intelfpga_lite/18.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- C:/intelfpga_lite/18.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=system_on_chip_REG_BUTTON --dir=C:/Users/nicva/AppData/Local/Temp/alt0407_1790735172736650578.dir/0034_REG_BUTTON_gen/ --quartus_dir=C:/intelfpga_lite/18.0/quartus --verilog --config=C:/Users/nicva/AppData/Local/Temp/alt0407_1790735172736650578.dir/0034_REG_BUTTON_gen//system_on_chip_REG_BUTTON_component_configuration.pl  --do_build_sim=1    --sim_dir=C:/Users/nicva/AppData/Local/Temp/alt0407_1790735172736650578.dir/0034_REG_BUTTON_gen/  ]
-Info: REG_BUTTON: Done RTL generation for module 'system_on_chip_REG_BUTTON'
-Info: REG_BUTTON: "system_on_chip_inst" instantiated altera_avalon_pio "REG_BUTTON"
-Info: REG_LEDS: Starting RTL generation for module 'system_on_chip_REG_LEDS'
-Info: REG_LEDS:   Generation command is [exec C:/intelfpga_lite/18.0/quartus/bin64/perl/bin/perl.exe -I C:/intelfpga_lite/18.0/quartus/bin64/perl/lib -I C:/intelfpga_lite/18.0/quartus/sopc_builder/bin/europa -I C:/intelfpga_lite/18.0/quartus/sopc_builder/bin/perl_lib -I C:/intelfpga_lite/18.0/quartus/sopc_builder/bin -I C:/intelfpga_lite/18.0/quartus/../ip/altera/sopc_builder_ip/common -I C:/intelfpga_lite/18.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- C:/intelfpga_lite/18.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=system_on_chip_REG_LEDS --dir=C:/Users/nicva/AppData/Local/Temp/alt0407_1790735172736650578.dir/0035_REG_LEDS_gen/ --quartus_dir=C:/intelfpga_lite/18.0/quartus --verilog --config=C:/Users/nicva/AppData/Local/Temp/alt0407_1790735172736650578.dir/0035_REG_LEDS_gen//system_on_chip_REG_LEDS_component_configuration.pl  --do_build_sim=1    --sim_dir=C:/Users/nicva/AppData/Local/Temp/alt0407_1790735172736650578.dir/0035_REG_LEDS_gen/  ]
-Info: REG_LEDS: Done RTL generation for module 'system_on_chip_REG_LEDS'
-Info: REG_LEDS: "system_on_chip_inst" instantiated altera_avalon_pio "REG_LEDS"
+Info: REG_7_SEGMENTS: Starting RTL generation for module 'system_on_chip_REG_7_SEGMENTS'
+Info: REG_7_SEGMENTS:   Generation command is [exec D:/quartus18/quartus/bin64/perl/bin/perl.exe -I D:/quartus18/quartus/bin64/perl/lib -I D:/quartus18/quartus/sopc_builder/bin/europa -I D:/quartus18/quartus/sopc_builder/bin/perl_lib -I D:/quartus18/quartus/sopc_builder/bin -I D:/quartus18/quartus/../ip/altera/sopc_builder_ip/common -I D:/quartus18/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- D:/quartus18/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=system_on_chip_REG_7_SEGMENTS --dir=C:/Users/esteb/AppData/Local/Temp/alt0419_6203101252663113323.dir/0009_REG_7_SEGMENTS_gen/ --quartus_dir=D:/quartus18/quartus --verilog --config=C:/Users/esteb/AppData/Local/Temp/alt0419_6203101252663113323.dir/0009_REG_7_SEGMENTS_gen//system_on_chip_REG_7_SEGMENTS_component_configuration.pl  --do_build_sim=1    --sim_dir=C:/Users/esteb/AppData/Local/Temp/alt0419_6203101252663113323.dir/0009_REG_7_SEGMENTS_gen/  ]
+Info: REG_7_SEGMENTS: Done RTL generation for module 'system_on_chip_REG_7_SEGMENTS'
+Info: REG_7_SEGMENTS: "system_on_chip_inst" instantiated altera_avalon_pio "REG_7_SEGMENTS"
+Info: REG_BUTTONS: Starting RTL generation for module 'system_on_chip_REG_BUTTONS'
+Info: REG_BUTTONS:   Generation command is [exec D:/quartus18/quartus/bin64/perl/bin/perl.exe -I D:/quartus18/quartus/bin64/perl/lib -I D:/quartus18/quartus/sopc_builder/bin/europa -I D:/quartus18/quartus/sopc_builder/bin/perl_lib -I D:/quartus18/quartus/sopc_builder/bin -I D:/quartus18/quartus/../ip/altera/sopc_builder_ip/common -I D:/quartus18/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- D:/quartus18/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=system_on_chip_REG_BUTTONS --dir=C:/Users/esteb/AppData/Local/Temp/alt0419_6203101252663113323.dir/0010_REG_BUTTONS_gen/ --quartus_dir=D:/quartus18/quartus --verilog --config=C:/Users/esteb/AppData/Local/Temp/alt0419_6203101252663113323.dir/0010_REG_BUTTONS_gen//system_on_chip_REG_BUTTONS_component_configuration.pl  --do_build_sim=1    --sim_dir=C:/Users/esteb/AppData/Local/Temp/alt0419_6203101252663113323.dir/0010_REG_BUTTONS_gen/  ]
+Info: REG_BUTTONS: Done RTL generation for module 'system_on_chip_REG_BUTTONS'
+Info: REG_BUTTONS: "system_on_chip_inst" instantiated altera_avalon_pio "REG_BUTTONS"
+Info: REG_SWITCHES: Starting RTL generation for module 'system_on_chip_REG_SWITCHES'
+Info: REG_SWITCHES:   Generation command is [exec D:/quartus18/quartus/bin64/perl/bin/perl.exe -I D:/quartus18/quartus/bin64/perl/lib -I D:/quartus18/quartus/sopc_builder/bin/europa -I D:/quartus18/quartus/sopc_builder/bin/perl_lib -I D:/quartus18/quartus/sopc_builder/bin -I D:/quartus18/quartus/../ip/altera/sopc_builder_ip/common -I D:/quartus18/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- D:/quartus18/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=system_on_chip_REG_SWITCHES --dir=C:/Users/esteb/AppData/Local/Temp/alt0419_6203101252663113323.dir/0011_REG_SWITCHES_gen/ --quartus_dir=D:/quartus18/quartus --verilog --config=C:/Users/esteb/AppData/Local/Temp/alt0419_6203101252663113323.dir/0011_REG_SWITCHES_gen//system_on_chip_REG_SWITCHES_component_configuration.pl  --do_build_sim=1    --sim_dir=C:/Users/esteb/AppData/Local/Temp/alt0419_6203101252663113323.dir/0011_REG_SWITCHES_gen/  ]
+Info: REG_SWITCHES: Done RTL generation for module 'system_on_chip_REG_SWITCHES'
+Info: REG_SWITCHES: "system_on_chip_inst" instantiated altera_avalon_pio "REG_SWITCHES"
 Info: TIMER: Starting RTL generation for module 'system_on_chip_TIMER'
-Info: TIMER:   Generation command is [exec C:/intelFPGA_lite/18.0/quartus/bin64//perl/bin/perl.exe -I C:/intelFPGA_lite/18.0/quartus/bin64//perl/lib -I C:/intelfpga_lite/18.0/quartus/sopc_builder/bin/europa -I C:/intelfpga_lite/18.0/quartus/sopc_builder/bin/perl_lib -I C:/intelfpga_lite/18.0/quartus/sopc_builder/bin -I C:/intelfpga_lite/18.0/quartus/../ip/altera/sopc_builder_ip/common -I C:/intelfpga_lite/18.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_timer -- C:/intelfpga_lite/18.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_timer/generate_rtl.pl --name=system_on_chip_TIMER --dir=C:/Users/nicva/AppData/Local/Temp/alt0407_1790735172736650578.dir/0036_TIMER_gen/ --quartus_dir=C:/intelfpga_lite/18.0/quartus --verilog --config=C:/Users/nicva/AppData/Local/Temp/alt0407_1790735172736650578.dir/0036_TIMER_gen//system_on_chip_TIMER_component_configuration.pl  --do_build_sim=1    --sim_dir=C:/Users/nicva/AppData/Local/Temp/alt0407_1790735172736650578.dir/0036_TIMER_gen/  ]
+Info: TIMER:   Generation command is [exec D:/quartus18/quartus/bin64//perl/bin/perl.exe -I D:/quartus18/quartus/bin64//perl/lib -I D:/quartus18/quartus/sopc_builder/bin/europa -I D:/quartus18/quartus/sopc_builder/bin/perl_lib -I D:/quartus18/quartus/sopc_builder/bin -I D:/quartus18/quartus/../ip/altera/sopc_builder_ip/common -I D:/quartus18/quartus/../ip/altera/sopc_builder_ip/altera_avalon_timer -- D:/quartus18/quartus/../ip/altera/sopc_builder_ip/altera_avalon_timer/generate_rtl.pl --name=system_on_chip_TIMER --dir=C:/Users/esteb/AppData/Local/Temp/alt0419_6203101252663113323.dir/0012_TIMER_gen/ --quartus_dir=D:/quartus18/quartus --verilog --config=C:/Users/esteb/AppData/Local/Temp/alt0419_6203101252663113323.dir/0012_TIMER_gen//system_on_chip_TIMER_component_configuration.pl  --do_build_sim=1    --sim_dir=C:/Users/esteb/AppData/Local/Temp/alt0419_6203101252663113323.dir/0012_TIMER_gen/  ]
 Info: TIMER: Done RTL generation for module 'system_on_chip_TIMER'
 Info: TIMER: "system_on_chip_inst" instantiated altera_avalon_timer "TIMER"
 Info: UART: Starting RTL generation for module 'system_on_chip_UART'
-Info: UART:   Generation command is [exec C:/intelfpga_lite/18.0/quartus/bin64/perl/bin/perl.exe -I C:/intelfpga_lite/18.0/quartus/bin64/perl/lib -I C:/intelfpga_lite/18.0/quartus/sopc_builder/bin/europa -I C:/intelfpga_lite/18.0/quartus/sopc_builder/bin/perl_lib -I C:/intelfpga_lite/18.0/quartus/sopc_builder/bin -I C:/intelfpga_lite/18.0/quartus/../ip/altera/sopc_builder_ip/common -I C:/intelfpga_lite/18.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_jtag_uart -- C:/intelfpga_lite/18.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_jtag_uart/generate_rtl.pl --name=system_on_chip_UART --dir=C:/Users/nicva/AppData/Local/Temp/alt0407_1790735172736650578.dir/0037_UART_gen/ --quartus_dir=C:/intelfpga_lite/18.0/quartus --verilog --config=C:/Users/nicva/AppData/Local/Temp/alt0407_1790735172736650578.dir/0037_UART_gen//system_on_chip_UART_component_configuration.pl  --do_build_sim=1    --sim_dir=C:/Users/nicva/AppData/Local/Temp/alt0407_1790735172736650578.dir/0037_UART_gen/  ]
+Info: UART:   Generation command is [exec D:/quartus18/quartus/bin64/perl/bin/perl.exe -I D:/quartus18/quartus/bin64/perl/lib -I D:/quartus18/quartus/sopc_builder/bin/europa -I D:/quartus18/quartus/sopc_builder/bin/perl_lib -I D:/quartus18/quartus/sopc_builder/bin -I D:/quartus18/quartus/../ip/altera/sopc_builder_ip/common -I D:/quartus18/quartus/../ip/altera/sopc_builder_ip/altera_avalon_jtag_uart -- D:/quartus18/quartus/../ip/altera/sopc_builder_ip/altera_avalon_jtag_uart/generate_rtl.pl --name=system_on_chip_UART --dir=C:/Users/esteb/AppData/Local/Temp/alt0419_6203101252663113323.dir/0013_UART_gen/ --quartus_dir=D:/quartus18/quartus --verilog --config=C:/Users/esteb/AppData/Local/Temp/alt0419_6203101252663113323.dir/0013_UART_gen//system_on_chip_UART_component_configuration.pl  --do_build_sim=1    --sim_dir=C:/Users/esteb/AppData/Local/Temp/alt0419_6203101252663113323.dir/0013_UART_gen/  ]
 Info: UART: Done RTL generation for module 'system_on_chip_UART'
 Info: UART: "system_on_chip_inst" instantiated altera_avalon_jtag_uart "UART"
 Info: avalon_st_adapter: Inserting error_adapter: error_adapter_0
@@ -241,24 +307,34 @@ Info: avalon_st_adapter_002: Inserting error_adapter: error_adapter_0
 Info: avalon_st_adapter_003: Inserting error_adapter: error_adapter_0
 Info: avalon_st_adapter_004: Inserting error_adapter: error_adapter_0
 Info: avalon_st_adapter_005: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_006: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_007: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_008: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_009: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_010: Inserting error_adapter: error_adapter_0
 Info: mm_interconnect_0: "system_on_chip_inst" instantiated altera_mm_interconnect "mm_interconnect_0"
 Info: irq_mapper: "system_on_chip_inst" instantiated altera_irq_mapper "irq_mapper"
 Info: rst_controller: "system_on_chip_inst" instantiated altera_reset_controller "rst_controller"
+Info: audio_pll: Generating simgen model
+Info: audio_pll: Info: ******************************************************************* Info: Running Quartus Prime Shell     Info: Version 18.0.0 Build 614 04/24/2018 SJ Lite Edition     Info: Copyright (C) 2018  Intel Corporation. All rights reserved.     Info: Your use of Intel Corporation's design tools, logic functions      Info: and other software and tools, and its AMPP partner logic      Info: functions, and any output files from any of the foregoing      Info: (including device programming or simulation files), and any      Info: associated documentation or information are expressly subject      Info: to the terms and conditions of the Intel Program License      Info: Subscription Agreement, the Intel Quartus Prime License Agreement,     Info: the Intel FPGA IP License Agreement, or other applicable license     Info: agreement, including, without limitation, that your use is for     Info: the sole purpose of programming logic devices manufactured by     Info: Intel and sold by Intel or its authorized distributors.  Please     Info: refer to the applicable agreement for further details.     Info: Processing started: Thu Nov 27 12:15:54 2025 Info: Command: quartus_sh -t run_simgen_cmd.tcl Info: ******************************************************************* Info: Running Quartus Prime Analysis & Synthesis     Info: Version 18.0.0 Build 614 04/24/2018 SJ Lite Edition     Info: Copyright (C) 2018  Intel Corporation. All rights reserved.     Info: Your use of Intel Corporation's design tools, logic functions      Info: and other software and tools, and its AMPP partner logic      Info: functions, and any output files from any of the foregoing      Info: (including device programming or simulation files), and any      Info: associated documentation or information are expressly subject      Info: to the terms and conditions of the Intel Program License      Info: Subscription Agreement, the Intel Quartus Prime License Agreement,     Info: the Intel FPGA IP License Agreement, or other applicable license     Info: agreement, including, without limitation, that your use is for     Info: the sole purpose of programming logic devices manufactured by     Info: Intel and sold by Intel or its authorized distributors.  Please     Info: refer to the applicable agreement for further details.     Info: Processing started: Thu Nov 27 12:15:56 2025 Info: Command: quartus_map system_on_chip_Audio_PLL_audio_pll.qpf --simgen --ini=disable_check_quartus_compatibility_qsys_only=on --simgen_parameter=CBX_HDL_LANGUAGE=VERILOG Info (20034): Auto device selection is not supported for Cyclone V device family. The default device, 5CGXFC7C7F23C8, is set. Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance. Info (20030): Parallel compilation is enabled and will use 6 of the 6 processors detected Info (12021): Found 1 design units, including 1 entities, in source file system_on_chip_audio_pll_audio_pll.v     Info (12023): Found entity 1: system_on_chip_Audio_PLL_audio_pll File: C:/Users/esteb/AppData/Local/Temp/alt0419_6203101252663113323.dir/0016_audio_pll_gen/system_on_chip_Audio_PLL_audio_pll.v Line: 2 Info (12127): Elaborating entity "system_on_chip_Audio_PLL_audio_pll" for the top level hierarchy Info (12128): Elaborating entity "altera_pll" for hierarchy "altera_pll:altera_pll_i" File: C:/Users/esteb/AppData/Local/Temp/alt0419_6203101252663113323.dir/0016_audio_pll_gen/system_on_chip_Audio_PLL_audio_pll.v Line: 85 Info (10008): Verilog HDL or VHDL information: EDA Netlist Writer cannot regroup multidimensional array "wire_to_nowhere_64" into its bus Info (12130): Elaborated megafunction instantiation "altera_pll:altera_pll_i" File: C:/Users/esteb/AppData/Local/Temp/alt0419_6203101252663113323.dir/0016_audio_pll_gen/system_on_chip_Audio_PLL_audio_pll.v Line: 85 Info (12133): Instantiated megafunction "altera_pll:altera_pll_i" with the following parameter: File: C:/Users/esteb/AppData/Local/Temp/alt0419_6203101252663113323.dir/0016_audio_pll_gen/system_on_chip_Audio_PLL_audio_pll.v Line: 85     Info (12134): Parameter "fractional_vco_multiplier" = "false"     Info (12134): Parameter "reference_clock_frequency" = "50.0 MHz"     Info (12134): Parameter "operation_mode" = "direct"     Info (12134): Parameter "number_of_clocks" = "1"     Info (12134): Parameter "output_clock_frequency0" = "18.432203 MHz"     Info (12134): Parameter "phase_shift0" = "0 ps"     Info (12134): Parameter "duty_cycle0" = "50"     Info (12134): Parameter "output_clock_frequency1" = "0 MHz"     Info (12134): Parameter "phase_shift1" = "0 ps"     Info (12134): Parameter "duty_cycle1" = "50"     Info (12134): Parameter "output_clock_frequency2" = "0 MHz"     Info (12134): Parameter "phase_shift2" = "0 ps"     Info (12134): Parameter "duty_cycle2" = "50"     Info (12134): Parameter "output_clock_frequency3" = "0 MHz"     Info (12134): Parameter "phase_shift3" = "0 ps"     Info (12134): Parameter "duty_cycle3" = "50"     Info (12134): Parameter "output_clock_frequency4" = "0 MHz"     Info (12134): Parameter "phase_shift4" = "0 ps"     Info (12134): Parameter "duty_cycle4" = "50"     Info (12134): Parameter "output_clock_frequency5" = "0 MHz"     Info (12134): Parameter "phase_shift5" = "0 ps"     Info (12134): Parameter "duty_cycle5" = "50"     Info (12134): Parameter "output_clock_frequency6" = "0 MHz"     Info (12134): Parameter "phase_shift6" = "0 ps"     Info (12134): Parameter "duty_cycle6" = "50"     Info (12134): Parameter "output_clock_frequency7" = "0 MHz"     Info (12134): Parameter "phase_shift7" = "0 ps"     Info (12134): Parameter "duty_cycle7" = "50"     Info (12134): Parameter "output_clock_frequency8" = "0 MHz"     Info (12134): Parameter "phase_shift8" = "0 ps"     Info (12134): Parameter "duty_cycle8" = "50"     Info (12134): Parameter "output_clock_frequency9" = "0 MHz"     Info (12134): Parameter "phase_shift9" = "0 ps"     Info (12134): Parameter "duty_cycle9" = "50"     Info (12134): Parameter "output_clock_frequency10" = "0 MHz"     Info (12134): Parameter "phase_shift10" = "0 ps"     Info (12134): Parameter "duty_cycle10" = "50"     Info (12134): Parameter "output_clock_frequency11" = "0 MHz"     Info (12134): Parameter "phase_shift11" = "0 ps"     Info (12134): Parameter "duty_cycle11" = "50"     Info (12134): Parameter "output_clock_frequency12" = "0 MHz"     Info (12134): Parameter "phase_shift12" = "0 ps"     Info (12134): Parameter "duty_cycle12" = "50"     Info (12134): Parameter "output_clock_frequency13" = "0 MHz"     Info (12134): Parameter "phase_shift13" = "0 ps"     Info (12134): Parameter "duty_cycle13" = "50"     Info (12134): Parameter "output_clock_frequency14" = "0 MHz"     Info (12134): Parameter "phase_shift14" = "0 ps"     Info (12134): Parameter "duty_cycle14" = "50"     Info (12134): Parameter "output_clock_frequency15" = "0 MHz"     Info (12134): Parameter "phase_shift15" = "0 ps"     Info (12134): Parameter "duty_cycle15" = "50"     Info (12134): Parameter "output_clock_frequency16" = "0 MHz"     Info (12134): Parameter "phase_shift16" = "0 ps"     Info (12134): Parameter "duty_cycle16" = "50"     Info (12134): Parameter "output_clock_frequency17" = "0 MHz"     Info (12134): Parameter "phase_shift17" = "0 ps"     Info (12134): Parameter "duty_cycle17" = "50"     Info (12134): Parameter "pll_type" = "General"     Info (12134): Parameter "pll_subtype" = "General" Info (281010): Generating sgate simulator netlist using Simgen SIMGEN_PROGRESS Start of Model generation -- 0% complete SIMGEN_PROGRESS Phase 1 : Internal Objects created -- 25% complete SIMGEN_PROGRESS Phase 2 : Connections between internal objects made -- 60% complete SIMGEN_PROGRESS Phase 3 : Netlist generated -- 100% complete Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 1 warning     Info: Peak virtual memory: 4780 megabytes     Info: Processing ended: Thu Nov 27 12:16:11 2025     Info: Elapsed time: 00:00:15     Info: Total CPU time (on all processors): 00:00:01 Info (23030): Evaluation of Tcl script run_simgen_cmd.tcl was successful Info: Quartus Prime Shell was successful. 0 errors, 0 warnings     Info: Peak virtual memory: 4653 megabytes     Info: Processing ended: Thu Nov 27 12:16:12 2025     Info: Elapsed time: 00:00:18     Info: Total CPU time (on all processors): 00:00:04
+Info: audio_pll: Simgen was successful
+Info: audio_pll: "Audio_PLL" instantiated altera_pll "audio_pll"
+Info: reset_from_locked: "Audio_PLL" instantiated altera_up_avalon_reset_from_locked_signal "reset_from_locked"
 Info: cpu: Starting RTL generation for module 'system_on_chip_NIOS_cpu'
-Info: cpu:   Generation command is [exec C:/intelFPGA_lite/18.0/quartus/bin64//eperlcmd.exe -I C:/intelFPGA_lite/18.0/quartus/bin64//perl/lib -I C:/intelfpga_lite/18.0/quartus/sopc_builder/bin/europa -I C:/intelfpga_lite/18.0/quartus/sopc_builder/bin/perl_lib -I C:/intelfpga_lite/18.0/quartus/sopc_builder/bin -I C:/intelfpga_lite/18.0/quartus/../ip/altera/nios2_ip/altera_nios2_gen2/cpu_lib -I C:/intelfpga_lite/18.0/quartus/../ip/altera/nios2_ip/altera_nios2_gen2/nios_lib -I C:/intelfpga_lite/18.0/quartus/../ip/altera/nios2_ip/altera_nios2_gen2 -I C:/intelfpga_lite/18.0/quartus/../ip/altera/nios2_ip/altera_nios2_gen2 -- C:/intelfpga_lite/18.0/quartus/../ip/altera/nios2_ip/altera_nios2_gen2/generate_rtl.epl --name=system_on_chip_NIOS_cpu --dir=C:/Users/nicva/AppData/Local/Temp/alt0407_1790735172736650578.dir/0040_cpu_gen/ --quartus_bindir=C:/intelFPGA_lite/18.0/quartus/bin64/ --verilog --config=C:/Users/nicva/AppData/Local/Temp/alt0407_1790735172736650578.dir/0040_cpu_gen//system_on_chip_NIOS_cpu_processor_configuration.pl  --do_build_sim=1    --sim_dir=C:/Users/nicva/AppData/Local/Temp/alt0407_1790735172736650578.dir/0040_cpu_gen/  ]
-Info: cpu: # 2025.11.15 15:45:21 (*) Starting Nios II generation
-Info: cpu: # 2025.11.15 15:45:21 (*)   Checking for plaintext license.
-Info: cpu: # 2025.11.15 15:45:22 (*)   Couldn't query license setup in Quartus directory C:/intelFPGA_lite/18.0/quartus/bin64/
-Info: cpu: # 2025.11.15 15:45:22 (*)   Defaulting to contents of LM_LICENSE_FILE environment variable
-Info: cpu: # 2025.11.15 15:45:22 (*)   LM_LICENSE_FILE environment variable is empty
-Info: cpu: # 2025.11.15 15:45:22 (*)   Plaintext license not found.
-Info: cpu: # 2025.11.15 15:45:22 (*)   No license required to generate encrypted Nios II/e.
-Info: cpu: # 2025.11.15 15:45:22 (*)   Elaborating CPU configuration settings
-Info: cpu: # 2025.11.15 15:45:22 (*)   Creating all objects for CPU
-Info: cpu: # 2025.11.15 15:45:22 (*)   Creating 'C:/Users/nicva/AppData/Local/Temp/alt0407_1790735172736650578.dir/0040_cpu_gen//system_on_chip_NIOS_cpu_nios2_waves.do'
-Info: cpu: # 2025.11.15 15:45:22 (*)   Generating RTL from CPU objects
-Info: cpu: # 2025.11.15 15:45:22 (*)   Creating plain-text RTL
-Info: cpu: # 2025.11.15 15:45:23 (*) Done Nios II generation
+Info: cpu:   Generation command is [exec D:/quartus18/quartus/bin64//eperlcmd.exe -I D:/quartus18/quartus/bin64//perl/lib -I D:/quartus18/quartus/sopc_builder/bin/europa -I D:/quartus18/quartus/sopc_builder/bin/perl_lib -I D:/quartus18/quartus/sopc_builder/bin -I D:/quartus18/quartus/../ip/altera/nios2_ip/altera_nios2_gen2/cpu_lib -I D:/quartus18/quartus/../ip/altera/nios2_ip/altera_nios2_gen2/nios_lib -I D:/quartus18/quartus/../ip/altera/nios2_ip/altera_nios2_gen2 -I D:/quartus18/quartus/../ip/altera/nios2_ip/altera_nios2_gen2 -- D:/quartus18/quartus/../ip/altera/nios2_ip/altera_nios2_gen2/generate_rtl.epl --name=system_on_chip_NIOS_cpu --dir=C:/Users/esteb/AppData/Local/Temp/alt0419_6203101252663113323.dir/0018_cpu_gen/ --quartus_bindir=D:/quartus18/quartus/bin64/ --verilog --config=C:/Users/esteb/AppData/Local/Temp/alt0419_6203101252663113323.dir/0018_cpu_gen//system_on_chip_NIOS_cpu_processor_configuration.pl  --do_build_sim=1    --sim_dir=C:/Users/esteb/AppData/Local/Temp/alt0419_6203101252663113323.dir/0018_cpu_gen/  ]
+Info: cpu: # 2025.11.27 12:16:15 (*) Starting Nios II generation
+Info: cpu: # 2025.11.27 12:16:15 (*)   Checking for plaintext license.
+Info: cpu: # 2025.11.27 12:16:15 (*)   Couldn't query license setup in Quartus directory D:/quartus18/quartus/bin64/
+Info: cpu: # 2025.11.27 12:16:15 (*)   Defaulting to contents of LM_LICENSE_FILE environment variable
+Info: cpu: # 2025.11.27 12:16:15 (*)   LM_LICENSE_FILE environment variable is empty
+Info: cpu: # 2025.11.27 12:16:15 (*)   Plaintext license not found.
+Info: cpu: # 2025.11.27 12:16:15 (*)   No license required to generate encrypted Nios II/e.
+Info: cpu: # 2025.11.27 12:16:15 (*)   Elaborating CPU configuration settings
+Info: cpu: # 2025.11.27 12:16:15 (*)   Creating all objects for CPU
+Info: cpu: # 2025.11.27 12:16:17 (*)   Creating 'C:/Users/esteb/AppData/Local/Temp/alt0419_6203101252663113323.dir/0018_cpu_gen//system_on_chip_NIOS_cpu_nios2_waves.do'
+Info: cpu: # 2025.11.27 12:16:17 (*)   Generating RTL from CPU objects
+Info: cpu: # 2025.11.27 12:16:17 (*)   Creating plain-text RTL
+Info: cpu: # 2025.11.27 12:16:18 (*) Done Nios II generation
 Info: cpu: Done RTL generation for module 'system_on_chip_NIOS_cpu'
 Info: cpu: "NIOS" instantiated altera_nios2_gen2_unit "cpu"
 Info: NIOS_data_master_translator: "mm_interconnect_0" instantiated altera_merlin_master_translator "NIOS_data_master_translator"
@@ -274,32 +350,32 @@ Info: cmd_demux: "mm_interconnect_0" instantiated altera_merlin_demultiplexer "c
 Info: cmd_demux_001: "mm_interconnect_0" instantiated altera_merlin_demultiplexer "cmd_demux_001"
 Info: cmd_mux: "mm_interconnect_0" instantiated altera_merlin_multiplexer "cmd_mux"
 Info: cmd_mux_001: "mm_interconnect_0" instantiated altera_merlin_multiplexer "cmd_mux_001"
-Info: Reusing file C:/Users/nicva/Empotrados/Proyecto2-Empotrados/SystemOnChip/system_on_chip/testbench/system_on_chip_tb/simulation/submodules/altera_merlin_arbitrator.sv
+Info: Reusing file C:/GitHubClone/Proyecto2-Empotrados/SystemOnChip/system_on_chip/testbench/system_on_chip_tb/simulation/submodules/altera_merlin_arbitrator.sv
 Info: rsp_demux: "mm_interconnect_0" instantiated altera_merlin_demultiplexer "rsp_demux"
 Info: rsp_mux: "mm_interconnect_0" instantiated altera_merlin_multiplexer "rsp_mux"
-Info: Reusing file C:/Users/nicva/Empotrados/Proyecto2-Empotrados/SystemOnChip/system_on_chip/testbench/system_on_chip_tb/simulation/submodules/altera_merlin_arbitrator.sv
+Info: Reusing file C:/GitHubClone/Proyecto2-Empotrados/SystemOnChip/system_on_chip/testbench/system_on_chip_tb/simulation/submodules/altera_merlin_arbitrator.sv
 Info: rsp_mux_001: "mm_interconnect_0" instantiated altera_merlin_multiplexer "rsp_mux_001"
-Info: Reusing file C:/Users/nicva/Empotrados/Proyecto2-Empotrados/SystemOnChip/system_on_chip/testbench/system_on_chip_tb/simulation/submodules/altera_merlin_arbitrator.sv
+Info: Reusing file C:/GitHubClone/Proyecto2-Empotrados/SystemOnChip/system_on_chip/testbench/system_on_chip_tb/simulation/submodules/altera_merlin_arbitrator.sv
 Info: avalon_st_adapter: "mm_interconnect_0" instantiated altera_avalon_st_adapter "avalon_st_adapter"
 Info: error_adapter_0: "avalon_st_adapter" instantiated error_adapter "error_adapter_0"
-Info: system_on_chip_tb: Done "system_on_chip_tb" with 34 modules, 55 files
+Info: system_on_chip_tb: Done "system_on_chip_tb" with 40 modules, 62 files
 Info: qsys-generate succeeded.
-Info: sim-script-gen --spd=C:\Users\nicva\Empotrados\Proyecto2-Empotrados\SystemOnChip\system_on_chip_tb.spd --output-directory=C:/Users/nicva/Empotrados/Proyecto2-Empotrados/SystemOnChip/system_on_chip/testbench/ --use-relative-paths=true
-Info: Doing: ip-make-simscript --spd=C:\Users\nicva\Empotrados\Proyecto2-Empotrados\SystemOnChip\system_on_chip_tb.spd --output-directory=C:/Users/nicva/Empotrados/Proyecto2-Empotrados/SystemOnChip/system_on_chip/testbench/ --use-relative-paths=true
-Info: Generating the following file(s) for MODELSIM simulator in C:/Users/nicva/Empotrados/Proyecto2-Empotrados/SystemOnChip/system_on_chip/testbench/ directory:
+Info: sim-script-gen --spd=C:\GitHubClone\Proyecto2-Empotrados\SystemOnChip\system_on_chip_tb.spd --output-directory=C:/GitHubClone/Proyecto2-Empotrados/SystemOnChip/system_on_chip/testbench/ --use-relative-paths=true
+Info: Doing: ip-make-simscript --spd=C:\GitHubClone\Proyecto2-Empotrados\SystemOnChip\system_on_chip_tb.spd --output-directory=C:/GitHubClone/Proyecto2-Empotrados/SystemOnChip/system_on_chip/testbench/ --use-relative-paths=true
+Info: Generating the following file(s) for MODELSIM simulator in C:/GitHubClone/Proyecto2-Empotrados/SystemOnChip/system_on_chip/testbench/ directory:
 Info: 	mentor/msim_setup.tcl
-Info: Generating the following file(s) for VCS simulator in C:/Users/nicva/Empotrados/Proyecto2-Empotrados/SystemOnChip/system_on_chip/testbench/ directory:
+Info: Generating the following file(s) for VCS simulator in C:/GitHubClone/Proyecto2-Empotrados/SystemOnChip/system_on_chip/testbench/ directory:
 Info: 	synopsys/vcs/vcs_setup.sh
-Info: Generating the following file(s) for VCSMX simulator in C:/Users/nicva/Empotrados/Proyecto2-Empotrados/SystemOnChip/system_on_chip/testbench/ directory:
+Info: Generating the following file(s) for VCSMX simulator in C:/GitHubClone/Proyecto2-Empotrados/SystemOnChip/system_on_chip/testbench/ directory:
 Info: 	synopsys/vcsmx/synopsys_sim.setup
 Info: 	synopsys/vcsmx/vcsmx_setup.sh
-Info: Generating the following file(s) for NCSIM simulator in C:/Users/nicva/Empotrados/Proyecto2-Empotrados/SystemOnChip/system_on_chip/testbench/ directory:
+Info: Generating the following file(s) for NCSIM simulator in C:/GitHubClone/Proyecto2-Empotrados/SystemOnChip/system_on_chip/testbench/ directory:
 Info: 	cadence/cds.lib
 Info: 	cadence/hdl.var
 Info: 	cadence/ncsim_setup.sh
-Info: 	33 .cds.lib files in cadence/cds_libs/ directory
-Info: Generating the following file(s) for RIVIERA simulator in C:/Users/nicva/Empotrados/Proyecto2-Empotrados/SystemOnChip/system_on_chip/testbench/ directory:
+Info: 	40 .cds.lib files in cadence/cds_libs/ directory
+Info: Generating the following file(s) for RIVIERA simulator in C:/GitHubClone/Proyecto2-Empotrados/SystemOnChip/system_on_chip/testbench/ directory:
 Info: 	aldec/rivierapro_setup.tcl
-Info: For information on how to simulate your IP, see the explanatory comments in the simulator-specific subdirectories under C:/Users/nicva/Empotrados/Proyecto2-Empotrados/SystemOnChip/system_on_chip/testbench/.
+Info: For information on how to simulate your IP, see the explanatory comments in the simulator-specific subdirectories under C:/GitHubClone/Proyecto2-Empotrados/SystemOnChip/system_on_chip/testbench/.
 Info: Regenerate these scripts whenever you make any change to any Quartus-generated IP in your project.
 Info: Finished: Create testbench Platform Designer system

@@ -1,78 +1,84 @@
 # # File gsaved with Nlview version 6.3.8  2013-12-19 bk=1.2992 VDI=34 GEI=35
 # 
-preplace inst system_on_chip.ARM.dcan1 -pg 1
-preplace inst system_on_chip.ARM.i2c1 -pg 1
-preplace inst system_on_chip.ARM.clk_0 -pg 1
-preplace inst system_on_chip -pg 1 -lvl 1 -y 40 -regy -20
-preplace inst system_on_chip.ARM.i2c2 -pg 1
-preplace inst system_on_chip.UART -pg 1 -lvl 3 -y 510
-preplace inst system_on_chip.ARM.scu -pg 1
-preplace inst system_on_chip.ARM.nand0 -pg 1
-preplace inst system_on_chip.ARM.i2c3 -pg 1
-preplace inst system_on_chip.ARM.uart0 -pg 1
 preplace inst system_on_chip.ARM.rstmgr -pg 1
-preplace inst system_on_chip.ARM.arm_a9_0 -pg 1
-preplace inst system_on_chip.ARM.timer -pg 1
-preplace inst system_on_chip.ARM.uart1 -pg 1
-preplace inst system_on_chip.ARM.arm_a9_1 -pg 1
-preplace inst system_on_chip.ARM.f2s_periph_ref_clk -pg 1
-preplace inst system_on_chip.ARM.qspi -pg 1
-preplace inst system_on_chip.NIOS.clock_bridge -pg 1
-preplace inst system_on_chip.ARM.fpgamgr -pg 1
-preplace inst system_on_chip.ARM.clkmgr -pg 1
-preplace inst system_on_chip.ARM.hps_io -pg 1
-preplace inst system_on_chip.ARM.sdrctl -pg 1
-preplace inst system_on_chip.ARM.dma -pg 1
+preplace inst system_on_chip -pg 1 -lvl 1 -y 40 -regy -20
+preplace inst system_on_chip.ARM.f2s_sdram_ref_clk -pg 1
+preplace inst system_on_chip.RAM -pg 1 -lvl 3 -y 690
+preplace inst system_on_chip.REG_7_SEGMENTS -pg 1 -lvl 3 -y 490
+preplace inst system_on_chip.Audio_PLL.audio_pll -pg 1
 preplace inst system_on_chip.ARM.eosc1 -pg 1
-preplace inst system_on_chip.ARM.bridges -pg 1
+preplace inst system_on_chip.ARM.eosc2 -pg 1
+preplace inst system_on_chip.FIFO -pg 1 -lvl 3 -y 150
+preplace inst system_on_chip.ARM -pg 1 -lvl 2 -y 100
+preplace inst system_on_chip.Audio_Config -pg 1 -lvl 2 -y 510
+preplace inst system_on_chip.ARM.clk_0 -pg 1
+preplace inst system_on_chip.ARM.i2c0 -pg 1
+preplace inst system_on_chip.ARM.L2 -pg 1
+preplace inst system_on_chip.ARM.usb0 -pg 1
+preplace inst system_on_chip.ARM.axi_ocram -pg 1
+preplace inst system_on_chip.ARM.i2c1 -pg 1
+preplace inst system_on_chip.UART -pg 1 -lvl 3 -y 590
+preplace inst system_on_chip.ARM.usb1 -pg 1
+preplace inst system_on_chip.ARM.i2c2 -pg 1
+preplace inst system_on_chip.NIOS -pg 1 -lvl 2 -y 780
+preplace inst system_on_chip.ARM.i2c3 -pg 1
+preplace inst system_on_chip.ARM.arm_a9_0 -pg 1
+preplace inst system_on_chip.NIOS.clock_bridge -pg 1
+preplace inst system_on_chip.ARM.arm_a9_1 -pg 1
+preplace inst system_on_chip.REG_BUTTONS -pg 1 -lvl 3 -y 370
 preplace inst system_on_chip.ARM.hps_io.border -pg 1
+preplace inst system_on_chip.ARM.nand0 -pg 1
+preplace inst system_on_chip.ARM.uart0 -pg 1
+preplace inst system_on_chip.ARM.uart1 -pg 1
+preplace inst system_on_chip.clk_0 -pg 1 -lvl 1 -y 350
+preplace inst system_on_chip.ARM.l3regs -pg 1
+preplace inst system_on_chip.ARM.sysmgr -pg 1
 preplace inst system_on_chip.TIMER -pg 1 -lvl 3 -y 810
+preplace inst system_on_chip.NIOS.reset_bridge -pg 1
+preplace inst system_on_chip.ARM.axi_sdram -pg 1
 preplace inst system_on_chip.ARM.wd_timer0 -pg 1
 preplace inst system_on_chip.ARM.timer0 -pg 1
-preplace inst system_on_chip.ARM.arm_gic_0 -pg 1
-preplace inst system_on_chip.ARM.eosc2 -pg 1
-preplace inst system_on_chip.clk_0 -pg 1 -lvl 1 -y 350
-preplace inst system_on_chip.REG_7_SEGMENTS -pg 1 -lvl 3 -y 410
-preplace inst system_on_chip.NIOS.cpu -pg 1
-preplace inst system_on_chip.FIFO -pg 1 -lvl 3 -y 150
-preplace inst system_on_chip.ARM.axi_sdram -pg 1
-preplace inst system_on_chip.ARM.axi_ocram -pg 1
-preplace inst system_on_chip.ARM.l3regs -pg 1
+preplace inst system_on_chip.ARM.f2s_periph_ref_clk -pg 1
+preplace inst system_on_chip.ARM.scu -pg 1
 preplace inst system_on_chip.ARM.wd_timer1 -pg 1
 preplace inst system_on_chip.ARM.timer1 -pg 1
-preplace inst system_on_chip.RAM -pg 1 -lvl 3 -y 610
-preplace inst system_on_chip.NIOS -pg 1 -lvl 2 -y 420
-preplace inst system_on_chip.ARM.sdmmc -pg 1
-preplace inst system_on_chip.ARM.gpio0 -pg 1
 preplace inst system_on_chip.ARM.timer2 -pg 1
-preplace inst system_on_chip.NIOS.reset_bridge -pg 1
-preplace inst system_on_chip.ARM.usb0 -pg 1
-preplace inst system_on_chip.ARM.spim0 -pg 1
-preplace inst system_on_chip.ARM.gpio1 -pg 1
+preplace inst system_on_chip.ARM.sdrctl -pg 1
 preplace inst system_on_chip.ARM.timer3 -pg 1
-preplace inst system_on_chip.ARM.fpga_interfaces -pg 1
-preplace inst system_on_chip.ARM -pg 1 -lvl 2 -y 100
-preplace inst system_on_chip.REG_SWITCHES -pg 1 -lvl 3 -y 30
-preplace inst system_on_chip.REG_BUTTONS -pg 1 -lvl 3 -y 290
-preplace inst system_on_chip.ARM.gmac0 -pg 1
-preplace inst system_on_chip.ARM.usb1 -pg 1
-preplace inst system_on_chip.ARM.spim1 -pg 1
+preplace inst system_on_chip.ARM.arm_gic_0 -pg 1
+preplace inst system_on_chip.ARM.dma -pg 1
+preplace inst system_on_chip.ARM.gpio0 -pg 1
+preplace inst system_on_chip.ARM.bridges -pg 1
+preplace inst system_on_chip.ARM.qspi -pg 1
+preplace inst system_on_chip.ARM.gpio1 -pg 1
+preplace inst system_on_chip.ARM.timer -pg 1
 preplace inst system_on_chip.ARM.gpio2 -pg 1
-preplace inst system_on_chip.ARM.f2s_sdram_ref_clk -pg 1
+preplace inst system_on_chip.ARM.fpgamgr -pg 1
+preplace inst system_on_chip.ARM.spim0 -pg 1
+preplace inst system_on_chip.Audio_PLL -pg 1 -lvl 2 -y 640
 preplace inst system_on_chip.ARM.dcan0 -pg 1
+preplace inst system_on_chip.ARM.spim1 -pg 1
+preplace inst system_on_chip.ARM.sdmmc -pg 1
+preplace inst system_on_chip.ARM.clkmgr -pg 1
+preplace inst system_on_chip.ARM.dcan1 -pg 1
+preplace inst system_on_chip.NIOS.cpu -pg 1
+preplace inst system_on_chip.REG_SWITCHES -pg 1 -lvl 3 -y 30
+preplace inst system_on_chip.Audio_PLL.reset_from_locked -pg 1
+preplace inst system_on_chip.ARM.gmac0 -pg 1
+preplace inst system_on_chip.Audio -pg 1 -lvl 2 -y 390
+preplace inst system_on_chip.ARM.fpga_interfaces -pg 1
 preplace inst system_on_chip.ARM.gmac1 -pg 1
-preplace inst system_on_chip.ARM.i2c0 -pg 1
-preplace inst system_on_chip.ARM.sysmgr -pg 1
-preplace inst system_on_chip.ARM.L2 -pg 1
-preplace netloc FAN_OUT<net_container>system_on_chip</net_container>(SLAVE)ARM.f2h_axi_clock,(SLAVE)REG_BUTTONS.clk,(SLAVE)REG_7_SEGMENTS.clk,(SLAVE)RAM.clk1,(SLAVE)TIMER.clk,(MASTER)clk_0.clk,(SLAVE)ARM.h2f_lw_axi_clock,(SLAVE)ARM.f2h_sdram0_clock,(SLAVE)ARM.h2f_axi_clock,(SLAVE)REG_SWITCHES.clk,(SLAVE)UART.clk,(SLAVE)FIFO.clk_in,(SLAVE)NIOS.clk) 1 1 2 290 340 790
-preplace netloc EXPORT<net_container>system_on_chip</net_container>(SLAVE)clk_0.clk_in,(SLAVE)system_on_chip.clk) 1 0 1 NJ
+preplace inst system_on_chip.ARM.hps_io -pg 1
+preplace netloc EXPORT<net_container>system_on_chip</net_container>(SLAVE)REG_7_SEGMENTS.external_connection,(SLAVE)system_on_chip.id7_segment) 1 0 3 NJ 340 NJ 360 NJ
+preplace netloc FAN_OUT<net_container>system_on_chip</net_container>(SLAVE)Audio.clk,(SLAVE)Audio_PLL.ref_clk,(SLAVE)ARM.h2f_lw_axi_clock,(SLAVE)TIMER.clk,(SLAVE)FIFO.clk_in,(SLAVE)REG_7_SEGMENTS.clk,(SLAVE)FIFO.clk_out,(SLAVE)ARM.f2h_sdram0_clock,(SLAVE)REG_SWITCHES.clk,(MASTER)clk_0.clk,(SLAVE)NIOS.clk,(SLAVE)Audio_Config.clk,(SLAVE)UART.clk,(SLAVE)ARM.h2f_axi_clock,(SLAVE)REG_BUTTONS.clk,(SLAVE)RAM.clk1,(SLAVE)ARM.f2h_axi_clock) 1 1 2 310 380 770
+preplace netloc FAN_OUT<net_container>system_on_chip</net_container>(MASTER)ARM.h2f_lw_axi_master,(SLAVE)FIFO.in_csr,(SLAVE)FIFO.in) 1 2 1 730
+preplace netloc EXPORT<net_container>system_on_chip</net_container>(SLAVE)clk_0.clk_in_reset,(SLAVE)system_on_chip.reset) 1 0 1 NJ
+preplace netloc FAN_OUT<net_container>system_on_chip</net_container>(SLAVE)FIFO.reset_in,(SLAVE)REG_BUTTONS.reset,(SLAVE)Audio_Config.reset,(SLAVE)FIFO.reset_out,(SLAVE)UART.reset,(SLAVE)TIMER.reset,(SLAVE)Audio.reset,(SLAVE)Audio_PLL.ref_reset,(SLAVE)NIOS.reset,(SLAVE)RAM.reset1,(SLAVE)REG_7_SEGMENTS.reset,(MASTER)clk_0.clk_reset,(SLAVE)REG_SWITCHES.reset) 1 1 2 290 720 790
 preplace netloc EXPORT<net_container>system_on_chip</net_container>(SLAVE)REG_BUTTONS.external_connection,(SLAVE)system_on_chip.button) 1 0 3 NJ 300 NJ 300 NJ
-preplace netloc FAN_OUT<net_container>system_on_chip</net_container>(SLAVE)UART.irq,(MASTER)NIOS.irq,(SLAVE)TIMER.irq,(SLAVE)REG_BUTTONS.irq) 1 2 1 810
-preplace netloc EXPORT<net_container>system_on_chip</net_container>(SLAVE)system_on_chip.reset,(SLAVE)clk_0.clk_in_reset) 1 0 1 NJ
-preplace netloc EXPORT<net_container>system_on_chip</net_container>(SLAVE)REG_SWITCHES.external_connection,(SLAVE)system_on_chip.switches) 1 0 3 NJ 60 NJ 60 NJ
-preplace netloc INTERCONNECT<net_container>system_on_chip</net_container>(MASTER)NIOS.instruction_master,(SLAVE)NIOS.debug_mem_slave,(SLAVE)REG_7_SEGMENTS.s1,(SLAVE)REG_BUTTONS.s1,(SLAVE)FIFO.out,(SLAVE)RAM.s1,(MASTER)NIOS.data_master,(SLAVE)UART.avalon_jtag_slave,(SLAVE)TIMER.s1,(SLAVE)REG_SWITCHES.s1) 1 1 2 330 380 710
-preplace netloc EXPORT<net_container>system_on_chip</net_container>(SLAVE)system_on_chip.memory,(SLAVE)ARM.memory) 1 0 2 NJ 250 NJ
-preplace netloc EXPORT<net_container>system_on_chip</net_container>(SLAVE)system_on_chip.id7_segment,(SLAVE)REG_7_SEGMENTS.external_connection) 1 0 3 NJ 320 NJ 320 NJ
-preplace netloc FAN_OUT<net_container>system_on_chip</net_container>(SLAVE)NIOS.reset,(SLAVE)TIMER.reset,(SLAVE)REG_BUTTONS.reset,(SLAVE)UART.reset,(SLAVE)FIFO.reset_in,(SLAVE)REG_SWITCHES.reset,(SLAVE)RAM.reset1,(SLAVE)REG_7_SEGMENTS.reset,(MASTER)clk_0.clk_reset) 1 1 2 310 360 750
+preplace netloc EXPORT<net_container>system_on_chip</net_container>(SLAVE)system_on_chip.switches,(SLAVE)REG_SWITCHES.external_connection) 1 0 3 NJ 60 NJ 60 NJ
+preplace netloc FAN_OUT<net_container>system_on_chip</net_container>(MASTER)NIOS.irq,(SLAVE)UART.irq,(SLAVE)TIMER.irq,(SLAVE)REG_BUTTONS.irq) 1 2 1 750
+preplace netloc EXPORT<net_container>system_on_chip</net_container>(SLAVE)ARM.memory,(SLAVE)system_on_chip.memory) 1 0 2 NJ 250 NJ
+preplace netloc EXPORT<net_container>system_on_chip</net_container>(SLAVE)system_on_chip.clk,(SLAVE)clk_0.clk_in) 1 0 1 NJ
+preplace netloc INTERCONNECT<net_container>system_on_chip</net_container>(SLAVE)REG_7_SEGMENTS.s1,(SLAVE)REG_BUTTONS.s1,(SLAVE)NIOS.debug_mem_slave,(SLAVE)FIFO.out_csr,(SLAVE)RAM.s1,(SLAVE)FIFO.out,(SLAVE)TIMER.s1,(MASTER)NIOS.instruction_master,(SLAVE)UART.avalon_jtag_slave,(MASTER)NIOS.data_master,(SLAVE)REG_SWITCHES.s1) 1 1 2 330 740 710
 levelinfo -pg 1 0 80 1020
 levelinfo -hier system_on_chip 90 120 470 860 1010

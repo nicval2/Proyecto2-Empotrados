@@ -1,0 +1,54 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/GitHubClone/Proyecto2-Empotrados/SystemOnChip/software/fifo_test1/obj/default/runtime/sim/mentor
+vsystem_on_chip_Audio_PLL
+!s110 1764302060
+!i10b 1
+!s100 ^@<:B6;8fBdE9z_7cX>8Y0
+Ia0?Bf5ok_PEKWTBRK]PLm1
+Z1 VDg1SIo80bB@j0V0VzS_@n1
+R0
+w1764267319
+8C:/GitHubClone/Proyecto2-Empotrados/SystemOnChip/system_on_chip/testbench/system_on_chip_tb/simulation/submodules/system_on_chip_Audio_PLL.v
+FC:/GitHubClone/Proyecto2-Empotrados/SystemOnChip/system_on_chip/testbench/system_on_chip_tb/simulation/submodules/system_on_chip_Audio_PLL.v
+L0 9
+Z2 OV;L;10.5b;63
+r1
+!s85 0
+31
+!s108 1764302060.000000
+!s107 C:/GitHubClone/Proyecto2-Empotrados/SystemOnChip/system_on_chip/testbench/system_on_chip_tb/simulation/submodules/system_on_chip_Audio_PLL.v|
+!s90 -reportprogress|300|C:/GitHubClone/Proyecto2-Empotrados/SystemOnChip/system_on_chip/testbench/system_on_chip_tb/simulation/submodules/system_on_chip_Audio_PLL.v|-work|Audio_PLL|
+!i113 1
+o-work Audio_PLL
+Z3 tCvgOpt 0
+nsystem_on_chip_@audio_@p@l@l
+vsystem_on_chip_Audio_PLL_audio_pll
+!s110 1764302058
+!i10b 1
+!s100 ccj@8SB8GBiWGG8J^zhBI1
+IzBi:8:?^OXAk<b:khh?A62
+R1
+R0
+w1764267373
+8C:/GitHubClone/Proyecto2-Empotrados/SystemOnChip/system_on_chip/testbench/system_on_chip_tb/simulation/submodules/system_on_chip_Audio_PLL_audio_pll.vo
+FC:/GitHubClone/Proyecto2-Empotrados/SystemOnChip/system_on_chip/testbench/system_on_chip_tb/simulation/submodules/system_on_chip_Audio_PLL_audio_pll.vo
+L0 31
+R2
+r1
+!s85 0
+31
+!s108 1764302058.000000
+!s107 C:/GitHubClone/Proyecto2-Empotrados/SystemOnChip/system_on_chip/testbench/system_on_chip_tb/simulation/submodules/system_on_chip_Audio_PLL_audio_pll.vo|
+!s90 -reportprogress|300|C:/GitHubClone/Proyecto2-Empotrados/SystemOnChip/system_on_chip/testbench/system_on_chip_tb/simulation/submodules/system_on_chip_Audio_PLL_audio_pll.vo|-work|audio_pll|
+!i113 1
+o-work audio_pll
+R3
+nsystem_on_chip_@audio_@p@l@l_audio_pll

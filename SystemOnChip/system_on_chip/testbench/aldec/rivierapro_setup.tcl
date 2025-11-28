@@ -12,7 +12,7 @@
 # or its authorized distributors. Please refer to the applicable 
 # agreement for further details.
 
-# ACDS 18.0 614 win32 2025.11.15.15:45:24
+# ACDS 18.0 614 win32 2025.11.27.12:16:22
 # ----------------------------------------
 # Auto-generated simulation script rivierapro_setup.tcl
 # ----------------------------------------
@@ -113,7 +113,7 @@ if ![info exists QSYS_SIMDIR] {
 }
 
 if ![info exists QUARTUS_INSTALL_DIR] { 
-  set QUARTUS_INSTALL_DIR "C:/intelfpga_lite/18.0/quartus/"
+  set QUARTUS_INSTALL_DIR "D:/quartus18/quartus/"
 }
 
 if ![info exists USER_DEFINED_COMPILE_OPTIONS] { 
@@ -226,6 +226,10 @@ ensure_lib                                       ./libraries/NIOS_data_master_tr
 vmap       NIOS_data_master_translator           ./libraries/NIOS_data_master_translator          
 ensure_lib                                       ./libraries/cpu                                  
 vmap       cpu                                   ./libraries/cpu                                  
+ensure_lib                                       ./libraries/reset_from_locked                    
+vmap       reset_from_locked                     ./libraries/reset_from_locked                    
+ensure_lib                                       ./libraries/audio_pll                            
+vmap       audio_pll                             ./libraries/audio_pll                            
 ensure_lib                                       ./libraries/rst_controller                       
 vmap       rst_controller                        ./libraries/rst_controller                       
 ensure_lib                                       ./libraries/irq_mapper                           
@@ -236,20 +240,30 @@ ensure_lib                                       ./libraries/UART
 vmap       UART                                  ./libraries/UART                                 
 ensure_lib                                       ./libraries/TIMER                                
 vmap       TIMER                                 ./libraries/TIMER                                
-ensure_lib                                       ./libraries/REG_LEDS                             
-vmap       REG_LEDS                              ./libraries/REG_LEDS                             
-ensure_lib                                       ./libraries/REG_BUTTON                           
-vmap       REG_BUTTON                            ./libraries/REG_BUTTON                           
+ensure_lib                                       ./libraries/REG_SWITCHES                         
+vmap       REG_SWITCHES                          ./libraries/REG_SWITCHES                         
+ensure_lib                                       ./libraries/REG_BUTTONS                          
+vmap       REG_BUTTONS                           ./libraries/REG_BUTTONS                          
+ensure_lib                                       ./libraries/REG_7_SEGMENTS                       
+vmap       REG_7_SEGMENTS                        ./libraries/REG_7_SEGMENTS                       
 ensure_lib                                       ./libraries/RAM                                  
 vmap       RAM                                   ./libraries/RAM                                  
 ensure_lib                                       ./libraries/NIOS                                 
 vmap       NIOS                                  ./libraries/NIOS                                 
-ensure_lib                                       ./libraries/system_on_chip_inst_timer_irq_bfm    
-vmap       system_on_chip_inst_timer_irq_bfm     ./libraries/system_on_chip_inst_timer_irq_bfm    
+ensure_lib                                       ./libraries/FIFO                                 
+vmap       FIFO                                  ./libraries/FIFO                                 
+ensure_lib                                       ./libraries/Audio_PLL                            
+vmap       Audio_PLL                             ./libraries/Audio_PLL                            
+ensure_lib                                       ./libraries/system_on_chip_inst_switches_bfm     
+vmap       system_on_chip_inst_switches_bfm      ./libraries/system_on_chip_inst_switches_bfm     
 ensure_lib                                       ./libraries/system_on_chip_inst_reset_bfm        
 vmap       system_on_chip_inst_reset_bfm         ./libraries/system_on_chip_inst_reset_bfm        
+ensure_lib                                       ./libraries/system_on_chip_inst_id7_segment_bfm  
+vmap       system_on_chip_inst_id7_segment_bfm   ./libraries/system_on_chip_inst_id7_segment_bfm  
 ensure_lib                                       ./libraries/system_on_chip_inst_clk_bfm          
 vmap       system_on_chip_inst_clk_bfm           ./libraries/system_on_chip_inst_clk_bfm          
+ensure_lib                                       ./libraries/system_on_chip_inst_button_bfm       
+vmap       system_on_chip_inst_button_bfm        ./libraries/system_on_chip_inst_button_bfm       
 ensure_lib                                       ./libraries/system_on_chip_inst                  
 vmap       system_on_chip_inst                   ./libraries/system_on_chip_inst                  
 
@@ -304,20 +318,26 @@ alias com {
   eval  vlog -v2k5 $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/system_on_chip_tb/simulation/submodules/system_on_chip_NIOS_cpu_debug_slave_tck.v"                                                          -work cpu                                  
   eval  vlog -v2k5 $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/system_on_chip_tb/simulation/submodules/system_on_chip_NIOS_cpu_debug_slave_wrapper.v"                                                      -work cpu                                  
   eval  vlog -v2k5 $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/system_on_chip_tb/simulation/submodules/system_on_chip_NIOS_cpu_test_bench.v"                                                               -work cpu                                  
+  eval  vlog -v2k5 $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/system_on_chip_tb/simulation/submodules/altera_up_avalon_reset_from_locked_signal.v"                                                        -work reset_from_locked                    
+  eval  vlog -v2k5 $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/system_on_chip_tb/simulation/submodules/system_on_chip_Audio_PLL_audio_pll.vo"                                                              -work audio_pll                            
   eval  vlog -v2k5 $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/system_on_chip_tb/simulation/submodules/altera_reset_controller.v"                                                                          -work rst_controller                       
   eval  vlog -v2k5 $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/system_on_chip_tb/simulation/submodules/altera_reset_synchronizer.v"                                                                        -work rst_controller                       
   eval  vlog  $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS      "$QSYS_SIMDIR/system_on_chip_tb/simulation/submodules/system_on_chip_irq_mapper.sv"                                          -l altera_common_sv_packages -work irq_mapper                           
   eval  vlog -v2k5 $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/system_on_chip_tb/simulation/submodules/system_on_chip_mm_interconnect_0.v"                                                                 -work mm_interconnect_0                    
   eval  vlog -v2k5 $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/system_on_chip_tb/simulation/submodules/system_on_chip_UART.v"                                                                              -work UART                                 
   eval  vlog -v2k5 $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/system_on_chip_tb/simulation/submodules/system_on_chip_TIMER.v"                                                                             -work TIMER                                
-  eval  vlog -v2k5 $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/system_on_chip_tb/simulation/submodules/system_on_chip_REG_LEDS.v"                                                                          -work REG_LEDS                             
-  eval  vlog -v2k5 $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/system_on_chip_tb/simulation/submodules/system_on_chip_REG_BUTTON.v"                                                                        -work REG_BUTTON                           
+  eval  vlog -v2k5 $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/system_on_chip_tb/simulation/submodules/system_on_chip_REG_SWITCHES.v"                                                                      -work REG_SWITCHES                         
+  eval  vlog -v2k5 $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/system_on_chip_tb/simulation/submodules/system_on_chip_REG_BUTTONS.v"                                                                       -work REG_BUTTONS                          
+  eval  vlog -v2k5 $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/system_on_chip_tb/simulation/submodules/system_on_chip_REG_7_SEGMENTS.v"                                                                    -work REG_7_SEGMENTS                       
   eval  vlog -v2k5 $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/system_on_chip_tb/simulation/submodules/system_on_chip_RAM.v"                                                                               -work RAM                                  
   eval  vlog -v2k5 $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/system_on_chip_tb/simulation/submodules/system_on_chip_NIOS.v"                                                                              -work NIOS                                 
-  eval  vlog  $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS      "$QSYS_SIMDIR/system_on_chip_tb/simulation/submodules/altera_irq_mapper.sv"                                                  -l altera_common_sv_packages -work irq_mapper                           
-  eval  vlog  $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS      "$QSYS_SIMDIR/system_on_chip_tb/simulation/submodules/altera_avalon_interrupt_sink.sv"                                       -l altera_common_sv_packages -work system_on_chip_inst_timer_irq_bfm    
+  eval  vlog -v2k5 $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/system_on_chip_tb/simulation/submodules/system_on_chip_FIFO.v"                                                                              -work FIFO                                 
+  eval  vlog -v2k5 $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/system_on_chip_tb/simulation/submodules/system_on_chip_Audio_PLL.v"                                                                         -work Audio_PLL                            
+  eval  vlog  $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS      "$QSYS_SIMDIR/system_on_chip_tb/simulation/submodules/altera_conduit_bfm_0003.sv"                                            -l altera_common_sv_packages -work system_on_chip_inst_switches_bfm     
   eval  vlog  $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS      "$QSYS_SIMDIR/system_on_chip_tb/simulation/submodules/altera_avalon_reset_source.sv"                                         -l altera_common_sv_packages -work system_on_chip_inst_reset_bfm        
+  eval  vlog  $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS      "$QSYS_SIMDIR/system_on_chip_tb/simulation/submodules/altera_conduit_bfm_0002.sv"                                            -l altera_common_sv_packages -work system_on_chip_inst_id7_segment_bfm  
   eval  vlog  $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS      "$QSYS_SIMDIR/system_on_chip_tb/simulation/submodules/altera_avalon_clock_source.sv"                                         -l altera_common_sv_packages -work system_on_chip_inst_clk_bfm          
+  eval  vlog  $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS      "$QSYS_SIMDIR/system_on_chip_tb/simulation/submodules/altera_conduit_bfm.sv"                                                 -l altera_common_sv_packages -work system_on_chip_inst_button_bfm       
   eval  vlog -v2k5 $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/system_on_chip_tb/simulation/submodules/system_on_chip.v"                                                                                   -work system_on_chip_inst                  
   eval  vlog -v2k5 $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/system_on_chip_tb/simulation/system_on_chip_tb.v"                                                                                                                                      
 }
@@ -326,14 +346,14 @@ alias com {
 # Elaborate top level design
 alias elab {
   echo "\[exec\] elab"
-  eval vsim +access +r -t ps $ELAB_OPTIONS -L work -L altera_common_sv_packages -L error_adapter_0 -L avalon_st_adapter -L rsp_mux_001 -L rsp_mux -L rsp_demux -L cmd_mux_001 -L cmd_mux -L cmd_demux_001 -L cmd_demux -L router_003 -L router_002 -L router_001 -L router -L UART_avalon_jtag_slave_agent_rsp_fifo -L UART_avalon_jtag_slave_agent -L NIOS_data_master_agent -L UART_avalon_jtag_slave_translator -L NIOS_data_master_translator -L cpu -L rst_controller -L irq_mapper -L mm_interconnect_0 -L UART -L TIMER -L REG_LEDS -L REG_BUTTON -L RAM -L NIOS -L system_on_chip_inst_timer_irq_bfm -L system_on_chip_inst_reset_bfm -L system_on_chip_inst_clk_bfm -L system_on_chip_inst -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cyclonev_ver -L cyclonev_hssi_ver -L cyclonev_pcie_hip_ver $TOP_LEVEL_NAME
+  eval vsim +access +r -t ps $ELAB_OPTIONS -L work -L altera_common_sv_packages -L error_adapter_0 -L avalon_st_adapter -L rsp_mux_001 -L rsp_mux -L rsp_demux -L cmd_mux_001 -L cmd_mux -L cmd_demux_001 -L cmd_demux -L router_003 -L router_002 -L router_001 -L router -L UART_avalon_jtag_slave_agent_rsp_fifo -L UART_avalon_jtag_slave_agent -L NIOS_data_master_agent -L UART_avalon_jtag_slave_translator -L NIOS_data_master_translator -L cpu -L reset_from_locked -L audio_pll -L rst_controller -L irq_mapper -L mm_interconnect_0 -L UART -L TIMER -L REG_SWITCHES -L REG_BUTTONS -L REG_7_SEGMENTS -L RAM -L NIOS -L FIFO -L Audio_PLL -L system_on_chip_inst_switches_bfm -L system_on_chip_inst_reset_bfm -L system_on_chip_inst_id7_segment_bfm -L system_on_chip_inst_clk_bfm -L system_on_chip_inst_button_bfm -L system_on_chip_inst -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cyclonev_ver -L cyclonev_hssi_ver -L cyclonev_pcie_hip_ver $TOP_LEVEL_NAME
 }
 
 # ----------------------------------------
 # Elaborate the top level design with -dbg -O2 option
 alias elab_debug {
   echo "\[exec\] elab_debug"
-  eval vsim -dbg -O2 +access +r -t ps $ELAB_OPTIONS -L work -L altera_common_sv_packages -L error_adapter_0 -L avalon_st_adapter -L rsp_mux_001 -L rsp_mux -L rsp_demux -L cmd_mux_001 -L cmd_mux -L cmd_demux_001 -L cmd_demux -L router_003 -L router_002 -L router_001 -L router -L UART_avalon_jtag_slave_agent_rsp_fifo -L UART_avalon_jtag_slave_agent -L NIOS_data_master_agent -L UART_avalon_jtag_slave_translator -L NIOS_data_master_translator -L cpu -L rst_controller -L irq_mapper -L mm_interconnect_0 -L UART -L TIMER -L REG_LEDS -L REG_BUTTON -L RAM -L NIOS -L system_on_chip_inst_timer_irq_bfm -L system_on_chip_inst_reset_bfm -L system_on_chip_inst_clk_bfm -L system_on_chip_inst -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cyclonev_ver -L cyclonev_hssi_ver -L cyclonev_pcie_hip_ver $TOP_LEVEL_NAME
+  eval vsim -dbg -O2 +access +r -t ps $ELAB_OPTIONS -L work -L altera_common_sv_packages -L error_adapter_0 -L avalon_st_adapter -L rsp_mux_001 -L rsp_mux -L rsp_demux -L cmd_mux_001 -L cmd_mux -L cmd_demux_001 -L cmd_demux -L router_003 -L router_002 -L router_001 -L router -L UART_avalon_jtag_slave_agent_rsp_fifo -L UART_avalon_jtag_slave_agent -L NIOS_data_master_agent -L UART_avalon_jtag_slave_translator -L NIOS_data_master_translator -L cpu -L reset_from_locked -L audio_pll -L rst_controller -L irq_mapper -L mm_interconnect_0 -L UART -L TIMER -L REG_SWITCHES -L REG_BUTTONS -L REG_7_SEGMENTS -L RAM -L NIOS -L FIFO -L Audio_PLL -L system_on_chip_inst_switches_bfm -L system_on_chip_inst_reset_bfm -L system_on_chip_inst_id7_segment_bfm -L system_on_chip_inst_clk_bfm -L system_on_chip_inst_button_bfm -L system_on_chip_inst -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cyclonev_ver -L cyclonev_hssi_ver -L cyclonev_pcie_hip_ver $TOP_LEVEL_NAME
 }
 
 # ----------------------------------------
