@@ -741,6 +741,7 @@
 											</entry>
 											<entry>
 												<key shared="false">
+													<placeholder>dock.single.Messages</placeholder>
 													<placeholder>dock.single.System\ Contents</placeholder>
 													<placeholder>dock.single.Interconnect\ Requirements</placeholder>
 													<placeholder>dock.single.Address\ Map</placeholder>
@@ -759,7 +760,7 @@
 												<item key="dock.width" type="i">1446</item>
 												<item key="dock.y" type="i">98</item>
 												<item key="dock.id" type="i">0</item>
-												<item key="dock.height" type="i">608</item>
+												<item key="dock.height" type="i">578</item>
 											</entry>
 										</placeholders>
 									</content>
@@ -819,6 +820,20 @@
 												<item key="dock.id" type="i">2</item>
 												<item key="dock.placeholder" type="s">dock.single.Interconnect\ Requirements</item>
 											</entry>
+											<entry>
+												<key shared="false">
+													<placeholder>dock.single.Messages</placeholder>
+												</key>
+												<item key="convert" type="b">true</item>
+												<item key="convert-keys" type="a">
+													<item type="s">index</item>
+													<item type="s">id</item>
+													<item type="s">placeholder</item>
+												</item>
+												<item key="dock.index" type="i">3</item>
+												<item key="dock.id" type="i">3</item>
+												<item key="dock.placeholder" type="s">dock.single.Messages</item>
+											</entry>
 										</placeholders>
 									</layout>
 									<children ignore="false">
@@ -847,6 +862,16 @@
 												<replacement id="dockablesingle Interconnect Requirements"/>
 												<delegate id="delegate_ccontrol backup factory id">
 													<id>Interconnect Requirements</id>
+													<area/>
+												</delegate>
+											</layout>
+											<children ignore="false"/>
+										</child>
+										<child>
+											<layout factory="predefined" placeholder="dock.single.Messages">
+												<replacement id="dockablesingle Messages"/>
+												<delegate id="delegate_ccontrol backup factory id">
+													<id>Messages</id>
 													<area/>
 												</delegate>
 											</layout>
@@ -986,12 +1011,12 @@
 													</placeholder-map>
 												</leaf>
 												<node nodeId="1763576618112" orientation="VERTICAL" divider="0.8874172185430463">
-													<leaf id="1" nodeId="1763576618110">
+													<leaf id="0" nodeId="1763576618110">
 														<placeholders>
 															<placeholder>dock.single.IP\ Catalog</placeholder>
 														</placeholders>
 													</leaf>
-													<leaf id="2" nodeId="1375985011087">
+													<leaf id="1" nodeId="1375985011087">
 														<placeholders>
 															<placeholder>dock.single.Hierarchy</placeholder>
 														</placeholders>
@@ -1130,7 +1155,7 @@
 														</leaf>
 													</node>
 												</node>
-												<leaf id="0" nodeId="1372710005745">
+												<leaf id="-1" nodeId="1372710005745">
 													<placeholders>
 														<placeholder>dock.single.Messages</placeholder>
 														<placeholder>dock.single.Generation\ Messages</placeholder>
@@ -1161,16 +1186,6 @@
 								</layout>
 							</adjacent>
 							<children ignore="false">
-								<child>
-									<layout factory="predefined" placeholder="dock.single.Messages">
-										<replacement id="dockablesingle Messages"/>
-										<delegate id="delegate_ccontrol backup factory id">
-											<id>Messages</id>
-											<area/>
-										</delegate>
-									</layout>
-									<children ignore="false"/>
-								</child>
 								<child>
 									<layout factory="predefined" placeholder="dock.single.IP\ Catalog">
 										<replacement id="dockablesingle IP Catalog"/>
@@ -1816,11 +1831,30 @@
 								</property>
 							</properties>
 						</entry>
-						<entry id="single Messages" current="dock.mode.normal">
+						<entry id="single Messages" current="dock.mode.externalized">
 							<history>
 								<mode>dock.mode.normal</mode>
+								<mode>dock.mode.externalized</mode>
 							</history>
 							<properties>
+								<property id="dock.mode.externalized">
+									<mode>dock.mode.externalized</mode>
+									<root>external</root>
+									<location>
+										<property factory="screen dock">
+											<x>457</x>
+											<y>98</y>
+											<width>1446</width>
+											<height>578</height>
+											<fullscreen>false</fullscreen>
+											<placeholder>dock.single.Messages</placeholder>
+										</property>
+										<property factory="StackDockPropertyFactory">
+											<index>3</index>
+											<placeholder>dock.single.Messages</placeholder>
+										</property>
+									</location>
+								</property>
 								<property id="dock.mode.normal">
 									<mode>dock.mode.normal</mode>
 									<root>ccontrol center</root>
@@ -1828,8 +1862,8 @@
 										<property factory="SplitDockPlaceholderProperty">
 											<placeholder>dock.single.Messages</placeholder>
 											<backup-path>
-												<node location="RIGHT" size="0.8" id="1372710005721"/>
-												<node location="BOTTOM" size="0.25" id="1372710005725"/>
+												<node location="RIGHT" size="0.7781885397412199" id="1372710005721"/>
+												<node location="BOTTOM" size="0.29139072847682124" id="1372710005725"/>
 												<leaf id="1372710005745"/>
 											</backup-path>
 										</property>

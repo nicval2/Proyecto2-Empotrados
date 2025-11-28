@@ -142,7 +142,13 @@ ACDS_VERSION := 18.0
 ELF := botton_switch_7_segments.elf
 
 # Paths to C, C++, and assembly source files.
-C_SRCS := hello_world_small.c
+C_SRCS += switches.c
+C_SRCS += buttons.c
+C_SRCS += 7_segments.c
+C_SRCS += timer.c
+C_SRCS += main.c
+C_SRCS += filter.c
+C_SRCS += vga.c
 CXX_SRCS :=
 ASM_SRCS :=
 

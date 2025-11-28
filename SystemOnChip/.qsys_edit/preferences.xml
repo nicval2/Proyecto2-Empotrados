@@ -3,12 +3,12 @@
  <debug showDebugMenu="0" />
  <systemtable filter="All Interfaces">
   <columns>
-   <connections preferredWidth="223" />
+   <connections preferredWidth="255" />
    <irq preferredWidth="34" />
   </columns>
  </systemtable>
  <library
-   expandedCategories="Library,Library/Interface Protocols/PCI Express,Library/Interface Protocols,Library/Processors and Peripherals/Peripherals,Library/Processors and Peripherals,Library/Interface Protocols/PCI Express/QSYS Example Designs,Project" />
+   expandedCategories="Library/Basic Functions,Project,Library/Interface Protocols/Transceiver PLL,Library/Basic Functions/Clocks; PLLs and Resets,Library,Library/Basic Functions/Clocks; PLLs and Resets/PLL,Library/University Program/Clock,Library/Interface Protocols,Library/University Program" />
  <window width="1920" height="1020" x="0" y="0" />
  <generation path="_PROJECT_NAME_" synthesis="VERILOG" greybox="0" />
 </preferences>

@@ -4,7 +4,7 @@
  * Machine generated for CPU 'NIOS' in SOPC Builder design 'system_on_chip'
  * SOPC Builder design path: ../../system_on_chip.sopcinfo
  *
- * Generated: Thu Nov 27 03:36:07 CST 2025
+ * Generated: Fri Nov 28 16:18:53 CST 2025
  */
 
 /*
@@ -65,9 +65,9 @@
  *
  */
 
-#define RAM_REGION_BASE 0x20
+#define RAM_REGION_BASE 0x4020
 #define RAM_REGION_SPAN 8160
-#define RESET_REGION_BASE 0x0
+#define RESET_REGION_BASE 0x4000
 #define RESET_REGION_SPAN 32
 
 

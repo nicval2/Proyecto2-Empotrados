@@ -4,7 +4,7 @@
  * Machine generated for CPU 'NIOS' in SOPC Builder design 'system_on_chip'
  * SOPC Builder design path: ../../system_on_chip.sopcinfo
  *
- * Generated: Thu Nov 27 03:36:07 CST 2025
+ * Generated: Fri Nov 28 16:18:53 CST 2025
  */
 
 /*
@@ -62,6 +62,9 @@
 #include "altera_avalon_fifo.h"
 #include "altera_avalon_jtag_uart.h"
 #include "altera_avalon_timer.h"
+#include "altera_up_avalon_audio.h"
+#include "altera_up_avalon_audio_and_video_config.h"
+#include "altera_up_avalon_video_character_buffer_with_dma.h"
 
 /*
  * Allocate the device storage
@@ -71,6 +74,9 @@ ALTERA_NIOS2_GEN2_IRQ_INSTANCE ( NIOS, NIOS);
 ALTERA_AVALON_FIFO_INSTANCE ( FIFO, FIFO);
 ALTERA_AVALON_JTAG_UART_INSTANCE ( UART, UART);
 ALTERA_AVALON_TIMER_INSTANCE ( TIMER, TIMER);
+ALTERA_UP_AVALON_AUDIO_AND_VIDEO_CONFIG_INSTANCE ( AUDIO_CONFIG, AUDIO_CONFIG);
+ALTERA_UP_AVALON_AUDIO_INSTANCE ( AUDIO, AUDIO);
+ALTERA_UP_AVALON_VIDEO_CHARACTER_BUFFER_WITH_DMA_INSTANCE ( VGA_BUFFER, VGA_BUFFER);
 
 /*
  * Initialize the interrupt controller devices
@@ -96,4 +102,7 @@ void alt_sys_init( void )
     ALTERA_AVALON_TIMER_INIT ( TIMER, TIMER);
     ALTERA_AVALON_FIFO_INIT ( FIFO, FIFO);
     ALTERA_AVALON_JTAG_UART_INIT ( UART, UART);
+    ALTERA_UP_AVALON_AUDIO_AND_VIDEO_CONFIG_INIT ( AUDIO_CONFIG, AUDIO_CONFIG);
+    ALTERA_UP_AVALON_AUDIO_INIT ( AUDIO, AUDIO);
+    ALTERA_UP_AVALON_VIDEO_CHARACTER_BUFFER_WITH_DMA_INIT ( VGA_BUFFER, VGA_BUFFER);
 }
