@@ -107,7 +107,7 @@ https://www.terasic.com.tw/cgi-bin/page/archive.pl?Language=English&CategoryNo=2
 
 ```bash
 cat > wav_info.c << 'EOF'
-cat > test_arm_h2f_fifo.c << 'EOF'
+cat > wav_player_arm.c << 'EOF'
 ```
 EOF
 
