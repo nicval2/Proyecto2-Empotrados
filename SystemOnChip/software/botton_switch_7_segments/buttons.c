@@ -23,19 +23,19 @@ void buttons_isr(void* context)
     if (edge & BUTTON_PLAY_MASK)
     {
         is_running ^= 1;   // Toggle
-        printf(">> PLAY/PAUSE (%d)\n", is_running);
+        alt_putstr(">> PLAY/PAUSE (%d)\n", is_running);
     }
     else if (edge & BUTTON_NEXT_MASK)
     {
         reset_request = 1;
         is_running = 1;
-        printf(">> NEXT Track (Reset Clock)\n");
+        alt_putstr(">> NEXT Track (Reset Clock)\n");
     }
     else if (edge & BUTTON_PREV_MASK)
     {
         reset_request = 1;
         is_running = 1;
-        printf(">> PREV Track (Reset Clock)\n");
+        alt_putstr(">> PREV Track (Reset Clock)\n");
     }
 }
 

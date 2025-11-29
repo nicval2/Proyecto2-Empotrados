@@ -2,8 +2,8 @@
 <sch:Settings xmlns:sch="http://www.altera.com/embeddedsw/bsp/schema">
         <BspType>hal</BspType>
         <BspVersion>default</BspVersion>
-        <BspGeneratedTimeStamp>Nov 28, 2025 4:18:52 PM</BspGeneratedTimeStamp>
-        <BspGeneratedUnixTimeStamp>1764368332746</BspGeneratedUnixTimeStamp>
+        <BspGeneratedTimeStamp>Nov 28, 2025 5:05:47 PM</BspGeneratedTimeStamp>
+        <BspGeneratedUnixTimeStamp>1764371147737</BspGeneratedUnixTimeStamp>
         <BspGeneratedLocation>C:\Users\manue\Documents\Proyecto2-Empotrados\SystemOnChip\software\botton_switch_7_segments_bsp</BspGeneratedLocation>
         <BspSettingsFile>settings.bsp</BspSettingsFile>
         <SopcDesignFile>..\..\system_on_chip.sopcinfo</SopcDesignFile>

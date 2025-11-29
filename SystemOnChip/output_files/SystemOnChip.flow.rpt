@@ -1,5 +1,5 @@
 Flow report for SystemOnChip
-Fri Nov 28 15:53:30 2025
+Fri Nov 28 16:53:36 2025
 Quartus Prime Version 18.0.0 Build 614 04/24/2018 SJ Lite Edition
 
 
@@ -40,15 +40,15 @@ refer to the applicable agreement for further details.
 +-------------------------------------------------------------------------------+
 ; Flow Summary                                                                  ;
 +---------------------------------+---------------------------------------------+
-; Flow Status                     ; Successful - Fri Nov 28 15:53:12 2025       ;
+; Flow Status                     ; Successful - Fri Nov 28 16:53:18 2025       ;
 ; Quartus Prime Version           ; 18.0.0 Build 614 04/24/2018 SJ Lite Edition ;
 ; Revision Name                   ; SystemOnChip                                ;
 ; Top-level Entity Name           ; system_on_chip                              ;
 ; Family                          ; Cyclone V                                   ;
 ; Device                          ; 5CSEMA5F31C6                                ;
 ; Timing Models                   ; Final                                       ;
-; Logic utilization (in ALMs)     ; 1,606 / 32,070 ( 5 % )                      ;
-; Total registers                 ; 2740                                        ;
+; Logic utilization (in ALMs)     ; 1,607 / 32,070 ( 5 % )                      ;
+; Total registers                 ; 2723                                        ;
 ; Total pins                      ; 118 / 457 ( 26 % )                          ;
 ; Total virtual pins              ; 0                                           ;
 ; Total block memory bits         ; 151,040 / 4,065,280 ( 4 % )                 ;
@@ -67,7 +67,7 @@ refer to the applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 11/28/2025 15:47:18 ;
+; Start date & time ; 11/28/2025 16:47:49 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; SystemOnChip        ;
 +-------------------+---------------------+
@@ -78,7 +78,7 @@ refer to the applicable agreement for further details.
 +---------------------------------------+------------------------------------------------------------------------------+---------------+----------------------------------+------------+
 ; Assignment Name                       ; Value                                                                        ; Default Value ; Entity Name                      ; Section Id ;
 +---------------------------------------+------------------------------------------------------------------------------+---------------+----------------------------------+------------+
-; COMPILER_SIGNATURE_ID                 ; 42549057552815.176436643512864                                               ; --            ; --                               ; --         ;
+; COMPILER_SIGNATURE_ID                 ; 42549057552815.176437006522800                                               ; --            ; --                               ; --         ;
 ; ECO_REGENERATE_REPORT                 ; On                                                                           ; Off           ; --                               ; --         ;
 ; HPS_ISW_FILE                          ; system_on_chip/synthesis/submodules/sequencer/alt_types.pre.h                ; --            ; system_on_chip_ARM_hps_io_border ; --         ;
 ; HPS_ISW_FILE                          ; system_on_chip/synthesis/submodules/sequencer/emif.pre.xml                   ; --            ; system_on_chip_ARM_hps_io_border ; --         ;
@@ -134,11 +134,11 @@ refer to the applicable agreement for further details.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:00:40     ; 1.0                     ; 5257 MB             ; 00:00:46                           ;
-; Fitter               ; 00:02:43     ; 1.1                     ; 8332 MB             ; 00:15:17                           ;
-; Assembler            ; 00:00:11     ; 1.0                     ; 4906 MB             ; 00:00:07                           ;
-; Timing Analyzer      ; 00:00:18     ; 1.6                     ; 5784 MB             ; 00:00:23                           ;
-; Total                ; 00:03:52     ; --                      ; --                  ; 00:16:33                           ;
+; Analysis & Synthesis ; 00:00:34     ; 1.0                     ; 5248 MB             ; 00:00:47                           ;
+; Fitter               ; 00:02:28     ; 1.1                     ; 8396 MB             ; 00:14:56                           ;
+; Assembler            ; 00:00:08     ; 1.0                     ; 4905 MB             ; 00:00:07                           ;
+; Timing Analyzer      ; 00:00:17     ; 1.7                     ; 5786 MB             ; 00:00:24                           ;
+; Total                ; 00:03:27     ; --                      ; --                  ; 00:16:14                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 

@@ -11,7 +11,7 @@ void switches_poll(void)
 
     if (v != last_switch)
     {
-        printf("Filtro activo (Hex): %x\n", v);
+    	alt_putstr("Filtro activo (Hex): %x\n", v);
         last_switch = v;
     }
 }

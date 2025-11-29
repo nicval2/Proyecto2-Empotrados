@@ -22,12 +22,11 @@ int main()
     vga_init();
         vga_clear();
 
-        vga_print_center("Hola Mundo VGA!", 5);
-        vga_print_center("Proyecto Empotrados", 7);
-        vga_print_center("Escribiendo en pantalla...", 9);
+        vga_print_center("Jigsaw falling into place", 7);
+        vga_print_center("Radiohead fdsakjkflkadsj fl", 9);
+        vga_print_center("In rainbows kdsjflasjdf asfjlk", 8);
+        vga_print_center("In rainbows kdsjflasjdf asfjlk", 20);
 
-        vga_print(12, 10, "Filas y columnas manuales");
-        vga_print(13, 10, "Columna = 10");
 
     while (1)
     {
