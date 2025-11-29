@@ -50,14 +50,14 @@ module system_on_chip (
 	wire  [31:0] nios_data_master_readdata;                                         // mm_interconnect_0:NIOS_data_master_readdata -> NIOS:d_readdata
 	wire         nios_data_master_waitrequest;                                      // mm_interconnect_0:NIOS_data_master_waitrequest -> NIOS:d_waitrequest
 	wire         nios_data_master_debugaccess;                                      // NIOS:debug_mem_slave_debugaccess_to_roms -> mm_interconnect_0:NIOS_data_master_debugaccess
-	wire  [14:0] nios_data_master_address;                                          // NIOS:d_address -> mm_interconnect_0:NIOS_data_master_address
+	wire  [16:0] nios_data_master_address;                                          // NIOS:d_address -> mm_interconnect_0:NIOS_data_master_address
 	wire   [3:0] nios_data_master_byteenable;                                       // NIOS:d_byteenable -> mm_interconnect_0:NIOS_data_master_byteenable
 	wire         nios_data_master_read;                                             // NIOS:d_read -> mm_interconnect_0:NIOS_data_master_read
 	wire         nios_data_master_write;                                            // NIOS:d_write -> mm_interconnect_0:NIOS_data_master_write
 	wire  [31:0] nios_data_master_writedata;                                        // NIOS:d_writedata -> mm_interconnect_0:NIOS_data_master_writedata
 	wire  [31:0] nios_instruction_master_readdata;                                  // mm_interconnect_0:NIOS_instruction_master_readdata -> NIOS:i_readdata
 	wire         nios_instruction_master_waitrequest;                               // mm_interconnect_0:NIOS_instruction_master_waitrequest -> NIOS:i_waitrequest
-	wire  [14:0] nios_instruction_master_address;                                   // NIOS:i_address -> mm_interconnect_0:NIOS_instruction_master_address
+	wire  [16:0] nios_instruction_master_address;                                   // NIOS:i_address -> mm_interconnect_0:NIOS_instruction_master_address
 	wire         nios_instruction_master_read;                                      // NIOS:i_read -> mm_interconnect_0:NIOS_instruction_master_read
 	wire         mm_interconnect_0_audio_avalon_audio_slave_chipselect;             // mm_interconnect_0:AUDIO_avalon_audio_slave_chipselect -> AUDIO:chipselect
 	wire  [31:0] mm_interconnect_0_audio_avalon_audio_slave_readdata;               // AUDIO:readdata -> mm_interconnect_0:AUDIO_avalon_audio_slave_readdata
@@ -112,7 +112,7 @@ module system_on_chip (
 	wire  [31:0] mm_interconnect_0_fifo_out_csr_writedata;                          // mm_interconnect_0:FIFO_out_csr_writedata -> FIFO:rdclk_control_slave_writedata
 	wire         mm_interconnect_0_ram_s1_chipselect;                               // mm_interconnect_0:RAM_s1_chipselect -> RAM:chipselect
 	wire  [31:0] mm_interconnect_0_ram_s1_readdata;                                 // RAM:readdata -> mm_interconnect_0:RAM_s1_readdata
-	wire  [10:0] mm_interconnect_0_ram_s1_address;                                  // mm_interconnect_0:RAM_s1_address -> RAM:address
+	wire  [12:0] mm_interconnect_0_ram_s1_address;                                  // mm_interconnect_0:RAM_s1_address -> RAM:address
 	wire   [3:0] mm_interconnect_0_ram_s1_byteenable;                               // mm_interconnect_0:RAM_s1_byteenable -> RAM:byteenable
 	wire         mm_interconnect_0_ram_s1_write;                                    // mm_interconnect_0:RAM_s1_write -> RAM:write
 	wire  [31:0] mm_interconnect_0_ram_s1_writedata;                                // mm_interconnect_0:RAM_s1_writedata -> RAM:writedata

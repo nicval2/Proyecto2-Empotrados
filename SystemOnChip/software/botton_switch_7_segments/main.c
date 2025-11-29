@@ -20,12 +20,17 @@ int main()
     display_time_4seg(SEG7_PTR, 0, 0);
 
     vga_init();
-        vga_clear();
+	vga_clear();
 
-        vga_print_center("Jigsaw falling into place", 7);
-        vga_print_center("Radiohead fdsakjkflkadsj fl", 9);
-        vga_print_center("In rainbows kdsjflasjdf asfjlk", 8);
-        vga_print_center("In rainbows kdsjflasjdf asfjlk", 20);
+	vga_print_center("Jigsaw falling into place", 9);
+	vga_print_center("Radiohead", 10);
+	vga_print_center("In rainbows", 11);
+
+	char tiempo_str[6];
+	sprintf(tiempo_str, "%02d:%02d", m, s);
+	vga_print_center(tiempo_str, 12);
+
+
 
 
     while (1)
@@ -57,6 +62,11 @@ int main()
                     }
 
                     display_time_4seg(SEG7_PTR, m, s);
+
+                    // === Actualizar texto VGA ===
+                    vga_clear_line(12);
+					sprintf(tiempo_str, "%02d:%02d", m, s);
+					vga_print_center(tiempo_str, 12);
                 }
             }
         }

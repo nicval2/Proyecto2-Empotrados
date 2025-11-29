@@ -29,7 +29,7 @@
    {
       datum baseAddress
       {
-         value = "28800";
+         value = "77952";
          type = "String";
       }
    }
@@ -45,7 +45,7 @@
    {
       datum baseAddress
       {
-         value = "28784";
+         value = "77936";
          type = "String";
       }
    }
@@ -85,7 +85,7 @@
    {
       datum baseAddress
       {
-         value = "28832";
+         value = "77984";
          type = "String";
       }
    }
@@ -93,7 +93,7 @@
    {
       datum baseAddress
       {
-         value = "28704";
+         value = "77856";
          type = "String";
       }
    }
@@ -109,7 +109,7 @@
    {
       datum baseAddress
       {
-         value = "26624";
+         value = "75776";
          type = "String";
       }
    }
@@ -125,7 +125,7 @@
    {
       datum baseAddress
       {
-         value = "16384";
+         value = "32768";
          type = "String";
       }
    }
@@ -141,7 +141,7 @@
    {
       datum baseAddress
       {
-         value = "28768";
+         value = "77920";
          type = "String";
       }
    }
@@ -162,7 +162,7 @@
       }
       datum baseAddress
       {
-         value = "28752";
+         value = "77904";
          type = "String";
       }
    }
@@ -178,7 +178,7 @@
    {
       datum baseAddress
       {
-         value = "28736";
+         value = "77888";
          type = "String";
       }
    }
@@ -194,7 +194,7 @@
    {
       datum baseAddress
       {
-         value = "28672";
+         value = "77824";
          type = "String";
       }
    }
@@ -210,7 +210,7 @@
    {
       datum baseAddress
       {
-         value = "28824";
+         value = "77968";
          type = "String";
       }
    }
@@ -226,7 +226,7 @@
    {
       datum baseAddress
       {
-         value = "8192";
+         value = "65536";
          type = "String";
       }
    }
@@ -234,7 +234,7 @@
    {
       datum baseAddress
       {
-         value = "28816";
+         value = "77976";
          type = "String";
       }
    }
@@ -930,10 +930,10 @@
   <parameter name="customInstSlavesSystemInfo_nios_a" value="&lt;info/&gt;" />
   <parameter name="customInstSlavesSystemInfo_nios_b" value="&lt;info/&gt;" />
   <parameter name="customInstSlavesSystemInfo_nios_c" value="&lt;info/&gt;" />
-  <parameter name="dataAddrWidth" value="15" />
+  <parameter name="dataAddrWidth" value="17" />
   <parameter name="dataMasterHighPerformanceAddrWidth" value="1" />
   <parameter name="dataMasterHighPerformanceMapParam" value="" />
-  <parameter name="dataSlaveMapParam"><![CDATA[<address-map><slave name='VGA_BUFFER.avalon_char_buffer_slave' start='0x2000' end='0x4000' type='altera_up_avalon_video_character_buffer_with_dma.avalon_char_buffer_slave' /><slave name='RAM.s1' start='0x4000' end='0x6000' type='altera_avalon_onchip_memory2.s1' /><slave name='NIOS.debug_mem_slave' start='0x6800' end='0x7000' type='altera_nios2_gen2.debug_mem_slave' /><slave name='TIMER.s1' start='0x7000' end='0x7020' type='altera_avalon_timer.s1' /><slave name='FIFO.out_csr' start='0x7020' end='0x7040' type='altera_avalon_fifo.out_csr' /><slave name='REG_SWITCHES.s1' start='0x7040' end='0x7050' type='altera_avalon_pio.s1' /><slave name='REG_BUTTONS.s1' start='0x7050' end='0x7060' type='altera_avalon_pio.s1' /><slave name='REG_7_SEGMENTS.s1' start='0x7060' end='0x7070' type='altera_avalon_pio.s1' /><slave name='AUDIO_CONFIG.avalon_av_config_slave' start='0x7070' end='0x7080' type='altera_up_avalon_audio_and_video_config.avalon_av_config_slave' /><slave name='AUDIO.avalon_audio_slave' start='0x7080' end='0x7090' type='altera_up_avalon_audio.avalon_audio_slave' /><slave name='VGA_BUFFER.avalon_char_control_slave' start='0x7090' end='0x7098' type='altera_up_avalon_video_character_buffer_with_dma.avalon_char_control_slave' /><slave name='UART.avalon_jtag_slave' start='0x7098' end='0x70A0' type='altera_avalon_jtag_uart.avalon_jtag_slave' /><slave name='FIFO.out' start='0x70A0' end='0x70A4' type='altera_avalon_fifo.out' /></address-map>]]></parameter>
+  <parameter name="dataSlaveMapParam"><![CDATA[<address-map><slave name='RAM.s1' start='0x8000' end='0x10000' type='altera_avalon_onchip_memory2.s1' /><slave name='VGA_BUFFER.avalon_char_buffer_slave' start='0x10000' end='0x12000' type='altera_up_avalon_video_character_buffer_with_dma.avalon_char_buffer_slave' /><slave name='NIOS.debug_mem_slave' start='0x12800' end='0x13000' type='altera_nios2_gen2.debug_mem_slave' /><slave name='TIMER.s1' start='0x13000' end='0x13020' type='altera_avalon_timer.s1' /><slave name='FIFO.out_csr' start='0x13020' end='0x13040' type='altera_avalon_fifo.out_csr' /><slave name='REG_SWITCHES.s1' start='0x13040' end='0x13050' type='altera_avalon_pio.s1' /><slave name='REG_BUTTONS.s1' start='0x13050' end='0x13060' type='altera_avalon_pio.s1' /><slave name='REG_7_SEGMENTS.s1' start='0x13060' end='0x13070' type='altera_avalon_pio.s1' /><slave name='AUDIO_CONFIG.avalon_av_config_slave' start='0x13070' end='0x13080' type='altera_up_avalon_audio_and_video_config.avalon_av_config_slave' /><slave name='AUDIO.avalon_audio_slave' start='0x13080' end='0x13090' type='altera_up_avalon_audio.avalon_audio_slave' /><slave name='UART.avalon_jtag_slave' start='0x13090' end='0x13098' type='altera_avalon_jtag_uart.avalon_jtag_slave' /><slave name='VGA_BUFFER.avalon_char_control_slave' start='0x13098' end='0x130A0' type='altera_up_avalon_video_character_buffer_with_dma.avalon_char_control_slave' /><slave name='FIFO.out' start='0x130A0' end='0x130A4' type='altera_avalon_fifo.out' /></address-map>]]></parameter>
   <parameter name="data_master_high_performance_paddr_base" value="0" />
   <parameter name="data_master_high_performance_paddr_size" value="0" />
   <parameter name="data_master_paddr_base" value="0" />
@@ -971,8 +971,8 @@
   <parameter name="icache_size" value="4096" />
   <parameter name="icache_tagramBlockType" value="Automatic" />
   <parameter name="impl" value="Tiny" />
-  <parameter name="instAddrWidth" value="15" />
-  <parameter name="instSlaveMapParam"><![CDATA[<address-map><slave name='RAM.s1' start='0x4000' end='0x6000' type='altera_avalon_onchip_memory2.s1' /><slave name='NIOS.debug_mem_slave' start='0x6800' end='0x7000' type='altera_nios2_gen2.debug_mem_slave' /></address-map>]]></parameter>
+  <parameter name="instAddrWidth" value="17" />
+  <parameter name="instSlaveMapParam"><![CDATA[<address-map><slave name='RAM.s1' start='0x8000' end='0x10000' type='altera_avalon_onchip_memory2.s1' /><slave name='NIOS.debug_mem_slave' start='0x12800' end='0x13000' type='altera_nios2_gen2.debug_mem_slave' /></address-map>]]></parameter>
   <parameter name="instructionMasterHighPerformanceAddrWidth" value="1" />
   <parameter name="instructionMasterHighPerformanceMapParam" value="" />
   <parameter name="instruction_master_high_performance_paddr_base" value="0" />
@@ -1111,7 +1111,7 @@
   <parameter name="initMemContent" value="true" />
   <parameter name="initializationFileName" value="onchip_mem.hex" />
   <parameter name="instanceID" value="NONE" />
-  <parameter name="memorySize" value="8192" />
+  <parameter name="memorySize" value="32768" />
   <parameter name="readDuringWriteMode" value="DONT_CARE" />
   <parameter name="resetrequest_enabled" value="true" />
   <parameter name="simAllowMRAMContentsFile" value="false" />
@@ -1443,7 +1443,7 @@
    start="NIOS.data_master"
    end="AUDIO.avalon_audio_slave">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x7080" />
+  <parameter name="baseAddress" value="0x00013080" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1452,7 +1452,7 @@
    start="NIOS.data_master"
    end="AUDIO_CONFIG.avalon_av_config_slave">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x7070" />
+  <parameter name="baseAddress" value="0x00013070" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1461,7 +1461,7 @@
    start="NIOS.data_master"
    end="VGA_BUFFER.avalon_char_buffer_slave">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x2000" />
+  <parameter name="baseAddress" value="0x00010000" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1470,7 +1470,7 @@
    start="NIOS.data_master"
    end="VGA_BUFFER.avalon_char_control_slave">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x7090" />
+  <parameter name="baseAddress" value="0x00013098" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1479,7 +1479,7 @@
    start="NIOS.data_master"
    end="UART.avalon_jtag_slave">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x7098" />
+  <parameter name="baseAddress" value="0x00013090" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1488,12 +1488,12 @@
    start="NIOS.data_master"
    end="NIOS.debug_mem_slave">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x6800" />
+  <parameter name="baseAddress" value="0x00012800" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection kind="avalon" version="18.0" start="NIOS.data_master" end="FIFO.out">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x70a0" />
+  <parameter name="baseAddress" value="0x000130a0" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1502,12 +1502,12 @@
    start="NIOS.data_master"
    end="FIFO.out_csr">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x7020" />
+  <parameter name="baseAddress" value="0x00013020" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection kind="avalon" version="18.0" start="NIOS.data_master" end="RAM.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x4000" />
+  <parameter name="baseAddress" value="0x8000" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1516,7 +1516,7 @@
    start="NIOS.data_master"
    end="REG_7_SEGMENTS.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x7060" />
+  <parameter name="baseAddress" value="0x00013060" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1525,12 +1525,12 @@
    start="NIOS.data_master"
    end="REG_BUTTONS.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x7050" />
+  <parameter name="baseAddress" value="0x00013050" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection kind="avalon" version="18.0" start="NIOS.data_master" end="TIMER.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x7000" />
+  <parameter name="baseAddress" value="0x00013000" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1539,7 +1539,7 @@
    start="NIOS.data_master"
    end="REG_SWITCHES.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x7040" />
+  <parameter name="baseAddress" value="0x00013040" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1566,7 +1566,7 @@
    start="NIOS.instruction_master"
    end="NIOS.debug_mem_slave">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x6800" />
+  <parameter name="baseAddress" value="0x00012800" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1575,7 +1575,7 @@
    start="NIOS.instruction_master"
    end="RAM.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x4000" />
+  <parameter name="baseAddress" value="0x8000" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection

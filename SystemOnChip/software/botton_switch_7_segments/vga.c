@@ -11,7 +11,7 @@
 #define VGA_MEM_ROWS   32
 
 // Ajuste horizontal en caracteres (positivo = mueve todo a la IZQUIERDA)
-#define VGA_X_SHIFT_CHARS   17   // PRUEBA con 4, 6, 8 hasta que se vea centrado
+#define VGA_X_SHIFT_CHARS   20   // PRUEBA con 4, 6, 8 hasta que se vea centrado
 
 void vga_init(void)
 {
@@ -82,3 +82,17 @@ void vga_print_center(const char *msg, int row)
 
     vga_print(row, col, msg);
 }
+
+void vga_clear_line(int row)
+{
+    if (row < 0 || row >= VGA_ROWS)
+        return;
+
+    volatile uint16_t *vga = (volatile uint16_t *)VGA_BASE;
+
+    int pos = row * VGA_MEM_COLS;   // stride real de 128 columnas
+
+    for (int c = 0; c < VGA_COLS; c++)   // limpiar solo 80 visibles
+        vga[pos + c] = (uint16_t)' ';
+}
+

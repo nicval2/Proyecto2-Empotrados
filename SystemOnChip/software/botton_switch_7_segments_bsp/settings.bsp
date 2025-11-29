@@ -2,8 +2,8 @@
 <sch:Settings xmlns:sch="http://www.altera.com/embeddedsw/bsp/schema">
         <BspType>hal</BspType>
         <BspVersion>default</BspVersion>
-        <BspGeneratedTimeStamp>Nov 28, 2025 5:05:47 PM</BspGeneratedTimeStamp>
-        <BspGeneratedUnixTimeStamp>1764371147737</BspGeneratedUnixTimeStamp>
+        <BspGeneratedTimeStamp>Nov 29, 2025 10:51:06 AM</BspGeneratedTimeStamp>
+        <BspGeneratedUnixTimeStamp>1764435066997</BspGeneratedUnixTimeStamp>
         <BspGeneratedLocation>C:\Users\manue\Documents\Proyecto2-Empotrados\SystemOnChip\software\botton_switch_7_segments_bsp</BspGeneratedLocation>
         <BspSettingsFile>settings.bsp</BspSettingsFile>
         <SopcDesignFile>..\..\system_on_chip.sopcinfo</SopcDesignFile>
@@ -899,74 +899,74 @@
                 <Group xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
         </Setting>
         <MemoryMap>
+                <slaveDescriptor>RAM</slaveDescriptor>
+                <addressRange>0x00008000 - 0x0000FFFF</addressRange>
+                <addressSpan>32768</addressSpan>
+                <attributes>memory</attributes>
+        </MemoryMap>
+        <MemoryMap>
                 <slaveDescriptor>VGA_BUFFER_avalon_char_buffer_slave</slaveDescriptor>
-                <addressRange>0x00002000 - 0x00003FFF</addressRange>
+                <addressRange>0x00010000 - 0x00011FFF</addressRange>
                 <addressSpan>8192</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
-                <slaveDescriptor>RAM</slaveDescriptor>
-                <addressRange>0x00004000 - 0x00005FFF</addressRange>
-                <addressSpan>8192</addressSpan>
-                <attributes>memory</attributes>
-        </MemoryMap>
-        <MemoryMap>
                 <slaveDescriptor>TIMER</slaveDescriptor>
-                <addressRange>0x00007000 - 0x0000701F</addressRange>
+                <addressRange>0x00013000 - 0x0001301F</addressRange>
                 <addressSpan>32</addressSpan>
                 <attributes>timer</attributes>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>FIFO_out_csr</slaveDescriptor>
-                <addressRange>0x00007020 - 0x0000703F</addressRange>
+                <addressRange>0x00013020 - 0x0001303F</addressRange>
                 <addressSpan>32</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>REG_SWITCHES</slaveDescriptor>
-                <addressRange>0x00007040 - 0x0000704F</addressRange>
+                <addressRange>0x00013040 - 0x0001304F</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>REG_BUTTONS</slaveDescriptor>
-                <addressRange>0x00007050 - 0x0000705F</addressRange>
+                <addressRange>0x00013050 - 0x0001305F</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>REG_7_SEGMENTS</slaveDescriptor>
-                <addressRange>0x00007060 - 0x0000706F</addressRange>
+                <addressRange>0x00013060 - 0x0001306F</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>AUDIO_CONFIG</slaveDescriptor>
-                <addressRange>0x00007070 - 0x0000707F</addressRange>
+                <addressRange>0x00013070 - 0x0001307F</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>AUDIO</slaveDescriptor>
-                <addressRange>0x00007080 - 0x0000708F</addressRange>
+                <addressRange>0x00013080 - 0x0001308F</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
-                <slaveDescriptor>VGA_BUFFER_avalon_char_control_slave</slaveDescriptor>
-                <addressRange>0x00007090 - 0x00007097</addressRange>
-                <addressSpan>8</addressSpan>
-                <attributes/>
-        </MemoryMap>
-        <MemoryMap>
                 <slaveDescriptor>UART</slaveDescriptor>
-                <addressRange>0x00007098 - 0x0000709F</addressRange>
+                <addressRange>0x00013090 - 0x00013097</addressRange>
                 <addressSpan>8</addressSpan>
                 <attributes>printable</attributes>
         </MemoryMap>
         <MemoryMap>
+                <slaveDescriptor>VGA_BUFFER_avalon_char_control_slave</slaveDescriptor>
+                <addressRange>0x00013098 - 0x0001309F</addressRange>
+                <addressSpan>8</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
                 <slaveDescriptor>FIFO_out</slaveDescriptor>
-                <addressRange>0x000070A0 - 0x000070A3</addressRange>
+                <addressRange>0x000130A0 - 0x000130A3</addressRange>
                 <addressSpan>4</addressSpan>
                 <attributes/>
         </MemoryMap>

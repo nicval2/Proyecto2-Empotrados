@@ -49,14 +49,14 @@ module system_on_chip_mm_interconnect_0_router_004_default_decode
                DEFAULT_RD_CHANNEL = -1,
                DEFAULT_DESTID = 0 
    )
-  (output [52 - 49 : 0] default_destination_id,
+  (output [54 - 51 : 0] default_destination_id,
    output [13-1 : 0] default_wr_channel,
    output [13-1 : 0] default_rd_channel,
    output [13-1 : 0] default_src_channel
   );
 
   assign default_destination_id = 
-    DEFAULT_DESTID[52 - 49 : 0];
+    DEFAULT_DESTID[54 - 51 : 0];
 
   generate
     if (DEFAULT_CHANNEL == -1) begin : no_default_channel_assignment
@@ -93,7 +93,7 @@ module system_on_chip_mm_interconnect_0_router_004
     // Command Sink (Input)
     // -------------------
     input                       sink_valid,
-    input  [66-1 : 0]    sink_data,
+    input  [68-1 : 0]    sink_data,
     input                       sink_startofpacket,
     input                       sink_endofpacket,
     output                      sink_ready,
@@ -102,7 +102,7 @@ module system_on_chip_mm_interconnect_0_router_004
     // Command Source (Output)
     // -------------------
     output                          src_valid,
-    output reg [66-1    : 0] src_data,
+    output reg [68-1    : 0] src_data,
     output reg [13-1 : 0] src_channel,
     output                          src_startofpacket,
     output                          src_endofpacket,
@@ -112,18 +112,18 @@ module system_on_chip_mm_interconnect_0_router_004
     // -------------------------------------------------------
     // Local parameters and variables
     // -------------------------------------------------------
-    localparam PKT_ADDR_H = 23;
+    localparam PKT_ADDR_H = 25;
     localparam PKT_ADDR_L = 9;
-    localparam PKT_DEST_ID_H = 52;
-    localparam PKT_DEST_ID_L = 49;
-    localparam PKT_PROTECTION_H = 56;
-    localparam PKT_PROTECTION_L = 54;
-    localparam ST_DATA_W = 66;
+    localparam PKT_DEST_ID_H = 54;
+    localparam PKT_DEST_ID_L = 51;
+    localparam PKT_PROTECTION_H = 58;
+    localparam PKT_PROTECTION_L = 56;
+    localparam ST_DATA_W = 68;
     localparam ST_CHANNEL_W = 13;
     localparam DECODER_TYPE = 1;
 
-    localparam PKT_TRANS_WRITE = 26;
-    localparam PKT_TRANS_READ  = 27;
+    localparam PKT_TRANS_WRITE = 28;
+    localparam PKT_TRANS_READ  = 29;
 
     localparam PKT_ADDR_W = PKT_ADDR_H-PKT_ADDR_L + 1;
     localparam PKT_DEST_ID_W = PKT_DEST_ID_H-PKT_DEST_ID_L + 1;

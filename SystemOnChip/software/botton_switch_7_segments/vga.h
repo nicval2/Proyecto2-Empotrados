@@ -11,5 +11,6 @@ void vga_init(void);
 void vga_clear(void);
 void vga_print(int row, int col, const char *msg);
 void vga_print_center(const char *msg, int row);
+void vga_clear_line(int row);
 
 #endif
