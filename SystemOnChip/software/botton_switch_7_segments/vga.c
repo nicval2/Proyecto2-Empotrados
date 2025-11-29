@@ -2,17 +2,6 @@
 #include <string.h>
 #include <stdio.h>
 
-// 80x? visibles (lo que tengas en el IP)
-#define VGA_COLS       80
-#define VGA_ROWS       30      // o 60 si estás usando 80x60
-
-// Tamaño real de la memoria: 8192 bytes => 4096 halfwords => 128x32
-#define VGA_MEM_COLS   128
-#define VGA_MEM_ROWS   32
-
-// Ajuste horizontal en caracteres (positivo = mueve todo a la IZQUIERDA)
-#define VGA_X_SHIFT_CHARS   20   // PRUEBA con 4, 6, 8 hasta que se vea centrado
-
 void vga_init(void)
 {
     volatile uint32_t *ctrl = (uint32_t*)VGA_CTRL_BASE;
@@ -20,9 +9,6 @@ void vga_init(void)
     // Configura front buffer
     ctrl[0] = 0;           // disable
     ctrl[1] = VGA_BASE;    // frame buffer base
-    // Muchos cores ignoran [2] y [3], pero los dejamos en 0 por si acaso
-    // ctrl[2] = 0;
-    // ctrl[3] = 0;
     ctrl[0] = 1;           // enable / swap
 
     // Debug
