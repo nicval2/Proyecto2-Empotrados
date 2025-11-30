@@ -22,7 +22,7 @@
 // Parameters
 //   NUM_RCVRS        : 3
 //   SENDER_IRW_WIDTH : 32
-//   IRQ_MAP          : 0:2,1:0,2:1
+//   IRQ_MAP          : 0:2,1:1,2:0
 //
 // -------------------------------------------------------
 
@@ -54,8 +54,8 @@ module system_on_chip_irq_mapper
 	sender_irq = 0;
 
         sender_irq[2] = receiver0_irq;
-        sender_irq[0] = receiver1_irq;
-        sender_irq[1] = receiver2_irq;
+        sender_irq[1] = receiver1_irq;
+        sender_irq[0] = receiver2_irq;
     end
 
 endmodule

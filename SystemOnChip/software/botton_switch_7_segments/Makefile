@@ -149,6 +149,7 @@ C_SRCS += timer.c
 C_SRCS += main.c
 C_SRCS += filter.c
 C_SRCS += vga.c
+C_SRCS += audio.c
 CXX_SRCS :=
 ASM_SRCS :=
 

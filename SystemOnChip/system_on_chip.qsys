@@ -13,7 +13,7 @@
    {
       datum _sortIndex
       {
-         value = "9";
+         value = "8";
          type = "int";
       }
    }
@@ -21,7 +21,7 @@
    {
       datum _sortIndex
       {
-         value = "10";
+         value = "9";
          type = "int";
       }
    }
@@ -29,7 +29,7 @@
    {
       datum baseAddress
       {
-         value = "77952";
+         value = "35104";
          type = "String";
       }
    }
@@ -37,7 +37,7 @@
    {
       datum _sortIndex
       {
-         value = "11";
+         value = "10";
          type = "int";
       }
    }
@@ -45,7 +45,7 @@
    {
       datum baseAddress
       {
-         value = "77936";
+         value = "35120";
          type = "String";
       }
    }
@@ -53,7 +53,7 @@
    {
       datum _sortIndex
       {
-         value = "12";
+         value = "11";
          type = "int";
       }
    }
@@ -61,7 +61,7 @@
    {
       datum _sortIndex
       {
-         value = "8";
+         value = "7";
          type = "int";
       }
    }
@@ -69,7 +69,7 @@
    {
       datum baseAddress
       {
-         value = "32";
+         value = "34912";
          type = "String";
       }
    }
@@ -77,7 +77,7 @@
    {
       datum baseAddress
       {
-         value = "0";
+         value = "35072";
          type = "String";
       }
    }
@@ -85,7 +85,7 @@
    {
       datum baseAddress
       {
-         value = "77984";
+         value = "34928";
          type = "String";
       }
    }
@@ -93,7 +93,47 @@
    {
       datum baseAddress
       {
-         value = "77856";
+         value = "34944";
+         type = "String";
+      }
+   }
+   element FIFO2
+   {
+      datum _sortIndex
+      {
+         value = "15";
+         type = "int";
+      }
+   }
+   element FIFO2.in
+   {
+      datum baseAddress
+      {
+         value = "35136";
+         type = "String";
+      }
+   }
+   element FIFO2.in_csr
+   {
+      datum baseAddress
+      {
+         value = "35200";
+         type = "String";
+      }
+   }
+   element FIFO2.out
+   {
+      datum baseAddress
+      {
+         value = "35152";
+         type = "String";
+      }
+   }
+   element FIFO2.out_csr
+   {
+      datum baseAddress
+      {
+         value = "35168";
          type = "String";
       }
    }
@@ -109,7 +149,7 @@
    {
       datum baseAddress
       {
-         value = "75776";
+         value = "32768";
          type = "String";
       }
    }
@@ -119,14 +159,6 @@
       {
          value = "1";
          type = "int";
-      }
-   }
-   element RAM.s1
-   {
-      datum baseAddress
-      {
-         value = "32768";
-         type = "String";
       }
    }
    element REG_7_SEGMENTS
@@ -141,7 +173,7 @@
    {
       datum baseAddress
       {
-         value = "77920";
+         value = "34816";
          type = "String";
       }
    }
@@ -162,7 +194,7 @@
       }
       datum baseAddress
       {
-         value = "77904";
+         value = "34832";
          type = "String";
       }
    }
@@ -170,7 +202,7 @@
    {
       datum _sortIndex
       {
-         value = "7";
+         value = "6";
          type = "int";
       }
    }
@@ -178,7 +210,7 @@
    {
       datum baseAddress
       {
-         value = "77888";
+         value = "34896";
          type = "String";
       }
    }
@@ -194,7 +226,7 @@
    {
       datum baseAddress
       {
-         value = "77824";
+         value = "34848";
          type = "String";
       }
    }
@@ -202,7 +234,7 @@
    {
       datum _sortIndex
       {
-         value = "6";
+         value = "16";
          type = "int";
       }
    }
@@ -210,7 +242,7 @@
    {
       datum baseAddress
       {
-         value = "77968";
+         value = "34880";
          type = "String";
       }
    }
@@ -218,7 +250,7 @@
    {
       datum _sortIndex
       {
-         value = "14";
+         value = "13";
          type = "int";
       }
    }
@@ -226,7 +258,7 @@
    {
       datum baseAddress
       {
-         value = "65536";
+         value = "40960";
          type = "String";
       }
    }
@@ -234,7 +266,7 @@
    {
       datum baseAddress
       {
-         value = "77976";
+         value = "36880";
          type = "String";
       }
    }
@@ -242,7 +274,7 @@
    {
       datum _sortIndex
       {
-         value = "13";
+         value = "12";
          type = "int";
       }
    }
@@ -250,7 +282,7 @@
    {
       datum _sortIndex
       {
-         value = "15";
+         value = "14";
          type = "int";
       }
    }
@@ -871,7 +903,7 @@
   <parameter name="board" value="DE1-SoC" />
   <parameter name="d5m_resolution" value="2592 x 1944" />
   <parameter name="dac_enable" value="true" />
-  <parameter name="data_format" value="Left Justified" />
+  <parameter name="data_format" value="I2S Format" />
   <parameter name="device">On-Board Peripherals</parameter>
   <parameter name="eai" value="true" />
   <parameter name="exposure" value="false" />
@@ -913,6 +945,27 @@
   <parameter name="useRegister" value="false" />
   <parameter name="useWriteControl" value="true" />
  </module>
+ <module name="FIFO2" kind="altera_avalon_fifo" version="18.0" enabled="1">
+  <parameter name="avalonMMAvalonMMDataWidth" value="32" />
+  <parameter name="avalonMMAvalonSTDataWidth" value="32" />
+  <parameter name="bitsPerSymbol" value="16" />
+  <parameter name="channelWidth" value="8" />
+  <parameter name="deviceFamilyString" value="Cyclone V" />
+  <parameter name="errorWidth" value="8" />
+  <parameter name="fifoDepth" value="16" />
+  <parameter name="fifoInputInterfaceOptions" value="AVALONMM_WRITE" />
+  <parameter name="fifoOutputInterfaceOptions" value="AVALONMM_READ" />
+  <parameter name="showHiddenFeatures" value="false" />
+  <parameter name="singleClockMode" value="false" />
+  <parameter name="singleResetMode" value="false" />
+  <parameter name="symbolsPerBeat" value="2" />
+  <parameter name="useBackpressure" value="true" />
+  <parameter name="useIRQ" value="true" />
+  <parameter name="usePacket" value="true" />
+  <parameter name="useReadControl" value="true" />
+  <parameter name="useRegister" value="false" />
+  <parameter name="useWriteControl" value="true" />
+ </module>
  <module name="NIOS" kind="altera_nios2_gen2" version="18.0" enabled="1">
   <parameter name="AUTO_CLK_CLOCK_DOMAIN" value="2" />
   <parameter name="AUTO_CLK_RESET_DOMAIN" value="2" />
@@ -930,10 +983,10 @@
   <parameter name="customInstSlavesSystemInfo_nios_a" value="&lt;info/&gt;" />
   <parameter name="customInstSlavesSystemInfo_nios_b" value="&lt;info/&gt;" />
   <parameter name="customInstSlavesSystemInfo_nios_c" value="&lt;info/&gt;" />
-  <parameter name="dataAddrWidth" value="17" />
+  <parameter name="dataAddrWidth" value="16" />
   <parameter name="dataMasterHighPerformanceAddrWidth" value="1" />
   <parameter name="dataMasterHighPerformanceMapParam" value="" />
-  <parameter name="dataSlaveMapParam"><![CDATA[<address-map><slave name='RAM.s1' start='0x8000' end='0x10000' type='altera_avalon_onchip_memory2.s1' /><slave name='VGA_BUFFER.avalon_char_buffer_slave' start='0x10000' end='0x12000' type='altera_up_avalon_video_character_buffer_with_dma.avalon_char_buffer_slave' /><slave name='NIOS.debug_mem_slave' start='0x12800' end='0x13000' type='altera_nios2_gen2.debug_mem_slave' /><slave name='TIMER.s1' start='0x13000' end='0x13020' type='altera_avalon_timer.s1' /><slave name='FIFO.out_csr' start='0x13020' end='0x13040' type='altera_avalon_fifo.out_csr' /><slave name='REG_SWITCHES.s1' start='0x13040' end='0x13050' type='altera_avalon_pio.s1' /><slave name='REG_BUTTONS.s1' start='0x13050' end='0x13060' type='altera_avalon_pio.s1' /><slave name='REG_7_SEGMENTS.s1' start='0x13060' end='0x13070' type='altera_avalon_pio.s1' /><slave name='AUDIO_CONFIG.avalon_av_config_slave' start='0x13070' end='0x13080' type='altera_up_avalon_audio_and_video_config.avalon_av_config_slave' /><slave name='AUDIO.avalon_audio_slave' start='0x13080' end='0x13090' type='altera_up_avalon_audio.avalon_audio_slave' /><slave name='UART.avalon_jtag_slave' start='0x13090' end='0x13098' type='altera_avalon_jtag_uart.avalon_jtag_slave' /><slave name='VGA_BUFFER.avalon_char_control_slave' start='0x13098' end='0x130A0' type='altera_up_avalon_video_character_buffer_with_dma.avalon_char_control_slave' /><slave name='FIFO.out' start='0x130A0' end='0x130A4' type='altera_avalon_fifo.out' /></address-map>]]></parameter>
+  <parameter name="dataSlaveMapParam"><![CDATA[<address-map><slave name='RAM.s1' start='0x0' end='0x8000' type='altera_avalon_onchip_memory2.s1' /><slave name='NIOS.debug_mem_slave' start='0x8000' end='0x8800' type='altera_nios2_gen2.debug_mem_slave' /><slave name='REG_7_SEGMENTS.s1' start='0x8800' end='0x8810' type='altera_avalon_pio.s1' /><slave name='REG_BUTTONS.s1' start='0x8810' end='0x8820' type='altera_avalon_pio.s1' /><slave name='TIMER.s1' start='0x8820' end='0x8840' type='altera_avalon_timer.s1' /><slave name='UART.avalon_jtag_slave' start='0x8840' end='0x8848' type='altera_avalon_jtag_uart.avalon_jtag_slave' /><slave name='REG_SWITCHES.s1' start='0x8850' end='0x8860' type='altera_avalon_pio.s1' /><slave name='FIFO.out' start='0x8870' end='0x8874' type='altera_avalon_fifo.out' /><slave name='FIFO.out_csr' start='0x8880' end='0x88A0' type='altera_avalon_fifo.out_csr' /><slave name='AUDIO.avalon_audio_slave' start='0x8920' end='0x8930' type='altera_up_avalon_audio.avalon_audio_slave' /><slave name='AUDIO_CONFIG.avalon_av_config_slave' start='0x8930' end='0x8940' type='altera_up_avalon_audio_and_video_config.avalon_av_config_slave' /><slave name='FIFO2.in' start='0x8940' end='0x8944' type='altera_avalon_fifo.in' /><slave name='FIFO2.in_csr' start='0x8980' end='0x89A0' type='altera_avalon_fifo.in_csr' /><slave name='VGA_BUFFER.avalon_char_control_slave' start='0x9010' end='0x9018' type='altera_up_avalon_video_character_buffer_with_dma.avalon_char_control_slave' /><slave name='VGA_BUFFER.avalon_char_buffer_slave' start='0xA000' end='0xC000' type='altera_up_avalon_video_character_buffer_with_dma.avalon_char_buffer_slave' /></address-map>]]></parameter>
   <parameter name="data_master_high_performance_paddr_base" value="0" />
   <parameter name="data_master_high_performance_paddr_size" value="0" />
   <parameter name="data_master_paddr_base" value="0" />
@@ -971,8 +1024,8 @@
   <parameter name="icache_size" value="4096" />
   <parameter name="icache_tagramBlockType" value="Automatic" />
   <parameter name="impl" value="Tiny" />
-  <parameter name="instAddrWidth" value="17" />
-  <parameter name="instSlaveMapParam"><![CDATA[<address-map><slave name='RAM.s1' start='0x8000' end='0x10000' type='altera_avalon_onchip_memory2.s1' /><slave name='NIOS.debug_mem_slave' start='0x12800' end='0x13000' type='altera_nios2_gen2.debug_mem_slave' /></address-map>]]></parameter>
+  <parameter name="instAddrWidth" value="16" />
+  <parameter name="instSlaveMapParam"><![CDATA[<address-map><slave name='RAM.s1' start='0x0' end='0x8000' type='altera_avalon_onchip_memory2.s1' /><slave name='NIOS.debug_mem_slave' start='0x8000' end='0x8800' type='altera_nios2_gen2.debug_mem_slave' /></address-map>]]></parameter>
   <parameter name="instructionMasterHighPerformanceAddrWidth" value="1" />
   <parameter name="instructionMasterHighPerformanceMapParam" value="" />
   <parameter name="instruction_master_high_performance_paddr_base" value="0" />
@@ -1443,7 +1496,7 @@
    start="NIOS.data_master"
    end="AUDIO.avalon_audio_slave">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x00013080" />
+  <parameter name="baseAddress" value="0x8920" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1452,7 +1505,7 @@
    start="NIOS.data_master"
    end="AUDIO_CONFIG.avalon_av_config_slave">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x00013070" />
+  <parameter name="baseAddress" value="0x8930" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1461,7 +1514,7 @@
    start="NIOS.data_master"
    end="VGA_BUFFER.avalon_char_buffer_slave">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x00010000" />
+  <parameter name="baseAddress" value="0xa000" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1470,7 +1523,7 @@
    start="NIOS.data_master"
    end="VGA_BUFFER.avalon_char_control_slave">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x00013098" />
+  <parameter name="baseAddress" value="0x9010" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1479,7 +1532,7 @@
    start="NIOS.data_master"
    end="UART.avalon_jtag_slave">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x00013090" />
+  <parameter name="baseAddress" value="0x8840" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1488,12 +1541,26 @@
    start="NIOS.data_master"
    end="NIOS.debug_mem_slave">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x00012800" />
+  <parameter name="baseAddress" value="0x8000" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection kind="avalon" version="18.0" start="NIOS.data_master" end="FIFO2.in">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x8940" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="18.0"
+   start="NIOS.data_master"
+   end="FIFO2.in_csr">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x8980" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection kind="avalon" version="18.0" start="NIOS.data_master" end="FIFO.out">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x000130a0" />
+  <parameter name="baseAddress" value="0x8870" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1502,12 +1569,12 @@
    start="NIOS.data_master"
    end="FIFO.out_csr">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x00013020" />
+  <parameter name="baseAddress" value="0x8880" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection kind="avalon" version="18.0" start="NIOS.data_master" end="RAM.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x8000" />
+  <parameter name="baseAddress" value="0x0000" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1516,7 +1583,7 @@
    start="NIOS.data_master"
    end="REG_7_SEGMENTS.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x00013060" />
+  <parameter name="baseAddress" value="0x8800" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1525,12 +1592,12 @@
    start="NIOS.data_master"
    end="REG_BUTTONS.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x00013050" />
+  <parameter name="baseAddress" value="0x8810" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection kind="avalon" version="18.0" start="NIOS.data_master" end="TIMER.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x00013000" />
+  <parameter name="baseAddress" value="0x8820" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1539,25 +1606,39 @@
    start="NIOS.data_master"
    end="REG_SWITCHES.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x00013040" />
+  <parameter name="baseAddress" value="0x8850" />
   <parameter name="defaultConnection" value="false" />
  </connection>
- <connection
-   kind="avalon"
-   version="18.0"
-   start="ARM.h2f_lw_axi_master"
-   end="FIFO.in">
+ <connection kind="avalon" version="18.0" start="ARM.h2f_axi_master" end="FIFO.in">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x0020" />
+  <parameter name="baseAddress" value="0x8860" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
    kind="avalon"
    version="18.0"
-   start="ARM.h2f_lw_axi_master"
+   start="ARM.h2f_axi_master"
    end="FIFO.in_csr">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x0000" />
+  <parameter name="baseAddress" value="0x8900" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="18.0"
+   start="ARM.h2f_axi_master"
+   end="FIFO2.out">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x8950" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="18.0"
+   start="ARM.h2f_axi_master"
+   end="FIFO2.out_csr">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x8960" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1566,7 +1647,7 @@
    start="NIOS.instruction_master"
    end="NIOS.debug_mem_slave">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x00012800" />
+  <parameter name="baseAddress" value="0x8000" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1575,7 +1656,7 @@
    start="NIOS.instruction_master"
    end="RAM.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x8000" />
+  <parameter name="baseAddress" value="0x0000" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1591,13 +1672,15 @@
    end="REG_7_SEGMENTS.clk" />
  <connection kind="clock" version="18.0" start="clk_0.clk" end="REG_BUTTONS.clk" />
  <connection kind="clock" version="18.0" start="clk_0.clk" end="TIMER.clk" />
- <connection kind="clock" version="18.0" start="clk_0.clk" end="UART.clk" />
  <connection kind="clock" version="18.0" start="clk_0.clk" end="REG_SWITCHES.clk" />
  <connection kind="clock" version="18.0" start="clk_0.clk" end="AUDIO.clk" />
  <connection kind="clock" version="18.0" start="clk_0.clk" end="AUDIO_CONFIG.clk" />
+ <connection kind="clock" version="18.0" start="clk_0.clk" end="UART.clk" />
  <connection kind="clock" version="18.0" start="clk_0.clk" end="RAM.clk1" />
  <connection kind="clock" version="18.0" start="clk_0.clk" end="FIFO.clk_in" />
+ <connection kind="clock" version="18.0" start="clk_0.clk" end="FIFO2.clk_in" />
  <connection kind="clock" version="18.0" start="clk_0.clk" end="FIFO.clk_out" />
+ <connection kind="clock" version="18.0" start="clk_0.clk" end="FIFO2.clk_out" />
  <connection kind="clock" version="18.0" start="clk_0.clk" end="ARM.f2h_axi_clock" />
  <connection
    kind="clock"
@@ -1625,15 +1708,15 @@
  <connection kind="interrupt" version="18.0" start="NIOS.irq" end="TIMER.irq">
   <parameter name="irqNumber" value="2" />
  </connection>
- <connection kind="interrupt" version="18.0" start="NIOS.irq" end="UART.irq">
-  <parameter name="irqNumber" value="0" />
- </connection>
  <connection
    kind="interrupt"
    version="18.0"
    start="NIOS.irq"
    end="REG_BUTTONS.irq">
   <parameter name="irqNumber" value="1" />
+ </connection>
+ <connection kind="interrupt" version="18.0" start="NIOS.irq" end="UART.irq">
+  <parameter name="irqNumber" value="0" />
  </connection>
  <connection
    kind="reset"
@@ -1652,7 +1735,6 @@
    start="clk_0.clk_reset"
    end="REG_BUTTONS.reset" />
  <connection kind="reset" version="18.0" start="clk_0.clk_reset" end="TIMER.reset" />
- <connection kind="reset" version="18.0" start="clk_0.clk_reset" end="UART.reset" />
  <connection
    kind="reset"
    version="18.0"
@@ -1668,7 +1750,7 @@
    kind="reset"
    version="18.0"
    start="clk_0.clk_reset"
-   end="VGA_PLL.reset" />
+   end="VGA_CONTROLLER.reset" />
  <connection
    kind="reset"
    version="18.0"
@@ -1678,7 +1760,8 @@
    kind="reset"
    version="18.0"
    start="clk_0.clk_reset"
-   end="VGA_CONTROLLER.reset" />
+   end="VGA_PLL.reset" />
+ <connection kind="reset" version="18.0" start="clk_0.clk_reset" end="UART.reset" />
  <connection kind="reset" version="18.0" start="clk_0.clk_reset" end="RAM.reset1" />
  <connection
    kind="reset"
@@ -1689,7 +1772,17 @@
    kind="reset"
    version="18.0"
    start="clk_0.clk_reset"
+   end="FIFO2.reset_in" />
+ <connection
+   kind="reset"
+   version="18.0"
+   start="clk_0.clk_reset"
    end="FIFO.reset_out" />
+ <connection
+   kind="reset"
+   version="18.0"
+   start="clk_0.clk_reset"
+   end="FIFO2.reset_out" />
  <interconnectRequirement for="$system" name="qsys_mm.clockCrossingAdapter" value="HANDSHAKE" />
  <interconnectRequirement for="$system" name="qsys_mm.enableEccProtection" value="FALSE" />
  <interconnectRequirement for="$system" name="qsys_mm.insertDefaultSlave" value="FALSE" />

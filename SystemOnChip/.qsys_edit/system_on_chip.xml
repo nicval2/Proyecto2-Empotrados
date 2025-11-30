@@ -1010,7 +1010,7 @@
 														</entry>
 													</placeholder-map>
 												</leaf>
-												<node nodeId="1763576618112" orientation="VERTICAL" divider="0.8874172185430463">
+												<node nodeId="1764452818530" orientation="VERTICAL" divider="0.8874172185430463">
 													<leaf id="1" nodeId="1763576618110">
 														<placeholders>
 															<placeholder>dock.single.IP\ Catalog</placeholder>
@@ -1019,6 +1019,7 @@
 													<leaf id="0" nodeId="1375985011087">
 														<placeholders>
 															<placeholder>dock.single.Hierarchy</placeholder>
+															<placeholder>dock.single.Device\ Family</placeholder>
 														</placeholders>
 														<placeholder-map>
 															<version>0</version>
@@ -1188,7 +1189,7 @@
 							<children ignore="false">
 								<child>
 									<layout factory="delegate_StackDockStationFactory">
-										<selected>0</selected>
+										<selected>1</selected>
 										<placeholders>
 											<version>0</version>
 											<format>dock.PlaceholderList</format>
@@ -1883,17 +1884,14 @@
 										<property factory="SplitDockPlaceholderProperty">
 											<placeholder>dock.single.Device\ Family</placeholder>
 											<backup-path>
-												<node location="RIGHT" size="0.7781885397412199" id="1372710005721"/>
-												<node location="TOP" size="0.75" id="1372710005725"/>
-												<node location="LEFT" size="0.6183193900785428" id="1372710005727"/>
-												<node location="TOP" size="0.75" id="1372710005733"/>
-												<node location="TOP" size="0.5214117647058824" id="1389812862722"/>
-												<node location="BOTTOM" size="0.3317230273752013" id="1411773509398"/>
-												<leaf id="1372710005735"/>
+												<node location="LEFT" size="0.22181146025878004" id="1372710005721"/>
+												<node location="BOTTOM" size="0.495945945945946" id="1375985011088"/>
+												<node location="BOTTOM" size="0.11258278145695366" id="1763576618112"/>
+												<leaf id="1375985011087"/>
 											</backup-path>
 										</property>
 										<property factory="StackDockPropertyFactory">
-											<index>4</index>
+											<index>1</index>
 											<placeholder>dock.single.Device\ Family</placeholder>
 										</property>
 									</location>
@@ -2273,10 +2271,15 @@
 										<property factory="SplitDockPlaceholderProperty">
 											<placeholder>dock.single.Hierarchy</placeholder>
 											<backup-path>
-												<node location="LEFT" size="0.2" id="1372710005721"/>
-												<node location="BOTTOM" size="0.2928870292887029" id="1375985011088"/>
+												<node location="LEFT" size="0.22181146025878004" id="1372710005721"/>
+												<node location="BOTTOM" size="0.495945945945946" id="1375985011088"/>
+												<node location="BOTTOM" size="0.11258278145695366" id="1763576618112"/>
 												<leaf id="1375985011087"/>
 											</backup-path>
+										</property>
+										<property factory="StackDockPropertyFactory">
+											<index>0</index>
+											<placeholder>dock.single.Hierarchy</placeholder>
 										</property>
 									</location>
 								</property>
