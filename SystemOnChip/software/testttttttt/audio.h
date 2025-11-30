@@ -1,6 +1,6 @@
 #ifndef AUDIO_H
 #define AUDIO_H
-
+#define AUDIO_EOS_TOKEN 0xFFFFFFFF  // Definimos el token aqui tambien
 #include "alt_types.h"
 
 /* --- Variables Globales (para leer desde main) --- */
@@ -29,6 +29,7 @@ int audio_fifo_has_data(void);
 
 // Lee un dato de la FIFO, aplica Filtro, aplica Volumen y lo envía al Audio Core
 // Retorna el dato crudo procesado (útil si quisieras visualizarlo)
-void audio_process_sample(void);
+int audio_process_sample(void);
+
 
 #endif

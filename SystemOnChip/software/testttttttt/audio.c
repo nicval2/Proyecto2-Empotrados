@@ -93,21 +93,27 @@ int audio_fifo_has_data(void) {
     return !(status & FIFO_EMPTY);
 }
 
-void audio_process_sample(void) {
+
+// Modificamos la funcion para que retorne int
+int audio_process_sample(void) {
     // 1. Leer dato de la FIFO
     alt_u32 raw_data = IORD_32DIRECT(FIFO_OUT_BASE, 0);
+
+    // --- CHEQUEO DE FIN DE CANCION ---
+    if (raw_data == AUDIO_EOS_TOKEN) {
+        return 0; // Indicamos al main que la canción terminó
+    }
 
     // 2. Convertir a 16 bits con signo
     alt_16 sample_16 = (alt_16)(raw_data & 0xFFFF);
 
-    // 3. APLICAR FILTRO (Desde filter.h)
-    // El filtro sabe cuál usar gracias a filter_set() que llamamos en main
+    // 3. APLICAR FILTRO
     alt_16 filtered_16 = filter_process(sample_16);
 
-    // 4. Extender a 32 bits y alinear MSB
+    // 4. Extender a 32 bits y alinear
     alt_32 sample_32 = ((alt_32)filtered_16) << 16;
 
-    // 5. APLICAR VOLUMEN (Shift)
+    // 5. APLICAR VOLUMEN
     sample_32 = sample_32 >> volume_shift;
 
     // 6. Esperar espacio en Hardware de Audio
@@ -119,4 +125,6 @@ void audio_process_sample(void) {
     // 7. Escribir
     IOWR_32DIRECT(AUDIO_BASE, AUDIO_LEFT_DATA, sample_32);
     IOWR_32DIRECT(AUDIO_BASE, AUDIO_RIGHT_DATA, sample_32);
+
+    return 1; // Éxito, seguimos tocando
 }

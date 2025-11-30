@@ -9,6 +9,6 @@
  </systemtable>
  <library
    expandedCategories="Library/University Program/Audio &amp; Video,Library/University Program/Audio &amp; Video/Video,Library/Basic Functions/On Chip Memory,Library/University Program,Library,Project,Library/Qsys Interconnect/Memory-Mapped,Library/Qsys Interconnect/Memory-Mapped Alpha,Library/Qsys Interconnect,Library/Basic Functions" />
- <window width="1920" height="971" x="0" y="0" />
+ <window width="1938" height="1038" x="-9" y="-9" />
  <generation path="_PROJECT_NAME_" synthesis="VERILOG" greybox="0" />
 </preferences>
