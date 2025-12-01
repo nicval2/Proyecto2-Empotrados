@@ -6,7 +6,7 @@ JedecChain;
 	P ActionCode(Ign)
 		Device PartName(SOCVHPS) MfrSpec(OpMask(0));
 	P ActionCode(Cfg)
-		Device PartName(5CSEMA5F31) Path("C:/Users/nicva/Empotrados/Proyecto2-Empotrados/SystemOnChip/output_files/") File("SystemOnChip.sof") MfrSpec(OpMask(1));
+		Device PartName(5CSEMA5F31) Path("C:/intelFPGA_lite/Proyecto2-Empotrados/SystemOnChip/output_files/") File("SystemOnChip.sof") MfrSpec(OpMask(1));
 
 ChainEnd;
 
