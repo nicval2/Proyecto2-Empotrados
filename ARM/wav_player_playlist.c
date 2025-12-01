@@ -1,4 +1,4 @@
-// wav_player_playlist.c
+//wav_player_arm.c
 #define _DEFAULT_SOURCE
 #define _POSIX_C_SOURCE 200809L
 #include <stdio.h>
@@ -8,29 +8,25 @@
 #include <unistd.h>
 #include <stdint.h>
 #include <string.h>
-#include <dirent.h>
-#include <sys/stat.h>
+#include <errno.h>
 
-// Direcciones H2F Bridge
+/* --- DIRECCIONES DE HARDWARE --- */
 #define H2F_BRIDGE_BASE     0xC0000000
-
-// FIFO (ARM -> NIOS)
 #define FIFO_IN_OFFSET      0x8860
 #define FIFO_IN_CSR_OFFSET  0x8900
 
-// FIFO2 (NIOS -> ARM)
-#define FIFO2_OUT_OFFSET     0x8950
-#define FIFO2_OUT_CSR_OFFSET 0x8960
+// FIFO2 (NIOS → HPS) - DIRECCIONES VERIFICADAS
+#define FIFO2_OUT_OFFSET     0x8960
+#define FIFO2_OUT_CSR_OFFSET 0x8980
 
-#define FIFO_FULL  (1 << 1)
-#define FIFO_EMPTY (1 << 0)
-#define METADATA_MAGIC 0xDEADDA7A
+#define FIFO_FULL           (1 << 1)
+#define FIFO_EMPTY          (1 << 0)
 
-#define CMD_NEXT 1
-#define CMD_PREV 2
-
-#define MAX_SONGS 50
-#define MAX_PATH 256
+/* --- TOKENS DE PROTOCOLO --- */
+#define METADATA_MAGIC      0xDEADDA7A
+#define EOS_TOKEN           0xFFFFFFFF
+#define CMD_NEXT_SONG       0xFFFFFFFE
+#define CMD_PREV_SONG       0xFFFFFFFD
 
 typedef struct {
     char title[64];
@@ -38,30 +34,7 @@ typedef struct {
     char album[64];
 } WavMetadata;
 
-typedef struct {
-    char filepath[MAX_PATH];
-    WavMetadata meta;
-    uint32_t sample_rate;
-    uint16_t num_channels;
-    uint16_t bits_per_sample;
-    uint32_t data_size;
-    long data_offset;
-} Song;
-
-Song playlist[MAX_SONGS];
-int playlist_count = 0;
-int current_song = 0;
-volatile int skip_requested = 0;
-volatile int skip_direction = 0;
-
-void *h2f_map = NULL;
-volatile void *fifo_in = NULL;
-volatile void *fifo_in_csr = NULL;
-volatile void *fifo2_out = NULL;
-volatile void *fifo2_out_csr = NULL;
-
-// ============ Funciones de acceso a memoria ============
-
+/* --- Funciones de acceso a memoria --- */
 uint32_t read_u32(volatile void *addr) {
     return *(volatile uint32_t *)addr;
 }
@@ -70,50 +43,58 @@ void write_u32(volatile void *addr, uint32_t value) {
     *(volatile uint32_t *)addr = value;
 }
 
-int fifo_has_space(volatile void *csr) {
-    return !(read_u32(csr) & FIFO_FULL);
+int fifo_has_space(volatile void *fifo_csr) {
+    return !(read_u32(fifo_csr) & FIFO_FULL);
 }
 
-int fifo2_has_data(volatile void *csr) {
-    return !(read_u32(csr) & FIFO_EMPTY);
-}
-
-void fifo_write_wait(uint32_t value) {
-    while(!fifo_has_space(fifo_in_csr));
+void fifo_write_wait(volatile void *fifo_in, volatile void *fifo_csr, uint32_t value) {
+    while(!fifo_has_space(fifo_csr));
     write_u32(fifo_in, value);
 }
 
-void fifo_write_string(const char *str) {
+// NUEVO: Vaciar FIFO de comandos (limpiar comandos pendientes)
+void clear_command_fifo(volatile void *fifo2_out, volatile void *fifo2_csr) {
+    while (!(read_u32(fifo2_csr) & FIFO_EMPTY)) {
+        read_u32(fifo2_out); // Leer y descartar
+    }
+}
+
+// NUEVO: Función mejorada para chequear comandos (lee TODOS los comandos disponibles)
+int check_nios_command(volatile void *fifo2_out, volatile void *fifo2_csr) {
+    int last_command = 0;
+    
+    // Leer TODOS los comandos pendientes, quedarnos con el último
+    while (!(read_u32(fifo2_csr) & FIFO_EMPTY)) {
+        uint32_t cmd = read_u32(fifo2_out);
+        
+        if (cmd == CMD_NEXT_SONG) {
+            last_command = 1;  // Next
+        }
+        else if (cmd == CMD_PREV_SONG) {
+            last_command = -1; // Prev
+        }
+    }
+    
+    if (last_command != 0) {
+        printf("  [HPS] Comando recibido: %s\n", last_command == 1 ? "NEXT" : "PREV");
+    }
+    
+    return last_command;
+}
+
+void fifo_write_string(volatile void *fifo_in, volatile void *fifo_csr, const char *str) {
     size_t len = strlen(str);
     size_t i;
     
     if(len > 63) len = 63;
-    fifo_write_wait(len);
+    fifo_write_wait(fifo_in, fifo_csr, len);
     
     for(i = 0; i < len; i++) {
-        fifo_write_wait((uint32_t)(unsigned char)str[i]);
+        fifo_write_wait(fifo_in, fifo_csr, (uint32_t)(unsigned char)str[i]);
     }
 }
 
-void check_nios_commands(void) {
-    if(fifo2_has_data(fifo2_out_csr)) {
-        uint32_t cmd = read_u32(fifo2_out);
-        
-        if(cmd == CMD_NEXT) {
-            printf("\n[CMD] NEXT\n");
-            skip_requested = 1;
-            skip_direction = 1;
-        }
-        else if(cmd == CMD_PREV) {
-            printf("\n[CMD] PREV\n");
-            skip_requested = 1;
-            skip_direction = -1;
-        }
-    }
-}
-
-// ============ Parsing de WAV ============
-
+/* --- Funciones de parseo WAV (sin cambios) --- */
 int read_chunk_header(FILE *f, char *id, uint32_t *size) {
     if(fread(id, 1, 4, f) != 4) return 0;
     if(fread(size, 4, 1, f) != 1) return 0;
@@ -124,6 +105,7 @@ void read_info_string(FILE *f, uint32_t size, char *dest, size_t dest_size) {
     size_t to_read = (size < dest_size - 1) ? size : dest_size - 1;
     fread(dest, 1, to_read, f);
     dest[to_read] = '\0';
+    
     if(size > to_read) fseek(f, size - to_read, SEEK_CUR);
     if(size % 2 != 0) fseek(f, 1, SEEK_CUR);
 }
@@ -131,7 +113,8 @@ void read_info_string(FILE *f, uint32_t size, char *dest, size_t dest_size) {
 void parse_list_chunk(FILE *f, uint32_t list_size, WavMetadata *meta) {
     char list_type[4];
     char chunk_id[5] = {0};
-    uint32_t chunk_size, bytes_read;
+    uint32_t chunk_size;
+    uint32_t bytes_read;
     
     fread(list_type, 1, 4, f);
     
@@ -156,68 +139,49 @@ void parse_list_chunk(FILE *f, uint32_t list_size, WavMetadata *meta) {
         } else {
             fseek(f, chunk_size + (chunk_size % 2), SEEK_CUR);
         }
+        
         bytes_read += chunk_size + (chunk_size % 2);
     }
 }
 
-int parse_wav_file(const char *filepath, Song *song) {
-    FILE *f;
-    char riff[4], wave[4];
-    uint32_t file_size;
+int parse_wav_file(FILE *f, uint32_t *data_size, WavMetadata *meta, 
+                   uint16_t *audio_format, uint16_t *num_channels,
+                   uint32_t *sample_rate, uint16_t *bits_per_sample) {
     char chunk_id[5] = {0};
     uint32_t chunk_size;
-    uint16_t audio_format;
+    long fmt_start;
     
-    f = fopen(filepath, "rb");
-    if(!f) {
-        printf("  Cannot open: %s\n", filepath);
-        return 0;
-    }
+    strcpy(meta->title, "Desconocido");
+    strcpy(meta->artist, "Desconocido");
+    strcpy(meta->album, "Desconocido");
     
-    strcpy(song->meta.title, "Unknown");
-    strcpy(song->meta.artist, "Unknown");
-    strcpy(song->meta.album, "Unknown");
-    strncpy(song->filepath, filepath, MAX_PATH - 1);
-    
+    rewind(f);
+    char riff[4], wave[4];
+    uint32_t file_size;
     fread(riff, 1, 4, f);
     fread(&file_size, 4, 1, f);
     fread(wave, 1, 4, f);
     
-    if(strncmp(riff, "RIFF", 4) != 0 || strncmp(wave, "WAVE", 4) != 0) {
-        printf("  Not a WAV: %s\n", filepath);
-        fclose(f);
-        return 0;
-    }
-    
+    if(strncmp(riff, "RIFF", 4) != 0 || strncmp(wave, "WAVE", 4) != 0) return 0;
+
     while(read_chunk_header(f, chunk_id, &chunk_size)) {
         chunk_id[4] = '\0';
         
         if(strncmp(chunk_id, "fmt ", 4) == 0) {
-            long fmt_start = ftell(f);
-            fread(&audio_format, 2, 1, f);
-            fread(&song->num_channels, 2, 1, f);
-            fread(&song->sample_rate, 4, 1, f);
+            fmt_start = ftell(f);
+            fread(audio_format, 2, 1, f);
+            fread(num_channels, 2, 1, f);
+            fread(sample_rate, 4, 1, f);
             fseek(f, 4, SEEK_CUR);
             fseek(f, 2, SEEK_CUR);
-            fread(&song->bits_per_sample, 2, 1, f);
+            fread(bits_per_sample, 2, 1, f);
             fseek(f, fmt_start + chunk_size, SEEK_SET);
         }
         else if(strncmp(chunk_id, "LIST", 4) == 0) {
-            parse_list_chunk(f, chunk_size, &song->meta);
+            parse_list_chunk(f, chunk_size, meta);
         }
         else if(strncmp(chunk_id, "data", 4) == 0) {
-            song->data_size = chunk_size;
-            song->data_offset = ftell(f);
-            fclose(f);
-            
-            if(audio_format != 1 && audio_format != 65534) {
-                printf("  Not PCM: %s (format=%d)\n", filepath, audio_format);
-                return 0;
-            }
-            if(song->bits_per_sample != 16) {
-                printf("  Not 16-bit: %s (%d-bit)\n", filepath, song->bits_per_sample);
-                return 0;
-            }
+            *data_size = chunk_size;
             return 1;
         }
         else {
@@ -225,208 +189,142 @@ int parse_wav_file(const char *filepath, Song *song) {
         }
     }
     
-    printf("  No data chunk: %s\n", filepath);
-    fclose(f);
     return 0;
 }
 
-// ============ Cargar playlist ============
-
-int is_directory(const char *path) {
-    struct stat st;
-    if(stat(path, &st) != 0) return 0;
-    return S_ISDIR(st.st_mode);
-}
-
-int add_song_to_playlist(const char *filepath) {
-    if(playlist_count >= MAX_SONGS) return 0;
+/* --- FUNCIÓN MODIFICADA PARA REPRODUCIR UN ARCHIVO --- */
+int play_file(const char* filename, volatile void *fifo_in, volatile void *fifo_csr,
+              volatile void *fifo2_out, volatile void *fifo2_csr) {
+    FILE *wav_file;
+    uint32_t data_size;
+    uint16_t audio_format, num_channels, bits_per_sample;
+    uint32_t sample_rate;
+    WavMetadata metadata;
     
-    if(parse_wav_file(filepath, &playlist[playlist_count])) {
-        printf("  [%d] %s - %s (%u Hz)\n", 
-               playlist_count + 1,
-               playlist[playlist_count].meta.artist,
-               playlist[playlist_count].meta.title,
-               playlist[playlist_count].sample_rate);
-        playlist_count++;
-        return 1;
-    }
-    return 0;
-}
-
-int load_playlist_from_dir(const char *directory) {
-    DIR *dir;
-    struct dirent *entry;
-    char filepath[MAX_PATH];
-    
-    dir = opendir(directory);
-    if(!dir) {
-        perror("Error opening directory");
-        return 0;
-    }
-    
-    while((entry = readdir(dir)) != NULL && playlist_count < MAX_SONGS) {
-        size_t len = strlen(entry->d_name);
-        
-        if(len > 4 && strcasecmp(entry->d_name + len - 4, ".wav") == 0) {
-            snprintf(filepath, MAX_PATH, "%s/%s", directory, entry->d_name);
-            add_song_to_playlist(filepath);
-        }
-    }
-    
-    closedir(dir);
-    return playlist_count;
-}
-
-// ============ Reproducir canción ============
-
-int play_song(int index) {
-    FILE *f;
-    Song *song;
     int16_t *audio_buffer;
     size_t buffer_samples = 2048;
-    size_t buffer_size, samples_read, i;
+    size_t samples_read;
+    size_t i;
+    int sample_counter = 0;
+    int skip_song = 0;
     
-    if(index < 0 || index >= playlist_count) return 0;
-    
-    song = &playlist[index];
-    
-    printf("\n========================================\n");
-    printf("Playing [%d/%d]: %s\n", index + 1, playlist_count, song->meta.title);
-    printf("Artist: %s | Album: %s\n", song->meta.artist, song->meta.album);
-    printf("Rate: %u Hz | Channels: %u\n", song->sample_rate, song->num_channels);
-    printf("========================================\n");
-    
-    f = fopen(song->filepath, "rb");
-    if(!f) return 0;
-    fseek(f, song->data_offset, SEEK_SET);
-    
-    printf("Sending METADATA_MAGIC...\n");
-    fflush(stdout);
-    fifo_write_wait(METADATA_MAGIC);
-    
-    printf("Sending sample_rate: %u\n", song->sample_rate);
-    fflush(stdout);
-    fifo_write_wait(song->sample_rate);
-    
-    printf("Sending num_channels: %u\n", song->num_channels);
-    fflush(stdout);
-    fifo_write_wait(song->num_channels);
-    
-    printf("Sending bits_per_sample: %u\n", song->bits_per_sample);
-    fflush(stdout);
-    fifo_write_wait(song->bits_per_sample);
-    
-    printf("Sending artist: '%s' (len=%zu)\n", song->meta.artist, strlen(song->meta.artist));
-    fflush(stdout);
-    fifo_write_string(song->meta.artist);
-    printf("  artist sent OK\n");
-    fflush(stdout);
-    
-    printf("Sending album: '%s' (len=%zu)\n", song->meta.album, strlen(song->meta.album));
-    fflush(stdout);
-    fifo_write_string(song->meta.album);
-    printf("  album sent OK\n");
-    fflush(stdout);
-    
-    printf("Sending title: '%s' (len=%zu)\n", song->meta.title, strlen(song->meta.title));
-    fflush(stdout);
-    fifo_write_string(song->meta.title);
-    printf("  title sent OK\n");
-    fflush(stdout);
-    
-    printf("All metadata sent, starting audio...\n");
-    fflush(stdout);
-    
-    printf("Metadata sent, starting audio...\n");
-    
-    buffer_size = buffer_samples * song->num_channels;
-    audio_buffer = (int16_t *)malloc(buffer_size * sizeof(int16_t));
-    if(!audio_buffer) {
-        fclose(f);
+    printf("\nAbriendo: %s\n", filename);
+    wav_file = fopen(filename, "rb");
+    if(!wav_file) {
+        printf("Error: No se pudo abrir %s\n", filename);
         return 0;
     }
     
-    skip_requested = 0;
+    if(!parse_wav_file(wav_file, &data_size, &metadata, 
+                       &audio_format, &num_channels, &sample_rate, &bits_per_sample)) {
+        printf("Error: No se encontro chunk 'data'\n");
+        fclose(wav_file);
+        return 0;
+    }
     
-    while((samples_read = fread(audio_buffer, sizeof(int16_t), buffer_size, f)) > 0) {
-        check_nios_commands();
-        if(skip_requested) break;
+    if(audio_format != 1 && audio_format != 65534) {
+        printf("Error: Formato %d no soportado\n", audio_format);
+        fclose(wav_file);
+        return 0;
+    }
+    
+    if(bits_per_sample != 16) {
+        printf("Error: Solo 16 bits soportado\n");
+        fclose(wav_file);
+        return 0;
+    }
+    
+    printf("  Titulo:  %s\n", metadata.title);
+    printf("  Artista: %s\n", metadata.artist);
+    printf("  Rate:    %u Hz, %d ch\n", sample_rate, num_channels);
+
+    // NUEVO: Limpiar FIFO de comandos antes de empezar
+    clear_command_fifo(fifo2_out, fifo2_csr);
+    
+    // Enviar Metadata
+    fifo_write_wait(fifo_in, fifo_csr, METADATA_MAGIC);
+    fifo_write_wait(fifo_in, fifo_csr, sample_rate);
+    fifo_write_wait(fifo_in, fifo_csr, num_channels);
+    fifo_write_wait(fifo_in, fifo_csr, bits_per_sample);
+    
+    fifo_write_string(fifo_in, fifo_csr, metadata.artist);
+    fifo_write_string(fifo_in, fifo_csr, metadata.album);
+    fifo_write_string(fifo_in, fifo_csr, metadata.title);
+    
+    printf("  --> Reproduciendo...\n");
+    
+    audio_buffer = (int16_t *)malloc(buffer_samples * num_channels * sizeof(int16_t));
+    if(!audio_buffer) {
+        printf("Error malloc\n");
+        fclose(wav_file);
+        return 0;
+    }
+    
+    // Enviar Audio con polling FRECUENTE de comandos
+    while((samples_read = fread(audio_buffer, sizeof(int16_t), buffer_samples * num_channels, wav_file)) > 0) {
         
-        if(song->num_channels == 2) {
-            for(i = 0; i < samples_read && !skip_requested; i += 2) {
-                int32_t mono = ((int32_t)audio_buffer[i] + audio_buffer[i+1]) / 2;
-                
-                while(!fifo_has_space(fifo_in_csr)) {
-                    check_nios_commands();
-                    if(skip_requested) break;
-                }
-                if(skip_requested) break;
-                
-                write_u32(fifo_in, (uint32_t)(mono & 0xFFFF));
-            }
-        } else {
-            for(i = 0; i < samples_read && !skip_requested; i++) {
-                while(!fifo_has_space(fifo_in_csr)) {
-                    check_nios_commands();
-                    if(skip_requested) break;
-                }
-                if(skip_requested) break;
-                
-                write_u32(fifo_in, (uint32_t)(audio_buffer[i] & 0xFFFF));
+        // NUEVO: Chequear comandos cada 256 samples (~5ms @ 48kHz) - MÁS FRECUENTE
+        if (sample_counter++ >= 256) {
+            sample_counter = 0;
+            int cmd = check_nios_command(fifo2_out, fifo2_csr);
+            
+            if (cmd != 0) {
+                skip_song = cmd;
+                printf("  --> Interrupcion por usuario\n");
+                break;
             }
         }
+        
+        if(num_channels == 2) {
+            for(i = 0; i < samples_read; i += 2) {
+                int32_t left = audio_buffer[i];
+                int32_t right = audio_buffer[i + 1];
+                int32_t mono = (left + right) / 2;
+                
+                fifo_write_wait(fifo_in, fifo_csr, (uint32_t)(mono & 0xFFFF));
+            }
+        } else {
+            for(i = 0; i < samples_read; i++) {
+                fifo_write_wait(fifo_in, fifo_csr, (uint32_t)(audio_buffer[i] & 0xFFFF));
+            }
+        }
+    }
+    
+    // Solo enviar EOS si terminó normalmente
+    if (skip_song == 0) {
+        printf("  --> Fin. Enviando EOS.\n");
+        fifo_write_wait(fifo_in, fifo_csr, EOS_TOKEN);
     }
     
     free(audio_buffer);
-    fclose(f);
-    return 1;
+    fclose(wav_file);
+    
+    return skip_song;
 }
 
-// ============ Main ============
-
+/* --- MAIN --- */
 int main(int argc, char *argv[]) {
-    int fd_mem, i;
-    
-    printf("========================================\n");
-    printf("  WAV Playlist Player\n");
-    printf("========================================\n\n");
+    int fd_mem;
+    void *h2f_map;
+    volatile void *fifo_in;
+    volatile void *fifo_in_csr;
+    volatile void *fifo2_out;
+    volatile void *fifo2_out_csr;
     
     if(argc < 2) {
-        printf("Usage: %s <file1.wav> [file2.wav ...]\n", argv[0]);
-        printf("   or: %s <directory>\n", argv[0]);
+        printf("Uso: %s <cancion1.wav> [cancion2.wav ...]\n", argv[0]);
         return 1;
     }
     
-    // Cargar canciones
-    printf("Loading songs...\n");
-    
-    if(is_directory(argv[1])) {
-        load_playlist_from_dir(argv[1]);
-    } else {
-        for(i = 1; i < argc; i++) {
-            add_song_to_playlist(argv[i]);
-        }
-    }
-    
-    if(playlist_count == 0) {
-        fprintf(stderr, "No valid WAV files found!\n");
-        return 1;
-    }
-    
-    printf("\nLoaded %d song(s).\n", playlist_count);
-    
-    // Mapear memoria
     fd_mem = open("/dev/mem", O_RDWR | O_SYNC);
     if(fd_mem == -1) {
-        perror("Error opening /dev/mem");
+        printf("Error: open('/dev/mem') fallo. Errno: %d (%s)\n", errno, strerror(errno));
         return 1;
     }
     
-    h2f_map = mmap(NULL, 0x10000, PROT_READ | PROT_WRITE, 
-                   MAP_SHARED, fd_mem, H2F_BRIDGE_BASE);
-    
+    h2f_map = mmap(NULL, 0x10000, PROT_READ | PROT_WRITE, MAP_SHARED, fd_mem, H2F_BRIDGE_BASE);
     if(h2f_map == MAP_FAILED) {
-        perror("mmap failed");
+        printf("Error: mmap() fallo. Errno: %d (%s)\n", errno, strerror(errno));
         close(fd_mem);
         return 1;
     }
@@ -436,24 +334,40 @@ int main(int argc, char *argv[]) {
     fifo2_out = h2f_map + FIFO2_OUT_OFFSET;
     fifo2_out_csr = h2f_map + FIFO2_OUT_CSR_OFFSET;
     
-    printf("\nKEY3=Pause | KEY2=Next | KEY1=Prev\n\n");
+    printf("=== REPRODUCTOR HPS (con Next/Prev) ===\n");
+    printf("FIFO IN:   0x%08X\n", (unsigned)(H2F_BRIDGE_BASE + FIFO_IN_OFFSET));
+    printf("FIFO2 OUT: 0x%08X\n", (unsigned)(H2F_BRIDGE_BASE + FIFO2_OUT_OFFSET));
     
-    // Loop de playlist
-    while(1) {
-        play_song(current_song);
+    // Limpiar comandos pendientes al inicio
+    clear_command_fifo(fifo2_out, fifo2_out_csr);
+    
+    // Bucle Playlist con control
+    int current_track = 1;
+    
+    while(current_track >= 1 && current_track < argc) {
+        printf("\n[ Pista %d de %d ]\n", current_track, argc - 1);
         
-        if(skip_requested) {
-            current_song += skip_direction;
-            skip_requested = 0;
-        } else {
-            current_song++;
+        int result = play_file(argv[current_track], fifo_in, fifo_in_csr, 
+                               fifo2_out, fifo2_out_csr);
+        
+        if (result == 1) {
+            // NEXT
+            current_track++;
+        }
+        else if (result == -1) {
+            // PREV
+            current_track--;
+            if (current_track < 1) current_track = 1;
+        }
+        else {
+            // Normal
+            current_track++;
         }
         
-        if(current_song >= playlist_count) current_song = 0;
-        if(current_song < 0) current_song = playlist_count - 1;
-        
-        usleep(300000);
+        usleep(200000);
     }
+    
+    printf("\n=== Playlist finalizada ===\n");
     
     munmap(h2f_map, 0x10000);
     close(fd_mem);
