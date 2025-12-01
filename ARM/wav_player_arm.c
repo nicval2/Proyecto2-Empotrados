@@ -1,4 +1,4 @@
-// wav_player_arm.c - HPS con soporte Next/Prev (CORREGIDO)
+// wav_player_arm.c - HPS con soporte Next/Prev (v2.2 CORREGIDO)
 #define _DEFAULT_SOURCE
 #define _POSIX_C_SOURCE 200809L
 #include <stdio.h>
@@ -21,9 +21,12 @@
 #define FIFO2_OUT_OFFSET     0x8960
 #define FIFO2_OUT_CSR_OFFSET 0x8980
 
-/* --- FLAGS DE FIFO --- */
-#define FIFO_FULL   (1 << 1)
-#define FIFO_EMPTY  (1 << 0)
+/* --- OFFSETS DENTRO DEL CSR --- */
+// El CSR tiene varios registros:
+// Offset 0: Fill Level (número de elementos en el FIFO)
+// Offset 4: Status (bit 0 = empty para out, bit 0 = full para in)
+#define CSR_FILL_LEVEL  0x00
+#define CSR_STATUS      0x04
 
 /* --- TOKENS DE PROTOCOLO --- */
 #define METADATA_MAGIC  0xDEADDA7A
@@ -41,10 +44,10 @@ typedef struct {
 } WavMetadata;
 
 /* --- PUNTEROS GLOBALES A HARDWARE --- */
+static volatile uint8_t *fifo_in_csr_base;
 static volatile uint32_t *fifo_in;
-static volatile uint32_t *fifo_in_csr;
+static volatile uint8_t *fifo2_out_csr_base;
 static volatile uint32_t *fifo2_out;
-static volatile uint32_t *fifo2_out_csr;
 
 /* --- VARIABLES DE ESTADO --- */
 static int current_track = 0;
@@ -53,12 +56,25 @@ static int skip_requested = 0;
 
 /* --- FUNCIONES DE ACCESO A HARDWARE --- */
 
-int fifo_has_space(void) {
-    return !(*fifo_in_csr & FIFO_FULL);
+// Leer fill level del FIFO de entrada (HPS->NIOS)
+uint32_t fifo_in_fill_level(void) {
+    return *(volatile uint32_t *)(fifo_in_csr_base + CSR_FILL_LEVEL);
 }
 
+// El FIFO de escritura está lleno cuando fill level alcanza capacidad
+// Para FIFO de 16 elementos, está lleno si fill >= 16
+int fifo_has_space(void) {
+    return fifo_in_fill_level() < 16;
+}
+
+// Leer fill level del FIFO2 (NIOS->HPS)
+uint32_t fifo2_out_fill_level(void) {
+    return *(volatile uint32_t *)(fifo2_out_csr_base + CSR_FILL_LEVEL);
+}
+
+// Hay datos si fill level > 0
 int fifo2_has_data(void) {
-    return !(*fifo2_out_csr & FIFO_EMPTY);
+    return fifo2_out_fill_level() > 0;
 }
 
 void fifo_write_wait(uint32_t value) {
@@ -76,19 +92,17 @@ void fifo_write_string(const char *str) {
     }
 }
 
-/* Verificar comandos del NIOS (con límite de seguridad) */
+/* Verificar comandos del NIOS */
 void check_commands(void) {
-    int count = 0;
-    while(fifo2_has_data() && count < 5) {
+    while(fifo2_has_data()) {
         uint32_t cmd = *fifo2_out;
-        count++;
         
         if(cmd == CMD_NEXT) {
-            printf("[CMD] NEXT\n"); fflush(stdout);
+            printf("[NEXT] "); fflush(stdout);
             skip_requested = 1;
         }
         else if(cmd == CMD_PREV) {
-            printf("[CMD] PREV\n"); fflush(stdout);
+            printf("[PREV] "); fflush(stdout);
             skip_requested = -1;
         }
     }
@@ -220,7 +234,7 @@ int play_file(const char* filename) {
         return 0;
     }
     
-    printf("  %s - %s (%u Hz)\n", metadata.artist, metadata.title, sample_rate);
+    printf("  %s - %s\n", metadata.artist, metadata.title);
     fflush(stdout);
 
     // Enviar Metadata
@@ -232,7 +246,7 @@ int play_file(const char* filename) {
     fifo_write_string(metadata.album);
     fifo_write_string(metadata.title);
     
-    printf("  Reproduciendo...\n");
+    printf("  Reproduciendo... ");
     fflush(stdout);
     
     audio_buffer = (int16_t *)malloc(buffer_samples * num_channels * sizeof(int16_t));
@@ -244,16 +258,12 @@ int play_file(const char* filename) {
     while((samples_read = fread(audio_buffer, sizeof(int16_t), 
                                  buffer_samples * num_channels, wav_file)) > 0) {
         
-        // Verificar comandos periódicamente
-        if(++check_counter >= 50) {
-            check_commands();
-            check_counter = 0;
-            
-            if(skip_requested != 0) {
-                printf("  Skip!\n"); fflush(stdout);
-                result = skip_requested;
-                break;
-            }
+        // Verificar comandos ANTES de enviar cada bloque
+        check_commands();
+        
+        if(skip_requested != 0) {
+            result = skip_requested;
+            break;
         }
         
         // Enviar audio
@@ -271,7 +281,7 @@ int play_file(const char* filename) {
     
     // Enviar token de fin
     fifo_write_wait(result ? SKIP_TOKEN : EOS_TOKEN);
-    printf("  %s\n", result ? ">> SKIP" : ">> FIN");
+    printf("%s\n", result ? "SKIP" : "FIN");
     fflush(stdout);
     
     free(audio_buffer);
@@ -284,7 +294,6 @@ int main(int argc, char *argv[]) {
     int fd_mem;
     void *h2f_map;
     
-    // Deshabilitar buffering de stdout
     setbuf(stdout, NULL);
     
     if(argc < 2) {
@@ -309,17 +318,23 @@ int main(int argc, char *argv[]) {
     
     // Configurar punteros
     fifo_in = (volatile uint32_t *)(h2f_map + FIFO_IN_OFFSET);
-    fifo_in_csr = (volatile uint32_t *)(h2f_map + FIFO_IN_CSR_OFFSET);
+    fifo_in_csr_base = (volatile uint8_t *)(h2f_map + FIFO_IN_CSR_OFFSET);
     fifo2_out = (volatile uint32_t *)(h2f_map + FIFO2_OUT_OFFSET);
-    fifo2_out_csr = (volatile uint32_t *)(h2f_map + FIFO2_OUT_CSR_OFFSET);
+    fifo2_out_csr_base = (volatile uint8_t *)(h2f_map + FIFO2_OUT_CSR_OFFSET);
     
-    printf("=== REPRODUCTOR HPS v2.1 ===\n");
+    printf("=== REPRODUCTOR HPS v2.2 ===\n");
     printf("Pistas: %d\n", total_tracks);
-    printf("KEY2=Next, KEY1=Prev, KEY3=Pause\n\n");
+    printf("KEY3=Pause, KEY2=Next, KEY1=Prev\n");
     
-    // DEBUG: Mostrar estado inicial de FIFOs
-    printf("[DEBUG] FIFO_IN_CSR = 0x%08X\n", *fifo_in_csr);
-    printf("[DEBUG] FIFO2_OUT_CSR = 0x%08X\n", *fifo2_out_csr);
+    // DEBUG: Verificar fill levels
+    printf("[DEBUG] FIFO_IN fill=%u, FIFO2_OUT fill=%u\n", 
+           fifo_in_fill_level(), fifo2_out_fill_level());
+    
+    // Limpiar comandos previos en FIFO2
+    while(fifo2_has_data()) {
+        uint32_t discard = *fifo2_out;
+        printf("[DEBUG] Descartando: 0x%08X\n", discard);
+    }
     
     // Bucle de playlist
     current_track = 0;
@@ -339,7 +354,7 @@ int main(int argc, char *argv[]) {
                 current_track = 0;
             }
         }
-        usleep(300000);
+        usleep(200000);
     }
     
     munmap(h2f_map, 0x10000);
