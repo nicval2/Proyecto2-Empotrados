@@ -4,15 +4,15 @@
 
 #include <stdint.h>
 
-/* Variables globales expuestas al main */
-extern volatile int is_running;      // 1 = reproduciendo, 0 = pausado
-extern volatile int reset_request;   // Legacy (puede usarse para reset de tiempo)
-extern volatile int skip_request;    // 1 = se pidió saltar canción
-extern volatile int skip_direction;  // 1 = next, -1 = prev
+/* Variables globales */
+extern volatile int is_running;
+extern volatile int reset_request;
+extern volatile int skip_request;
+extern volatile int skip_direction;
 
 /* Funciones */
 void buttons_init(void);
 void buttons_isr(void* context);
-void buttons_clear_skip(void);  // Limpia flags de skip después de procesarlos
+void buttons_clear_skip(void);
 
 #endif
