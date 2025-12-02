@@ -77,6 +77,9 @@ int main()
     display_time_4seg(SEG7_PTR, 0, 0);
     show_waiting_screen();
 
+    usleep(100000);  // 100ms de estabilización
+    audio_send_ready_signal();
+
     /* === BUCLE PRINCIPAL === */
     while(1)
     {
@@ -166,4 +169,3 @@ int main()
 
     return 0;
 }
-

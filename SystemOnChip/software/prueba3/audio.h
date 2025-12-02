@@ -1,6 +1,7 @@
 // audio.h
 #ifndef AUDIO_H
 #define AUDIO_H
+#define NIOS_READY_TOKEN  0xCAFEBABE
 
 #include "alt_types.h"
 
@@ -26,5 +27,6 @@ alt_u32 audio_receive_metadata(void);
 int audio_fifo_has_data(void);
 int audio_process_sample(void);  // Retorna: 1=OK, 0=EOS, -1=SKIP
 void audio_send_command(alt_u32 cmd);
+void audio_send_ready_signal(void);
 
 #endif

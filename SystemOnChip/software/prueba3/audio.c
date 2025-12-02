@@ -33,6 +33,8 @@ char album_str[64];
 char title_str[64];
 int volume_shift = 0;
 
+#define NIOS_READY_TOKEN  0xCAFEBABE
+
 /* --- Funciones Privadas --- */
 
 // Leer fill level del FIFO (HPS->NIOS)
@@ -43,6 +45,15 @@ static alt_u32 fifo_out_fill_level(void) {
 // Leer fill level del FIFO2 (NIOS->HPS)
 static alt_u32 fifo2_in_fill_level(void) {
     return IORD_32DIRECT(FIFO2_IN_CSR_BASE, CSR_FILL_LEVEL);
+}
+
+void audio_send_ready_signal(void) {
+    // Esperar espacio en FIFO2
+    while(fifo2_in_fill_level() >= 15);
+
+    // Enviar token
+    IOWR_32DIRECT(FIFO2_IN_BASE, 0, NIOS_READY_TOKEN);
+    printf("READY enviado al HPS\n");
 }
 
 static void receive_string_helper(char *buffer, int max_len) {
