@@ -12,7 +12,7 @@
 # or its authorized distributors. Please refer to the applicable 
 # agreement for further details.
 
-# ACDS 18.0 614 win32 2025.11.15.15:45:24
+# ACDS 18.0 614 win32 2025.11.27.12:16:22
 
 # ----------------------------------------
 # vcsmx - auto-generated simulation script
@@ -107,12 +107,12 @@
 # within the Quartus project, and generate a unified
 # script which supports all the Altera IP within the design.
 # ----------------------------------------
-# ACDS 18.0 614 win32 2025.11.15.15:45:24
+# ACDS 18.0 614 win32 2025.11.27.12:16:22
 # ----------------------------------------
 # initialize variables
 TOP_LEVEL_NAME="system_on_chip_tb"
 QSYS_SIMDIR="./../../"
-QUARTUS_INSTALL_DIR="C:/intelfpga_lite/18.0/quartus/"
+QUARTUS_INSTALL_DIR="D:/quartus18/quartus/"
 SKIP_FILE_COPY=0
 SKIP_DEV_COM=0
 SKIP_COM=0
@@ -167,18 +167,25 @@ mkdir -p ./libraries/NIOS_data_master_agent/
 mkdir -p ./libraries/UART_avalon_jtag_slave_translator/
 mkdir -p ./libraries/NIOS_data_master_translator/
 mkdir -p ./libraries/cpu/
+mkdir -p ./libraries/reset_from_locked/
+mkdir -p ./libraries/audio_pll/
 mkdir -p ./libraries/rst_controller/
 mkdir -p ./libraries/irq_mapper/
 mkdir -p ./libraries/mm_interconnect_0/
 mkdir -p ./libraries/UART/
 mkdir -p ./libraries/TIMER/
-mkdir -p ./libraries/REG_LEDS/
-mkdir -p ./libraries/REG_BUTTON/
+mkdir -p ./libraries/REG_SWITCHES/
+mkdir -p ./libraries/REG_BUTTONS/
+mkdir -p ./libraries/REG_7_SEGMENTS/
 mkdir -p ./libraries/RAM/
 mkdir -p ./libraries/NIOS/
-mkdir -p ./libraries/system_on_chip_inst_timer_irq_bfm/
+mkdir -p ./libraries/FIFO/
+mkdir -p ./libraries/Audio_PLL/
+mkdir -p ./libraries/system_on_chip_inst_switches_bfm/
 mkdir -p ./libraries/system_on_chip_inst_reset_bfm/
+mkdir -p ./libraries/system_on_chip_inst_id7_segment_bfm/
 mkdir -p ./libraries/system_on_chip_inst_clk_bfm/
+mkdir -p ./libraries/system_on_chip_inst_button_bfm/
 mkdir -p ./libraries/system_on_chip_inst/
 mkdir -p ./libraries/altera_ver/
 mkdir -p ./libraries/lpm_ver/
@@ -253,20 +260,26 @@ if [ $SKIP_COM -eq 0 ]; then
   vlogan +v2k $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS           "$QSYS_SIMDIR/system_on_chip_tb/simulation/submodules/system_on_chip_NIOS_cpu_debug_slave_tck.v"                             -work cpu                                  
   vlogan +v2k $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS           "$QSYS_SIMDIR/system_on_chip_tb/simulation/submodules/system_on_chip_NIOS_cpu_debug_slave_wrapper.v"                         -work cpu                                  
   vlogan +v2k $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS           "$QSYS_SIMDIR/system_on_chip_tb/simulation/submodules/system_on_chip_NIOS_cpu_test_bench.v"                                  -work cpu                                  
+  vlogan +v2k $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS           "$QSYS_SIMDIR/system_on_chip_tb/simulation/submodules/altera_up_avalon_reset_from_locked_signal.v"                           -work reset_from_locked                    
+  vlogan +v2k $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS           "$QSYS_SIMDIR/system_on_chip_tb/simulation/submodules/system_on_chip_Audio_PLL_audio_pll.vo"                                 -work audio_pll                            
   vlogan +v2k $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS           "$QSYS_SIMDIR/system_on_chip_tb/simulation/submodules/altera_reset_controller.v"                                             -work rst_controller                       
   vlogan +v2k $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS           "$QSYS_SIMDIR/system_on_chip_tb/simulation/submodules/altera_reset_synchronizer.v"                                           -work rst_controller                       
   vlogan +v2k -sverilog $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/system_on_chip_tb/simulation/submodules/system_on_chip_irq_mapper.sv"                                          -work irq_mapper                           
   vlogan +v2k $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS           "$QSYS_SIMDIR/system_on_chip_tb/simulation/submodules/system_on_chip_mm_interconnect_0.v"                                    -work mm_interconnect_0                    
   vlogan +v2k $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS           "$QSYS_SIMDIR/system_on_chip_tb/simulation/submodules/system_on_chip_UART.v"                                                 -work UART                                 
   vlogan +v2k $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS           "$QSYS_SIMDIR/system_on_chip_tb/simulation/submodules/system_on_chip_TIMER.v"                                                -work TIMER                                
-  vlogan +v2k $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS           "$QSYS_SIMDIR/system_on_chip_tb/simulation/submodules/system_on_chip_REG_LEDS.v"                                             -work REG_LEDS                             
-  vlogan +v2k $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS           "$QSYS_SIMDIR/system_on_chip_tb/simulation/submodules/system_on_chip_REG_BUTTON.v"                                           -work REG_BUTTON                           
+  vlogan +v2k $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS           "$QSYS_SIMDIR/system_on_chip_tb/simulation/submodules/system_on_chip_REG_SWITCHES.v"                                         -work REG_SWITCHES                         
+  vlogan +v2k $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS           "$QSYS_SIMDIR/system_on_chip_tb/simulation/submodules/system_on_chip_REG_BUTTONS.v"                                          -work REG_BUTTONS                          
+  vlogan +v2k $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS           "$QSYS_SIMDIR/system_on_chip_tb/simulation/submodules/system_on_chip_REG_7_SEGMENTS.v"                                       -work REG_7_SEGMENTS                       
   vlogan +v2k $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS           "$QSYS_SIMDIR/system_on_chip_tb/simulation/submodules/system_on_chip_RAM.v"                                                  -work RAM                                  
   vlogan +v2k $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS           "$QSYS_SIMDIR/system_on_chip_tb/simulation/submodules/system_on_chip_NIOS.v"                                                 -work NIOS                                 
-  vlogan +v2k -sverilog $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/system_on_chip_tb/simulation/submodules/altera_irq_mapper.sv"                                                  -work irq_mapper                           
-  vlogan +v2k -sverilog $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/system_on_chip_tb/simulation/submodules/altera_avalon_interrupt_sink.sv"                                       -work system_on_chip_inst_timer_irq_bfm    
+  vlogan +v2k $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS           "$QSYS_SIMDIR/system_on_chip_tb/simulation/submodules/system_on_chip_FIFO.v"                                                 -work FIFO                                 
+  vlogan +v2k $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS           "$QSYS_SIMDIR/system_on_chip_tb/simulation/submodules/system_on_chip_Audio_PLL.v"                                            -work Audio_PLL                            
+  vlogan +v2k -sverilog $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/system_on_chip_tb/simulation/submodules/altera_conduit_bfm_0003.sv"                                            -work system_on_chip_inst_switches_bfm     
   vlogan +v2k -sverilog $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/system_on_chip_tb/simulation/submodules/altera_avalon_reset_source.sv"                                         -work system_on_chip_inst_reset_bfm        
+  vlogan +v2k -sverilog $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/system_on_chip_tb/simulation/submodules/altera_conduit_bfm_0002.sv"                                            -work system_on_chip_inst_id7_segment_bfm  
   vlogan +v2k -sverilog $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/system_on_chip_tb/simulation/submodules/altera_avalon_clock_source.sv"                                         -work system_on_chip_inst_clk_bfm          
+  vlogan +v2k -sverilog $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/system_on_chip_tb/simulation/submodules/altera_conduit_bfm.sv"                                                 -work system_on_chip_inst_button_bfm       
   vlogan +v2k $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS           "$QSYS_SIMDIR/system_on_chip_tb/simulation/submodules/system_on_chip.v"                                                      -work system_on_chip_inst                  
   vlogan +v2k $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS           "$QSYS_SIMDIR/system_on_chip_tb/simulation/system_on_chip_tb.v"                                                                                                         
 fi
