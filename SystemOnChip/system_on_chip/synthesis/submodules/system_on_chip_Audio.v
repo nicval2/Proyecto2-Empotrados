@@ -27,7 +27,7 @@
  *                                                                            *
  ******************************************************************************/
 
-module system_on_chip_Audio (
+module system_on_chip_AUDIO (
 	// Inputs
 	clk,
 	reset,

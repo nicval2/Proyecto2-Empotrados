@@ -1,5 +1,5 @@
 `timescale 1ns/10ps
-module  system_on_chip_Audio_PLL_audio_pll(
+module  system_on_chip_AUDIO_PLL_audio_pll(
 
 	// interface 'refclk'
 	input wire refclk,

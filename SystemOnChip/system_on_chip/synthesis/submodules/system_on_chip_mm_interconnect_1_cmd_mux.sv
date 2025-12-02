@@ -43,6 +43,11 @@
 //   ARBITRATION_SHARES:  1 1
 //   ARBITRATION_SCHEME   "round-robin"
 //   PIPELINE_ARB:        1
+<<<<<<< HEAD
+//   PKT_TRANS_LOCK:      106 (arbitration locking enabled)
+//   ST_DATA_W:           161
+//   ST_CHANNEL_W:        4
+=======
 <<<<<<< HEAD:SystemOnChip/system_on_chip/synthesis/submodules/system_on_chip_mm_interconnect_1_cmd_mux.sv
 //   PKT_TRANS_LOCK:      61 (arbitration locking enabled)
 //   ST_DATA_W:           112
@@ -52,6 +57,7 @@
 //   ST_DATA_W:           90
 //   ST_CHANNEL_W:        7
 >>>>>>> origin/Develop:SystemOnChip/system_on_chip2/testbench/system_on_chip_tb/simulation/submodules/system_on_chip_mm_interconnect_0_cmd_mux_001.sv
+>>>>>>> origin/Develop
 // ------------------------------------------
 
 module system_on_chip_mm_interconnect_1_cmd_mux
@@ -60,6 +66,10 @@ module system_on_chip_mm_interconnect_1_cmd_mux
     // Sinks
     // ----------------------
     input                       sink0_valid,
+<<<<<<< HEAD
+    input [161-1   : 0]  sink0_data,
+    input [4-1: 0]  sink0_channel,
+=======
 <<<<<<< HEAD:SystemOnChip/system_on_chip/synthesis/submodules/system_on_chip_mm_interconnect_1_cmd_mux.sv
     input [112-1   : 0]  sink0_data,
     input [2-1: 0]  sink0_channel,
@@ -67,11 +77,16 @@ module system_on_chip_mm_interconnect_1_cmd_mux
     input [90-1   : 0]  sink0_data,
     input [7-1: 0]  sink0_channel,
 >>>>>>> origin/Develop:SystemOnChip/system_on_chip2/testbench/system_on_chip_tb/simulation/submodules/system_on_chip_mm_interconnect_0_cmd_mux_001.sv
+>>>>>>> origin/Develop
     input                       sink0_startofpacket,
     input                       sink0_endofpacket,
     output                      sink0_ready,
 
     input                       sink1_valid,
+<<<<<<< HEAD
+    input [161-1   : 0]  sink1_data,
+    input [4-1: 0]  sink1_channel,
+=======
 <<<<<<< HEAD:SystemOnChip/system_on_chip/synthesis/submodules/system_on_chip_mm_interconnect_1_cmd_mux.sv
     input [112-1   : 0]  sink1_data,
     input [2-1: 0]  sink1_channel,
@@ -79,6 +94,7 @@ module system_on_chip_mm_interconnect_1_cmd_mux
     input [90-1   : 0]  sink1_data,
     input [7-1: 0]  sink1_channel,
 >>>>>>> origin/Develop:SystemOnChip/system_on_chip2/testbench/system_on_chip_tb/simulation/submodules/system_on_chip_mm_interconnect_0_cmd_mux_001.sv
+>>>>>>> origin/Develop
     input                       sink1_startofpacket,
     input                       sink1_endofpacket,
     output                      sink1_ready,
@@ -88,6 +104,10 @@ module system_on_chip_mm_interconnect_1_cmd_mux
     // Source
     // ----------------------
     output                      src_valid,
+<<<<<<< HEAD
+    output [161-1    : 0] src_data,
+    output [4-1 : 0] src_channel,
+=======
 <<<<<<< HEAD:SystemOnChip/system_on_chip/synthesis/submodules/system_on_chip_mm_interconnect_1_cmd_mux.sv
     output [112-1    : 0] src_data,
     output [2-1 : 0] src_channel,
@@ -95,6 +115,7 @@ module system_on_chip_mm_interconnect_1_cmd_mux
     output [90-1    : 0] src_data,
     output [7-1 : 0] src_channel,
 >>>>>>> origin/Develop:SystemOnChip/system_on_chip2/testbench/system_on_chip_tb/simulation/submodules/system_on_chip_mm_interconnect_0_cmd_mux_001.sv
+>>>>>>> origin/Develop
     output                      src_startofpacket,
     output                      src_endofpacket,
     input                       src_ready,
@@ -105,6 +126,15 @@ module system_on_chip_mm_interconnect_1_cmd_mux
     input clk,
     input reset
 );
+<<<<<<< HEAD
+    localparam PAYLOAD_W        = 161 + 4 + 2;
+    localparam NUM_INPUTS       = 2;
+    localparam SHARE_COUNTER_W  = 1;
+    localparam PIPELINE_ARB     = 1;
+    localparam ST_DATA_W        = 161;
+    localparam ST_CHANNEL_W     = 4;
+    localparam PKT_TRANS_LOCK   = 106;
+=======
 <<<<<<< HEAD:SystemOnChip/system_on_chip/synthesis/submodules/system_on_chip_mm_interconnect_1_cmd_mux.sv
     localparam PAYLOAD_W        = 112 + 2 + 2;
     localparam NUM_INPUTS       = 2;
@@ -122,6 +152,7 @@ module system_on_chip_mm_interconnect_1_cmd_mux
     localparam ST_CHANNEL_W     = 7;
     localparam PKT_TRANS_LOCK   = 54;
 >>>>>>> origin/Develop:SystemOnChip/system_on_chip2/testbench/system_on_chip_tb/simulation/submodules/system_on_chip_mm_interconnect_0_cmd_mux_001.sv
+>>>>>>> origin/Develop
 
     // ------------------------------------------
     // Signals
@@ -153,8 +184,8 @@ module system_on_chip_mm_interconnect_1_cmd_mux
     // ------------------------------------------
     reg [NUM_INPUTS - 1 : 0] lock;
     always @* begin
-      lock[0] = sink0_data[61];
-      lock[1] = sink1_data[61];
+      lock[0] = sink0_data[106];
+      lock[1] = sink1_data[106];
     end
     reg [NUM_INPUTS - 1 : 0] locked = '0;
     always @(posedge clk or posedge reset) begin
