@@ -317,10 +317,10 @@ int play_file(const char* filename) {
     return result;
 }
 
-/* --- MAIN --- */
+/* --- MAIN con espera infinita --- */
 int main(int argc, char *argv[]) {
     int fd_mem;
-    void *h2f_map;
+    void *h2f_map = MAP_FAILED;
     
     setbuf(stdout, NULL);
     
@@ -331,47 +331,58 @@ int main(int argc, char *argv[]) {
     
     total_tracks = argc - 1;
     
+    printf("=== REPRODUCTOR HPS v2.5 ===\n");
+    printf("Pistas: %d\n", total_tracks);
+    
+    // Abrir /dev/mem
     fd_mem = open("/dev/mem", O_RDWR | O_SYNC);
     if(fd_mem == -1) {
         printf("Error: /dev/mem - %s\n", strerror(errno));
         return 1;
     }
     
-    h2f_map = mmap(NULL, 0x10000, PROT_READ | PROT_WRITE, MAP_SHARED, fd_mem, H2F_BRIDGE_BASE);
-    if(h2f_map == MAP_FAILED) {
-        printf("Error: mmap - %s\n", strerror(errno));
-        close(fd_mem);
-        return 1;
+    // PASO 1: Esperar a que la FPGA esté configurada (mmap exitoso)
+    printf("Esperando FPGA...\n");
+    while(h2f_map == MAP_FAILED) {
+        h2f_map = mmap(NULL, 0x10000, PROT_READ | PROT_WRITE, MAP_SHARED, fd_mem, H2F_BRIDGE_BASE);
+        
+        if(h2f_map == MAP_FAILED) {
+            printf(".");
+            fflush(stdout);
+            sleep(2);  // Esperar 2 segundos y reintentar
+        }
     }
+    printf("\nFPGA detectada!\n");
     
     // Configurar punteros
-    fifo_in = (volatile uint32_t *)(h2f_map + FIFO_IN_OFFSET);
-    fifo_in_csr_base = (volatile uint8_t *)(h2f_map + FIFO_IN_CSR_OFFSET);
-    fifo2_out = (volatile uint32_t *)(h2f_map + FIFO2_OUT_OFFSET);
-    fifo2_out_csr_base = (volatile uint8_t *)(h2f_map + FIFO2_OUT_CSR_OFFSET);
+    fifo_in = (volatile uint32_t *)((uint8_t*)h2f_map + FIFO_IN_OFFSET);
+    fifo_in_csr_base = (volatile uint8_t *)h2f_map + FIFO_IN_CSR_OFFSET;
+    fifo2_out = (volatile uint32_t *)((uint8_t*)h2f_map + FIFO2_OUT_OFFSET);
+    fifo2_out_csr_base = (volatile uint8_t *)h2f_map + FIFO2_OUT_CSR_OFFSET;
     
-    printf("=== REPRODUCTOR HPS v2.4 ===\n");
-    printf("Pistas: %d\n", total_tracks);
-    
-    // Limpiar FIFO2 de datos previos
-    printf("Limpiando FIFO2...\n");
+    // Limpiar FIFO2
     while(fifo2_has_data()) {
         uint32_t discard = *fifo2_out;
-        printf("  Descartado: 0x%08X\n", discard);
+        printf("Descartado: 0x%08X\n", discard);
     }
     
-    // ESPERAR SEÑAL DEL NIOS
-    if(!wait_for_nios_ready(120)) {  // 2 minutos timeout
-        printf("Error: NIOS no respondio.\n");
-        printf("Ejecuta el programa NIOS y reinicia.\n");
-        munmap(h2f_map, 0x10000);
-        close(fd_mem);
-        return 1;
+    // PASO 2: Esperar señal del NIOS (sin timeout, espera infinita)
+    printf("Esperando NIOS...\n");
+    while(1) {
+        if(fifo2_has_data()) {
+            uint32_t data = *fifo2_out;
+            
+            if(data == NIOS_READY_TOKEN) {
+                printf("NIOS listo!\n");
+                break;  // Salir del bucle de espera
+            }
+        }
+        usleep(10000);  // 10ms
     }
     
     printf("KEY3=Pause, KEY2=Next, KEY1=Prev\n");
     
-    // Bucle de playlist
+    // Bucle de playlist (igual que antes)
     current_track = 0;
     while(1) {
         int result = play_file(argv[current_track + 1]);
