@@ -1,4 +1,4 @@
-// audio.h - Con handshake de inicialización
+// audio.h
 #ifndef AUDIO_H
 #define AUDIO_H
 
@@ -6,13 +6,12 @@
 
 /* --- Tokens de Protocolo --- */
 #define METADATA_MAGIC   0xDEADDA7A
-#define AUDIO_EOS_TOKEN  0xFFFFFFFF
-#define AUDIO_SKIP_TOKEN 0xFFFFFFFE
+#define AUDIO_EOS_TOKEN  0xFFFFFFFF  // Fin normal
+#define AUDIO_SKIP_TOKEN 0xFFFFFFFE  // Skip (next/prev)
 
 /* --- Comandos NIOS -> HPS --- */
-#define CMD_NEXT   0x4E455854  /* "NEXT" */
-#define CMD_PREV   0x50524556  /* "PREV" */
-#define CMD_READY  0x52454459  /* "REDY" - Señal de inicialización */
+#define CMD_NEXT  0x4E455854
+#define CMD_PREV  0x50524556
 
 /* --- Variables Globales --- */
 extern char artist_str[64];
@@ -25,7 +24,7 @@ void audio_init(void);
 void audio_wait_handshake(void);
 alt_u32 audio_receive_metadata(void);
 int audio_fifo_has_data(void);
-int audio_process_sample(void);
+int audio_process_sample(void);  // Retorna: 1=OK, 0=EOS, -1=SKIP
 void audio_send_command(alt_u32 cmd);
 
 #endif
