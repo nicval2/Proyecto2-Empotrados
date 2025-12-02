@@ -7,7 +7,7 @@
 #include <unistd.h>
 #include <stdint.h>
 #include <string.h>
-#include <errno.h>  // <--- IMPORTANTE: Necesario para ver el error real
+#include <errno.h>  
 
 /* --- DIRECCIONES DE HARDWARE --- */
 #define H2F_BRIDGE_BASE     0xC0000000
