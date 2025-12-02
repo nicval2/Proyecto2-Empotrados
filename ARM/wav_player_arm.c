@@ -1,4 +1,3 @@
-// wav_player_arm.c - HPS con soporte Next/Prev (v2.2 CORREGIDO)
 #define _DEFAULT_SOURCE
 #define _POSIX_C_SOURCE 200809L
 #include <stdio.h>
@@ -49,6 +48,7 @@ static volatile uint8_t *fifo_in_csr_base;
 static volatile uint32_t *fifo_in;
 static volatile uint8_t *fifo2_out_csr_base;
 static volatile uint32_t *fifo2_out;
+static volatile int nios_reset_detected = 0;
 
 /* --- VARIABLES DE ESTADO --- */
 static int current_track = 0;
@@ -132,6 +132,11 @@ void check_commands(void) {
         else if(cmd == CMD_PREV) {
             printf("[PREV] "); fflush(stdout);
             skip_requested = -1;
+        }
+        else if(cmd == NIOS_READY_TOKEN) {
+            printf("\n[NIOS RESET DETECTADO]\n"); fflush(stdout);
+            nios_reset_detected = 1;
+            skip_requested = 1;  // Forzar salir de la canción actual
         }
     }
 }
@@ -288,6 +293,14 @@ int play_file(const char* filename) {
         
         // Verificar comandos ANTES de enviar cada bloque
         check_commands();
+
+        // Verificar si NIOS se reinició
+        if(nios_reset_detected) {
+            printf("Abortando por reset NIOS\n");
+            free(audio_buffer);
+            fclose(wav_file);
+            return 2;  // Código especial para reset
+        }
         
         if(skip_requested != 0) {
             result = skip_requested;
@@ -317,7 +330,7 @@ int play_file(const char* filename) {
     return result;
 }
 
-/* --- MAIN con espera infinita --- */
+/* --- MAIN --- */
 int main(int argc, char *argv[]) {
     int fd_mem;
     void *h2f_map = MAP_FAILED;
@@ -371,21 +384,42 @@ int main(int argc, char *argv[]) {
     while(1) {
         if(fifo2_has_data()) {
             uint32_t data = *fifo2_out;
-            
             if(data == NIOS_READY_TOKEN) {
                 printf("NIOS listo!\n");
-                break;  // Salir del bucle de espera
+                break;
             }
         }
-        usleep(10000);  // 10ms
+        usleep(10000);
     }
     
     printf("KEY3=Pause, KEY2=Next, KEY1=Prev\n");
     
-    // Bucle de playlist (igual que antes)
+    // Bucle de playlist
     current_track = 0;
     while(1) {
+        // Limpiar flag de reset
+        nios_reset_detected = 0;
+        
         int result = play_file(argv[current_track + 1]);
+        
+        // Si NIOS se reinició, esperar re-sincronización
+        if(result == 2 || nios_reset_detected) {
+            printf("\n=== Re-sincronizando con NIOS ===\n");
+            
+            // Limpiar FIFO2 de tokens adicionales
+            while(fifo2_has_data()) {
+                uint32_t discard = *fifo2_out;
+                if(discard == NIOS_READY_TOKEN) {
+                    printf("NIOS listo (re-sync)!\n");
+                }
+            }
+            
+            // Reiniciar desde la primera pista
+            current_track = 0;
+            nios_reset_detected = 0;
+            usleep(500000);  // Pausa para estabilizar
+            continue;
+        }
         
         if(result == 1) {
             current_track = (current_track + 1) % total_tracks;

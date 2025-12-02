@@ -112,3 +112,9 @@ cat > wav_player_arm.c << 'EOF'
 EOF
 
 vi wav_info.c
+
+```bash
+cd /media/kun/847f4797-311c-4286-8370-9d5573b201d7
+cd home/root/proyecto_audio
+ls
+```

@@ -1,3 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">&#x0A;<refactoring comment="Rename resource &apos;ARM_HPS_Audio_Filters/src/main_arm&apos; to &apos;main_arm.c&apos;" description="Rename resource &apos;main_arm&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/main_arm" name="main_arm.c" stamp="1763477427760" updateReferences="true"/>&#x0A;<refactoring comment="Rename resource &apos;ARM_HPS_Audio_Filters/src/main_arm&apos; to &apos;main_arm.c&apos;" description="Rename resource &apos;main_arm&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/main_arm" name="main_arm.c" stamp="1763477470866" updateReferences="true"/>
-</session>
