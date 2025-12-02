@@ -117,4 +117,43 @@ vi wav_info.c
 cd /media/kun/847f4797-311c-4286-8370-9d5573b201d7
 cd home/root/proyecto_audio
 ls
+cp wav_player /home/kun/Descargas/Proyecto2-Empotrados/ARM/
+```
+
+```bash
+sudo vi /etc/systemd/system/wav-player.service
+```
+
+```bash
+# 1. Recargar la configuración de systemd
+sudo systemctl daemon-reload
+
+# 2. Habilitar el servicio (para que inicie en el arranque)
+sudo systemctl enable wav-player.service
+
+# 3. Iniciar el servicio inmediatamente
+sudo systemctl start wav-player.service
+
+# 4. Verificar el estado
+sudo systemctl status wav-player.service
+```
+
+Detener el servicio 
+```bash
+systemctl stop wav-player.service
+```
+
+Deshabilitar el servicio
+```bash
+systemctl disable wav-player.service
+```
+
+Eliminar archivo de definición 
+```bash
+rm /etc/systemd/system/wav-player.service
+```
+
+Recargar la configuración de systemd
+```bash
+systemctl daemon-reload
 ```
