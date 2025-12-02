@@ -2,6 +2,12 @@
 # QUARTUS PROJECT FILES
 #############################
 
+# NO ignorar código fuente de software/
+!software/**.c
+!software/**.h
+!software/**.S
+!software/**/Makefile
+
 # Build output
 output_files/
 **/db/
