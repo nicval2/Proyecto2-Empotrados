@@ -7,18 +7,35 @@
 #include <unistd.h>
 #include <stdint.h>
 #include <string.h>
-#include <errno.h>  
+#include <errno.h>
 
 /* --- DIRECCIONES DE HARDWARE --- */
 #define H2F_BRIDGE_BASE     0xC0000000
-#define FIFO_IN_OFFSET      0x8860
-#define FIFO_IN_CSR_OFFSET  0x8900
 
-#define FIFO_FULL           (1 << 1)
+// FIFO: HPS -> NIOS (escritura de audio)
+#define FIFO_IN_OFFSET      0x6860    
+#define FIFO_IN_CSR_OFFSET  0x6900    
+
+// FIFO2: NIOS -> HPS (lectura de comandos)
+#define FIFO2_OUT_OFFSET     0x69A0   
+#define FIFO2_OUT_CSR_OFFSET 0x6960   
+
+/* --- OFFSETS DENTRO DEL CSR --- */
+// El CSR tiene varios registros:
+// Offset 0: Fill Level (número de elementos en el FIFO)
+// Offset 4: Status (bit 0 = empty para out, bit 0 = full para in)
+#define CSR_FILL_LEVEL  0x00
+#define CSR_STATUS      0x04
 
 /* --- TOKENS DE PROTOCOLO --- */
-#define METADATA_MAGIC      0xDEADDA7A
-#define EOS_TOKEN           0xFFFFFFFF  // Token de Fin de Cancion
+#define METADATA_MAGIC  0xDEADDA7A
+#define EOS_TOKEN       0xFFFFFFFF
+#define SKIP_TOKEN      0xFFFFFFFE
+#define NIOS_READY_TOKEN 0xCAFEBABE 
+
+/* --- COMANDOS NIOS -> HPS --- */
+#define CMD_NEXT  0x4E455854
+#define CMD_PREV  0x50524556
 
 typedef struct {
     char title[64];
@@ -26,37 +43,101 @@ typedef struct {
     char album[64];
 } WavMetadata;
 
-/* --- FUNCIONES DE ACCESO A MEMORIA --- */
-uint32_t read_u32(volatile void *addr) {
-    return *(volatile uint32_t *)addr;
+/* --- PUNTEROS GLOBALES A HARDWARE --- */
+static volatile uint8_t *fifo_in_csr_base;
+static volatile uint32_t *fifo_in;
+static volatile uint8_t *fifo2_out_csr_base;
+static volatile uint32_t *fifo2_out;
+static volatile int nios_reset_detected = 0;
+
+/* --- VARIABLES DE ESTADO --- */
+static int current_track = 0;
+static int total_tracks = 0;
+static int skip_requested = 0;
+
+/* --- FUNCIONES DE ACCESO A HARDWARE --- */
+
+// Leer fill level del FIFO de entrada (HPS->NIOS)
+uint32_t fifo_in_fill_level(void) {
+    return *(volatile uint32_t *)(fifo_in_csr_base + CSR_FILL_LEVEL);
 }
 
-void write_u32(volatile void *addr, uint32_t value) {
-    *(volatile uint32_t *)addr = value;
+// El FIFO de escritura está lleno cuando fill level alcanza capacidad
+// Para FIFO de 16 elementos, está lleno si fill >= 16
+int fifo_has_space(void) {
+    return fifo_in_fill_level() < 16;
 }
 
-int fifo_has_space(volatile void *fifo_csr) {
-    return !(read_u32(fifo_csr) & FIFO_FULL);
+// Leer fill level del FIFO2 (NIOS->HPS)
+uint32_t fifo2_out_fill_level(void) {
+    return *(volatile uint32_t *)(fifo2_out_csr_base + CSR_FILL_LEVEL);
 }
 
-void fifo_write_wait(volatile void *fifo_in, volatile void *fifo_csr, uint32_t value) {
-    while(!fifo_has_space(fifo_csr));
-    write_u32(fifo_in, value);
+// Hay datos si fill level > 0
+int fifo2_has_data(void) {
+    return fifo2_out_fill_level() > 0;
 }
 
-// Enviar string caracter por caracter
-void fifo_write_string(volatile void *fifo_in, volatile void *fifo_csr, const char *str) {
+void fifo_write_wait(uint32_t value) {
+    while(!fifo_has_space());
+    *fifo_in = value;
+}
+
+void fifo_write_string(const char *str) {
     size_t len = strlen(str);
-    size_t i;
-    
     if(len > 63) len = 63;
     
-    // Primero enviar longitud
-    fifo_write_wait(fifo_in, fifo_csr, len);
+    fifo_write_wait(len);
+    for(size_t i = 0; i < len; i++) {
+        fifo_write_wait((uint32_t)(unsigned char)str[i]);
+    }
+}
+
+int wait_for_nios_ready(int timeout_seconds) {
+    printf("Esperando NIOS...\n");
     
-    // Luego cada caracter
-    for(i = 0; i < len; i++) {
-        fifo_write_wait(fifo_in, fifo_csr, (uint32_t)(unsigned char)str[i]);
+    for(int i = 0; i < timeout_seconds * 100; i++) {
+        if(fifo2_has_data()) {
+            uint32_t data = *fifo2_out;
+            
+            if(data == NIOS_READY_TOKEN) {
+                printf("NIOS listo!\n");
+                return 1;
+            } else {
+                printf("[DEBUG] Token: 0x%08X (ignorado)\n", data);
+            }
+        }
+        
+        usleep(10000);  // 10ms
+        
+        // Mostrar progreso cada 5 segundos
+        if(i > 0 && i % 500 == 0) {
+            printf("  ... %d segundos\n", i / 100);
+        }
+    }
+    
+    printf("Timeout esperando NIOS\n");
+    return 0;
+}
+
+/* Verificar comandos del NIOS */
+void check_commands(void) {
+    while(fifo2_has_data()) {
+        uint32_t cmd = *fifo2_out;
+        
+        if(cmd == CMD_NEXT) {
+            printf("[NEXT] "); fflush(stdout);
+            skip_requested = 1;
+        }
+        else if(cmd == CMD_PREV) {
+            printf("[PREV] "); fflush(stdout);
+            skip_requested = -1;
+        }
+        else if(cmd == NIOS_READY_TOKEN) {
+            printf("\n[NIOS RESET DETECTADO]\n"); fflush(stdout);
+            nios_reset_detected = 1;
+            skip_requested = 1;  // Forzar salir de la canción actual
+        }
     }
 }
 
@@ -71,7 +152,6 @@ void read_info_string(FILE *f, uint32_t size, char *dest, size_t dest_size) {
     size_t to_read = (size < dest_size - 1) ? size : dest_size - 1;
     fread(dest, 1, to_read, f);
     dest[to_read] = '\0';
-    
     if(size > to_read) fseek(f, size - to_read, SEEK_CUR);
     if(size % 2 != 0) fseek(f, 1, SEEK_CUR);
 }
@@ -79,32 +159,28 @@ void read_info_string(FILE *f, uint32_t size, char *dest, size_t dest_size) {
 void parse_list_chunk(FILE *f, uint32_t list_size, WavMetadata *meta) {
     char list_type[4];
     char chunk_id[5] = {0};
-    uint32_t chunk_size;
-    uint32_t bytes_read;
+    uint32_t chunk_size, bytes_read;
     
     fread(list_type, 1, 4, f);
-    
     if(strncmp(list_type, "INFO", 4) != 0) {
         fseek(f, list_size - 4, SEEK_CUR);
         return;
     }
     
     bytes_read = 4;
-    
     while(bytes_read < list_size) {
         if(!read_chunk_header(f, chunk_id, &chunk_size)) break;
         chunk_id[4] = '\0';
         bytes_read += 8;
         
-        if(strncmp(chunk_id, "IART", 4) == 0) {
+        if(strncmp(chunk_id, "IART", 4) == 0)
             read_info_string(f, chunk_size, meta->artist, sizeof(meta->artist));
-        } else if(strncmp(chunk_id, "INAM", 4) == 0) {
+        else if(strncmp(chunk_id, "INAM", 4) == 0)
             read_info_string(f, chunk_size, meta->title, sizeof(meta->title));
-        } else if(strncmp(chunk_id, "IPRD", 4) == 0) {
+        else if(strncmp(chunk_id, "IPRD", 4) == 0)
             read_info_string(f, chunk_size, meta->album, sizeof(meta->album));
-        } else {
+        else
             fseek(f, chunk_size + (chunk_size % 2), SEEK_CUR);
-        }
         
         bytes_read += chunk_size + (chunk_size % 2);
     }
@@ -117,12 +193,11 @@ int parse_wav_file(FILE *f, uint32_t *data_size, WavMetadata *meta,
     uint32_t chunk_size;
     long fmt_start;
     
-    // Valores por defecto
     strcpy(meta->title, "Desconocido");
     strcpy(meta->artist, "Desconocido");
     strcpy(meta->album, "Desconocido");
     
-    rewind(f); // Asegurar inicio
+    rewind(f);
     char riff[4], wave[4];
     uint32_t file_size;
     fread(riff, 1, 4, f);
@@ -139,163 +214,230 @@ int parse_wav_file(FILE *f, uint32_t *data_size, WavMetadata *meta,
             fread(audio_format, 2, 1, f);
             fread(num_channels, 2, 1, f);
             fread(sample_rate, 4, 1, f);
-            fseek(f, 4, SEEK_CUR); // Byte rate
-            fseek(f, 2, SEEK_CUR); // Block align
+            fseek(f, 6, SEEK_CUR);
             fread(bits_per_sample, 2, 1, f);
             fseek(f, fmt_start + chunk_size, SEEK_SET);
         }
-        else if(strncmp(chunk_id, "LIST", 4) == 0) {
+        else if(strncmp(chunk_id, "LIST", 4) == 0)
             parse_list_chunk(f, chunk_size, meta);
-        }
         else if(strncmp(chunk_id, "data", 4) == 0) {
             *data_size = chunk_size;
-            return 1; // Encontramos datos, éxito
+            return 1;
         }
-        else {
+        else
             fseek(f, chunk_size + (chunk_size % 2), SEEK_CUR);
-        }
     }
-    
     return 0;
 }
 
-/* --- FUNCIÓN PARA REPRODUCIR UN ARCHIVO --- */
-void play_file(const char* filename, volatile void *fifo_in, volatile void *fifo_csr) {
+/* --- REPRODUCIR ARCHIVO --- */
+int play_file(const char* filename) {
     FILE *wav_file;
     uint32_t data_size;
     uint16_t audio_format, num_channels, bits_per_sample;
     uint32_t sample_rate;
     WavMetadata metadata;
-    
     int16_t *audio_buffer;
     size_t buffer_samples = 2048;
     size_t samples_read;
-    size_t i;
+    int result = 0;
+    int check_counter = 0;
     
-    printf("\nAbriendo: %s\n", filename);
+    skip_requested = 0;
+    
+    printf("\n[%d/%d] %s\n", current_track + 1, total_tracks, filename);
+    fflush(stdout);
+    
     wav_file = fopen(filename, "rb");
     if(!wav_file) {
-        printf("Error: No se pudo abrir %s\n", filename);
-        return;
+        printf("Error: No se pudo abrir\n");
+        return 0;
     }
     
     if(!parse_wav_file(wav_file, &data_size, &metadata, 
                        &audio_format, &num_channels, &sample_rate, &bits_per_sample)) {
-        printf("Error: No se encontro chunk 'data' en %s\n", filename);
+        printf("Error: WAV invalido\n");
         fclose(wav_file);
-        return;
+        return 0;
     }
     
-    // --- CORRECCIÓN AQUÍ: ACEPTAR FORMATO 1 (PCM) Y 65534 (EXTENSIBLE) ---
-    if(audio_format != 1 && audio_format != 65534) {
-        printf("Error: Formato %d no soportado. Solo PCM (1) o Extensible (65534).\n", audio_format);
+    if((audio_format != 1 && audio_format != 65534) || bits_per_sample != 16) {
+        printf("Error: Formato no soportado\n");
         fclose(wav_file);
-        return;
+        return 0;
     }
     
-    if(bits_per_sample != 16) {
-        printf("Error: Solo 16 bits soportado (archivo es %d)\n", bits_per_sample);
-        fclose(wav_file);
-        return;
-    }
-    
-    // Info
-    printf("  Titulo:  %s\n", metadata.title);
-    printf("  Artista: %s\n", metadata.artist);
-    printf("  Rate:    %u Hz, %d ch\n", sample_rate, num_channels);
+    printf("  %s - %s\n", metadata.artist, metadata.title);
+    fflush(stdout);
 
-    // Enviar Metadata al FPGA
-    fifo_write_wait(fifo_in, fifo_csr, METADATA_MAGIC);
-    fifo_write_wait(fifo_in, fifo_csr, sample_rate);
-    fifo_write_wait(fifo_in, fifo_csr, num_channels);
-    fifo_write_wait(fifo_in, fifo_csr, bits_per_sample);
+    // Enviar Metadata
+    fifo_write_wait(METADATA_MAGIC);
+    fifo_write_wait(sample_rate);
+    fifo_write_wait(num_channels);
+    fifo_write_wait(bits_per_sample);
+    fifo_write_string(metadata.artist);
+    fifo_write_string(metadata.album);
+    fifo_write_string(metadata.title);
     
-    fifo_write_string(fifo_in, fifo_csr, metadata.artist);
-    fifo_write_string(fifo_in, fifo_csr, metadata.album);
-    fifo_write_string(fifo_in, fifo_csr, metadata.title);
+    printf("  Reproduciendo... ");
+    fflush(stdout);
     
-    printf("  --> Reproduciendo...\n");
-    
-    // Buffer
     audio_buffer = (int16_t *)malloc(buffer_samples * num_channels * sizeof(int16_t));
     if(!audio_buffer) {
-        printf("Error malloc\n");
         fclose(wav_file);
-        return;
+        return 0;
     }
     
-    // Enviar Audio
-    while((samples_read = fread(audio_buffer, sizeof(int16_t), buffer_samples * num_channels, wav_file)) > 0) {
+    while((samples_read = fread(audio_buffer, sizeof(int16_t), 
+                                 buffer_samples * num_channels, wav_file)) > 0) {
+        
+        // Verificar comandos ANTES de enviar cada bloque
+        check_commands();
+
+        // Verificar si NIOS se reinició
+        if(nios_reset_detected) {
+            printf("Abortando por reset NIOS\n");
+            free(audio_buffer);
+            fclose(wav_file);
+            return 2;  // Código especial para reset
+        }
+        
+        if(skip_requested != 0) {
+            result = skip_requested;
+            break;
+        }
+        
+        // Enviar audio
         if(num_channels == 2) {
-            for(i = 0; i < samples_read; i += 2) {
-                // Mezcla simple Stereo -> Mono
-                int32_t left = audio_buffer[i];
-                int32_t right = audio_buffer[i + 1];
-                int32_t mono = (left + right) / 2;
-                
-                fifo_write_wait(fifo_in, fifo_csr, (uint32_t)(mono & 0xFFFF));
+            for(size_t i = 0; i < samples_read; i += 2) {
+                int32_t mono = ((int32_t)audio_buffer[i] + audio_buffer[i+1]) / 2;
+                fifo_write_wait((uint32_t)(mono & 0xFFFF));
             }
         } else {
-            // Mono directo
-            for(i = 0; i < samples_read; i++) {
-                fifo_write_wait(fifo_in, fifo_csr, (uint32_t)(audio_buffer[i] & 0xFFFF));
+            for(size_t i = 0; i < samples_read; i++) {
+                fifo_write_wait((uint32_t)(audio_buffer[i] & 0xFFFF));
             }
         }
     }
     
-    // --- ENVIAR SEÑAL DE FIN DE CANCION ---
-    printf("  --> Fin archivo. Enviando EOS.\n");
-    fifo_write_wait(fifo_in, fifo_csr, EOS_TOKEN);
+    // Enviar token de fin
+    fifo_write_wait(result ? SKIP_TOKEN : EOS_TOKEN);
+    printf("%s\n", result ? "SKIP" : "FIN");
+    fflush(stdout);
     
     free(audio_buffer);
     fclose(wav_file);
+    return result;
 }
 
 /* --- MAIN --- */
 int main(int argc, char *argv[]) {
     int fd_mem;
-    void *h2f_map;
-    volatile void *fifo_in;
-    volatile void *fifo_in_csr;
+    void *h2f_map = MAP_FAILED;
+    
+    setbuf(stdout, NULL);
     
     if(argc < 2) {
-        printf("Uso: %s <cancion1.wav> [cancion2.wav ...]\n", argv[0]);
+        printf("Uso: %s <archivo.wav> [...]\n", argv[0]);
         return 1;
     }
     
-    // Mapeo de memoria
+    total_tracks = argc - 1;
+    
+    printf("=== REPRODUCTOR HPS v2.5 ===\n");
+    printf("Pistas: %d\n", total_tracks);
+    
+    // Abrir /dev/mem
     fd_mem = open("/dev/mem", O_RDWR | O_SYNC);
     if(fd_mem == -1) {
-        printf("Error fatal: open('/dev/mem') fallo.\n");
-        printf("Errno: %d (%s)\n", errno, strerror(errno));
+        printf("Error: /dev/mem - %s\n", strerror(errno));
         return 1;
     }
     
-    h2f_map = mmap(NULL, 0x10000, PROT_READ | PROT_WRITE, MAP_SHARED, fd_mem, H2F_BRIDGE_BASE);
-    if(h2f_map == MAP_FAILED) {
-        printf("Error fatal: mmap() fallo.\n");
-        printf("Errno: %d (%s)\n", errno, strerror(errno));
-        close(fd_mem);
-        return 1;
+    // PASO 1: Esperar a que la FPGA esté configurada (mmap exitoso)
+    printf("Esperando FPGA...\n");
+    while(h2f_map == MAP_FAILED) {
+        h2f_map = mmap(NULL, 0x10000, PROT_READ | PROT_WRITE, MAP_SHARED, fd_mem, H2F_BRIDGE_BASE);
+        
+        if(h2f_map == MAP_FAILED) {
+            printf(".");
+            fflush(stdout);
+            sleep(2);  // Esperar 2 segundos y reintentar
+        }
+    }
+    printf("\nFPGA detectada!\n");
+    
+    // Configurar punteros
+    fifo_in = (volatile uint32_t *)((uint8_t*)h2f_map + FIFO_IN_OFFSET);
+    fifo_in_csr_base = (volatile uint8_t *)h2f_map + FIFO_IN_CSR_OFFSET;
+    fifo2_out = (volatile uint32_t *)((uint8_t*)h2f_map + FIFO2_OUT_OFFSET);
+    fifo2_out_csr_base = (volatile uint8_t *)h2f_map + FIFO2_OUT_CSR_OFFSET;
+    
+    // Limpiar FIFO2
+    while(fifo2_has_data()) {
+        uint32_t discard = *fifo2_out;
+        printf("Descartado: 0x%08X\n", discard);
     }
     
-    fifo_in = h2f_map + FIFO_IN_OFFSET;
-    fifo_in_csr = h2f_map + FIFO_IN_CSR_OFFSET;
-    
-    printf("=== REPRODUCTOR HPS (Multiformato + Playlist) ===\n");
-    
-    // Bucle Playlist
-    for(int i = 1; i < argc; i++) {
-        printf("\n[ Pista %d de %d ]", i, argc - 1);
-        play_file(argv[i], fifo_in, fifo_in_csr);
-        // Pequeña pausa entre canciones
-        usleep(500000); 
+    // PASO 2: Esperar señal del NIOS (sin timeout, espera infinita)
+    printf("Esperando NIOS...\n");
+    while(1) {
+        if(fifo2_has_data()) {
+            uint32_t data = *fifo2_out;
+            if(data == NIOS_READY_TOKEN) {
+                printf("NIOS listo!\n");
+                break;
+            }
+        }
+        usleep(10000);
     }
     
-    printf("\n=== Playlist finalizada ===\n");
+    printf("KEY3=Pause, KEY2=Next, KEY1=Prev\n");
+    
+    // Bucle de playlist
+    current_track = 0;
+    while(1) {
+        // Limpiar flag de reset
+        nios_reset_detected = 0;
+        
+        int result = play_file(argv[current_track + 1]);
+        
+        // Si NIOS se reinició, esperar re-sincronización
+        if(result == 2 || nios_reset_detected) {
+            printf("\n=== Re-sincronizando con NIOS ===\n");
+            
+            // Limpiar FIFO2 de tokens adicionales
+            while(fifo2_has_data()) {
+                uint32_t discard = *fifo2_out;
+                if(discard == NIOS_READY_TOKEN) {
+                    printf("NIOS listo (re-sync)!\n");
+                }
+            }
+            
+            // Reiniciar desde la primera pista
+            current_track = 0;
+            nios_reset_detected = 0;
+            usleep(500000);  // Pausa para estabilizar
+            continue;
+        }
+        
+        if(result == 1) {
+            current_track = (current_track + 1) % total_tracks;
+        }
+        else if(result == -1) {
+            current_track = (current_track - 1 + total_tracks) % total_tracks;
+        }
+        else {
+            current_track++;
+            if(current_track >= total_tracks) {
+                printf("\n=== Reiniciando playlist ===\n");
+                current_track = 0;
+            }
+        }
+        usleep(200000);
+    }
     
     munmap(h2f_map, 0x10000);
     close(fd_mem);
-    
     return 0;
 }
