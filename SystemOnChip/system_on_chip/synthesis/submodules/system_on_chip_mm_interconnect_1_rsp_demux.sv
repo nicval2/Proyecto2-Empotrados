@@ -27,10 +27,17 @@
 
 // ------------------------------------------
 // Generation parameters:
+<<<<<<< HEAD:SystemOnChip/system_on_chip/synthesis/submodules/system_on_chip_mm_interconnect_1_rsp_demux.sv
 //   output_name:         system_on_chip_mm_interconnect_1_rsp_demux
 //   ST_DATA_W:           112
 //   ST_CHANNEL_W:        2
 //   NUM_OUTPUTS:         2
+=======
+//   output_name:         system_on_chip_mm_interconnect_0_rsp_demux
+//   ST_DATA_W:           90
+//   ST_CHANNEL_W:        7
+//   NUM_OUTPUTS:         1
+>>>>>>> origin/Develop:SystemOnChip/system_on_chip2/testbench/system_on_chip_tb/simulation/submodules/system_on_chip_mm_interconnect_0_rsp_demux.sv
 //   VALID_WIDTH:         1
 // ------------------------------------------
 
@@ -46,8 +53,13 @@ module system_on_chip_mm_interconnect_1_rsp_demux
     // Sink
     // -------------------
     input  [1-1      : 0]   sink_valid,
+<<<<<<< HEAD:SystemOnChip/system_on_chip/synthesis/submodules/system_on_chip_mm_interconnect_1_rsp_demux.sv
     input  [112-1    : 0]   sink_data, // ST_DATA_W=112
     input  [2-1 : 0]   sink_channel, // ST_CHANNEL_W=2
+=======
+    input  [90-1    : 0]   sink_data, // ST_DATA_W=90
+    input  [7-1 : 0]   sink_channel, // ST_CHANNEL_W=7
+>>>>>>> origin/Develop:SystemOnChip/system_on_chip2/testbench/system_on_chip_tb/simulation/submodules/system_on_chip_mm_interconnect_0_rsp_demux.sv
     input                         sink_startofpacket,
     input                         sink_endofpacket,
     output                        sink_ready,
@@ -56,8 +68,13 @@ module system_on_chip_mm_interconnect_1_rsp_demux
     // Sources 
     // -------------------
     output reg                      src0_valid,
+<<<<<<< HEAD:SystemOnChip/system_on_chip/synthesis/submodules/system_on_chip_mm_interconnect_1_rsp_demux.sv
     output reg [112-1    : 0] src0_data, // ST_DATA_W=112
     output reg [2-1 : 0] src0_channel, // ST_CHANNEL_W=2
+=======
+    output reg [90-1    : 0] src0_data, // ST_DATA_W=90
+    output reg [7-1 : 0] src0_channel, // ST_CHANNEL_W=7
+>>>>>>> origin/Develop:SystemOnChip/system_on_chip2/testbench/system_on_chip_tb/simulation/submodules/system_on_chip_mm_interconnect_0_rsp_demux.sv
     output reg                      src0_startofpacket,
     output reg                      src0_endofpacket,
     input                           src0_ready,
@@ -109,7 +126,11 @@ module system_on_chip_mm_interconnect_1_rsp_demux
     assign ready_vector[0] = src0_ready;
     assign ready_vector[1] = src1_ready;
 
+<<<<<<< HEAD:SystemOnChip/system_on_chip/synthesis/submodules/system_on_chip_mm_interconnect_1_rsp_demux.sv
     assign sink_ready = |(sink_channel & ready_vector);
+=======
+    assign sink_ready = |(sink_channel & {{6{1'b0}},{ready_vector[NUM_OUTPUTS - 1 : 0]}});
+>>>>>>> origin/Develop:SystemOnChip/system_on_chip2/testbench/system_on_chip_tb/simulation/submodules/system_on_chip_mm_interconnect_0_rsp_demux.sv
 
 endmodule
 

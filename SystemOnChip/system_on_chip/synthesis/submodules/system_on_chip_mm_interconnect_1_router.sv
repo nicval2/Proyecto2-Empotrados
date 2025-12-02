@@ -47,12 +47,21 @@ module system_on_chip_mm_interconnect_1_router_default_decode
      parameter DEFAULT_CHANNEL = 1,
                DEFAULT_WR_CHANNEL = -1,
                DEFAULT_RD_CHANNEL = -1,
+<<<<<<< HEAD:SystemOnChip/system_on_chip/synthesis/submodules/system_on_chip_mm_interconnect_1_router.sv
                DEFAULT_DESTID = 0 
    )
   (output [87 - 87 : 0] default_destination_id,
    output [2-1 : 0] default_wr_channel,
    output [2-1 : 0] default_rd_channel,
    output [2-1 : 0] default_src_channel
+=======
+               DEFAULT_DESTID = 1 
+   )
+  (output [76 - 74 : 0] default_destination_id,
+   output [7-1 : 0] default_wr_channel,
+   output [7-1 : 0] default_rd_channel,
+   output [7-1 : 0] default_src_channel
+>>>>>>> origin/Develop:SystemOnChip/system_on_chip2/testbench/system_on_chip_tb/simulation/submodules/system_on_chip_mm_interconnect_0_router_001.sv
   );
 
   assign default_destination_id = 
@@ -63,7 +72,11 @@ module system_on_chip_mm_interconnect_1_router_default_decode
       assign default_src_channel = '0;
     end
     else begin : default_channel_assignment
+<<<<<<< HEAD:SystemOnChip/system_on_chip/synthesis/submodules/system_on_chip_mm_interconnect_1_router.sv
       assign default_src_channel = 2'b1 << DEFAULT_CHANNEL;
+=======
+      assign default_src_channel = 7'b1 << DEFAULT_CHANNEL;
+>>>>>>> origin/Develop:SystemOnChip/system_on_chip2/testbench/system_on_chip_tb/simulation/submodules/system_on_chip_mm_interconnect_0_router_001.sv
     end
   endgenerate
 
@@ -73,8 +86,13 @@ module system_on_chip_mm_interconnect_1_router_default_decode
       assign default_rd_channel = '0;
     end
     else begin : default_rw_channel_assignment
+<<<<<<< HEAD:SystemOnChip/system_on_chip/synthesis/submodules/system_on_chip_mm_interconnect_1_router.sv
       assign default_wr_channel = 2'b1 << DEFAULT_WR_CHANNEL;
       assign default_rd_channel = 2'b1 << DEFAULT_RD_CHANNEL;
+=======
+      assign default_wr_channel = 7'b1 << DEFAULT_WR_CHANNEL;
+      assign default_rd_channel = 7'b1 << DEFAULT_RD_CHANNEL;
+>>>>>>> origin/Develop:SystemOnChip/system_on_chip2/testbench/system_on_chip_tb/simulation/submodules/system_on_chip_mm_interconnect_0_router_001.sv
     end
   endgenerate
 
@@ -102,8 +120,13 @@ module system_on_chip_mm_interconnect_1_router
     // Command Source (Output)
     // -------------------
     output                          src_valid,
+<<<<<<< HEAD:SystemOnChip/system_on_chip/synthesis/submodules/system_on_chip_mm_interconnect_1_router.sv
     output reg [112-1    : 0] src_data,
     output reg [2-1 : 0] src_channel,
+=======
+    output reg [90-1    : 0] src_data,
+    output reg [7-1 : 0] src_channel,
+>>>>>>> origin/Develop:SystemOnChip/system_on_chip2/testbench/system_on_chip_tb/simulation/submodules/system_on_chip_mm_interconnect_0_router_001.sv
     output                          src_startofpacket,
     output                          src_endofpacket,
     input                           src_ready
@@ -114,12 +137,21 @@ module system_on_chip_mm_interconnect_1_router
     // -------------------------------------------------------
     localparam PKT_ADDR_H = 56;
     localparam PKT_ADDR_L = 36;
+<<<<<<< HEAD:SystemOnChip/system_on_chip/synthesis/submodules/system_on_chip_mm_interconnect_1_router.sv
     localparam PKT_DEST_ID_H = 87;
     localparam PKT_DEST_ID_L = 87;
     localparam PKT_PROTECTION_H = 102;
     localparam PKT_PROTECTION_L = 100;
     localparam ST_DATA_W = 112;
     localparam ST_CHANNEL_W = 2;
+=======
+    localparam PKT_DEST_ID_H = 76;
+    localparam PKT_DEST_ID_L = 74;
+    localparam PKT_PROTECTION_H = 80;
+    localparam PKT_PROTECTION_L = 78;
+    localparam ST_DATA_W = 90;
+    localparam ST_CHANNEL_W = 7;
+>>>>>>> origin/Develop:SystemOnChip/system_on_chip2/testbench/system_on_chip_tb/simulation/submodules/system_on_chip_mm_interconnect_0_router_001.sv
     localparam DECODER_TYPE = 0;
 
     localparam PKT_TRANS_WRITE = 59;
@@ -165,7 +197,11 @@ module system_on_chip_mm_interconnect_1_router
     assign src_startofpacket = sink_startofpacket;
     assign src_endofpacket   = sink_endofpacket;
     wire [PKT_DEST_ID_W-1:0] default_destid;
+<<<<<<< HEAD:SystemOnChip/system_on_chip/synthesis/submodules/system_on_chip_mm_interconnect_1_router.sv
     wire [2-1 : 0] default_src_channel;
+=======
+    wire [7-1 : 0] default_src_channel;
+>>>>>>> origin/Develop:SystemOnChip/system_on_chip2/testbench/system_on_chip_tb/simulation/submodules/system_on_chip_mm_interconnect_0_router_001.sv
 
 
 
@@ -194,6 +230,7 @@ module system_on_chip_mm_interconnect_1_router
         // Sets the channel and destination ID based on the address
         // --------------------------------------------------
 
+<<<<<<< HEAD:SystemOnChip/system_on_chip/synthesis/submodules/system_on_chip_mm_interconnect_1_router.sv
     // ( 0x3060 .. 0x3064 )
     if ( {address[RG:PAD0],{PAD0{1'b0}}} == 14'h3060  && write_transaction  ) begin
             src_channel = 2'b01;
@@ -203,6 +240,17 @@ module system_on_chip_mm_interconnect_1_router
     // ( 0x3100 .. 0x3120 )
     if ( {address[RG:PAD1],{PAD1{1'b0}}} == 14'h3100   ) begin
             src_channel = 2'b10;
+=======
+    // ( 0x0 .. 0x2000 )
+    if ( {address[RG:PAD0],{PAD0{1'b0}}} == 14'h0   ) begin
+            src_channel = 7'b10;
+            src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 1;
+    end
+
+    // ( 0x2000 .. 0x2800 )
+    if ( {address[RG:PAD1],{PAD1{1'b0}}} == 14'h2000   ) begin
+            src_channel = 7'b01;
+>>>>>>> origin/Develop:SystemOnChip/system_on_chip2/testbench/system_on_chip_tb/simulation/submodules/system_on_chip_mm_interconnect_0_router_001.sv
             src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 0;
     end
 

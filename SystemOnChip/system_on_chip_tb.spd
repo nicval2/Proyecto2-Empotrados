@@ -6,11 +6,19 @@
    library="altera_common_sv_packages"
    systemVerilogPackageName="avalon_vip_verbosity_pkg" />
  <file
+<<<<<<< HEAD
    path="system_on_chip/testbench/system_on_chip_tb/simulation/submodules/system_on_chip_mm_interconnect_0_avalon_st_adapter_error_adapter_0.sv"
    type="SYSTEM_VERILOG"
    library="error_adapter_0" />
  <file
    path="system_on_chip/testbench/system_on_chip_tb/simulation/submodules/system_on_chip_mm_interconnect_0_avalon_st_adapter.v"
+=======
+   path="system_on_chip2/testbench/system_on_chip_tb/simulation/submodules/system_on_chip_mm_interconnect_0_avalon_st_adapter_error_adapter_0.sv"
+   type="SYSTEM_VERILOG"
+   library="error_adapter_0" />
+ <file
+   path="system_on_chip2/testbench/system_on_chip_tb/simulation/submodules/system_on_chip_mm_interconnect_0_avalon_st_adapter.v"
+>>>>>>> origin/Develop
    type="VERILOG"
    library="avalon_st_adapter" />
  <file
@@ -162,6 +170,7 @@
    type="VERILOG"
    library="cpu" />
  <file
+<<<<<<< HEAD
    path="system_on_chip/testbench/system_on_chip_tb/simulation/submodules/altera_up_avalon_reset_from_locked_signal.v"
    type="VERILOG"
    library="reset_from_locked" />
@@ -171,6 +180,9 @@
    library="audio_pll" />
  <file
    path="system_on_chip/testbench/system_on_chip_tb/simulation/submodules/altera_reset_controller.v"
+=======
+   path="system_on_chip2/testbench/system_on_chip_tb/simulation/submodules/altera_reset_controller.v"
+>>>>>>> origin/Develop
    type="VERILOG"
    library="rst_controller" />
  <file
@@ -186,7 +198,11 @@
    type="SYSTEM_VERILOG"
    library="irq_mapper" />
  <file
+<<<<<<< HEAD
    path="system_on_chip/testbench/system_on_chip_tb/simulation/submodules/system_on_chip_mm_interconnect_0.v"
+=======
+   path="system_on_chip2/testbench/system_on_chip_tb/simulation/submodules/system_on_chip_mm_interconnect_0.v"
+>>>>>>> origin/Develop
    type="VERILOG"
    library="mm_interconnect_0" />
  <file
@@ -222,6 +238,7 @@
    type="VERILOG"
    library="NIOS" />
  <file
+<<<<<<< HEAD
    path="system_on_chip/testbench/system_on_chip_tb/simulation/submodules/system_on_chip_FIFO.sdc"
    type="SDC"
    library="FIFO" />
@@ -235,6 +252,9 @@
    library="Audio_PLL" />
  <file
    path="system_on_chip/testbench/system_on_chip_tb/simulation/submodules/altera_conduit_bfm_0003.sv"
+=======
+   path="system_on_chip2/testbench/system_on_chip_tb/simulation/submodules/altera_irq_mapper.sv"
+>>>>>>> origin/Develop
    type="SYSTEM_VERILOG"
    library="system_on_chip_inst_switches_bfm" />
  <file
@@ -242,11 +262,27 @@
    type="SYSTEM_VERILOG"
    library="system_on_chip_inst_reset_bfm" />
  <file
+<<<<<<< HEAD
    path="system_on_chip/testbench/system_on_chip_tb/simulation/submodules/altera_conduit_bfm_0002.sv"
+=======
+   path="system_on_chip2/testbench/system_on_chip_tb/simulation/submodules/altera_conduit_bfm_0003.sv"
+>>>>>>> origin/Develop
    type="SYSTEM_VERILOG"
    library="system_on_chip_inst_id7_segment_bfm" />
  <file
+<<<<<<< HEAD
    path="system_on_chip/testbench/system_on_chip_tb/simulation/submodules/altera_avalon_clock_source.sv"
+=======
+   path="system_on_chip2/testbench/system_on_chip_tb/simulation/submodules/altera_conduit_bfm_0002.sv"
+   type="SYSTEM_VERILOG"
+   library="system_on_chip_inst_reg_leds_external_connection_bfm" />
+ <file
+   path="system_on_chip2/testbench/system_on_chip_tb/simulation/submodules/altera_conduit_bfm.sv"
+   type="SYSTEM_VERILOG"
+   library="system_on_chip_inst_reg_button_external_connection_bfm" />
+ <file
+   path="system_on_chip2/testbench/system_on_chip_tb/simulation/submodules/altera_avalon_clock_source.sv"
+>>>>>>> origin/Develop
    type="SYSTEM_VERILOG"
    library="system_on_chip_inst_clk_bfm" />
  <file

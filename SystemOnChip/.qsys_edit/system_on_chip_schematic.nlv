@@ -2,6 +2,7 @@
 # 
 preplace inst system_on_chip.ARM.rstmgr -pg 1
 preplace inst system_on_chip -pg 1 -lvl 1 -y 40 -regy -20
+<<<<<<< HEAD
 preplace inst system_on_chip.ARM.f2s_sdram_ref_clk -pg 1
 preplace inst system_on_chip.RAM -pg 1 -lvl 3 -y 690
 preplace inst system_on_chip.REG_7_SEGMENTS -pg 1 -lvl 3 -y 490
@@ -82,3 +83,28 @@ preplace netloc EXPORT<net_container>system_on_chip</net_container>(SLAVE)system
 preplace netloc INTERCONNECT<net_container>system_on_chip</net_container>(SLAVE)REG_7_SEGMENTS.s1,(SLAVE)REG_BUTTONS.s1,(SLAVE)NIOS.debug_mem_slave,(SLAVE)FIFO.out_csr,(SLAVE)RAM.s1,(SLAVE)FIFO.out,(SLAVE)TIMER.s1,(MASTER)NIOS.instruction_master,(SLAVE)UART.avalon_jtag_slave,(MASTER)NIOS.data_master,(SLAVE)REG_SWITCHES.s1) 1 1 2 330 740 710
 levelinfo -pg 1 0 80 1020
 levelinfo -hier system_on_chip 90 120 470 860 1010
+=======
+preplace inst system_on_chip.UART -pg 1 -lvl 3 -y 360
+preplace inst system_on_chip.NIOS.clock_bridge -pg 1
+preplace inst system_on_chip.TIMER -pg 1 -lvl 3 -y 720
+preplace inst system_on_chip.clk_0 -pg 1 -lvl 1 -y 260
+preplace inst system_on_chip.REG_7_SEGMENTS -pg 1 -lvl 3 -y 250
+preplace inst system_on_chip.NIOS.cpu -pg 1
+preplace inst system_on_chip.RAM -pg 1 -lvl 3 -y 470
+preplace inst system_on_chip.NIOS -pg 1 -lvl 2 -y 290
+preplace inst system_on_chip.NIOS.reset_bridge -pg 1
+preplace inst system_on_chip.REG_SWITCHES -pg 1 -lvl 3 -y 140
+preplace inst system_on_chip.REG_BUTTONS -pg 1 -lvl 3 -y 30
+preplace netloc EXPORT<net_container>system_on_chip</net_container>(SLAVE)clk_0.clk_in_reset,(SLAVE)system_on_chip.reset) 1 0 1 NJ
+preplace netloc EXPORT<net_container>system_on_chip</net_container>(SLAVE)system_on_chip.reg_switches_external_connection,(SLAVE)REG_SWITCHES.external_connection) 1 0 3 NJ 460 NJ 460 NJ
+preplace netloc EXPORT<net_container>system_on_chip</net_container>(SLAVE)system_on_chip.uart_irq,(SLAVE)UART.irq) 1 0 3 NJ 500 NJ 500 NJ
+preplace netloc EXPORT<net_container>system_on_chip</net_container>(SLAVE)TIMER.irq,(SLAVE)system_on_chip.timer_irq) 1 0 3 NJ 750 NJ 750 NJ
+preplace netloc EXPORT<net_container>system_on_chip</net_container>(SLAVE)REG_7_SEGMENTS.external_connection,(SLAVE)system_on_chip.reg_leds_external_connection) 1 0 3 NJ 480 NJ 480 NJ
+preplace netloc FAN_OUT<net_container>system_on_chip</net_container>(SLAVE)REG_7_SEGMENTS.clk,(SLAVE)RAM.clk1,(SLAVE)UART.clk,(SLAVE)NIOS.clk,(SLAVE)TIMER.clk,(MASTER)clk_0.clk,(SLAVE)REG_SWITCHES.clk,(SLAVE)REG_BUTTONS.clk) 1 1 2 410 520 890
+preplace netloc INTERCONNECT<net_container>system_on_chip</net_container>(MASTER)NIOS.data_master,(SLAVE)TIMER.s1,(SLAVE)NIOS.debug_mem_slave,(SLAVE)REG_BUTTONS.s1,(SLAVE)REG_7_SEGMENTS.s1,(SLAVE)RAM.s1,(SLAVE)REG_SWITCHES.s1,(SLAVE)UART.avalon_jtag_slave,(MASTER)NIOS.instruction_master) 1 1 2 430 790 930
+preplace netloc EXPORT<net_container>system_on_chip</net_container>(SLAVE)REG_BUTTONS.external_connection,(SLAVE)system_on_chip.reg_button_external_connection) 1 0 3 NJ 440 NJ 440 NJ
+preplace netloc EXPORT<net_container>system_on_chip</net_container>(SLAVE)system_on_chip.clk,(SLAVE)clk_0.clk_in) 1 0 1 NJ
+preplace netloc FAN_OUT<net_container>system_on_chip</net_container>(SLAVE)TIMER.reset,(SLAVE)NIOS.reset,(SLAVE)RAM.reset1,(SLAVE)UART.reset,(SLAVE)REG_BUTTONS.reset,(MASTER)clk_0.clk_reset,(SLAVE)REG_7_SEGMENTS.reset,(SLAVE)REG_SWITCHES.reset) 1 1 2 390 770 910
+levelinfo -pg 1 0 190 1130
+levelinfo -hier system_on_chip 200 230 580 970 1120
+>>>>>>> origin/Develop
