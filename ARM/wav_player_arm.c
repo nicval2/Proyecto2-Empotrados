@@ -13,12 +13,12 @@
 #define H2F_BRIDGE_BASE     0xC0000000
 
 // FIFO: HPS -> NIOS (escritura de audio)
-#define FIFO_IN_OFFSET      0x8860
-#define FIFO_IN_CSR_OFFSET  0x8900
+#define FIFO_IN_OFFSET      0x6860    
+#define FIFO_IN_CSR_OFFSET  0x6900    
 
 // FIFO2: NIOS -> HPS (lectura de comandos)
-#define FIFO2_OUT_OFFSET     0x8960
-#define FIFO2_OUT_CSR_OFFSET 0x8980
+#define FIFO2_OUT_OFFSET     0x69A0   
+#define FIFO2_OUT_CSR_OFFSET 0x6960   
 
 /* --- OFFSETS DENTRO DEL CSR --- */
 // El CSR tiene varios registros:

@@ -151,9 +151,14 @@ systemctl disable wav-player.service
 Eliminar archivo de definición 
 ```bash
 rm /etc/systemd/system/wav-player.service
+cat > /etc/systemd/system/wav-player.service << 'EOF'
 ```
 
 Recargar la configuración de systemd
 ```bash
 systemctl daemon-reload
+```
+
+```bash
+gcc wav_player_arm.c -o wav_player -O2 -std=c99
 ```
