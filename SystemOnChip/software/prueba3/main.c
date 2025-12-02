@@ -1,4 +1,4 @@
-// main.c - NIOS II con Ecualizador (v2.3)
+// main.c - NIOS II con Handshake de inicialización (v2.5)
 #include <stdio.h>
 #include <unistd.h>
 #include <string.h>
@@ -12,8 +12,8 @@
 
 #define SEG7_PTR  ((volatile int*)REG_7_SEGMENTS_BASE)
 
-/* Variables globales para display */
-static char current_filter_name[16] = "NORMAL";
+/* Token de sincronización */
+#define CMD_READY  0x52454459  /* "REDY" en ASCII */
 
 void update_vga_timer(alt_u32 seconds) {
     char buf[16];
@@ -22,29 +22,31 @@ void update_vga_timer(alt_u32 seconds) {
 }
 
 void update_vga_filter(void) {
-    /* Limpiar línea anterior */
     vga_clear_line(17);
-
-    /* Mostrar filtro actual */
     char buf[32];
     sprintf(buf, "EQ: %s", filter_get_name());
     vga_print_center(buf, 17);
 }
 
-void show_waiting_screen(void) {
+void show_startup_screen(void) {
     vga_clear();
     vga_print_center("=== REPRODUCTOR FPGA ===", 3);
-    vga_print_center("Esperando HPS...", 7);
+    vga_print_center("Sistema iniciado", 6);
+    vga_print_center("Enviando señal al HPS...", 8);
     vga_print_center("", 10);
     vga_print_center("CONTROLES:", 12);
     vga_print_center("KEY3: Play/Pause", 14);
     vga_print_center("KEY2: Siguiente", 15);
     vga_print_center("KEY1: Anterior", 16);
     vga_print_center("", 18);
-    vga_print_center("ECUALIZADOR (Switches):", 20);
-    vga_print_center("SW0:Bass+ SW1:Bass- SW2:Treble+", 22);
-    vga_print_center("SW3:Treble- SW4:Vocal SW5:Rock", 23);
-    vga_print_center("SW6:Pop SW7:Jazz SW9:Vol-", 24);
+    vga_print_center("SW0-7: Ecualizador", 20);
+    vga_print_center("SW9: Volumen bajo", 21);
+}
+
+void show_waiting_screen(void) {
+    vga_clear();
+    vga_print_center("=== REPRODUCTOR FPGA ===", 3);
+    vga_print_center("Esperando HPS...", 8);
 }
 
 void show_now_playing(void) {
@@ -65,8 +67,11 @@ void show_now_playing(void) {
 
 int main()
 {
-    alt_putstr("\n=== REPRODUCTOR NIOS v2.3 ===\n");
-    alt_putstr("Con Ecualizador de Audio\n\n");
+    alt_putstr("\n");
+    alt_putstr("========================================\n");
+    alt_putstr("   REPRODUCTOR NIOS v2.5\n");
+    alt_putstr("   Con Handshake de Inicializacion\n");
+    alt_putstr("========================================\n\n");
 
     /* Inicialización de Hardware */
     buttons_init();
@@ -75,6 +80,22 @@ int main()
     vga_init();
 
     display_time_4seg(SEG7_PTR, 0, 0);
+    show_startup_screen();
+
+    /* ============================================ */
+    /* HANDSHAKE: Enviar señal READY al HPS        */
+    /* ============================================ */
+    alt_putstr("Enviando señal READY al HPS...\n");
+
+    /* Enviar múltiples veces para asegurar que el HPS lo reciba */
+    for (int i = 0; i < 5; i++) {
+        audio_send_command(CMD_READY);
+        usleep(100000);  /* 100ms entre envíos */
+    }
+
+    alt_putstr("Señal READY enviada!\n");
+    alt_putstr("Esperando canciones del HPS...\n\n");
+
     show_waiting_screen();
 
     /* === BUCLE PRINCIPAL === */
@@ -110,15 +131,11 @@ int main()
 
             /* B. Actualizar ecualizador si cambió */
             if (sw != last_sw) {
-                /* Bits 0-7: Ecualizador */
                 if (filter_update_from_switches(sw & 0xFF)) {
                     printf("Filtro: %s\n", filter_get_name());
                     update_vga_filter();
                 }
-
-                /* Bit 9: Volumen */
                 volume_shift = (sw & 0x200) ? 2 : 0;
-
                 last_sw = sw;
             }
 
@@ -128,17 +145,14 @@ int main()
                     int status = audio_process_sample();
 
                     if (status == 0) {
-                        /* EOS normal */
                         printf("Fin de cancion\n");
                         song_active = 0;
                     }
                     else if (status == -1) {
-                        /* SKIP recibido del HPS */
                         printf("Skip recibido\n");
                         song_active = 0;
                     }
                     else {
-                        /* Audio procesado OK - actualizar tiempo */
                         sample_count++;
                         if (sample_count >= sample_rate) {
                             seconds_total++;
@@ -152,12 +166,10 @@ int main()
                 }
             }
             else {
-                /* Pausado */
                 usleep(5000);
             }
         }
 
-        /* Mostrar transición */
         vga_clear_line(20);
         vga_print_center(">> Cambiando pista... <<", 20);
         usleep(100000);
