@@ -32,6 +32,7 @@
 #define METADATA_MAGIC  0xDEADDA7A
 #define EOS_TOKEN       0xFFFFFFFF
 #define SKIP_TOKEN      0xFFFFFFFE
+#define NIOS_READY_TOKEN 0xCAFEBABE 
 
 /* --- COMANDOS NIOS -> HPS --- */
 #define CMD_NEXT  0x4E455854
@@ -90,6 +91,33 @@ void fifo_write_string(const char *str) {
     for(size_t i = 0; i < len; i++) {
         fifo_write_wait((uint32_t)(unsigned char)str[i]);
     }
+}
+
+int wait_for_nios_ready(int timeout_seconds) {
+    printf("Esperando NIOS...\n");
+    
+    for(int i = 0; i < timeout_seconds * 100; i++) {
+        if(fifo2_has_data()) {
+            uint32_t data = *fifo2_out;
+            
+            if(data == NIOS_READY_TOKEN) {
+                printf("NIOS listo!\n");
+                return 1;
+            } else {
+                printf("[DEBUG] Token: 0x%08X (ignorado)\n", data);
+            }
+        }
+        
+        usleep(10000);  // 10ms
+        
+        // Mostrar progreso cada 5 segundos
+        if(i > 0 && i % 500 == 0) {
+            printf("  ... %d segundos\n", i / 100);
+        }
+    }
+    
+    printf("Timeout esperando NIOS\n");
+    return 0;
 }
 
 /* Verificar comandos del NIOS */
@@ -322,19 +350,26 @@ int main(int argc, char *argv[]) {
     fifo2_out = (volatile uint32_t *)(h2f_map + FIFO2_OUT_OFFSET);
     fifo2_out_csr_base = (volatile uint8_t *)(h2f_map + FIFO2_OUT_CSR_OFFSET);
     
-    printf("=== REPRODUCTOR HPS v2.2 ===\n");
+    printf("=== REPRODUCTOR HPS v2.4 ===\n");
     printf("Pistas: %d\n", total_tracks);
-    printf("KEY3=Pause, KEY2=Next, KEY1=Prev\n");
     
-    // DEBUG: Verificar fill levels
-    printf("[DEBUG] FIFO_IN fill=%u, FIFO2_OUT fill=%u\n", 
-           fifo_in_fill_level(), fifo2_out_fill_level());
-    
-    // Limpiar comandos previos en FIFO2
+    // Limpiar FIFO2 de datos previos
+    printf("Limpiando FIFO2...\n");
     while(fifo2_has_data()) {
         uint32_t discard = *fifo2_out;
-        printf("[DEBUG] Descartando: 0x%08X\n", discard);
+        printf("  Descartado: 0x%08X\n", discard);
     }
+    
+    // ESPERAR SEÑAL DEL NIOS
+    if(!wait_for_nios_ready(120)) {  // 2 minutos timeout
+        printf("Error: NIOS no respondio.\n");
+        printf("Ejecuta el programa NIOS y reinicia.\n");
+        munmap(h2f_map, 0x10000);
+        close(fd_mem);
+        return 1;
+    }
+    
+    printf("KEY3=Pause, KEY2=Next, KEY1=Prev\n");
     
     // Bucle de playlist
     current_track = 0;
