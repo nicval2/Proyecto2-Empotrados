@@ -1,13 +1,13 @@
-# /etc/systemd/system/wav-player.service
 [Unit]
-Description=WAV Player HPS
+Description=Reproductor de Audio WAV para FPGA
 After=multi-user.target
 
 [Service]
 Type=simple
-ExecStart=/home/root/wav_player /home/root/music/*.wav
+WorkingDirectory=/home/root/proyecto_audio
+ExecStart=/home/root/proyecto_audio/start_player.sh
 Restart=on-failure
-RestartSec=5
+RestartSec=10
 
 [Install]
 WantedBy=multi-user.target
