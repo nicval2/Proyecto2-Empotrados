@@ -1,0 +1,120 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/Users/nicva/Empotrados/Proyecto2-Empotrados/SystemOnChip/software/prueba/obj/default/runtime/sim/mentor
+vsystem_on_chip_UART
+Z1 !s110 1763243759
+!i10b 1
+!s100 @VGoJX]5U3dI[bGFFjdMY1
+IQ]kmH]67C0U>5m1bk_BdC2
+Z2 VDg1SIo80bB@j0V0VzS_@n1
+R0
+Z3 w1763243116
+Z4 8C:/Users/nicva/Empotrados/Proyecto2-Empotrados/SystemOnChip/system_on_chip/testbench/system_on_chip_tb/simulation/submodules/system_on_chip_UART.v
+Z5 FC:/Users/nicva/Empotrados/Proyecto2-Empotrados/SystemOnChip/system_on_chip/testbench/system_on_chip_tb/simulation/submodules/system_on_chip_UART.v
+L0 331
+Z6 OV;L;10.5b;63
+r1
+!s85 0
+31
+Z7 !s108 1763243759.000000
+Z8 !s107 C:/Users/nicva/Empotrados/Proyecto2-Empotrados/SystemOnChip/system_on_chip/testbench/system_on_chip_tb/simulation/submodules/system_on_chip_UART.v|
+Z9 !s90 -reportprogress|300|C:/Users/nicva/Empotrados/Proyecto2-Empotrados/SystemOnChip/system_on_chip/testbench/system_on_chip_tb/simulation/submodules/system_on_chip_UART.v|-work|UART|
+!i113 1
+Z10 o-work UART
+Z11 tCvgOpt 0
+nsystem_on_chip_@u@a@r@t
+vsystem_on_chip_UART_scfifo_r
+R1
+!i10b 1
+!s100 @ASW6]1HfjNM`Afm:Y3oj1
+I4NzZ@M]Rm6QgJCgzQF7db0
+R2
+R0
+R3
+R4
+R5
+L0 243
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+nsystem_on_chip_@u@a@r@t_scfifo_r
+vsystem_on_chip_UART_scfifo_w
+R1
+!i10b 1
+!s100 mAM8;X8lMMHR]4ZJ;FSen1
+I@o14ZlaAPBII6z8=MSUhe3
+R2
+R0
+R3
+R4
+R5
+L0 78
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+nsystem_on_chip_@u@a@r@t_scfifo_w
+vsystem_on_chip_UART_sim_scfifo_r
+R1
+!i10b 1
+!s100 CGzCWahNlefVWTRRKHI<60
+ID6_7MSEXffHd4F83Nj=B[0
+R2
+R0
+R3
+R4
+R5
+L0 164
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+nsystem_on_chip_@u@a@r@t_sim_scfifo_r
+vsystem_on_chip_UART_sim_scfifo_w
+R1
+!i10b 1
+!s100 :mRIOSZjck58Qi13RzU7a3
+IE=`Ib`iiY6ZE:JMOC62GG3
+R2
+R0
+R3
+R4
+R5
+L0 21
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+nsystem_on_chip_@u@a@r@t_sim_scfifo_w

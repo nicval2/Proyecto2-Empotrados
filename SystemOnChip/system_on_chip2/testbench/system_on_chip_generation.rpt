@@ -1,0 +1,448 @@
+Info: Starting: Create testbench Platform Designer system
+Info: C:/GitHubClone/Proyecto2-Empotrados/SystemOnChip/system_on_chip2/testbench/system_on_chip.ipx
+Info: qsys-generate C:\GitHubClone\Proyecto2-Empotrados\SystemOnChip\system_on_chip.qsys --testbench=STANDARD --output-directory=C:\GitHubClone\Proyecto2-Empotrados\SystemOnChip --family="Cyclone V" --part=5CSEMA5F31C6
+Progress: Loading SystemOnChip/system_on_chip.qsys
+Progress: Reading input file
+Progress: Adding ARM [altera_hps 18.0]
+Progress: Parameterizing module ARM
+Progress: Adding FIFO [altera_avalon_fifo 18.0]
+Progress: Parameterizing module FIFO
+Progress: Adding NIOS [altera_nios2_gen2 18.0]
+Progress: Parameterizing module NIOS
+Progress: Adding RAM [altera_avalon_onchip_memory2 18.0]
+Progress: Parameterizing module RAM
+Progress: Adding REG_7_SEGMENTS [altera_avalon_pio 18.0]
+Progress: Parameterizing module REG_7_SEGMENTS
+Progress: Adding REG_BUTTONS [altera_avalon_pio 18.0]
+Progress: Parameterizing module REG_BUTTONS
+Progress: Adding REG_SWITCHES [altera_avalon_pio 18.0]
+Progress: Parameterizing module REG_SWITCHES
+Progress: Adding TIMER [altera_avalon_timer 18.0]
+Progress: Parameterizing module TIMER
+Progress: Adding UART [altera_avalon_jtag_uart 18.0]
+Progress: Parameterizing module UART
+Progress: Adding clk_0 [clock_source 18.0]
+Progress: Parameterizing module clk_0
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Info: system_on_chip.REG_BUTTONS: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: system_on_chip.UART: JTAG UART IP input clock need to be at least double (2x) the operating frequency of JTAG TCK on board
+Info: qsys-generate succeeded.
+Info: Loading IP catalog for testbench.
+Progress: 
+Progress: 
+Progress: 
+Progress: (2) searching D:/quartus18/quartus/sopc_builder/bin/root_components.ipx (ipx file)
+Info: Reading index D:\quartus18\quartus\sopc_builder\bin\root_components.ipx
+Info: D:\quartus18\quartus\sopc_builder\bin\root_components.ipx: Loading now from components.ipx
+Info: Reading index D:\quartus18\quartus\sopc_builder\bin\ip_component_categories.ipx
+Info: D:\quartus18\quartus\sopc_builder\bin\ip_component_categories.ipx described 0 plugins, 0 paths, in 0,00 seconds
+Info: D:/quartus18/quartus/sopc_builder/bin/ip_component_categories.ipx matched 1 files in 0,00 seconds
+Info: C:/GitHubClone/Proyecto2-Empotrados/SystemOnChip/system_on_chip2/testbench/ip/**/* matched 0 files in 0,00 seconds
+Info: Reading index C:\GitHubClone\Proyecto2-Empotrados\SystemOnChip\system_on_chip2\testbench\system_on_chip.ipx
+Progress: Loading SystemOnChip/system_on_chip.qsys
+Info: C:/GitHubClone/Proyecto2-Empotrados/SystemOnChip/* matched 14 files in 0,00 seconds
+Info: C:/GitHubClone/Proyecto2-Empotrados/SystemOnChip/ip/**/* matched 0 files in 0,00 seconds
+Info: C:/GitHubClone/Proyecto2-Empotrados/SystemOnChip/*/* matched 334 files in 0,02 seconds
+Info: C:\GitHubClone\Proyecto2-Empotrados\SystemOnChip\system_on_chip2\testbench\system_on_chip.ipx described 0 plugins, 3 paths, in 0,05 seconds
+Progress: Loading testbench/system_on_chip_tb.qsys
+Info: C:/GitHubClone/Proyecto2-Empotrados/SystemOnChip/system_on_chip2/testbench/* matched 12 files in 0,05 seconds
+Info: C:/GitHubClone/Proyecto2-Empotrados/SystemOnChip/system_on_chip2/testbench/*/* matched 9 files in 0,00 seconds
+Info: C:/Users/esteb/.altera.quartus/ip/18.0/**/* matched 0 files in 0,00 seconds
+Info: D:/quartus18/quartus/sopc_builder/bin/$$QUARTUS_IP_PROJECTDIR/* matched 0 files in 0,00 seconds
+Info: D:/quartus18/quartus/sopc_builder/bin/$$QUARTUS_IP_USERDIR/* matched 0 files in 0,00 seconds
+Info: D:/quartus18/quartus/sopc_builder/bin/$$QUARTUS_IP_GLOBALDIR/* matched 0 files in 0,00 seconds
+Info: Reading index D:\quartus18\ip\altera\altera_components.ipx
+Info: D:\quartus18\ip\altera\altera_components.ipx described 2031 plugins, 0 paths, in 0,17 seconds
+Info: D:/quartus18/ip/**/* matched 138 files in 0,18 seconds
+Info: D:/ip/**/* matched 0 files in 0,00 seconds
+Info: Reading index D:\quartus18\quartus\sopc_builder\builtin.ipx
+Info: D:\quartus18\quartus\sopc_builder\builtin.ipx described 83 plugins, 0 paths, in 0,01 seconds
+Info: D:/quartus18/quartus/sopc_builder/**/* matched 8 files in 0,01 seconds
+Info: Reading index D:\quartus18\quartus\common\librarian\factories\index.ipx
+Info: D:\quartus18\quartus\common\librarian\factories\index.ipx described 151 plugins, 0 paths, in 0,01 seconds
+Info: D:/quartus18/quartus/common/librarian/factories/**/* matched 4 files in 0,01 seconds
+Info: D:/quartus18/quartus/sopc_builder/bin/$IP_IPX_PATH matched 1 files in 0,00 seconds
+Info: D:\quartus18\quartus\sopc_builder\bin\root_components.ipx described 0 plugins, 13 paths, in 0,26 seconds
+Info: D:/quartus18/quartus/sopc_builder/bin/root_components.ipx matched 1 files in 0,26 seconds
+Progress: 
+Progress: 
+Progress: 
+Info: Running script D:/quartus18/quartus/sopc_builder/bin/tbgen.tcl
+Info: send_message Info TB_Gen: QSYS Testbench Generator Rev: $Revision: #1 $
+Info: TB_Gen: QSYS Testbench Generator Rev: $Revision: #1 $
+Info: get_module_property NAME
+Info: send_message Info TB_Gen: System design is: system_on_chip
+Info: TB_Gen: System design is: system_on_chip
+Info: get_interfaces 
+Info: get_connections 
+Info: get_interface_property clk EXPORT_OF
+Info: get_instance_property clk_0 CLASS_NAME
+Info: get_instance_assignment clk_0 testbench.partner.map.clk_in
+Info: get_interface_property reg_button_external_connection EXPORT_OF
+Info: get_instance_property REG_BUTTONS CLASS_NAME
+Info: get_instance_assignment REG_BUTTONS testbench.partner.map.external_connection
+Info: get_interface_property reg_leds_external_connection EXPORT_OF
+Info: get_instance_property REG_7_SEGMENTS CLASS_NAME
+Info: get_instance_assignment REG_7_SEGMENTS testbench.partner.map.external_connection
+Info: get_interface_property reg_switches_external_connection EXPORT_OF
+Info: get_instance_property REG_SWITCHES CLASS_NAME
+Info: get_instance_assignment REG_SWITCHES testbench.partner.map.external_connection
+Info: get_interface_property reset EXPORT_OF
+Info: get_instance_property clk_0 CLASS_NAME
+Info: get_instance_assignment clk_0 testbench.partner.map.clk_in_reset
+Info: get_interface_property timer_irq EXPORT_OF
+Info: get_instance_property TIMER CLASS_NAME
+Info: get_instance_assignment TIMER testbench.partner.map.irq
+Info: get_interface_property uart_irq EXPORT_OF
+Info: get_instance_property UART CLASS_NAME
+Info: get_instance_assignment UART testbench.partner.map.irq
+Info: send_message Info TB_Gen: Creating testbench system : system_on_chip_tb with all standard BFMs
+Info: TB_Gen: Creating testbench system : system_on_chip_tb with all standard BFMs
+Info: create_system system_on_chip_tb
+Info: add_instance system_on_chip_inst system_on_chip 
+Info: set_use_testbench_naming_pattern true system_on_chip
+Info: get_instance_interfaces system_on_chip_inst
+Info: get_instance_interface_property system_on_chip_inst clk CLASS_NAME
+Info: get_instance_interface_property system_on_chip_inst reg_button_external_connection CLASS_NAME
+Info: get_instance_interface_property system_on_chip_inst reg_leds_external_connection CLASS_NAME
+Info: get_instance_interface_property system_on_chip_inst reg_switches_external_connection CLASS_NAME
+Info: get_instance_interface_property system_on_chip_inst reset CLASS_NAME
+Info: get_instance_interface_property system_on_chip_inst timer_irq CLASS_NAME
+Info: get_instance_interface_property system_on_chip_inst uart_irq CLASS_NAME
+Info: get_instance_interface_property system_on_chip_inst clk CLASS_NAME
+Info: send_message Info TB_Gen: clock_sink found: clk
+Info: TB_Gen: clock_sink found: clk
+Info: get_instance_interface_property system_on_chip_inst clk CLASS_NAME
+Info: add_instance system_on_chip_inst_clk_bfm altera_avalon_clock_source 
+Info: get_instance_property system_on_chip_inst_clk_bfm CLASS_NAME
+Info: get_instance_interface_parameter_value system_on_chip_inst clk clockRate
+Info: set_instance_parameter_value system_on_chip_inst_clk_bfm CLOCK_RATE 50000000.0
+Info: set_instance_parameter_value system_on_chip_inst_clk_bfm CLOCK_UNIT 1
+Info: get_instance_property system_on_chip_inst_clk_bfm CLASS_NAME
+Info: get_instance_interface_property system_on_chip_inst clk CLASS_NAME
+Info: get_instance_interfaces system_on_chip_inst_clk_bfm
+Info: get_instance_interface_property system_on_chip_inst_clk_bfm clk CLASS_NAME
+Info: add_connection system_on_chip_inst_clk_bfm.clk system_on_chip_inst.clk
+Info: get_instance_interface_property system_on_chip_inst reset CLASS_NAME
+Info: send_message Info TB_Gen: reset_sink found: reset
+Info: TB_Gen: reset_sink found: reset
+Info: get_instance_interface_property system_on_chip_inst reset CLASS_NAME
+Info: add_instance system_on_chip_inst_reset_bfm altera_avalon_reset_source 
+Info: get_instance_property system_on_chip_inst_reset_bfm CLASS_NAME
+Info: get_instance_interface_ports system_on_chip_inst reset
+Info: get_instance_interface_port_property system_on_chip_inst reset reset_reset_n ROLE
+Info: get_instance_interface_port_property system_on_chip_inst reset reset_reset_n ROLE
+Info: set_instance_parameter_value system_on_chip_inst_reset_bfm ASSERT_HIGH_RESET 0
+Info: set_instance_parameter_value system_on_chip_inst_reset_bfm INITIAL_RESET_CYCLES 50
+Info: get_instance_property system_on_chip_inst_reset_bfm CLASS_NAME
+Info: get_instance_interfaces system_on_chip_inst_reset_bfm
+Info: get_instance_interface_property system_on_chip_inst_reset_bfm clk CLASS_NAME
+Info: get_instance_interface_property system_on_chip_inst_reset_bfm reset CLASS_NAME
+Info: get_instance_property system_on_chip_inst_reset_bfm CLASS_NAME
+Info: get_instance_interface_parameter_value system_on_chip_inst reset associatedClock
+Info: get_instance_interfaces system_on_chip_inst_clk_bfm
+Info: get_instance_interface_property system_on_chip_inst_clk_bfm clk CLASS_NAME
+Info: send_message Warning TB_Gen: system_on_chip_inst_reset_bfm is not associated to any clock; connecting system_on_chip_inst_reset_bfm to 'system_on_chip_inst_clk_bfm.clk'
+Warning: TB_Gen: system_on_chip_inst_reset_bfm is not associated to any clock; connecting system_on_chip_inst_reset_bfm to 'system_on_chip_inst_clk_bfm.clk'
+Info: add_connection system_on_chip_inst_clk_bfm.clk system_on_chip_inst_reset_bfm.clk
+Info: get_instance_interface_property system_on_chip_inst reset CLASS_NAME
+Info: get_instance_interfaces system_on_chip_inst_reset_bfm
+Info: get_instance_interface_property system_on_chip_inst_reset_bfm clk CLASS_NAME
+Info: get_instance_interface_property system_on_chip_inst_reset_bfm reset CLASS_NAME
+Info: add_connection system_on_chip_inst_reset_bfm.reset system_on_chip_inst.reset
+Info: get_instance_interface_property system_on_chip_inst reg_button_external_connection CLASS_NAME
+Info: send_message Info TB_Gen: conduit_end found: reg_button_external_connection
+Info: TB_Gen: conduit_end found: reg_button_external_connection
+Info: get_instance_interface_property system_on_chip_inst reg_button_external_connection CLASS_NAME
+Info: add_instance system_on_chip_inst_reg_button_external_connection_bfm altera_conduit_bfm 
+Info: get_instance_property system_on_chip_inst_reg_button_external_connection_bfm CLASS_NAME
+Info: get_instance_interface_parameter_value system_on_chip_inst reg_button_external_connection associatedClock
+Info: get_instance_interface_parameter_value system_on_chip_inst reg_button_external_connection associatedReset
+Info: get_instance_interface_ports system_on_chip_inst reg_button_external_connection
+Info: get_instance_interface_port_property system_on_chip_inst reg_button_external_connection reg_button_external_connection_export ROLE
+Info: get_instance_interface_port_property system_on_chip_inst reg_button_external_connection reg_button_external_connection_export WIDTH
+Info: get_instance_interface_port_property system_on_chip_inst reg_button_external_connection reg_button_external_connection_export DIRECTION
+Info: set_instance_parameter_value system_on_chip_inst_reg_button_external_connection_bfm CLOCKED_SIGNAL 0
+Info: set_instance_parameter_value system_on_chip_inst_reg_button_external_connection_bfm ENABLE_RESET 0
+Info: set_instance_parameter_value system_on_chip_inst_reg_button_external_connection_bfm SIGNAL_ROLES export
+Info: set_instance_parameter_value system_on_chip_inst_reg_button_external_connection_bfm SIGNAL_WIDTHS 8
+Info: set_instance_parameter_value system_on_chip_inst_reg_button_external_connection_bfm SIGNAL_DIRECTIONS output
+Info: get_instance_property system_on_chip_inst_reg_button_external_connection_bfm CLASS_NAME
+Info: get_instance_interface_property system_on_chip_inst reg_button_external_connection CLASS_NAME
+Info: get_instance_interfaces system_on_chip_inst_reg_button_external_connection_bfm
+Info: get_instance_interface_property system_on_chip_inst_reg_button_external_connection_bfm conduit CLASS_NAME
+Info: add_connection system_on_chip_inst_reg_button_external_connection_bfm.conduit system_on_chip_inst.reg_button_external_connection
+Info: get_instance_interface_property system_on_chip_inst reg_leds_external_connection CLASS_NAME
+Info: send_message Info TB_Gen: conduit_end found: reg_leds_external_connection
+Info: TB_Gen: conduit_end found: reg_leds_external_connection
+Info: get_instance_interface_property system_on_chip_inst reg_leds_external_connection CLASS_NAME
+Info: add_instance system_on_chip_inst_reg_leds_external_connection_bfm altera_conduit_bfm 
+Info: get_instance_property system_on_chip_inst_reg_leds_external_connection_bfm CLASS_NAME
+Info: get_instance_interface_parameter_value system_on_chip_inst reg_leds_external_connection associatedClock
+Info: get_instance_interface_parameter_value system_on_chip_inst reg_leds_external_connection associatedReset
+Info: get_instance_interface_ports system_on_chip_inst reg_leds_external_connection
+Info: get_instance_interface_port_property system_on_chip_inst reg_leds_external_connection reg_leds_external_connection_export ROLE
+Info: get_instance_interface_port_property system_on_chip_inst reg_leds_external_connection reg_leds_external_connection_export WIDTH
+Info: get_instance_interface_port_property system_on_chip_inst reg_leds_external_connection reg_leds_external_connection_export DIRECTION
+Info: set_instance_parameter_value system_on_chip_inst_reg_leds_external_connection_bfm CLOCKED_SIGNAL 0
+Info: set_instance_parameter_value system_on_chip_inst_reg_leds_external_connection_bfm ENABLE_RESET 0
+Info: set_instance_parameter_value system_on_chip_inst_reg_leds_external_connection_bfm SIGNAL_ROLES export
+Info: set_instance_parameter_value system_on_chip_inst_reg_leds_external_connection_bfm SIGNAL_WIDTHS 32
+Info: set_instance_parameter_value system_on_chip_inst_reg_leds_external_connection_bfm SIGNAL_DIRECTIONS input
+Info: get_instance_property system_on_chip_inst_reg_leds_external_connection_bfm CLASS_NAME
+Info: get_instance_interface_property system_on_chip_inst reg_leds_external_connection CLASS_NAME
+Info: get_instance_interfaces system_on_chip_inst_reg_leds_external_connection_bfm
+Info: get_instance_interface_property system_on_chip_inst_reg_leds_external_connection_bfm conduit CLASS_NAME
+Info: add_connection system_on_chip_inst_reg_leds_external_connection_bfm.conduit system_on_chip_inst.reg_leds_external_connection
+Info: get_instance_interface_property system_on_chip_inst reg_switches_external_connection CLASS_NAME
+Info: send_message Info TB_Gen: conduit_end found: reg_switches_external_connection
+Info: TB_Gen: conduit_end found: reg_switches_external_connection
+Info: get_instance_interface_property system_on_chip_inst reg_switches_external_connection CLASS_NAME
+Info: add_instance system_on_chip_inst_reg_switches_external_connection_bfm altera_conduit_bfm 
+Info: get_instance_property system_on_chip_inst_reg_switches_external_connection_bfm CLASS_NAME
+Info: get_instance_interface_parameter_value system_on_chip_inst reg_switches_external_connection associatedClock
+Info: get_instance_interface_parameter_value system_on_chip_inst reg_switches_external_connection associatedReset
+Info: get_instance_interface_ports system_on_chip_inst reg_switches_external_connection
+Info: get_instance_interface_port_property system_on_chip_inst reg_switches_external_connection reg_switches_external_connection_export ROLE
+Info: get_instance_interface_port_property system_on_chip_inst reg_switches_external_connection reg_switches_external_connection_export WIDTH
+Info: get_instance_interface_port_property system_on_chip_inst reg_switches_external_connection reg_switches_external_connection_export DIRECTION
+Info: set_instance_parameter_value system_on_chip_inst_reg_switches_external_connection_bfm CLOCKED_SIGNAL 0
+Info: set_instance_parameter_value system_on_chip_inst_reg_switches_external_connection_bfm ENABLE_RESET 0
+Info: set_instance_parameter_value system_on_chip_inst_reg_switches_external_connection_bfm SIGNAL_ROLES export
+Info: set_instance_parameter_value system_on_chip_inst_reg_switches_external_connection_bfm SIGNAL_WIDTHS 10
+Info: set_instance_parameter_value system_on_chip_inst_reg_switches_external_connection_bfm SIGNAL_DIRECTIONS input
+Info: get_instance_property system_on_chip_inst_reg_switches_external_connection_bfm CLASS_NAME
+Info: get_instance_interface_property system_on_chip_inst reg_switches_external_connection CLASS_NAME
+Info: get_instance_interfaces system_on_chip_inst_reg_switches_external_connection_bfm
+Info: get_instance_interface_property system_on_chip_inst_reg_switches_external_connection_bfm conduit CLASS_NAME
+Info: add_connection system_on_chip_inst_reg_switches_external_connection_bfm.conduit system_on_chip_inst.reg_switches_external_connection
+Info: get_instance_interface_property system_on_chip_inst timer_irq CLASS_NAME
+Info: send_message Info TB_Gen: interrupt_sender found: timer_irq
+Info: TB_Gen: interrupt_sender found: timer_irq
+Info: get_instance_interface_property system_on_chip_inst timer_irq CLASS_NAME
+Info: add_instance system_on_chip_inst_timer_irq_bfm altera_avalon_interrupt_sink 
+Info: get_instance_property system_on_chip_inst_timer_irq_bfm CLASS_NAME
+Info: get_instance_interface_ports system_on_chip_inst timer_irq
+Info: get_instance_interface_port_property system_on_chip_inst timer_irq timer_irq_irq ROLE
+Info: get_instance_interface_port_property system_on_chip_inst timer_irq timer_irq_irq WIDTH
+Info: set_instance_parameter_value system_on_chip_inst_timer_irq_bfm AV_IRQ_W 1
+Info: set_instance_parameter_value system_on_chip_inst_timer_irq_bfm ASSERT_HIGH_IRQ 1
+Info: set_instance_parameter_value system_on_chip_inst_timer_irq_bfm VHDL_ID 0
+Info: get_instance_property system_on_chip_inst_timer_irq_bfm CLASS_NAME
+Info: get_instance_interfaces system_on_chip_inst_timer_irq_bfm
+Info: get_instance_interface_property system_on_chip_inst_timer_irq_bfm clock_reset CLASS_NAME
+Info: get_instance_interface_property system_on_chip_inst_timer_irq_bfm clock_reset_reset CLASS_NAME
+Info: get_instance_interface_property system_on_chip_inst_timer_irq_bfm irq CLASS_NAME
+Info: get_instance_property system_on_chip_inst_timer_irq_bfm CLASS_NAME
+Info: get_instance_interface_parameter_value system_on_chip_inst timer_irq associatedClock
+Info: get_instance_interface_property system_on_chip_inst clk CLASS_NAME
+Info: get_instance_interfaces system_on_chip_inst_clk_bfm
+Info: get_instance_interface_property system_on_chip_inst_clk_bfm clk CLASS_NAME
+Info: add_connection system_on_chip_inst_clk_bfm.clk system_on_chip_inst_timer_irq_bfm.clock_reset
+Info: get_instance_interfaces system_on_chip_inst_timer_irq_bfm
+Info: get_instance_interface_property system_on_chip_inst_timer_irq_bfm clock_reset CLASS_NAME
+Info: get_instance_interface_property system_on_chip_inst_timer_irq_bfm clock_reset_reset CLASS_NAME
+Info: get_instance_interface_property system_on_chip_inst_timer_irq_bfm irq CLASS_NAME
+Info: get_instance_property system_on_chip_inst_timer_irq_bfm CLASS_NAME
+Info: get_instance_interface_parameter_value system_on_chip_inst timer_irq associatedReset
+Info: get_instance_interface_property system_on_chip_inst reset CLASS_NAME
+Info: get_instance_interfaces system_on_chip_inst_reset_bfm
+Info: get_instance_interface_property system_on_chip_inst_reset_bfm clk CLASS_NAME
+Info: get_instance_interface_property system_on_chip_inst_reset_bfm reset CLASS_NAME
+Info: add_connection system_on_chip_inst_reset_bfm.reset system_on_chip_inst_timer_irq_bfm.clock_reset_reset
+Info: get_instance_interface_property system_on_chip_inst timer_irq CLASS_NAME
+Info: get_instance_interfaces system_on_chip_inst_timer_irq_bfm
+Info: get_instance_interface_property system_on_chip_inst_timer_irq_bfm clock_reset CLASS_NAME
+Info: get_instance_interface_property system_on_chip_inst_timer_irq_bfm clock_reset_reset CLASS_NAME
+Info: get_instance_interface_property system_on_chip_inst_timer_irq_bfm irq CLASS_NAME
+Info: add_connection system_on_chip_inst_timer_irq_bfm.irq system_on_chip_inst.timer_irq
+Info: get_instance_interface_property system_on_chip_inst uart_irq CLASS_NAME
+Info: send_message Info TB_Gen: interrupt_sender found: uart_irq
+Info: TB_Gen: interrupt_sender found: uart_irq
+Info: get_instance_interface_property system_on_chip_inst uart_irq CLASS_NAME
+Info: add_instance system_on_chip_inst_uart_irq_bfm altera_avalon_interrupt_sink 
+Info: get_instance_property system_on_chip_inst_uart_irq_bfm CLASS_NAME
+Info: get_instance_interface_ports system_on_chip_inst uart_irq
+Info: get_instance_interface_port_property system_on_chip_inst uart_irq uart_irq_irq ROLE
+Info: get_instance_interface_port_property system_on_chip_inst uart_irq uart_irq_irq WIDTH
+Info: set_instance_parameter_value system_on_chip_inst_uart_irq_bfm AV_IRQ_W 1
+Info: set_instance_parameter_value system_on_chip_inst_uart_irq_bfm ASSERT_HIGH_IRQ 1
+Info: set_instance_parameter_value system_on_chip_inst_uart_irq_bfm VHDL_ID 1
+Info: get_instance_property system_on_chip_inst_uart_irq_bfm CLASS_NAME
+Info: get_instance_interfaces system_on_chip_inst_uart_irq_bfm
+Info: get_instance_interface_property system_on_chip_inst_uart_irq_bfm clock_reset CLASS_NAME
+Info: get_instance_interface_property system_on_chip_inst_uart_irq_bfm clock_reset_reset CLASS_NAME
+Info: get_instance_interface_property system_on_chip_inst_uart_irq_bfm irq CLASS_NAME
+Info: get_instance_property system_on_chip_inst_uart_irq_bfm CLASS_NAME
+Info: get_instance_interface_parameter_value system_on_chip_inst uart_irq associatedClock
+Info: get_instance_interface_property system_on_chip_inst clk CLASS_NAME
+Info: get_instance_interfaces system_on_chip_inst_clk_bfm
+Info: get_instance_interface_property system_on_chip_inst_clk_bfm clk CLASS_NAME
+Info: add_connection system_on_chip_inst_clk_bfm.clk system_on_chip_inst_uart_irq_bfm.clock_reset
+Info: get_instance_interfaces system_on_chip_inst_uart_irq_bfm
+Info: get_instance_interface_property system_on_chip_inst_uart_irq_bfm clock_reset CLASS_NAME
+Info: get_instance_interface_property system_on_chip_inst_uart_irq_bfm clock_reset_reset CLASS_NAME
+Info: get_instance_interface_property system_on_chip_inst_uart_irq_bfm irq CLASS_NAME
+Info: get_instance_property system_on_chip_inst_uart_irq_bfm CLASS_NAME
+Info: get_instance_interface_parameter_value system_on_chip_inst uart_irq associatedReset
+Info: get_instance_interface_property system_on_chip_inst reset CLASS_NAME
+Info: get_instance_interfaces system_on_chip_inst_reset_bfm
+Info: get_instance_interface_property system_on_chip_inst_reset_bfm clk CLASS_NAME
+Info: get_instance_interface_property system_on_chip_inst_reset_bfm reset CLASS_NAME
+Info: add_connection system_on_chip_inst_reset_bfm.reset system_on_chip_inst_uart_irq_bfm.clock_reset_reset
+Info: get_instance_interface_property system_on_chip_inst uart_irq CLASS_NAME
+Info: get_instance_interfaces system_on_chip_inst_uart_irq_bfm
+Info: get_instance_interface_property system_on_chip_inst_uart_irq_bfm clock_reset CLASS_NAME
+Info: get_instance_interface_property system_on_chip_inst_uart_irq_bfm clock_reset_reset CLASS_NAME
+Info: get_instance_interface_property system_on_chip_inst_uart_irq_bfm irq CLASS_NAME
+Info: add_connection system_on_chip_inst_uart_irq_bfm.irq system_on_chip_inst.uart_irq
+Info: send_message Info TB_Gen: Saving testbench system: system_on_chip_tb.qsys
+Info: TB_Gen: Saving testbench system: system_on_chip_tb.qsys
+Info: save_system system_on_chip_tb.qsys
+Info: send_message Info TB_Gen: TBGEN SUCCESSFUL
+Info: TB_Gen: TBGEN SUCCESSFUL
+Info: Testbench system: C:/GitHubClone/Proyecto2-Empotrados/SystemOnChip/system_on_chip2/testbench/system_on_chip_tb.qsys
+Info: Done
+Info: qsys-generate C:\GitHubClone\Proyecto2-Empotrados\SystemOnChip\system_on_chip.qsys --simulation=VERILOG --allow-mixed-language-simulation --testbench=STANDARD --testbench-simulation=VERILOG --allow-mixed-language-testbench-simulation --output-directory=C:\GitHubClone\Proyecto2-Empotrados\SystemOnChip\system_on_chip2\testbench\system_on_chip_tb\simulation --family="Cyclone V" --part=5CSEMA5F31C6
+Progress: Loading testbench/system_on_chip_tb.qsys
+Progress: Reading input file
+Progress: Adding system_on_chip_inst [system_on_chip 1.0]
+Progress: Parameterizing module system_on_chip_inst
+Progress: Adding system_on_chip_inst_clk_bfm [altera_avalon_clock_source 18.0]
+Progress: Parameterizing module system_on_chip_inst_clk_bfm
+Progress: Adding system_on_chip_inst_reg_button_external_connection_bfm [altera_conduit_bfm 18.0]
+Progress: Parameterizing module system_on_chip_inst_reg_button_external_connection_bfm
+Progress: Adding system_on_chip_inst_reg_leds_external_connection_bfm [altera_conduit_bfm 18.0]
+Progress: Parameterizing module system_on_chip_inst_reg_leds_external_connection_bfm
+Progress: Adding system_on_chip_inst_reg_switches_external_connection_bfm [altera_conduit_bfm 18.0]
+Progress: Parameterizing module system_on_chip_inst_reg_switches_external_connection_bfm
+Progress: Adding system_on_chip_inst_reset_bfm [altera_avalon_reset_source 18.0]
+Progress: Parameterizing module system_on_chip_inst_reset_bfm
+Progress: Adding system_on_chip_inst_timer_irq_bfm [altera_avalon_interrupt_sink 18.0]
+Progress: Parameterizing module system_on_chip_inst_timer_irq_bfm
+Progress: Adding system_on_chip_inst_uart_irq_bfm [altera_avalon_interrupt_sink 18.0]
+Progress: Parameterizing module system_on_chip_inst_uart_irq_bfm
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Info: system_on_chip_tb.system_on_chip_inst.REG_BUTTONS: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: system_on_chip_tb.system_on_chip_inst.UART: JTAG UART IP input clock need to be at least double (2x) the operating frequency of JTAG TCK on board
+Info: system_on_chip_tb.system_on_chip_inst_clk_bfm: Elaborate: altera_clock_source
+Info: system_on_chip_tb.system_on_chip_inst_clk_bfm:            $Revision: #2 $
+Info: system_on_chip_tb.system_on_chip_inst_clk_bfm:            $Date: 2018/03/09 $
+Info: system_on_chip_tb.system_on_chip_inst_reset_bfm: Elaborate: altera_reset_source
+Info: system_on_chip_tb.system_on_chip_inst_reset_bfm:            $Revision: #2 $
+Info: system_on_chip_tb.system_on_chip_inst_reset_bfm:            $Date: 2018/03/09 $
+Info: system_on_chip_tb.system_on_chip_inst_reset_bfm: Reset is negatively asserted.
+Info: system_on_chip_tb: Generating system_on_chip_tb "system_on_chip_tb" for SIM_VERILOG
+Info: system_on_chip_inst: "system_on_chip_tb" instantiated system_on_chip "system_on_chip_inst"
+Info: system_on_chip_inst_clk_bfm: "system_on_chip_tb" instantiated altera_avalon_clock_source "system_on_chip_inst_clk_bfm"
+Info: system_on_chip_inst_reg_button_external_connection_bfm: "system_on_chip_tb" instantiated altera_conduit_bfm "system_on_chip_inst_reg_button_external_connection_bfm"
+Info: Reusing file C:/GitHubClone/Proyecto2-Empotrados/SystemOnChip/system_on_chip2/testbench/system_on_chip_tb/simulation/submodules/verbosity_pkg.sv
+Info: system_on_chip_inst_reg_leds_external_connection_bfm: "system_on_chip_tb" instantiated altera_conduit_bfm "system_on_chip_inst_reg_leds_external_connection_bfm"
+Info: Reusing file C:/GitHubClone/Proyecto2-Empotrados/SystemOnChip/system_on_chip2/testbench/system_on_chip_tb/simulation/submodules/verbosity_pkg.sv
+Info: system_on_chip_inst_reg_switches_external_connection_bfm: "system_on_chip_tb" instantiated altera_conduit_bfm "system_on_chip_inst_reg_switches_external_connection_bfm"
+Info: Reusing file C:/GitHubClone/Proyecto2-Empotrados/SystemOnChip/system_on_chip2/testbench/system_on_chip_tb/simulation/submodules/verbosity_pkg.sv
+Info: system_on_chip_inst_reset_bfm: "system_on_chip_tb" instantiated altera_avalon_reset_source "system_on_chip_inst_reset_bfm"
+Info: Reusing file C:/GitHubClone/Proyecto2-Empotrados/SystemOnChip/system_on_chip2/testbench/system_on_chip_tb/simulation/submodules/verbosity_pkg.sv
+Info: system_on_chip_inst_timer_irq_bfm: "system_on_chip_tb" instantiated altera_avalon_interrupt_sink "system_on_chip_inst_timer_irq_bfm"
+Info: Reusing file C:/GitHubClone/Proyecto2-Empotrados/SystemOnChip/system_on_chip2/testbench/system_on_chip_tb/simulation/submodules/verbosity_pkg.sv
+Info: irq_mapper: "system_on_chip_tb" instantiated altera_irq_mapper "irq_mapper"
+Info: NIOS: "system_on_chip_inst" instantiated altera_nios2_gen2 "NIOS"
+Info: RAM: Starting RTL generation for module 'system_on_chip_RAM'
+Info: RAM:   Generation command is [exec D:/quartus18/quartus/bin64/perl/bin/perl.exe -I D:/quartus18/quartus/bin64/perl/lib -I D:/quartus18/quartus/sopc_builder/bin/europa -I D:/quartus18/quartus/sopc_builder/bin/perl_lib -I D:/quartus18/quartus/sopc_builder/bin -I D:/quartus18/quartus/../ip/altera/sopc_builder_ip/common -I D:/quartus18/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2 -- D:/quartus18/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2/generate_rtl.pl --name=system_on_chip_RAM --dir=C:/Users/esteb/AppData/Local/Temp/alt0417_202141832280749636.dir/0009_RAM_gen/ --quartus_dir=D:/quartus18/quartus --verilog --config=C:/Users/esteb/AppData/Local/Temp/alt0417_202141832280749636.dir/0009_RAM_gen//system_on_chip_RAM_component_configuration.pl  --do_build_sim=1    --sim_dir=C:/Users/esteb/AppData/Local/Temp/alt0417_202141832280749636.dir/0009_RAM_gen/  ]
+Info: RAM: Done RTL generation for module 'system_on_chip_RAM'
+Info: RAM: "system_on_chip_inst" instantiated altera_avalon_onchip_memory2 "RAM"
+Info: REG_7_SEGMENTS: Starting RTL generation for module 'system_on_chip_REG_7_SEGMENTS'
+Info: REG_7_SEGMENTS:   Generation command is [exec D:/quartus18/quartus/bin64/perl/bin/perl.exe -I D:/quartus18/quartus/bin64/perl/lib -I D:/quartus18/quartus/sopc_builder/bin/europa -I D:/quartus18/quartus/sopc_builder/bin/perl_lib -I D:/quartus18/quartus/sopc_builder/bin -I D:/quartus18/quartus/../ip/altera/sopc_builder_ip/common -I D:/quartus18/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- D:/quartus18/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=system_on_chip_REG_7_SEGMENTS --dir=C:/Users/esteb/AppData/Local/Temp/alt0417_202141832280749636.dir/0010_REG_7_SEGMENTS_gen/ --quartus_dir=D:/quartus18/quartus --verilog --config=C:/Users/esteb/AppData/Local/Temp/alt0417_202141832280749636.dir/0010_REG_7_SEGMENTS_gen//system_on_chip_REG_7_SEGMENTS_component_configuration.pl  --do_build_sim=1    --sim_dir=C:/Users/esteb/AppData/Local/Temp/alt0417_202141832280749636.dir/0010_REG_7_SEGMENTS_gen/  ]
+Info: REG_7_SEGMENTS: Done RTL generation for module 'system_on_chip_REG_7_SEGMENTS'
+Info: REG_7_SEGMENTS: "system_on_chip_inst" instantiated altera_avalon_pio "REG_7_SEGMENTS"
+Info: REG_BUTTONS: Starting RTL generation for module 'system_on_chip_REG_BUTTONS'
+Info: REG_BUTTONS:   Generation command is [exec D:/quartus18/quartus/bin64/perl/bin/perl.exe -I D:/quartus18/quartus/bin64/perl/lib -I D:/quartus18/quartus/sopc_builder/bin/europa -I D:/quartus18/quartus/sopc_builder/bin/perl_lib -I D:/quartus18/quartus/sopc_builder/bin -I D:/quartus18/quartus/../ip/altera/sopc_builder_ip/common -I D:/quartus18/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- D:/quartus18/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=system_on_chip_REG_BUTTONS --dir=C:/Users/esteb/AppData/Local/Temp/alt0417_202141832280749636.dir/0011_REG_BUTTONS_gen/ --quartus_dir=D:/quartus18/quartus --verilog --config=C:/Users/esteb/AppData/Local/Temp/alt0417_202141832280749636.dir/0011_REG_BUTTONS_gen//system_on_chip_REG_BUTTONS_component_configuration.pl  --do_build_sim=1    --sim_dir=C:/Users/esteb/AppData/Local/Temp/alt0417_202141832280749636.dir/0011_REG_BUTTONS_gen/  ]
+Info: REG_BUTTONS: Done RTL generation for module 'system_on_chip_REG_BUTTONS'
+Info: REG_BUTTONS: "system_on_chip_inst" instantiated altera_avalon_pio "REG_BUTTONS"
+Info: REG_SWITCHES: Starting RTL generation for module 'system_on_chip_REG_SWITCHES'
+Info: REG_SWITCHES:   Generation command is [exec D:/quartus18/quartus/bin64/perl/bin/perl.exe -I D:/quartus18/quartus/bin64/perl/lib -I D:/quartus18/quartus/sopc_builder/bin/europa -I D:/quartus18/quartus/sopc_builder/bin/perl_lib -I D:/quartus18/quartus/sopc_builder/bin -I D:/quartus18/quartus/../ip/altera/sopc_builder_ip/common -I D:/quartus18/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- D:/quartus18/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=system_on_chip_REG_SWITCHES --dir=C:/Users/esteb/AppData/Local/Temp/alt0417_202141832280749636.dir/0012_REG_SWITCHES_gen/ --quartus_dir=D:/quartus18/quartus --verilog --config=C:/Users/esteb/AppData/Local/Temp/alt0417_202141832280749636.dir/0012_REG_SWITCHES_gen//system_on_chip_REG_SWITCHES_component_configuration.pl  --do_build_sim=1    --sim_dir=C:/Users/esteb/AppData/Local/Temp/alt0417_202141832280749636.dir/0012_REG_SWITCHES_gen/  ]
+Info: REG_SWITCHES: Done RTL generation for module 'system_on_chip_REG_SWITCHES'
+Info: REG_SWITCHES: "system_on_chip_inst" instantiated altera_avalon_pio "REG_SWITCHES"
+Info: TIMER: Starting RTL generation for module 'system_on_chip_TIMER'
+Info: TIMER:   Generation command is [exec D:/quartus18/quartus/bin64//perl/bin/perl.exe -I D:/quartus18/quartus/bin64//perl/lib -I D:/quartus18/quartus/sopc_builder/bin/europa -I D:/quartus18/quartus/sopc_builder/bin/perl_lib -I D:/quartus18/quartus/sopc_builder/bin -I D:/quartus18/quartus/../ip/altera/sopc_builder_ip/common -I D:/quartus18/quartus/../ip/altera/sopc_builder_ip/altera_avalon_timer -- D:/quartus18/quartus/../ip/altera/sopc_builder_ip/altera_avalon_timer/generate_rtl.pl --name=system_on_chip_TIMER --dir=C:/Users/esteb/AppData/Local/Temp/alt0417_202141832280749636.dir/0013_TIMER_gen/ --quartus_dir=D:/quartus18/quartus --verilog --config=C:/Users/esteb/AppData/Local/Temp/alt0417_202141832280749636.dir/0013_TIMER_gen//system_on_chip_TIMER_component_configuration.pl  --do_build_sim=1    --sim_dir=C:/Users/esteb/AppData/Local/Temp/alt0417_202141832280749636.dir/0013_TIMER_gen/  ]
+Info: TIMER: Done RTL generation for module 'system_on_chip_TIMER'
+Info: TIMER: "system_on_chip_inst" instantiated altera_avalon_timer "TIMER"
+Info: UART: Starting RTL generation for module 'system_on_chip_UART'
+Info: UART:   Generation command is [exec D:/quartus18/quartus/bin64/perl/bin/perl.exe -I D:/quartus18/quartus/bin64/perl/lib -I D:/quartus18/quartus/sopc_builder/bin/europa -I D:/quartus18/quartus/sopc_builder/bin/perl_lib -I D:/quartus18/quartus/sopc_builder/bin -I D:/quartus18/quartus/../ip/altera/sopc_builder_ip/common -I D:/quartus18/quartus/../ip/altera/sopc_builder_ip/altera_avalon_jtag_uart -- D:/quartus18/quartus/../ip/altera/sopc_builder_ip/altera_avalon_jtag_uart/generate_rtl.pl --name=system_on_chip_UART --dir=C:/Users/esteb/AppData/Local/Temp/alt0417_202141832280749636.dir/0014_UART_gen/ --quartus_dir=D:/quartus18/quartus --verilog --config=C:/Users/esteb/AppData/Local/Temp/alt0417_202141832280749636.dir/0014_UART_gen//system_on_chip_UART_component_configuration.pl  --do_build_sim=1    --sim_dir=C:/Users/esteb/AppData/Local/Temp/alt0417_202141832280749636.dir/0014_UART_gen/  ]
+Info: UART: Done RTL generation for module 'system_on_chip_UART'
+Info: UART: "system_on_chip_inst" instantiated altera_avalon_jtag_uart "UART"
+Info: avalon_st_adapter: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_001: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_002: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_003: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_004: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_005: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_006: Inserting error_adapter: error_adapter_0
+Info: mm_interconnect_0: "system_on_chip_inst" instantiated altera_mm_interconnect "mm_interconnect_0"
+Info: irq_mapper: "system_on_chip_inst" instantiated altera_irq_mapper "irq_mapper"
+Info: rst_controller: "system_on_chip_inst" instantiated altera_reset_controller "rst_controller"
+Info: cpu: Starting RTL generation for module 'system_on_chip_NIOS_cpu'
+Info: cpu:   Generation command is [exec D:/quartus18/quartus/bin64//eperlcmd.exe -I D:/quartus18/quartus/bin64//perl/lib -I D:/quartus18/quartus/sopc_builder/bin/europa -I D:/quartus18/quartus/sopc_builder/bin/perl_lib -I D:/quartus18/quartus/sopc_builder/bin -I D:/quartus18/quartus/../ip/altera/nios2_ip/altera_nios2_gen2/cpu_lib -I D:/quartus18/quartus/../ip/altera/nios2_ip/altera_nios2_gen2/nios_lib -I D:/quartus18/quartus/../ip/altera/nios2_ip/altera_nios2_gen2 -I D:/quartus18/quartus/../ip/altera/nios2_ip/altera_nios2_gen2 -- D:/quartus18/quartus/../ip/altera/nios2_ip/altera_nios2_gen2/generate_rtl.epl --name=system_on_chip_NIOS_cpu --dir=C:/Users/esteb/AppData/Local/Temp/alt0417_202141832280749636.dir/0017_cpu_gen/ --quartus_bindir=D:/quartus18/quartus/bin64/ --verilog --config=C:/Users/esteb/AppData/Local/Temp/alt0417_202141832280749636.dir/0017_cpu_gen//system_on_chip_NIOS_cpu_processor_configuration.pl  --do_build_sim=1    --sim_dir=C:/Users/esteb/AppData/Local/Temp/alt0417_202141832280749636.dir/0017_cpu_gen/  ]
+Info: cpu: # 2025.11.24 20:30:11 (*) Starting Nios II generation
+Info: cpu: # 2025.11.24 20:30:11 (*)   Checking for plaintext license.
+Info: cpu: # 2025.11.24 20:30:12 (*)   Couldn't query license setup in Quartus directory D:/quartus18/quartus/bin64/
+Info: cpu: # 2025.11.24 20:30:12 (*)   Defaulting to contents of LM_LICENSE_FILE environment variable
+Info: cpu: # 2025.11.24 20:30:12 (*)   LM_LICENSE_FILE environment variable is empty
+Info: cpu: # 2025.11.24 20:30:12 (*)   Plaintext license not found.
+Info: cpu: # 2025.11.24 20:30:12 (*)   No license required to generate encrypted Nios II/e.
+Info: cpu: # 2025.11.24 20:30:12 (*)   Elaborating CPU configuration settings
+Info: cpu: # 2025.11.24 20:30:12 (*)   Creating all objects for CPU
+Info: cpu: # 2025.11.24 20:30:14 (*)   Creating 'C:/Users/esteb/AppData/Local/Temp/alt0417_202141832280749636.dir/0017_cpu_gen//system_on_chip_NIOS_cpu_nios2_waves.do'
+Info: cpu: # 2025.11.24 20:30:14 (*)   Generating RTL from CPU objects
+Info: cpu: # 2025.11.24 20:30:14 (*)   Creating plain-text RTL
+Info: cpu: # 2025.11.24 20:30:15 (*) Done Nios II generation
+Info: cpu: Done RTL generation for module 'system_on_chip_NIOS_cpu'
+Info: cpu: "NIOS" instantiated altera_nios2_gen2_unit "cpu"
+Info: NIOS_data_master_translator: "mm_interconnect_0" instantiated altera_merlin_master_translator "NIOS_data_master_translator"
+Info: UART_avalon_jtag_slave_translator: "mm_interconnect_0" instantiated altera_merlin_slave_translator "UART_avalon_jtag_slave_translator"
+Info: NIOS_data_master_agent: "mm_interconnect_0" instantiated altera_merlin_master_agent "NIOS_data_master_agent"
+Info: UART_avalon_jtag_slave_agent: "mm_interconnect_0" instantiated altera_merlin_slave_agent "UART_avalon_jtag_slave_agent"
+Info: UART_avalon_jtag_slave_agent_rsp_fifo: "mm_interconnect_0" instantiated altera_avalon_sc_fifo "UART_avalon_jtag_slave_agent_rsp_fifo"
+Info: router: "mm_interconnect_0" instantiated altera_merlin_router "router"
+Info: router_001: "mm_interconnect_0" instantiated altera_merlin_router "router_001"
+Info: router_002: "mm_interconnect_0" instantiated altera_merlin_router "router_002"
+Info: router_003: "mm_interconnect_0" instantiated altera_merlin_router "router_003"
+Info: cmd_demux: "mm_interconnect_0" instantiated altera_merlin_demultiplexer "cmd_demux"
+Info: cmd_demux_001: "mm_interconnect_0" instantiated altera_merlin_demultiplexer "cmd_demux_001"
+Info: cmd_mux: "mm_interconnect_0" instantiated altera_merlin_multiplexer "cmd_mux"
+Info: cmd_mux_001: "mm_interconnect_0" instantiated altera_merlin_multiplexer "cmd_mux_001"
+Info: Reusing file C:/GitHubClone/Proyecto2-Empotrados/SystemOnChip/system_on_chip2/testbench/system_on_chip_tb/simulation/submodules/altera_merlin_arbitrator.sv
+Info: rsp_demux: "mm_interconnect_0" instantiated altera_merlin_demultiplexer "rsp_demux"
+Info: rsp_mux: "mm_interconnect_0" instantiated altera_merlin_multiplexer "rsp_mux"
+Info: Reusing file C:/GitHubClone/Proyecto2-Empotrados/SystemOnChip/system_on_chip2/testbench/system_on_chip_tb/simulation/submodules/altera_merlin_arbitrator.sv
+Info: rsp_mux_001: "mm_interconnect_0" instantiated altera_merlin_multiplexer "rsp_mux_001"
+Info: Reusing file C:/GitHubClone/Proyecto2-Empotrados/SystemOnChip/system_on_chip2/testbench/system_on_chip_tb/simulation/submodules/altera_merlin_arbitrator.sv
+Info: avalon_st_adapter: "mm_interconnect_0" instantiated altera_avalon_st_adapter "avalon_st_adapter"
+Info: error_adapter_0: "avalon_st_adapter" instantiated error_adapter "error_adapter_0"
+Info: system_on_chip_tb: Done "system_on_chip_tb" with 38 modules, 59 files
+Info: qsys-generate succeeded.
+Info: sim-script-gen --spd=C:\GitHubClone\Proyecto2-Empotrados\SystemOnChip\system_on_chip_tb.spd --output-directory=C:/GitHubClone/Proyecto2-Empotrados/SystemOnChip/system_on_chip2/testbench/ --use-relative-paths=true
+Info: Doing: ip-make-simscript --spd=C:\GitHubClone\Proyecto2-Empotrados\SystemOnChip\system_on_chip_tb.spd --output-directory=C:/GitHubClone/Proyecto2-Empotrados/SystemOnChip/system_on_chip2/testbench/ --use-relative-paths=true
+Info: Generating the following file(s) for MODELSIM simulator in C:/GitHubClone/Proyecto2-Empotrados/SystemOnChip/system_on_chip2/testbench/ directory:
+Info: 	mentor/msim_setup.tcl
+Info: Generating the following file(s) for VCS simulator in C:/GitHubClone/Proyecto2-Empotrados/SystemOnChip/system_on_chip2/testbench/ directory:
+Info: 	synopsys/vcs/vcs_setup.sh
+Info: Generating the following file(s) for VCSMX simulator in C:/GitHubClone/Proyecto2-Empotrados/SystemOnChip/system_on_chip2/testbench/ directory:
+Info: 	synopsys/vcsmx/synopsys_sim.setup
+Info: 	synopsys/vcsmx/vcsmx_setup.sh
+Info: Generating the following file(s) for NCSIM simulator in C:/GitHubClone/Proyecto2-Empotrados/SystemOnChip/system_on_chip2/testbench/ directory:
+Info: 	cadence/cds.lib
+Info: 	cadence/hdl.var
+Info: 	cadence/ncsim_setup.sh
+Info: 	37 .cds.lib files in cadence/cds_libs/ directory
+Info: Generating the following file(s) for RIVIERA simulator in C:/GitHubClone/Proyecto2-Empotrados/SystemOnChip/system_on_chip2/testbench/ directory:
+Info: 	aldec/rivierapro_setup.tcl
+Info: For information on how to simulate your IP, see the explanatory comments in the simulator-specific subdirectories under C:/GitHubClone/Proyecto2-Empotrados/SystemOnChip/system_on_chip2/testbench/.
+Info: Regenerate these scripts whenever you make any change to any Quartus-generated IP in your project.
+Info: Finished: Create testbench Platform Designer system
