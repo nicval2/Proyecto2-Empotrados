@@ -4,7 +4,7 @@
  * Machine generated for CPU 'NIOS' in SOPC Builder design 'system_on_chip'
  * SOPC Builder design path: ../../system_on_chip.sopcinfo
  *
- * Generated: Sat Nov 15 15:54:02 CST 2025
+ * Generated: Wed Nov 26 20:27:13 CST 2025
  */
 
 /*
@@ -59,6 +59,7 @@
  */
 
 #include "altera_nios2_gen2_irq.h"
+#include "altera_avalon_fifo.h"
 #include "altera_avalon_jtag_uart.h"
 #include "altera_avalon_timer.h"
 
@@ -67,6 +68,7 @@
  */
 
 ALTERA_NIOS2_GEN2_IRQ_INSTANCE ( NIOS, NIOS);
+ALTERA_AVALON_FIFO_INSTANCE ( FIFO, FIFO);
 ALTERA_AVALON_JTAG_UART_INSTANCE ( UART, UART);
 ALTERA_AVALON_TIMER_INSTANCE ( TIMER, TIMER);
 
@@ -92,5 +94,6 @@ void alt_irq_init ( const void* base )
 void alt_sys_init( void )
 {
     ALTERA_AVALON_TIMER_INIT ( TIMER, TIMER);
+    ALTERA_AVALON_FIFO_INIT ( FIFO, FIFO);
     ALTERA_AVALON_JTAG_UART_INIT ( UART, UART);
 }

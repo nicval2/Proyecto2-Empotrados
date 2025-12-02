@@ -3,7 +3,7 @@
 # Machine generated for CPU 'NIOS' in SOPC Builder design 'system_on_chip'
 # SOPC Builder design path: ../../system_on_chip.sopcinfo
 #
-# Generated: Sat Nov 15 15:54:02 CST 2025
+# Generated: Wed Nov 26 20:27:13 CST 2025
 
 # DO NOT MODIFY THIS FILE
 #
