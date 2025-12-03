@@ -1,5 +1,4 @@
 	system_on_chip u0 (
-<<<<<<< HEAD
 		.audio_BCLK           (<connected-to-audio_BCLK>),           //          audio.BCLK
 		.audio_DACDAT         (<connected-to-audio_DACDAT>),         //               .DACDAT
 		.audio_DACLRCK        (<connected-to-audio_DACLRCK>),        //               .DACLRCK
@@ -35,12 +34,5 @@
 		.vga_controller_R     (<connected-to-vga_controller_R>),     //               .R
 		.vga_controller_G     (<connected-to-vga_controller_G>),     //               .G
 		.vga_controller_B     (<connected-to-vga_controller_B>)      //               .B
-=======
-		.button_export      (<connected-to-button_export>),      //      button.export
-		.clk_clk            (<connected-to-clk_clk>),            //         clk.clk
-		.id7_segment_export (<connected-to-id7_segment_export>), // id7_segment.export
-		.reset_reset_n      (<connected-to-reset_reset_n>),      //       reset.reset_n
-		.switches_export    (<connected-to-switches_export>)     //    switches.export
->>>>>>> origin/Develop
 	);
 

@@ -39,9 +39,9 @@ module system_on_chip_RAM (
   parameter INIT_FILE = "system_on_chip_RAM.hex";
 
 
-  output  [ 31: 0] readdata;
+  output  [ 15: 0] readdata;
   input   [ 12: 0] address;
-  input   [  3: 0] byteenable;
+  input   [  1: 0] byteenable;
   input            chipselect;
   input            clk;
   input            clken;
@@ -49,11 +49,11 @@ module system_on_chip_RAM (
   input            reset;
   input            reset_req;
   input            write;
-  input   [ 31: 0] writedata;
+  input   [ 15: 0] writedata;
 
 
 wire             clocken0;
-wire    [ 31: 0] readdata;
+wire    [ 15: 0] readdata;
 wire             wren;
   assign wren = chipselect & write;
   assign clocken0 = clken & ~reset_req;
@@ -78,8 +78,8 @@ wire             wren;
            the_altsyncram.ram_block_type = "AUTO",
            the_altsyncram.read_during_write_mode_mixed_ports = "DONT_CARE",
            the_altsyncram.read_during_write_mode_port_a = "DONT_CARE",
-           the_altsyncram.width_a = 32,
-           the_altsyncram.width_byteena_a = 4,
+           the_altsyncram.width_a = 16,
+           the_altsyncram.width_byteena_a = 2,
            the_altsyncram.widthad_a = 13;
 
   //s1, which is an e_avalon_slave

@@ -12,7 +12,7 @@
 # or its authorized distributors. Please refer to the applicable 
 # agreement for further details.
 
-# ACDS 18.0 614 win32 2025.11.27.12:16:22
+# ACDS 18.0 614 win32 2025.11.15.15:45:24
 
 # ----------------------------------------
 # vcs - auto-generated simulation script
@@ -94,12 +94,12 @@
 # within the Quartus project, and generate a unified
 # script which supports all the Altera IP within the design.
 # ----------------------------------------
-# ACDS 18.0 614 win32 2025.11.27.12:16:22
+# ACDS 18.0 614 win32 2025.11.15.15:45:24
 # ----------------------------------------
 # initialize variables
 TOP_LEVEL_NAME="system_on_chip_tb"
 QSYS_SIMDIR="./../../"
-QUARTUS_INSTALL_DIR="D:/quartus18/quartus/"
+QUARTUS_INSTALL_DIR="C:/intelfpga_lite/18.0/quartus/"
 SKIP_FILE_COPY=0
 SKIP_SIM=0
 USER_DEFINED_ELAB_OPTIONS=""
@@ -181,26 +181,20 @@ vcs -lca -timescale=1ps/1ps -sverilog +verilog2001ext+.v -ntb_opts dtm $ELAB_OPT
   $QSYS_SIMDIR/system_on_chip_tb/simulation/submodules/system_on_chip_NIOS_cpu_debug_slave_tck.v \
   $QSYS_SIMDIR/system_on_chip_tb/simulation/submodules/system_on_chip_NIOS_cpu_debug_slave_wrapper.v \
   $QSYS_SIMDIR/system_on_chip_tb/simulation/submodules/system_on_chip_NIOS_cpu_test_bench.v \
-  $QSYS_SIMDIR/system_on_chip_tb/simulation/submodules/altera_up_avalon_reset_from_locked_signal.v \
-  $QSYS_SIMDIR/system_on_chip_tb/simulation/submodules/system_on_chip_Audio_PLL_audio_pll.vo \
   $QSYS_SIMDIR/system_on_chip_tb/simulation/submodules/altera_reset_controller.v \
   $QSYS_SIMDIR/system_on_chip_tb/simulation/submodules/altera_reset_synchronizer.v \
   $QSYS_SIMDIR/system_on_chip_tb/simulation/submodules/system_on_chip_irq_mapper.sv \
   $QSYS_SIMDIR/system_on_chip_tb/simulation/submodules/system_on_chip_mm_interconnect_0.v \
   $QSYS_SIMDIR/system_on_chip_tb/simulation/submodules/system_on_chip_UART.v \
   $QSYS_SIMDIR/system_on_chip_tb/simulation/submodules/system_on_chip_TIMER.v \
-  $QSYS_SIMDIR/system_on_chip_tb/simulation/submodules/system_on_chip_REG_SWITCHES.v \
-  $QSYS_SIMDIR/system_on_chip_tb/simulation/submodules/system_on_chip_REG_BUTTONS.v \
-  $QSYS_SIMDIR/system_on_chip_tb/simulation/submodules/system_on_chip_REG_7_SEGMENTS.v \
+  $QSYS_SIMDIR/system_on_chip_tb/simulation/submodules/system_on_chip_REG_LEDS.v \
+  $QSYS_SIMDIR/system_on_chip_tb/simulation/submodules/system_on_chip_REG_BUTTON.v \
   $QSYS_SIMDIR/system_on_chip_tb/simulation/submodules/system_on_chip_RAM.v \
   $QSYS_SIMDIR/system_on_chip_tb/simulation/submodules/system_on_chip_NIOS.v \
-  $QSYS_SIMDIR/system_on_chip_tb/simulation/submodules/system_on_chip_FIFO.v \
-  $QSYS_SIMDIR/system_on_chip_tb/simulation/submodules/system_on_chip_Audio_PLL.v \
-  $QSYS_SIMDIR/system_on_chip_tb/simulation/submodules/altera_conduit_bfm_0003.sv \
+  $QSYS_SIMDIR/system_on_chip_tb/simulation/submodules/altera_irq_mapper.sv \
+  $QSYS_SIMDIR/system_on_chip_tb/simulation/submodules/altera_avalon_interrupt_sink.sv \
   $QSYS_SIMDIR/system_on_chip_tb/simulation/submodules/altera_avalon_reset_source.sv \
-  $QSYS_SIMDIR/system_on_chip_tb/simulation/submodules/altera_conduit_bfm_0002.sv \
   $QSYS_SIMDIR/system_on_chip_tb/simulation/submodules/altera_avalon_clock_source.sv \
-  $QSYS_SIMDIR/system_on_chip_tb/simulation/submodules/altera_conduit_bfm.sv \
   $QSYS_SIMDIR/system_on_chip_tb/simulation/submodules/system_on_chip.v \
   $QSYS_SIMDIR/system_on_chip_tb/simulation/system_on_chip_tb.v \
   -top $TOP_LEVEL_NAME

@@ -1,0 +1,998 @@
+// 7_segments.c
+#include "7_segments.h"
+
+static int seg7_table[10] = {
+    0x40, 0x79, 0x24, 0x30, 0x19,
+    0x12, 0x02, 0x78, 0x00, 0x10
+};
+
+void display_time_4seg(volatile int *hex_ptr, int minutes, int seconds)
+{
+    int m1 = (minutes / 10) % 10;
+    int m0 = minutes % 10;
+    int s1 = (seconds / 10) % 10;
+    int s0 = seconds % 10;
+
+    int hex3 = seg7_table[m1];
+    int hex2 = seg7_table[m0];
+    int hex1 = seg7_table[s1];
+    int hex0 = seg7_table[s0];
+
+    *hex_ptr = (hex3 << 24) | (hex2 << 16) | (hex1 << 8) | hex0;
+}
+
+
+
+// 7_segments.h
+#ifndef SEGMENT7_H
+#define SEGMENT7_H
+
+#include <stdint.h>
+
+void display_time_4seg(volatile int *hex_ptr, int minutes, int seconds);
+
+#endif
+
+
+
+// audio.c
+#include <stdio.h>
+#include <unistd.h>
+#include <string.h>
+#include "system.h"
+#include "io.h"
+#include "audio.h"
+#include "filter.h"  // Necesario para aplicar el filtro dentro de process_sample
+
+/* --- DIRECCIONES DE HARDWARE (Privadas de este archivo) --- */
+#define FIFO_OUT_BASE     0x8870
+#define FIFO_OUT_CSR_BASE 0x8880
+#define AUDIO_BASE        0x8920
+
+#define AUDIO_CONTROL     0x00
+#define AUDIO_FIFOSPACE   0x04
+#define AUDIO_LEFT_DATA   0x08
+#define AUDIO_RIGHT_DATA  0x0C
+
+#define FIFO_EMPTY (1 << 0)
+#define METADATA_MAGIC 0xDEADDA7A
+
+/* --- Variables Globales --- */
+char artist_str[64];
+char album_str[64];
+char title_str[64];
+int volume_shift = 0; // 0 = Max vol, 2 = Bajo
+
+/* --- Funciones Privadas (Helpers) --- */
+
+// Funci�n interna para leer strings de la FIFO
+static void receive_string_helper(char *buffer, int max_len) {
+    alt_u32 len;
+    // 1. Leer longitud
+    while(IORD_32DIRECT(FIFO_OUT_CSR_BASE, 0) & FIFO_EMPTY);
+    len = IORD_32DIRECT(FIFO_OUT_BASE, 0);
+
+    if(len >= max_len) len = max_len - 1;
+
+    // 2. Leer caracteres
+    for(int i = 0; i < len; i++) {
+        while(IORD_32DIRECT(FIFO_OUT_CSR_BASE, 0) & FIFO_EMPTY);
+        buffer[i] = (char)IORD_32DIRECT(FIFO_OUT_BASE, 0);
+    }
+    buffer[len] = '\0';
+}
+
+/* --- Funciones P�blicas --- */
+
+void audio_init(void) {
+    IOWR_32DIRECT(AUDIO_BASE, AUDIO_CONTROL, 0x0C); // Reset FIFOs
+    usleep(1000);
+    IOWR_32DIRECT(AUDIO_BASE, AUDIO_CONTROL, 0x00);
+}
+
+void audio_wait_handshake(void) {
+    alt_u32 data, status;
+    printf("Esperando HPS (Magic Token)...\n");
+    while(1) {
+        status = IORD_32DIRECT(FIFO_OUT_CSR_BASE, 0);
+        if(!(status & FIFO_EMPTY)) {
+            data = IORD_32DIRECT(FIFO_OUT_BASE, 0);
+            if(data == METADATA_MAGIC) {
+                printf("Sincronizado!\n");
+                break;
+            }
+        }
+    }
+}
+
+alt_u32 audio_receive_metadata(void) {
+    alt_u32 sample_rate, num_channels, bits_per_sample;
+
+    // Recibir Configuraci�n Num�rica
+    while(IORD_32DIRECT(FIFO_OUT_CSR_BASE, 0) & FIFO_EMPTY);
+    sample_rate = IORD_32DIRECT(FIFO_OUT_BASE, 0);
+
+    while(IORD_32DIRECT(FIFO_OUT_CSR_BASE, 0) & FIFO_EMPTY);
+    num_channels = IORD_32DIRECT(FIFO_OUT_BASE, 0);
+
+    while(IORD_32DIRECT(FIFO_OUT_CSR_BASE, 0) & FIFO_EMPTY);
+    bits_per_sample = IORD_32DIRECT(FIFO_OUT_BASE, 0);
+
+    // Recibir Metadata de Texto (Usa la funci�n helper)
+    receive_string_helper(artist_str, 64);
+    receive_string_helper(album_str, 64);
+    receive_string_helper(title_str, 64);
+
+    return sample_rate;
+}
+
+int audio_fifo_has_data(void) {
+    alt_u32 status = IORD_32DIRECT(FIFO_OUT_CSR_BASE, 0);
+    return !(status & FIFO_EMPTY);
+}
+
+
+// Modificamos la funcion para que retorne int
+int audio_process_sample(void) {
+    // 1. Leer dato de la FIFO
+    alt_u32 raw_data = IORD_32DIRECT(FIFO_OUT_BASE, 0);
+
+    // --- CHEQUEO DE FIN DE CANCION ---
+    if (raw_data == AUDIO_EOS_TOKEN) {
+        return 0; // Indicamos al main que la canci�n termin�
+    }
+
+    // 2. Convertir a 16 bits con signo
+    alt_16 sample_16 = (alt_16)(raw_data & 0xFFFF);
+
+    // 3. APLICAR FILTRO
+    alt_16 filtered_16 = filter_process(sample_16);
+
+    // 4. Extender a 32 bits y alinear
+    alt_32 sample_32 = ((alt_32)filtered_16) << 16;
+
+    // 5. APLICAR VOLUMEN
+    sample_32 = sample_32 >> volume_shift;
+
+    // 6. Esperar espacio en Hardware de Audio
+    alt_u32 fifospace;
+    do {
+        fifospace = IORD_32DIRECT(AUDIO_BASE, AUDIO_FIFOSPACE);
+    } while(((fifospace >> 24) & 0xFF) == 0 || ((fifospace >> 16) & 0xFF) == 0);
+
+    // 7. Escribir
+    IOWR_32DIRECT(AUDIO_BASE, AUDIO_LEFT_DATA, sample_32);
+    IOWR_32DIRECT(AUDIO_BASE, AUDIO_RIGHT_DATA, sample_32);
+
+    return 1; // �xito, seguimos tocando
+}
+
+
+
+// audio.h
+#ifndef AUDIO_H
+#define AUDIO_H
+#define AUDIO_EOS_TOKEN 0xFFFFFFFF  // Definimos el token aqui tambien
+#include "alt_types.h"
+
+/* --- Variables Globales (para leer desde main) --- */
+extern char artist_str[64];
+extern char album_str[64];
+extern char title_str[64];
+
+/* Variable de control de volumen (modificable desde main/switches) */
+extern int volume_shift;
+
+/* --- Prototipos de Funciones --- */
+
+// Inicializa el hardware de audio y limpia FIFOs
+void audio_init(void);
+
+// Bloquea la ejecuci�n hasta recibir el "Magic Token" del HPS
+void audio_wait_handshake(void);
+
+// Lee la configuraci�n (Rate, Channels, Bits) y los Strings de metadata
+// Devuelve el sample_rate para que el main pueda contar el tiempo
+alt_u32 audio_receive_metadata(void);
+
+// Revisa si hay datos en la FIFO de entrada (HPS -> FPGA)
+// Retorna 1 si hay datos, 0 si est� vac�a
+int audio_fifo_has_data(void);
+
+// Lee un dato de la FIFO, aplica Filtro, aplica Volumen y lo env�a al Audio Core
+// Retorna el dato crudo procesado (�til si quisieras visualizarlo)
+int audio_process_sample(void);
+
+
+#endif
+
+
+
+// buttons.c
+#include "buttons.h"
+#include "system.h"
+#include "altera_avalon_pio_regs.h"
+#include "sys/alt_irq.h"
+#include <stddef.h>
+
+/* M�scaras (Aseg�rate que coincidan con tus conexiones f�sicas) */
+#define BUTTON_PLAY_MASK  0x8  // KEY3
+#define BUTTON_NEXT_MASK  0x4  // KEY2
+#define BUTTON_PREV_MASK  0x2  // KEY1
+
+/* Variables globales */
+volatile int is_running = 1;
+volatile int reset_request = 0;
+
+/* ISR: Mantenla lo m�s corta posible */
+void buttons_isr(void* context)
+{
+    // 1. Leer y limpiar el registro de captura de bordes
+    volatile int edge = IORD_ALTERA_AVALON_PIO_EDGE_CAP(REG_BUTTONS_BASE);
+    IOWR_ALTERA_AVALON_PIO_EDGE_CAP(REG_BUTTONS_BASE, edge);
+
+    // 2. L�gica r�pida sin printf
+    if (edge & BUTTON_PLAY_MASK)
+    {
+        is_running ^= 1;   // Toggle 1/0
+    }
+    else if (edge & BUTTON_NEXT_MASK)
+    {
+        reset_request = 1;
+        is_running = 1;    // Asegurar que arranque al cambiar canci�n
+    }
+    else if (edge & BUTTON_PREV_MASK)
+    {
+        reset_request = 1;
+        is_running = 1;
+    }
+}
+
+void buttons_init(void)
+{
+    /* Limpiar flags previos */
+    IOWR_ALTERA_AVALON_PIO_EDGE_CAP(REG_BUTTONS_BASE, 0);
+
+    /* Registrar ISR */
+    alt_ic_isr_register(
+        REG_BUTTONS_IRQ_INTERRUPT_CONTROLLER_ID,
+        REG_BUTTONS_IRQ,
+        buttons_isr,
+        NULL,
+        0
+    );
+
+    /* Habilitar interrupciones para los 3 botones (Mask 0xE = 1110 binario) */
+    IOWR_ALTERA_AVALON_PIO_IRQ_MASK(REG_BUTTONS_BASE, 0x0E);
+}
+
+
+
+// buttons.h
+#ifndef BUTTONS_H
+#define BUTTONS_H
+
+#include <stdint.h>
+
+/* Variables globales expuestas al main */
+extern volatile int is_running;
+extern volatile int reset_request;
+
+void buttons_init(void);
+// La ISR no necesita ser p�blica, pero no hace da�o dejarla aqu�
+void buttons_isr(void* context);
+
+#endif
+
+
+
+// filter.c
+#include "filter.h"
+
+/*
+ * Implementaci�n de filtros IIR primero orden (muy r�pidos)
+ *
+ * y[n] = a*y[n-1] + b*x[n]
+ *
+ * LOW PASS  (LPF): deja pasar bajas frecuencias
+ * HIGH PASS (HPF): deja pasar altas frecuencias
+ *
+ * Las constantes est�n escaladas en Q15 (fijo entero)
+ * para trabajar eficientemente en NIOS II.
+ */
+
+static filter_type_t current_filter = FILTER_NONE;
+
+/* Estado interno */
+static int32_t y_prev = 0;
+
+/* Constantes Q15 */
+#define Q15(x) ((int32_t)((x) * 32768.0f))
+
+/* Coeficientes del LPF (frecuencia de corte ~2kHz si fs = 48kHz) */
+static const int32_t LPF_A = Q15(0.85f);
+static const int32_t LPF_B = Q15(0.15f);
+
+/* Coeficientes del HPF */
+static const int32_t HPF_A = Q15(-0.85f);
+static const int32_t HPF_B = Q15( 0.85f);
+
+void filter_init(void)
+{
+    current_filter = FILTER_NONE;
+    y_prev = 0;
+}
+
+void filter_set(filter_type_t type)
+{
+    current_filter = type;
+    y_prev = 0;
+}
+
+int16_t filter_process(int16_t x)
+{
+    int32_t xn = (int32_t)x;
+    int32_t yn = 0;
+
+    switch (current_filter)
+    {
+        case FILTER_LOWPASS:
+            yn = ( (LPF_A * y_prev) >> 15 ) + ( (LPF_B * xn) >> 15 );
+            break;
+
+        case FILTER_HIGHPASS:
+            yn = ( (HPF_A * y_prev) >> 15 ) + ( (HPF_B * xn) >> 15 );
+            break;
+
+        case FILTER_NONE:
+        default:
+            return x;   // Sin filtrar
+    }
+
+    /* Saturaci�n dentro de rango de 16 bits */
+    if (yn > 32767) yn = 32767;
+    if (yn < -32768) yn = -32768;
+
+    y_prev = yn;
+    return (int16_t)yn;
+}
+
+
+
+// filter.h
+#ifndef FILTER_H
+#define FILTER_H
+
+#include <stdint.h>
+
+/* Tipos de filtros disponibles */
+typedef enum {
+    FILTER_NONE = 0,
+    FILTER_LOWPASS,
+    FILTER_HIGHPASS
+} filter_type_t;
+
+/* Inicializaci�n de filtros */
+void filter_init(void);
+
+/* Selecci�n de filtro */
+void filter_set(filter_type_t type);
+
+/* Procesamiento de una muestra */
+int16_t filter_process(int16_t x);
+
+#endif
+
+
+
+// switches.c
+#include "switches.h"
+#include "system.h"
+#include "altera_avalon_pio_regs.h"
+#include "filter.h"
+#include "audio.h" // Incluir audio para controlar volumen
+#include <stdio.h>
+
+static int last_switch = -1;
+
+void switches_poll(void)
+{
+
+}
+
+
+
+// switches.h
+#ifndef SWITCHES_H
+#define SWITCHES_H
+
+/* Procesa la lectura de switches y actualiza los filtros si hubo cambios */
+void switches_process_logic(void);
+
+#endif
+
+
+
+// timer.c
+#include "timer.h"
+#include "system.h"
+#include "altera_avalon_timer_regs.h"
+
+/*
+ * Configura: START | CONT = 0x6
+ */
+void timer_init(void)
+{
+    IOWR_ALTERA_AVALON_TIMER_CONTROL(TIMER_BASE, 0x6);
+    IOWR_ALTERA_AVALON_TIMER_STATUS(TIMER_BASE, 0);
+}
+
+int timer_tick(void)
+{
+    int st = IORD_ALTERA_AVALON_TIMER_STATUS(TIMER_BASE);
+
+    if (st & 1)
+    {
+        IOWR_ALTERA_AVALON_TIMER_STATUS(TIMER_BASE, 0);
+        return 1;
+    }
+    return 0;
+}
+
+
+
+// timer.h
+#ifndef TIMER_H
+#define TIMER_H
+
+void timer_init(void);
+int timer_tick(void);   // retorna 1 si hay timeout
+
+#endif
+
+
+
+// vga.c
+#include "vga.h"
+#include <string.h>
+#include <stdio.h>
+
+void vga_init(void)
+{
+    volatile uint32_t *ctrl = (uint32_t*)VGA_CTRL_BASE;
+
+    // Configura front buffer
+    ctrl[0] = 0;           // disable
+    ctrl[1] = VGA_BASE;    // frame buffer base
+    ctrl[0] = 1;           // enable / swap
+
+    // Debug
+    printf("CTRL0 = 0x%08X\n", (unsigned)ctrl[0]);
+    printf("CTRL1 = 0x%08X\n", (unsigned)ctrl[1]);
+
+    vga_clear();
+}
+
+void vga_clear(void)
+{
+    volatile uint16_t *vga = (volatile uint16_t *)VGA_BASE;
+
+    for (int i = 0; i < VGA_MEM_COLS * VGA_MEM_ROWS; i++)
+        vga[i] = (uint16_t)' ';
+}
+
+void vga_print(int row, int col, const char *msg)
+{
+    if (row < 0 || row >= VGA_ROWS) return;
+    if (col < 0 || col >= VGA_COLS) return;
+
+    volatile uint16_t *vga = (volatile uint16_t *)VGA_BASE;
+
+    // stride REAL de memoria = 128 columnas
+    int pos = row * VGA_MEM_COLS + col;
+
+    for (int i = 0; msg[i] != 0; i++)
+    {
+        if (col + i >= VGA_COLS)
+            break;   // no salir del �rea visible 80 columnas
+
+        vga[pos + i] = (uint16_t)msg[i];
+    }
+}
+
+void vga_print_center(const char *msg, int row)
+{
+    if (row < 0 || row >= VGA_ROWS) return;
+
+    int len = strlen(msg);
+
+    // quita espacios al final
+    while (len > 0 && msg[len - 1] == ' ')
+        len--;
+
+    if (len <= 0) return;
+
+    // centrado l�gico en las 80 columnas
+    int col = (VGA_COLS - len) / 2;
+
+    // corrige desplazamiento f�sico hacia la izquierda
+    col -= VGA_X_SHIFT_CHARS;
+
+    if (col < 0) col = 0;
+    if (col > VGA_COLS - len) col = VGA_COLS - len;
+
+    vga_print(row, col, msg);
+}
+
+void vga_clear_line(int row)
+{
+    if (row < 0 || row >= VGA_ROWS)
+        return;
+
+    volatile uint16_t *vga = (volatile uint16_t *)VGA_BASE;
+
+    int pos = row * VGA_MEM_COLS;   // stride real de 128 columnas
+
+    for (int c = 0; c < VGA_COLS; c++)   // limpiar solo 80 visibles
+        vga[pos + c] = (uint16_t)' ';
+}
+
+
+
+// vga.h
+#ifndef VGA_H
+#define VGA_H
+
+#include "system.h"
+#include <stdint.h>
+
+#define VGA_BASE      VGA_CONFIG_AVALON_CHAR_BUFFER_SLAVE_BASE
+#define VGA_CTRL_BASE VGA_CONFIG_AVALON_CHAR_CONTROL_SLAVE_BASE
+
+#define VGA_COLS       80
+#define VGA_ROWS       30
+
+#define VGA_MEM_COLS   128
+#define VGA_MEM_ROWS   32
+
+// Ajuste horizontal en caracteres (positivo = mueve todo a la IZQUIERDA)
+#define VGA_X_SHIFT_CHARS   20
+
+void vga_init(void);
+void vga_clear(void);
+void vga_print(int row, int col, const char *msg);
+void vga_print_center(const char *msg, int row);
+void vga_clear_line(int row);
+
+#endif
+
+// main.c
+#include <stdio.h>
+#include <unistd.h>
+#include <string.h>
+#include "system.h"
+#include "altera_avalon_pio_regs.h"
+#include "7_segments.h"
+#include "buttons.h"
+#include "switches.h"
+#include "timer.h"
+#include "filter.h"
+#include "audio.h"
+#include "vga.h"
+
+#define SEG7_PTR  ((volatile int*)REG_7_SEGMENTS_BASE)
+
+void update_vga_timer_display(alt_u32 total_seconds) {
+    char time_buf[16];
+    sprintf(time_buf, "%02ld:%02ld", total_seconds / 60, total_seconds % 60);
+    vga_print_center(time_buf, 15);
+}
+
+int main()
+{
+    alt_putstr("\n--- SISTEMA SOC REPRODUCTOR ---\n");
+
+    // Inicializaci�n de Hardware
+    buttons_init();
+    timer_init();
+    filter_init();
+    audio_init();
+    vga_init();
+
+    display_time_4seg(SEG7_PTR, 0, 0);
+
+    // Pantalla de Inicio
+    vga_clear();
+    vga_print_center("=== REPRODUCTOR FPGA ===", 5);
+    vga_print_center("Esperando conexion HPS...", 7);
+
+    // --- BUCLE DE LISTA DE REPRODUCCI�N (Playlist Loop) ---
+    while(1)
+    {
+        // 1. Resetear contadores visuales para nueva canci�n
+        alt_u32 sample_count = 0;
+        alt_u32 seconds_total = 0;
+        display_time_4seg(SEG7_PTR, 0, 0);
+
+        // 2. Esperar Handshake del HPS (Magic Token)
+        // Esto bloquear� hasta que el HPS empiece a enviar la siguiente canci�n
+        audio_wait_handshake();
+
+        // 3. Recibir Metadata
+        alt_u32 sample_rate = audio_receive_metadata();
+
+        printf("\n>>> REPRODUCIENDO NUEVA PISTA <<<\n");
+        printf("Titulo: %s\n", title_str);
+
+        // Actualizar GUI
+        vga_clear();
+        vga_print_center("=== NOW PLAYING ===", 2);
+        vga_print_center(title_str, 5);
+        vga_print_center(artist_str, 7);
+        vga_print_center(album_str, 9);
+        vga_print_center("TIME", 13);
+        update_vga_timer_display(0);
+
+        // Flag para el bucle de la canci�n actual
+        int song_finished = 0;
+
+        // --- BUCLE DE CANCI�N ACTUAL (Song Loop) ---
+        while (!song_finished)
+        {
+            /* A. Switches (Filtros/Volumen) */
+            int sw_val = IORD_ALTERA_AVALON_PIO_DATA(REG_SWITCHES_BASE);
+            if(sw_val & 0x01) filter_set(FILTER_LOWPASS);
+            else if(sw_val & 0x02) filter_set(FILTER_HIGHPASS);
+            else filter_set(FILTER_NONE);
+
+            if (sw_val & 0x200) volume_shift = 2;
+            else volume_shift = 0;
+
+            /* B. Botones (Reset/Next) */
+            // NOTA: Para implementar "Next" real, se requerir�a comunicaci�n Nios->HPS
+            // Por ahora, esto solo resetea los contadores visuales locales.
+            if (reset_request) {
+                sample_count = 0;
+                seconds_total = 0;
+                display_time_4seg(SEG7_PTR, 0, 0);
+                update_vga_timer_display(0);
+                reset_request = 0;
+            }
+
+            /* C. Procesamiento de Audio */
+            if (is_running) {
+                if (audio_fifo_has_data()) {
+                    // Llamamos a process_sample y verificamos si devuelve 0 (EOS)
+                    int status = audio_process_sample();
+
+                    if (status == 0) {
+                        // Recibimos token de fin de canci�n
+                        song_finished = 1; // Romper el while interno
+                    }
+                    else {
+                        // Audio normal procesado, actualizar tiempo
+                        sample_count++;
+                        if(sample_count >= sample_rate) {
+                            seconds_total++;
+                            sample_count = 0;
+                            display_time_4seg(SEG7_PTR, seconds_total / 60, seconds_total % 60);
+                            update_vga_timer_display(seconds_total);
+                        }
+                    }
+                }
+            }
+            else {
+                usleep(1000); // Pausa
+            }
+        } // Fin del while(!song_finished)
+
+        printf("Cancion finalizada. Esperando siguiente...\n");
+        vga_print_center("ESPERANDO SIGUIENTE...", 20);
+
+    } // Fin del while(1) Playlist
+
+    return 0;
+}
+
+// wav_player_arm.c
+#define _DEFAULT_SOURCE
+#define _POSIX_C_SOURCE 200809L
+#include <stdio.h>
+#include <stdlib.h>
+#include <fcntl.h>
+#include <sys/mman.h>
+#include <unistd.h>
+#include <stdint.h>
+#include <string.h>
+#include <errno.h>  // <--- IMPORTANTE: Necesario para ver el error real
+
+/* --- DIRECCIONES DE HARDWARE --- */
+#define H2F_BRIDGE_BASE     0xC0000000
+#define FIFO_IN_OFFSET      0x8860
+#define FIFO_IN_CSR_OFFSET  0x8900
+
+#define FIFO_FULL           (1 << 1)
+
+/* --- TOKENS DE PROTOCOLO --- */
+#define METADATA_MAGIC      0xDEADDA7A
+#define EOS_TOKEN           0xFFFFFFFF  // Token de Fin de Cancion
+
+typedef struct {
+    char title[64];
+    char artist[64];
+    char album[64];
+} WavMetadata;
+
+/* --- FUNCIONES DE ACCESO A MEMORIA --- */
+uint32_t read_u32(volatile void *addr) {
+    return *(volatile uint32_t *)addr;
+}
+
+void write_u32(volatile void *addr, uint32_t value) {
+    *(volatile uint32_t *)addr = value;
+}
+
+int fifo_has_space(volatile void *fifo_csr) {
+    return !(read_u32(fifo_csr) & FIFO_FULL);
+}
+
+void fifo_write_wait(volatile void *fifo_in, volatile void *fifo_csr, uint32_t value) {
+    while(!fifo_has_space(fifo_csr));
+    write_u32(fifo_in, value);
+}
+
+// Enviar string caracter por caracter
+void fifo_write_string(volatile void *fifo_in, volatile void *fifo_csr, const char *str) {
+    size_t len = strlen(str);
+    size_t i;
+    
+    if(len > 63) len = 63;
+    
+    // Primero enviar longitud
+    fifo_write_wait(fifo_in, fifo_csr, len);
+    
+    // Luego cada caracter
+    for(i = 0; i < len; i++) {
+        fifo_write_wait(fifo_in, fifo_csr, (uint32_t)(unsigned char)str[i]);
+    }
+}
+
+/* --- FUNCIONES DE PARSEO WAV --- */
+int read_chunk_header(FILE *f, char *id, uint32_t *size) {
+    if(fread(id, 1, 4, f) != 4) return 0;
+    if(fread(size, 4, 1, f) != 1) return 0;
+    return 1;
+}
+
+void read_info_string(FILE *f, uint32_t size, char *dest, size_t dest_size) {
+    size_t to_read = (size < dest_size - 1) ? size : dest_size - 1;
+    fread(dest, 1, to_read, f);
+    dest[to_read] = '\0';
+    
+    if(size > to_read) fseek(f, size - to_read, SEEK_CUR);
+    if(size % 2 != 0) fseek(f, 1, SEEK_CUR);
+}
+
+void parse_list_chunk(FILE *f, uint32_t list_size, WavMetadata *meta) {
+    char list_type[4];
+    char chunk_id[5] = {0};
+    uint32_t chunk_size;
+    uint32_t bytes_read;
+    
+    fread(list_type, 1, 4, f);
+    
+    if(strncmp(list_type, "INFO", 4) != 0) {
+        fseek(f, list_size - 4, SEEK_CUR);
+        return;
+    }
+    
+    bytes_read = 4;
+    
+    while(bytes_read < list_size) {
+        if(!read_chunk_header(f, chunk_id, &chunk_size)) break;
+        chunk_id[4] = '\0';
+        bytes_read += 8;
+        
+        if(strncmp(chunk_id, "IART", 4) == 0) {
+            read_info_string(f, chunk_size, meta->artist, sizeof(meta->artist));
+        } else if(strncmp(chunk_id, "INAM", 4) == 0) {
+            read_info_string(f, chunk_size, meta->title, sizeof(meta->title));
+        } else if(strncmp(chunk_id, "IPRD", 4) == 0) {
+            read_info_string(f, chunk_size, meta->album, sizeof(meta->album));
+        } else {
+            fseek(f, chunk_size + (chunk_size % 2), SEEK_CUR);
+        }
+        
+        bytes_read += chunk_size + (chunk_size % 2);
+    }
+}
+
+int parse_wav_file(FILE *f, uint32_t *data_size, WavMetadata *meta, 
+                   uint16_t *audio_format, uint16_t *num_channels,
+                   uint32_t *sample_rate, uint16_t *bits_per_sample) {
+    char chunk_id[5] = {0};
+    uint32_t chunk_size;
+    long fmt_start;
+    
+    // Valores por defecto
+    strcpy(meta->title, "Desconocido");
+    strcpy(meta->artist, "Desconocido");
+    strcpy(meta->album, "Desconocido");
+    
+    rewind(f); // Asegurar inicio
+    char riff[4], wave[4];
+    uint32_t file_size;
+    fread(riff, 1, 4, f);
+    fread(&file_size, 4, 1, f);
+    fread(wave, 1, 4, f);
+    
+    if(strncmp(riff, "RIFF", 4) != 0 || strncmp(wave, "WAVE", 4) != 0) return 0;
+
+    while(read_chunk_header(f, chunk_id, &chunk_size)) {
+        chunk_id[4] = '\0';
+        
+        if(strncmp(chunk_id, "fmt ", 4) == 0) {
+            fmt_start = ftell(f);
+            fread(audio_format, 2, 1, f);
+            fread(num_channels, 2, 1, f);
+            fread(sample_rate, 4, 1, f);
+            fseek(f, 4, SEEK_CUR); // Byte rate
+            fseek(f, 2, SEEK_CUR); // Block align
+            fread(bits_per_sample, 2, 1, f);
+            fseek(f, fmt_start + chunk_size, SEEK_SET);
+        }
+        else if(strncmp(chunk_id, "LIST", 4) == 0) {
+            parse_list_chunk(f, chunk_size, meta);
+        }
+        else if(strncmp(chunk_id, "data", 4) == 0) {
+            *data_size = chunk_size;
+            return 1; // Encontramos datos, éxito
+        }
+        else {
+            fseek(f, chunk_size + (chunk_size % 2), SEEK_CUR);
+        }
+    }
+    
+    return 0;
+}
+
+/* --- FUNCIÓN PARA REPRODUCIR UN ARCHIVO --- */
+void play_file(const char* filename, volatile void *fifo_in, volatile void *fifo_csr) {
+    FILE *wav_file;
+    uint32_t data_size;
+    uint16_t audio_format, num_channels, bits_per_sample;
+    uint32_t sample_rate;
+    WavMetadata metadata;
+    
+    int16_t *audio_buffer;
+    size_t buffer_samples = 2048;
+    size_t samples_read;
+    size_t i;
+    
+    printf("\nAbriendo: %s\n", filename);
+    wav_file = fopen(filename, "rb");
+    if(!wav_file) {
+        printf("Error: No se pudo abrir %s\n", filename);
+        return;
+    }
+    
+    if(!parse_wav_file(wav_file, &data_size, &metadata, 
+                       &audio_format, &num_channels, &sample_rate, &bits_per_sample)) {
+        printf("Error: No se encontro chunk 'data' en %s\n", filename);
+        fclose(wav_file);
+        return;
+    }
+    
+    // --- CORRECCIÓN AQUÍ: ACEPTAR FORMATO 1 (PCM) Y 65534 (EXTENSIBLE) ---
+    if(audio_format != 1 && audio_format != 65534) {
+        printf("Error: Formato %d no soportado. Solo PCM (1) o Extensible (65534).\n", audio_format);
+        fclose(wav_file);
+        return;
+    }
+    
+    if(bits_per_sample != 16) {
+        printf("Error: Solo 16 bits soportado (archivo es %d)\n", bits_per_sample);
+        fclose(wav_file);
+        return;
+    }
+    
+    // Info
+    printf("  Titulo:  %s\n", metadata.title);
+    printf("  Artista: %s\n", metadata.artist);
+    printf("  Rate:    %u Hz, %d ch\n", sample_rate, num_channels);
+
+    // Enviar Metadata al FPGA
+    fifo_write_wait(fifo_in, fifo_csr, METADATA_MAGIC);
+    fifo_write_wait(fifo_in, fifo_csr, sample_rate);
+    fifo_write_wait(fifo_in, fifo_csr, num_channels);
+    fifo_write_wait(fifo_in, fifo_csr, bits_per_sample);
+    
+    fifo_write_string(fifo_in, fifo_csr, metadata.artist);
+    fifo_write_string(fifo_in, fifo_csr, metadata.album);
+    fifo_write_string(fifo_in, fifo_csr, metadata.title);
+    
+    printf("  --> Reproduciendo...\n");
+    
+    // Buffer
+    audio_buffer = (int16_t *)malloc(buffer_samples * num_channels * sizeof(int16_t));
+    if(!audio_buffer) {
+        printf("Error malloc\n");
+        fclose(wav_file);
+        return;
+    }
+    
+    // Enviar Audio
+    while((samples_read = fread(audio_buffer, sizeof(int16_t), buffer_samples * num_channels, wav_file)) > 0) {
+        if(num_channels == 2) {
+            for(i = 0; i < samples_read; i += 2) {
+                // Mezcla simple Stereo -> Mono
+                int32_t left = audio_buffer[i];
+                int32_t right = audio_buffer[i + 1];
+                int32_t mono = (left + right) / 2;
+                
+                fifo_write_wait(fifo_in, fifo_csr, (uint32_t)(mono & 0xFFFF));
+            }
+        } else {
+            // Mono directo
+            for(i = 0; i < samples_read; i++) {
+                fifo_write_wait(fifo_in, fifo_csr, (uint32_t)(audio_buffer[i] & 0xFFFF));
+            }
+        }
+    }
+    
+    // --- ENVIAR SEÑAL DE FIN DE CANCION ---
+    printf("  --> Fin archivo. Enviando EOS.\n");
+    fifo_write_wait(fifo_in, fifo_csr, EOS_TOKEN);
+    
+    free(audio_buffer);
+    fclose(wav_file);
+}
+
+/* --- MAIN --- */
+int main(int argc, char *argv[]) {
+    int fd_mem;
+    void *h2f_map;
+    volatile void *fifo_in;
+    volatile void *fifo_in_csr;
+    
+    if(argc < 2) {
+        printf("Uso: %s <cancion1.wav> [cancion2.wav ...]\n", argv[0]);
+        return 1;
+    }
+    
+    // Mapeo de memoria
+    fd_mem = open("/dev/mem", O_RDWR | O_SYNC);
+    if(fd_mem == -1) {
+        printf("Error fatal: open('/dev/mem') fallo.\n");
+        printf("Errno: %d (%s)\n", errno, strerror(errno));
+        return 1;
+    }
+    
+    h2f_map = mmap(NULL, 0x10000, PROT_READ | PROT_WRITE, MAP_SHARED, fd_mem, H2F_BRIDGE_BASE);
+    if(h2f_map == MAP_FAILED) {
+        printf("Error fatal: mmap() fallo.\n");
+        printf("Errno: %d (%s)\n", errno, strerror(errno));
+        close(fd_mem);
+        return 1;
+    }
+    
+    fifo_in = h2f_map + FIFO_IN_OFFSET;
+    fifo_in_csr = h2f_map + FIFO_IN_CSR_OFFSET;
+    
+    printf("=== REPRODUCTOR HPS (Multiformato + Playlist) ===\n");
+    
+    // Bucle Playlist
+    for(int i = 1; i < argc; i++) {
+        printf("\n[ Pista %d de %d ]", i, argc - 1);
+        play_file(argv[i], fifo_in, fifo_in_csr);
+        // Pequeña pausa entre canciones
+        usleep(500000); 
+    }
+    
+    printf("\n=== Playlist finalizada ===\n");
+    
+    munmap(h2f_map, 0x10000);
+    close(fd_mem);
+    
+    return 0;
+}

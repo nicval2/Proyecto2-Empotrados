@@ -41,23 +41,23 @@ module system_on_chip (
 		output wire [7:0]  vga_controller_B      //               .B
 	);
 
-	wire         vga_buffer_avalon_char_source_valid;                               // VGA_BUFFER:stream_valid -> VGA_CONTROLLER:valid
-	wire  [29:0] vga_buffer_avalon_char_source_data;                                // VGA_BUFFER:stream_data -> VGA_CONTROLLER:data
-	wire         vga_buffer_avalon_char_source_ready;                               // VGA_CONTROLLER:ready -> VGA_BUFFER:stream_ready
-	wire         vga_buffer_avalon_char_source_startofpacket;                       // VGA_BUFFER:stream_startofpacket -> VGA_CONTROLLER:startofpacket
-	wire         vga_buffer_avalon_char_source_endofpacket;                         // VGA_BUFFER:stream_endofpacket -> VGA_CONTROLLER:endofpacket
-	wire         vga_pll_outclk0_clk;                                               // VGA_PLL:outclk_0 -> [VGA_BUFFER:clk, VGA_CONTROLLER:clk, mm_interconnect_0:VGA_PLL_outclk0_clk, rst_controller_001:clk]
+	wire         vga_config_avalon_char_source_valid;                               // VGA_CONFIG:stream_valid -> VGA_CONTROLLER:valid
+	wire  [29:0] vga_config_avalon_char_source_data;                                // VGA_CONFIG:stream_data -> VGA_CONTROLLER:data
+	wire         vga_config_avalon_char_source_ready;                               // VGA_CONTROLLER:ready -> VGA_CONFIG:stream_ready
+	wire         vga_config_avalon_char_source_startofpacket;                       // VGA_CONFIG:stream_startofpacket -> VGA_CONTROLLER:startofpacket
+	wire         vga_config_avalon_char_source_endofpacket;                         // VGA_CONFIG:stream_endofpacket -> VGA_CONTROLLER:endofpacket
+	wire         vga_pll_outclk0_clk;                                               // VGA_PLL:outclk_0 -> [VGA_CONFIG:clk, VGA_CONTROLLER:clk, mm_interconnect_0:VGA_PLL_outclk0_clk, rst_controller_001:clk]
 	wire  [31:0] nios_data_master_readdata;                                         // mm_interconnect_0:NIOS_data_master_readdata -> NIOS:d_readdata
 	wire         nios_data_master_waitrequest;                                      // mm_interconnect_0:NIOS_data_master_waitrequest -> NIOS:d_waitrequest
 	wire         nios_data_master_debugaccess;                                      // NIOS:debug_mem_slave_debugaccess_to_roms -> mm_interconnect_0:NIOS_data_master_debugaccess
-	wire  [15:0] nios_data_master_address;                                          // NIOS:d_address -> mm_interconnect_0:NIOS_data_master_address
+	wire  [14:0] nios_data_master_address;                                          // NIOS:d_address -> mm_interconnect_0:NIOS_data_master_address
 	wire   [3:0] nios_data_master_byteenable;                                       // NIOS:d_byteenable -> mm_interconnect_0:NIOS_data_master_byteenable
 	wire         nios_data_master_read;                                             // NIOS:d_read -> mm_interconnect_0:NIOS_data_master_read
 	wire         nios_data_master_write;                                            // NIOS:d_write -> mm_interconnect_0:NIOS_data_master_write
 	wire  [31:0] nios_data_master_writedata;                                        // NIOS:d_writedata -> mm_interconnect_0:NIOS_data_master_writedata
 	wire  [31:0] nios_instruction_master_readdata;                                  // mm_interconnect_0:NIOS_instruction_master_readdata -> NIOS:i_readdata
 	wire         nios_instruction_master_waitrequest;                               // mm_interconnect_0:NIOS_instruction_master_waitrequest -> NIOS:i_waitrequest
-	wire  [15:0] nios_instruction_master_address;                                   // NIOS:i_address -> mm_interconnect_0:NIOS_instruction_master_address
+	wire  [14:0] nios_instruction_master_address;                                   // NIOS:i_address -> mm_interconnect_0:NIOS_instruction_master_address
 	wire         nios_instruction_master_read;                                      // NIOS:i_read -> mm_interconnect_0:NIOS_instruction_master_read
 	wire         mm_interconnect_0_audio_avalon_audio_slave_chipselect;             // mm_interconnect_0:AUDIO_avalon_audio_slave_chipselect -> AUDIO:chipselect
 	wire  [31:0] mm_interconnect_0_audio_avalon_audio_slave_readdata;               // AUDIO:readdata -> mm_interconnect_0:AUDIO_avalon_audio_slave_readdata
@@ -72,21 +72,21 @@ module system_on_chip (
 	wire   [3:0] mm_interconnect_0_audio_config_avalon_av_config_slave_byteenable;  // mm_interconnect_0:AUDIO_CONFIG_avalon_av_config_slave_byteenable -> AUDIO_CONFIG:byteenable
 	wire         mm_interconnect_0_audio_config_avalon_av_config_slave_write;       // mm_interconnect_0:AUDIO_CONFIG_avalon_av_config_slave_write -> AUDIO_CONFIG:write
 	wire  [31:0] mm_interconnect_0_audio_config_avalon_av_config_slave_writedata;   // mm_interconnect_0:AUDIO_CONFIG_avalon_av_config_slave_writedata -> AUDIO_CONFIG:writedata
-	wire         mm_interconnect_0_vga_buffer_avalon_char_buffer_slave_chipselect;  // mm_interconnect_0:VGA_BUFFER_avalon_char_buffer_slave_chipselect -> VGA_BUFFER:buf_chipselect
-	wire   [7:0] mm_interconnect_0_vga_buffer_avalon_char_buffer_slave_readdata;    // VGA_BUFFER:buf_readdata -> mm_interconnect_0:VGA_BUFFER_avalon_char_buffer_slave_readdata
-	wire         mm_interconnect_0_vga_buffer_avalon_char_buffer_slave_waitrequest; // VGA_BUFFER:buf_waitrequest -> mm_interconnect_0:VGA_BUFFER_avalon_char_buffer_slave_waitrequest
-	wire  [12:0] mm_interconnect_0_vga_buffer_avalon_char_buffer_slave_address;     // mm_interconnect_0:VGA_BUFFER_avalon_char_buffer_slave_address -> VGA_BUFFER:buf_address
-	wire         mm_interconnect_0_vga_buffer_avalon_char_buffer_slave_read;        // mm_interconnect_0:VGA_BUFFER_avalon_char_buffer_slave_read -> VGA_BUFFER:buf_read
-	wire   [0:0] mm_interconnect_0_vga_buffer_avalon_char_buffer_slave_byteenable;  // mm_interconnect_0:VGA_BUFFER_avalon_char_buffer_slave_byteenable -> VGA_BUFFER:buf_byteenable
-	wire         mm_interconnect_0_vga_buffer_avalon_char_buffer_slave_write;       // mm_interconnect_0:VGA_BUFFER_avalon_char_buffer_slave_write -> VGA_BUFFER:buf_write
-	wire   [7:0] mm_interconnect_0_vga_buffer_avalon_char_buffer_slave_writedata;   // mm_interconnect_0:VGA_BUFFER_avalon_char_buffer_slave_writedata -> VGA_BUFFER:buf_writedata
-	wire         mm_interconnect_0_vga_buffer_avalon_char_control_slave_chipselect; // mm_interconnect_0:VGA_BUFFER_avalon_char_control_slave_chipselect -> VGA_BUFFER:ctrl_chipselect
-	wire  [31:0] mm_interconnect_0_vga_buffer_avalon_char_control_slave_readdata;   // VGA_BUFFER:ctrl_readdata -> mm_interconnect_0:VGA_BUFFER_avalon_char_control_slave_readdata
-	wire   [0:0] mm_interconnect_0_vga_buffer_avalon_char_control_slave_address;    // mm_interconnect_0:VGA_BUFFER_avalon_char_control_slave_address -> VGA_BUFFER:ctrl_address
-	wire         mm_interconnect_0_vga_buffer_avalon_char_control_slave_read;       // mm_interconnect_0:VGA_BUFFER_avalon_char_control_slave_read -> VGA_BUFFER:ctrl_read
-	wire   [3:0] mm_interconnect_0_vga_buffer_avalon_char_control_slave_byteenable; // mm_interconnect_0:VGA_BUFFER_avalon_char_control_slave_byteenable -> VGA_BUFFER:ctrl_byteenable
-	wire         mm_interconnect_0_vga_buffer_avalon_char_control_slave_write;      // mm_interconnect_0:VGA_BUFFER_avalon_char_control_slave_write -> VGA_BUFFER:ctrl_write
-	wire  [31:0] mm_interconnect_0_vga_buffer_avalon_char_control_slave_writedata;  // mm_interconnect_0:VGA_BUFFER_avalon_char_control_slave_writedata -> VGA_BUFFER:ctrl_writedata
+	wire         mm_interconnect_0_vga_config_avalon_char_buffer_slave_chipselect;  // mm_interconnect_0:VGA_CONFIG_avalon_char_buffer_slave_chipselect -> VGA_CONFIG:buf_chipselect
+	wire   [7:0] mm_interconnect_0_vga_config_avalon_char_buffer_slave_readdata;    // VGA_CONFIG:buf_readdata -> mm_interconnect_0:VGA_CONFIG_avalon_char_buffer_slave_readdata
+	wire         mm_interconnect_0_vga_config_avalon_char_buffer_slave_waitrequest; // VGA_CONFIG:buf_waitrequest -> mm_interconnect_0:VGA_CONFIG_avalon_char_buffer_slave_waitrequest
+	wire  [12:0] mm_interconnect_0_vga_config_avalon_char_buffer_slave_address;     // mm_interconnect_0:VGA_CONFIG_avalon_char_buffer_slave_address -> VGA_CONFIG:buf_address
+	wire         mm_interconnect_0_vga_config_avalon_char_buffer_slave_read;        // mm_interconnect_0:VGA_CONFIG_avalon_char_buffer_slave_read -> VGA_CONFIG:buf_read
+	wire   [0:0] mm_interconnect_0_vga_config_avalon_char_buffer_slave_byteenable;  // mm_interconnect_0:VGA_CONFIG_avalon_char_buffer_slave_byteenable -> VGA_CONFIG:buf_byteenable
+	wire         mm_interconnect_0_vga_config_avalon_char_buffer_slave_write;       // mm_interconnect_0:VGA_CONFIG_avalon_char_buffer_slave_write -> VGA_CONFIG:buf_write
+	wire   [7:0] mm_interconnect_0_vga_config_avalon_char_buffer_slave_writedata;   // mm_interconnect_0:VGA_CONFIG_avalon_char_buffer_slave_writedata -> VGA_CONFIG:buf_writedata
+	wire         mm_interconnect_0_vga_config_avalon_char_control_slave_chipselect; // mm_interconnect_0:VGA_CONFIG_avalon_char_control_slave_chipselect -> VGA_CONFIG:ctrl_chipselect
+	wire  [31:0] mm_interconnect_0_vga_config_avalon_char_control_slave_readdata;   // VGA_CONFIG:ctrl_readdata -> mm_interconnect_0:VGA_CONFIG_avalon_char_control_slave_readdata
+	wire   [0:0] mm_interconnect_0_vga_config_avalon_char_control_slave_address;    // mm_interconnect_0:VGA_CONFIG_avalon_char_control_slave_address -> VGA_CONFIG:ctrl_address
+	wire         mm_interconnect_0_vga_config_avalon_char_control_slave_read;       // mm_interconnect_0:VGA_CONFIG_avalon_char_control_slave_read -> VGA_CONFIG:ctrl_read
+	wire   [3:0] mm_interconnect_0_vga_config_avalon_char_control_slave_byteenable; // mm_interconnect_0:VGA_CONFIG_avalon_char_control_slave_byteenable -> VGA_CONFIG:ctrl_byteenable
+	wire         mm_interconnect_0_vga_config_avalon_char_control_slave_write;      // mm_interconnect_0:VGA_CONFIG_avalon_char_control_slave_write -> VGA_CONFIG:ctrl_write
+	wire  [31:0] mm_interconnect_0_vga_config_avalon_char_control_slave_writedata;  // mm_interconnect_0:VGA_CONFIG_avalon_char_control_slave_writedata -> VGA_CONFIG:ctrl_writedata
 	wire         mm_interconnect_0_uart_avalon_jtag_slave_chipselect;               // mm_interconnect_0:UART_avalon_jtag_slave_chipselect -> UART:av_chipselect
 	wire  [31:0] mm_interconnect_0_uart_avalon_jtag_slave_readdata;                 // UART:av_readdata -> mm_interconnect_0:UART_avalon_jtag_slave_readdata
 	wire         mm_interconnect_0_uart_avalon_jtag_slave_waitrequest;              // UART:av_waitrequest -> mm_interconnect_0:UART_avalon_jtag_slave_waitrequest
@@ -119,11 +119,11 @@ module system_on_chip (
 	wire         mm_interconnect_0_fifo_out_csr_write;                              // mm_interconnect_0:FIFO_out_csr_write -> FIFO:rdclk_control_slave_write
 	wire  [31:0] mm_interconnect_0_fifo_out_csr_writedata;                          // mm_interconnect_0:FIFO_out_csr_writedata -> FIFO:rdclk_control_slave_writedata
 	wire         mm_interconnect_0_ram_s1_chipselect;                               // mm_interconnect_0:RAM_s1_chipselect -> RAM:chipselect
-	wire  [31:0] mm_interconnect_0_ram_s1_readdata;                                 // RAM:readdata -> mm_interconnect_0:RAM_s1_readdata
+	wire  [15:0] mm_interconnect_0_ram_s1_readdata;                                 // RAM:readdata -> mm_interconnect_0:RAM_s1_readdata
 	wire  [12:0] mm_interconnect_0_ram_s1_address;                                  // mm_interconnect_0:RAM_s1_address -> RAM:address
-	wire   [3:0] mm_interconnect_0_ram_s1_byteenable;                               // mm_interconnect_0:RAM_s1_byteenable -> RAM:byteenable
+	wire   [1:0] mm_interconnect_0_ram_s1_byteenable;                               // mm_interconnect_0:RAM_s1_byteenable -> RAM:byteenable
 	wire         mm_interconnect_0_ram_s1_write;                                    // mm_interconnect_0:RAM_s1_write -> RAM:write
-	wire  [31:0] mm_interconnect_0_ram_s1_writedata;                                // mm_interconnect_0:RAM_s1_writedata -> RAM:writedata
+	wire  [15:0] mm_interconnect_0_ram_s1_writedata;                                // mm_interconnect_0:RAM_s1_writedata -> RAM:writedata
 	wire         mm_interconnect_0_ram_s1_clken;                                    // mm_interconnect_0:RAM_s1_clken -> RAM:clken
 	wire         mm_interconnect_0_reg_7_segments_s1_chipselect;                    // mm_interconnect_0:REG_7_SEGMENTS_s1_chipselect -> REG_7_SEGMENTS:chipselect
 	wire  [31:0] mm_interconnect_0_reg_7_segments_s1_readdata;                      // REG_7_SEGMENTS:readdata -> mm_interconnect_0:REG_7_SEGMENTS_s1_readdata
@@ -195,12 +195,12 @@ module system_on_chip (
 	wire         mm_interconnect_1_fifo2_out_csr_write;                             // mm_interconnect_1:FIFO2_out_csr_write -> FIFO2:rdclk_control_slave_write
 	wire  [31:0] mm_interconnect_1_fifo2_out_csr_writedata;                         // mm_interconnect_1:FIFO2_out_csr_writedata -> FIFO2:rdclk_control_slave_writedata
 	wire         irq_mapper_receiver0_irq;                                          // TIMER:irq -> irq_mapper:receiver0_irq
-	wire         irq_mapper_receiver1_irq;                                          // REG_BUTTONS:irq -> irq_mapper:receiver1_irq
-	wire         irq_mapper_receiver2_irq;                                          // UART:av_irq -> irq_mapper:receiver2_irq
+	wire         irq_mapper_receiver1_irq;                                          // UART:av_irq -> irq_mapper:receiver1_irq
+	wire         irq_mapper_receiver2_irq;                                          // REG_BUTTONS:irq -> irq_mapper:receiver2_irq
 	wire  [31:0] nios_irq_irq;                                                      // irq_mapper:sender_irq -> NIOS:irq
 	wire         rst_controller_reset_out_reset;                                    // rst_controller:reset_out -> [AUDIO:reset, AUDIO_CONFIG:reset, FIFO2:rdreset_n, FIFO2:wrreset_n, FIFO:rdreset_n, FIFO:wrreset_n, NIOS:reset_n, RAM:reset, REG_7_SEGMENTS:reset_n, REG_BUTTONS:reset_n, REG_SWITCHES:reset_n, TIMER:reset_n, UART:rst_n, irq_mapper:reset, mm_interconnect_0:NIOS_reset_reset_bridge_in_reset_reset, mm_interconnect_1:FIFO_reset_in_reset_bridge_in_reset_reset, rst_translator:in_reset]
 	wire         rst_controller_reset_out_reset_req;                                // rst_controller:reset_req -> [NIOS:reset_req, RAM:reset_req, rst_translator:reset_req_in]
-	wire         rst_controller_001_reset_out_reset;                                // rst_controller_001:reset_out -> [VGA_BUFFER:reset, VGA_CONTROLLER:reset, mm_interconnect_0:VGA_BUFFER_reset_reset_bridge_in_reset_reset]
+	wire         rst_controller_001_reset_out_reset;                                // rst_controller_001:reset_out -> [VGA_CONFIG:reset, VGA_CONTROLLER:reset, mm_interconnect_0:VGA_CONFIG_reset_reset_bridge_in_reset_reset]
 	wire         rst_controller_002_reset_out_reset;                                // rst_controller_002:reset_out -> mm_interconnect_1:ARM_h2f_axi_master_agent_clk_reset_reset_bridge_in_reset_reset
 	wire         arm_h2f_reset_reset;                                               // ARM:h2f_rst_n -> rst_controller_002:reset_in0
 
@@ -530,7 +530,7 @@ module system_on_chip (
 		.chipselect (mm_interconnect_0_reg_buttons_s1_chipselect), //                    .chipselect
 		.readdata   (mm_interconnect_0_reg_buttons_s1_readdata),   //                    .readdata
 		.in_port    (button_export),                               // external_connection.export
-		.irq        (irq_mapper_receiver1_irq)                     //                 irq.irq
+		.irq        (irq_mapper_receiver2_irq)                     //                 irq.irq
 	);
 
 	system_on_chip_REG_SWITCHES reg_switches (
@@ -562,42 +562,42 @@ module system_on_chip (
 		.av_write_n     (~mm_interconnect_0_uart_avalon_jtag_slave_write),      //                  .write_n
 		.av_writedata   (mm_interconnect_0_uart_avalon_jtag_slave_writedata),   //                  .writedata
 		.av_waitrequest (mm_interconnect_0_uart_avalon_jtag_slave_waitrequest), //                  .waitrequest
-		.av_irq         (irq_mapper_receiver2_irq)                              //               irq.irq
+		.av_irq         (irq_mapper_receiver1_irq)                              //               irq.irq
 	);
 
-	system_on_chip_VGA_BUFFER vga_buffer (
+	system_on_chip_VGA_CONFIG vga_config (
 		.clk                  (vga_pll_outclk0_clk),                                               //                       clk.clk
 		.reset                (rst_controller_001_reset_out_reset),                                //                     reset.reset
-		.ctrl_address         (mm_interconnect_0_vga_buffer_avalon_char_control_slave_address),    // avalon_char_control_slave.address
-		.ctrl_byteenable      (mm_interconnect_0_vga_buffer_avalon_char_control_slave_byteenable), //                          .byteenable
-		.ctrl_chipselect      (mm_interconnect_0_vga_buffer_avalon_char_control_slave_chipselect), //                          .chipselect
-		.ctrl_read            (mm_interconnect_0_vga_buffer_avalon_char_control_slave_read),       //                          .read
-		.ctrl_write           (mm_interconnect_0_vga_buffer_avalon_char_control_slave_write),      //                          .write
-		.ctrl_writedata       (mm_interconnect_0_vga_buffer_avalon_char_control_slave_writedata),  //                          .writedata
-		.ctrl_readdata        (mm_interconnect_0_vga_buffer_avalon_char_control_slave_readdata),   //                          .readdata
-		.buf_byteenable       (mm_interconnect_0_vga_buffer_avalon_char_buffer_slave_byteenable),  //  avalon_char_buffer_slave.byteenable
-		.buf_chipselect       (mm_interconnect_0_vga_buffer_avalon_char_buffer_slave_chipselect),  //                          .chipselect
-		.buf_read             (mm_interconnect_0_vga_buffer_avalon_char_buffer_slave_read),        //                          .read
-		.buf_write            (mm_interconnect_0_vga_buffer_avalon_char_buffer_slave_write),       //                          .write
-		.buf_writedata        (mm_interconnect_0_vga_buffer_avalon_char_buffer_slave_writedata),   //                          .writedata
-		.buf_readdata         (mm_interconnect_0_vga_buffer_avalon_char_buffer_slave_readdata),    //                          .readdata
-		.buf_waitrequest      (mm_interconnect_0_vga_buffer_avalon_char_buffer_slave_waitrequest), //                          .waitrequest
-		.buf_address          (mm_interconnect_0_vga_buffer_avalon_char_buffer_slave_address),     //                          .address
-		.stream_ready         (vga_buffer_avalon_char_source_ready),                               //        avalon_char_source.ready
-		.stream_startofpacket (vga_buffer_avalon_char_source_startofpacket),                       //                          .startofpacket
-		.stream_endofpacket   (vga_buffer_avalon_char_source_endofpacket),                         //                          .endofpacket
-		.stream_valid         (vga_buffer_avalon_char_source_valid),                               //                          .valid
-		.stream_data          (vga_buffer_avalon_char_source_data)                                 //                          .data
+		.ctrl_address         (mm_interconnect_0_vga_config_avalon_char_control_slave_address),    // avalon_char_control_slave.address
+		.ctrl_byteenable      (mm_interconnect_0_vga_config_avalon_char_control_slave_byteenable), //                          .byteenable
+		.ctrl_chipselect      (mm_interconnect_0_vga_config_avalon_char_control_slave_chipselect), //                          .chipselect
+		.ctrl_read            (mm_interconnect_0_vga_config_avalon_char_control_slave_read),       //                          .read
+		.ctrl_write           (mm_interconnect_0_vga_config_avalon_char_control_slave_write),      //                          .write
+		.ctrl_writedata       (mm_interconnect_0_vga_config_avalon_char_control_slave_writedata),  //                          .writedata
+		.ctrl_readdata        (mm_interconnect_0_vga_config_avalon_char_control_slave_readdata),   //                          .readdata
+		.buf_byteenable       (mm_interconnect_0_vga_config_avalon_char_buffer_slave_byteenable),  //  avalon_char_buffer_slave.byteenable
+		.buf_chipselect       (mm_interconnect_0_vga_config_avalon_char_buffer_slave_chipselect),  //                          .chipselect
+		.buf_read             (mm_interconnect_0_vga_config_avalon_char_buffer_slave_read),        //                          .read
+		.buf_write            (mm_interconnect_0_vga_config_avalon_char_buffer_slave_write),       //                          .write
+		.buf_writedata        (mm_interconnect_0_vga_config_avalon_char_buffer_slave_writedata),   //                          .writedata
+		.buf_readdata         (mm_interconnect_0_vga_config_avalon_char_buffer_slave_readdata),    //                          .readdata
+		.buf_waitrequest      (mm_interconnect_0_vga_config_avalon_char_buffer_slave_waitrequest), //                          .waitrequest
+		.buf_address          (mm_interconnect_0_vga_config_avalon_char_buffer_slave_address),     //                          .address
+		.stream_ready         (vga_config_avalon_char_source_ready),                               //        avalon_char_source.ready
+		.stream_startofpacket (vga_config_avalon_char_source_startofpacket),                       //                          .startofpacket
+		.stream_endofpacket   (vga_config_avalon_char_source_endofpacket),                         //                          .endofpacket
+		.stream_valid         (vga_config_avalon_char_source_valid),                               //                          .valid
+		.stream_data          (vga_config_avalon_char_source_data)                                 //                          .data
 	);
 
 	system_on_chip_VGA_CONTROLLER vga_controller (
 		.clk           (vga_pll_outclk0_clk),                         //                clk.clk
 		.reset         (rst_controller_001_reset_out_reset),          //              reset.reset
-		.data          (vga_buffer_avalon_char_source_data),          //    avalon_vga_sink.data
-		.startofpacket (vga_buffer_avalon_char_source_startofpacket), //                   .startofpacket
-		.endofpacket   (vga_buffer_avalon_char_source_endofpacket),   //                   .endofpacket
-		.valid         (vga_buffer_avalon_char_source_valid),         //                   .valid
-		.ready         (vga_buffer_avalon_char_source_ready),         //                   .ready
+		.data          (vga_config_avalon_char_source_data),          //    avalon_vga_sink.data
+		.startofpacket (vga_config_avalon_char_source_startofpacket), //                   .startofpacket
+		.endofpacket   (vga_config_avalon_char_source_endofpacket),   //                   .endofpacket
+		.valid         (vga_config_avalon_char_source_valid),         //                   .valid
+		.ready         (vga_config_avalon_char_source_ready),         //                   .ready
 		.VGA_CLK       (vga_controller_CLK),                          // external_interface.export
 		.VGA_HS        (vga_controller_HS),                           //                   .export
 		.VGA_VS        (vga_controller_VS),                           //                   .export
@@ -619,7 +619,7 @@ module system_on_chip (
 		.clk_0_clk_clk                                   (clk_clk),                                                           //                              clk_0_clk.clk
 		.VGA_PLL_outclk0_clk                             (vga_pll_outclk0_clk),                                               //                        VGA_PLL_outclk0.clk
 		.NIOS_reset_reset_bridge_in_reset_reset          (rst_controller_reset_out_reset),                                    //       NIOS_reset_reset_bridge_in_reset.reset
-		.VGA_BUFFER_reset_reset_bridge_in_reset_reset    (rst_controller_001_reset_out_reset),                                // VGA_BUFFER_reset_reset_bridge_in_reset.reset
+		.VGA_CONFIG_reset_reset_bridge_in_reset_reset    (rst_controller_001_reset_out_reset),                                // VGA_CONFIG_reset_reset_bridge_in_reset.reset
 		.NIOS_data_master_address                        (nios_data_master_address),                                          //                       NIOS_data_master.address
 		.NIOS_data_master_waitrequest                    (nios_data_master_waitrequest),                                      //                                       .waitrequest
 		.NIOS_data_master_byteenable                     (nios_data_master_byteenable),                                       //                                       .byteenable
@@ -700,21 +700,21 @@ module system_on_chip (
 		.UART_avalon_jtag_slave_writedata                (mm_interconnect_0_uart_avalon_jtag_slave_writedata),                //                                       .writedata
 		.UART_avalon_jtag_slave_waitrequest              (mm_interconnect_0_uart_avalon_jtag_slave_waitrequest),              //                                       .waitrequest
 		.UART_avalon_jtag_slave_chipselect               (mm_interconnect_0_uart_avalon_jtag_slave_chipselect),               //                                       .chipselect
-		.VGA_BUFFER_avalon_char_buffer_slave_address     (mm_interconnect_0_vga_buffer_avalon_char_buffer_slave_address),     //    VGA_BUFFER_avalon_char_buffer_slave.address
-		.VGA_BUFFER_avalon_char_buffer_slave_write       (mm_interconnect_0_vga_buffer_avalon_char_buffer_slave_write),       //                                       .write
-		.VGA_BUFFER_avalon_char_buffer_slave_read        (mm_interconnect_0_vga_buffer_avalon_char_buffer_slave_read),        //                                       .read
-		.VGA_BUFFER_avalon_char_buffer_slave_readdata    (mm_interconnect_0_vga_buffer_avalon_char_buffer_slave_readdata),    //                                       .readdata
-		.VGA_BUFFER_avalon_char_buffer_slave_writedata   (mm_interconnect_0_vga_buffer_avalon_char_buffer_slave_writedata),   //                                       .writedata
-		.VGA_BUFFER_avalon_char_buffer_slave_byteenable  (mm_interconnect_0_vga_buffer_avalon_char_buffer_slave_byteenable),  //                                       .byteenable
-		.VGA_BUFFER_avalon_char_buffer_slave_waitrequest (mm_interconnect_0_vga_buffer_avalon_char_buffer_slave_waitrequest), //                                       .waitrequest
-		.VGA_BUFFER_avalon_char_buffer_slave_chipselect  (mm_interconnect_0_vga_buffer_avalon_char_buffer_slave_chipselect),  //                                       .chipselect
-		.VGA_BUFFER_avalon_char_control_slave_address    (mm_interconnect_0_vga_buffer_avalon_char_control_slave_address),    //   VGA_BUFFER_avalon_char_control_slave.address
-		.VGA_BUFFER_avalon_char_control_slave_write      (mm_interconnect_0_vga_buffer_avalon_char_control_slave_write),      //                                       .write
-		.VGA_BUFFER_avalon_char_control_slave_read       (mm_interconnect_0_vga_buffer_avalon_char_control_slave_read),       //                                       .read
-		.VGA_BUFFER_avalon_char_control_slave_readdata   (mm_interconnect_0_vga_buffer_avalon_char_control_slave_readdata),   //                                       .readdata
-		.VGA_BUFFER_avalon_char_control_slave_writedata  (mm_interconnect_0_vga_buffer_avalon_char_control_slave_writedata),  //                                       .writedata
-		.VGA_BUFFER_avalon_char_control_slave_byteenable (mm_interconnect_0_vga_buffer_avalon_char_control_slave_byteenable), //                                       .byteenable
-		.VGA_BUFFER_avalon_char_control_slave_chipselect (mm_interconnect_0_vga_buffer_avalon_char_control_slave_chipselect)  //                                       .chipselect
+		.VGA_CONFIG_avalon_char_buffer_slave_address     (mm_interconnect_0_vga_config_avalon_char_buffer_slave_address),     //    VGA_CONFIG_avalon_char_buffer_slave.address
+		.VGA_CONFIG_avalon_char_buffer_slave_write       (mm_interconnect_0_vga_config_avalon_char_buffer_slave_write),       //                                       .write
+		.VGA_CONFIG_avalon_char_buffer_slave_read        (mm_interconnect_0_vga_config_avalon_char_buffer_slave_read),        //                                       .read
+		.VGA_CONFIG_avalon_char_buffer_slave_readdata    (mm_interconnect_0_vga_config_avalon_char_buffer_slave_readdata),    //                                       .readdata
+		.VGA_CONFIG_avalon_char_buffer_slave_writedata   (mm_interconnect_0_vga_config_avalon_char_buffer_slave_writedata),   //                                       .writedata
+		.VGA_CONFIG_avalon_char_buffer_slave_byteenable  (mm_interconnect_0_vga_config_avalon_char_buffer_slave_byteenable),  //                                       .byteenable
+		.VGA_CONFIG_avalon_char_buffer_slave_waitrequest (mm_interconnect_0_vga_config_avalon_char_buffer_slave_waitrequest), //                                       .waitrequest
+		.VGA_CONFIG_avalon_char_buffer_slave_chipselect  (mm_interconnect_0_vga_config_avalon_char_buffer_slave_chipselect),  //                                       .chipselect
+		.VGA_CONFIG_avalon_char_control_slave_address    (mm_interconnect_0_vga_config_avalon_char_control_slave_address),    //   VGA_CONFIG_avalon_char_control_slave.address
+		.VGA_CONFIG_avalon_char_control_slave_write      (mm_interconnect_0_vga_config_avalon_char_control_slave_write),      //                                       .write
+		.VGA_CONFIG_avalon_char_control_slave_read       (mm_interconnect_0_vga_config_avalon_char_control_slave_read),       //                                       .read
+		.VGA_CONFIG_avalon_char_control_slave_readdata   (mm_interconnect_0_vga_config_avalon_char_control_slave_readdata),   //                                       .readdata
+		.VGA_CONFIG_avalon_char_control_slave_writedata  (mm_interconnect_0_vga_config_avalon_char_control_slave_writedata),  //                                       .writedata
+		.VGA_CONFIG_avalon_char_control_slave_byteenable (mm_interconnect_0_vga_config_avalon_char_control_slave_byteenable), //                                       .byteenable
+		.VGA_CONFIG_avalon_char_control_slave_chipselect (mm_interconnect_0_vga_config_avalon_char_control_slave_chipselect)  //                                       .chipselect
 	);
 
 	system_on_chip_mm_interconnect_1 mm_interconnect_1 (
