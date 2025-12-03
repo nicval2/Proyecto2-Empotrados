@@ -1,4 +1,3 @@
-// filter.h - Ecualizador con filtros predefinidos
 #ifndef FILTER_H
 #define FILTER_H
 

@@ -1,4 +1,3 @@
-// buttons.c - Control de botones Bare Metal
 #include "buttons.h"
 #include "audio.h"
 #include "system.h"

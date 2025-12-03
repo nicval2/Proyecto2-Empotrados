@@ -1,4 +1,3 @@
-/* vga.c - Optimizado sin librerías estándar */
 #include "vga.h"
 
 // Punteros directos

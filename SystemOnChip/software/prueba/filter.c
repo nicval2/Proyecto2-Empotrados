@@ -1,4 +1,3 @@
-// filter.c - Ecualizador simplificado (v2.4)
 #include "filter.h"
 
 /*

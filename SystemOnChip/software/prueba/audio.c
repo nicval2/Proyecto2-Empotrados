@@ -1,4 +1,3 @@
-// audio.c - Manejo de audio Bare Metal
 #include "system.h"
 #include "audio.h"
 #include "filter.h"
