@@ -1,13 +1,13 @@
-Analysis & Synthesis Status : Successful - Sat Nov 29 18:12:35 2025
+Analysis & Synthesis Status : Successful - Wed Dec 03 07:52:31 2025
 Quartus Prime Version : 18.0.0 Build 614 04/24/2018 SJ Lite Edition
 Revision Name : SystemOnChip
 Top-level Entity Name : system_on_chip
 Family : Cyclone V
 Logic utilization (in ALMs) : N/A
-Total registers : 3392
+Total registers : 3453
 Total pins : 118
 Total virtual pins : 0
-Total block memory bits : 348,160
+Total block memory bits : 217,088
 Total DSP Blocks : 0
 Total HSSI RX PCSs : 0
 Total HSSI PMA RX Deserializers : 0

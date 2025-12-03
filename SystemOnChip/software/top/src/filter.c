@@ -6,7 +6,7 @@
  * Low-pass:  y[n] = alpha * x[n] + (1-alpha) * y[n-1]
  * High-pass: y[n] = alpha * (y[n-1] + x[n] - x[n-1])
  *
- * Shelf filters usando combinaci�n de LP/HP con ganancia
+ * Shelf filters usando combinacion de LP/HP con ganancia
  */
 
 /* Estado del filtro */
@@ -33,9 +33,9 @@ static const char* filter_names[] = {
 
 /* Funciones de filtro individuales */
 
-/* Low-pass filter: deja pasar graves */
+/* Filtro pasa bajas */
 static int16_t lowpass(int16_t x, int32_t *y_state, int alpha_shift) {
-    /* alpha = 1 / (2^alpha_shift), t�picamente 2-4 */
+    /* alpha = 1 / (2^alpha_shift), tipicamente 2-4 */
     /* y = y_prev + alpha * (x - y_prev) */
     int32_t xn = (int32_t)x;
     int32_t yn = *y_state + ((xn - *y_state) >> alpha_shift);
@@ -43,7 +43,7 @@ static int16_t lowpass(int16_t x, int32_t *y_state, int alpha_shift) {
     return (int16_t)yn;
 }
 
-/* High-pass filter: deja pasar agudos */
+/* Filtro pasa altas */
 static int16_t highpass(int16_t x, int32_t *y_state, int32_t *x_state, int alpha_shift) {
     /* y = alpha * (y_prev + x - x_prev) */
     int32_t xn = (int32_t)x;
@@ -62,8 +62,7 @@ static void reset_state(void) {
     x2_prev = 0;
 }
 
-/* Funciones p�blicas */
-
+/* Funciones publicas */
 void filter_init(void) {
     current_filter = FILTER_NONE;
     reset_state();
@@ -142,7 +141,7 @@ int16_t filter_process(int16_t x) {
             break;
 
         case FILTER_JAZZ:
-            /* Graves suaves, sonido c�lido */
+            /* Graves suaves */
             low = lowpass(x, &y_prev, 3);
             yn = xn + (low >> 2);  /* +25% graves */
             /* Luego suavizar agudos */
@@ -150,12 +149,12 @@ int16_t filter_process(int16_t x) {
             break;
 
         case FILTER_LOWPASS:
-            /* Filtro t�cnico: solo graves */
+            /* Filtro pasa bajas*/
             yn = lowpass(x, &y_prev, 2);
             break;
 
         case FILTER_HIGHPASS:
-            /* Filtro t�cnico: solo agudos */
+            /* Filtro pasa altas*/
             yn = highpass(x, &y_prev, &x_prev, 2);
             break;
 
@@ -163,7 +162,7 @@ int16_t filter_process(int16_t x) {
             return x;
     }
 
-    /* Saturaci�n */
+    /* Saturacion */
     if (yn > 32767) yn = 32767;
     if (yn < -32768) yn = -32768;
 
@@ -174,7 +173,7 @@ int filter_update_from_switches(int sw_value) {
     filter_type_t new_filter = FILTER_NONE;
     static filter_type_t last_filter = FILTER_NONE;
 
-    /* Decodificar switches - prioridad al m�s alto */
+    /* Decodificar switches - prioridad al mas alto */
     if (sw_value & 0x80)      new_filter = FILTER_JAZZ;
     else if (sw_value & 0x40) new_filter = FILTER_POP;
     else if (sw_value & 0x20) new_filter = FILTER_ROCK;

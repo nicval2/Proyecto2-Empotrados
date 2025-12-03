@@ -14,14 +14,14 @@ typedef enum {
     FILTER_ROCK,            // SW5: V-shape (graves+agudos)
     FILTER_POP,             // SW6: Medios+agudos
     FILTER_JAZZ,            // SW7: Graves suaves, agudos claros
-    FILTER_LOWPASS,         // Filtro t�cnico
-    FILTER_HIGHPASS         // Filtro t�cnico
+    FILTER_LOWPASS,         // Filtro pasa bajas
+    FILTER_HIGHPASS         // Filtro pasa altas
 } filter_type_t;
 
-/* Inicializaci�n */
+/* Inicializacion */
 void filter_init(void);
 
-/* Selecci�n de filtro */
+/* Seleccion de filtro */
 void filter_set(filter_type_t type);
 
 /* Obtener filtro actual */
@@ -33,8 +33,8 @@ const char* filter_get_name(void);
 /* Procesamiento de una muestra */
 int16_t filter_process(int16_t sample);
 
-/* Procesar switches y actualizar filtro autom�ticamente */
-/* Retorna 1 si el filtro cambi� */
+/* Procesar switches y actualizar filtro automaticamente */
+/* Retorna 1 si el filtro cambio */
 int filter_update_from_switches(int sw_value);
 
 #endif

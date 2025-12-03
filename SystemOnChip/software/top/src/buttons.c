@@ -4,17 +4,6 @@
 #include "sys/alt_irq.h"
 #include <stddef.h>
 
-/* Definicion manual de registros PIO */
-// Base + 0: Data, Base + 1: Direction, Base + 2: Interrupt Mask, Base + 3: Edge Cap
-// Como son words de 32 bits, usamos indices 0, 1, 2, 3 en puntero int*
-#define BTN_PTR          ((volatile int *)REG_BUTTONS_BASE)
-#define BTN_IRQ_MASK_IDX 2
-#define BTN_EDGE_CAP_IDX 3
-
-#define BUTTON_PLAY_MASK  0x4
-#define BUTTON_NEXT_MASK  0x2
-#define BUTTON_PREV_MASK  0x8
-
 volatile int is_running = 1;
 volatile int reset_request = 0;
 volatile int skip_request = 0;
@@ -51,7 +40,7 @@ void buttons_init(void)
     // Limpiar edge capture previo
     BTN_PTR[BTN_EDGE_CAP_IDX] = 0xF;
 
-    // Registrar ISR (Permitido por la especificación)
+    // Registrar ISR
     alt_ic_isr_register(
         REG_BUTTONS_IRQ_INTERRUPT_CONTROLLER_ID,
         REG_BUTTONS_IRQ,

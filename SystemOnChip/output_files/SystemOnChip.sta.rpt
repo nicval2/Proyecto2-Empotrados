@@ -1,5 +1,5 @@
 Timing Analyzer report for SystemOnChip
-Sat Nov 29 18:15:36 2025
+Wed Dec 03 07:56:34 2025
 Quartus Prime Version 18.0.0 Build 614 04/24/2018 SJ Lite Edition
 
 
@@ -618,24 +618,24 @@ refer to the applicable agreement for further details.
 ; Number detected on machine ; 20          ;
 ; Maximum allowed            ; 14          ;
 ;                            ;             ;
-; Average used               ; 1.93        ;
+; Average used               ; 1.69        ;
 ; Maximum used               ; 14          ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processor 2            ;   7.5%      ;
-;     Processor 3            ;   7.4%      ;
-;     Processor 4            ;   7.3%      ;
-;     Processor 5            ;   7.3%      ;
-;     Processor 6            ;   7.3%      ;
-;     Processor 7            ;   7.2%      ;
-;     Processor 8            ;   7.2%      ;
-;     Processor 9            ;   7.1%      ;
-;     Processor 10           ;   7.1%      ;
-;     Processor 11           ;   7.0%      ;
-;     Processor 12           ;   7.0%      ;
-;     Processor 13           ;   7.0%      ;
-;     Processor 14           ;   7.0%      ;
+;     Processor 2            ;   5.6%      ;
+;     Processor 3            ;   5.5%      ;
+;     Processor 4            ;   5.5%      ;
+;     Processor 5            ;   5.4%      ;
+;     Processor 6            ;   5.4%      ;
+;     Processor 7            ;   5.4%      ;
+;     Processor 8            ;   5.3%      ;
+;     Processor 9            ;   5.3%      ;
+;     Processor 10           ;   5.2%      ;
+;     Processor 11           ;   5.2%      ;
+;     Processor 12           ;   5.2%      ;
+;     Processor 13           ;   5.1%      ;
+;     Processor 14           ;   5.1%      ;
 +----------------------------+-------------+
 
 
@@ -644,12 +644,12 @@ refer to the applicable agreement for further details.
 +----------------------------------------------------------------------------------+--------+--------------------------+
 ; SDC File Path                                                                    ; Status ; Read at                  ;
 +----------------------------------------------------------------------------------+--------+--------------------------+
-; system_on_chip/synthesis/submodules/altera_reset_controller.sdc                  ; OK     ; Sat Nov 29 18:15:22 2025 ;
-; system_on_chip/synthesis/submodules/altera_avalon_st_handshake_clock_crosser.sdc ; OK     ; Sat Nov 29 18:15:22 2025 ;
-; system_on_chip/synthesis/submodules/system_on_chip_NIOS_cpu.sdc                  ; OK     ; Sat Nov 29 18:15:22 2025 ;
-; system_on_chip/synthesis/submodules/system_on_chip_FIFO.sdc                      ; OK     ; Sat Nov 29 18:15:22 2025 ;
-; system_on_chip/synthesis/submodules/hps_sdram_p0.sdc                             ; OK     ; Sat Nov 29 18:15:22 2025 ;
-; system_on_chip/synthesis/submodules/system_on_chip_ARM_fpga_interfaces.sdc       ; OK     ; Sat Nov 29 18:15:22 2025 ;
+; system_on_chip/synthesis/submodules/altera_reset_controller.sdc                  ; OK     ; Wed Dec 03 07:56:17 2025 ;
+; system_on_chip/synthesis/submodules/altera_avalon_st_handshake_clock_crosser.sdc ; OK     ; Wed Dec 03 07:56:17 2025 ;
+; system_on_chip/synthesis/submodules/system_on_chip_NIOS_cpu.sdc                  ; OK     ; Wed Dec 03 07:56:17 2025 ;
+; system_on_chip/synthesis/submodules/system_on_chip_FIFO.sdc                      ; OK     ; Wed Dec 03 07:56:17 2025 ;
+; system_on_chip/synthesis/submodules/hps_sdram_p0.sdc                             ; OK     ; Wed Dec 03 07:56:18 2025 ;
+; system_on_chip/synthesis/submodules/system_on_chip_ARM_fpga_interfaces.sdc       ; OK     ; Wed Dec 03 07:56:18 2025 ;
 +----------------------------------------------------------------------------------+--------+--------------------------+
 
 
@@ -675,7 +675,7 @@ refer to the applicable agreement for further details.
 +-------------+-----------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------+
 ; Fmax        ; Restricted Fmax ; Clock Name                                                                                                                                                   ; Note                                           ;
 +-------------+-----------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------+
-; 116.27 MHz  ; 116.27 MHz      ; altera_reserved_tck                                                                                                                                          ;                                                ;
+; 101.97 MHz  ; 101.97 MHz      ; altera_reserved_tck                                                                                                                                          ;                                                ;
 ; 1184.83 MHz ; 717.36 MHz      ; system_on_chip_ARM:arm|system_on_chip_ARM_hps_io:hps_io|system_on_chip_ARM_hps_io_border:border|hps_sdram:hps_sdram_inst|hps_sdram_pll:pll|afi_clk_write_clk ; limit due to minimum period restriction (tmin) ;
 +-------------+-----------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------+
 This panel reports FMAX for every clock in the design, regardless of the user-specified clock periods.  FMAX is only computed for paths where the source and destination registers or ports are driven by the same clock.  Paths of different clocks, including generated clocks, are ignored.  For paths between a clock and its inversion, FMAX is computed as if the rising and falling edges are scaled along with FMAX, such that the duty cycle (in terms of a percentage) is maintained. Altera recommends that you always use clock constraints and other slack reports for sign-off analysis.
@@ -693,7 +693,7 @@ HTML report is unavailable in plain text report export.
 ; Clock                                                                                                                                                        ; Slack  ; End Point TNS ;
 +--------------------------------------------------------------------------------------------------------------------------------------------------------------+--------+---------------+
 ; system_on_chip_ARM:arm|system_on_chip_ARM_hps_io:hps_io|system_on_chip_ARM_hps_io_border:border|hps_sdram:hps_sdram_inst|hps_sdram_pll:pll|afi_clk_write_clk ; 2.563  ; 0.000         ;
-; altera_reserved_tck                                                                                                                                          ; 12.366 ; 0.000         ;
+; altera_reserved_tck                                                                                                                                          ; 11.763 ; 0.000         ;
 +--------------------------------------------------------------------------------------------------------------------------------------------------------------+--------+---------------+
 
 
@@ -702,8 +702,8 @@ HTML report is unavailable in plain text report export.
 +--------------------------------------------------------------------------------------------------------------------------------------------------------------+-------+---------------+
 ; Clock                                                                                                                                                        ; Slack ; End Point TNS ;
 +--------------------------------------------------------------------------------------------------------------------------------------------------------------+-------+---------------+
-; altera_reserved_tck                                                                                                                                          ; 0.115 ; 0.000         ;
 ; system_on_chip_ARM:arm|system_on_chip_ARM_hps_io:hps_io|system_on_chip_ARM_hps_io_border:border|hps_sdram:hps_sdram_inst|hps_sdram_pll:pll|afi_clk_write_clk ; 0.143 ; 0.000         ;
+; altera_reserved_tck                                                                                                                                          ; 0.367 ; 0.000         ;
 +--------------------------------------------------------------------------------------------------------------------------------------------------------------+-------+---------------+
 
 
@@ -713,7 +713,7 @@ HTML report is unavailable in plain text report export.
 ; Clock                                                                                                                                                        ; Slack  ; End Point TNS ;
 +--------------------------------------------------------------------------------------------------------------------------------------------------------------+--------+---------------+
 ; system_on_chip_ARM:arm|system_on_chip_ARM_hps_io:hps_io|system_on_chip_ARM_hps_io_border:border|hps_sdram:hps_sdram_inst|hps_sdram_pll:pll|afi_clk_write_clk ; 5.041  ; 0.000         ;
-; altera_reserved_tck                                                                                                                                          ; 14.669 ; 0.000         ;
+; altera_reserved_tck                                                                                                                                          ; 15.019 ; 0.000         ;
 +--------------------------------------------------------------------------------------------------------------------------------------------------------------+--------+---------------+
 
 
@@ -722,7 +722,7 @@ HTML report is unavailable in plain text report export.
 +--------------------------------------------------------------------------------------------------------------------------------------------------------------+-------+---------------+
 ; Clock                                                                                                                                                        ; Slack ; End Point TNS ;
 +--------------------------------------------------------------------------------------------------------------------------------------------------------------+-------+---------------+
-; altera_reserved_tck                                                                                                                                          ; 0.904 ; 0.000         ;
+; altera_reserved_tck                                                                                                                                          ; 0.711 ; 0.000         ;
 ; system_on_chip_ARM:arm|system_on_chip_ARM_hps_io:hps_io|system_on_chip_ARM_hps_io_border:border|hps_sdram:hps_sdram_inst|hps_sdram_pll:pll|afi_clk_write_clk ; 1.063 ; 0.000         ;
 +--------------------------------------------------------------------------------------------------------------------------------------------------------------+-------+---------------+
 
@@ -734,7 +734,7 @@ HTML report is unavailable in plain text report export.
 +-----------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------+---------------+
 ; system_on_chip_ARM:arm|system_on_chip_ARM_hps_io:hps_io|system_on_chip_ARM_hps_io_border:border|hps_sdram:hps_sdram_inst|hps_sdram_pll:pll|pll_write_clk_dq_write_clk ; 1.025  ; 0.000         ;
 ; system_on_chip_ARM:arm|system_on_chip_ARM_hps_io:hps_io|system_on_chip_ARM_hps_io_border:border|hps_sdram:hps_sdram_inst|hps_sdram_pll:pll|afi_clk_write_clk          ; 1.039  ; 0.000         ;
-; altera_reserved_tck                                                                                                                                                   ; 15.760 ; 0.000         ;
+; altera_reserved_tck                                                                                                                                                   ; 15.735 ; 0.000         ;
 +-----------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------+---------------+
 
 
@@ -747,7 +747,7 @@ Typical MTBF of Design is 1e+09 years or 3.15e+16 seconds.
 Number of Synchronizer Chains Found: 2
 Shortest Synchronizer Chain: 2 Registers
 Fraction of Chains for which MTBFs Could Not be Calculated: 0.000
-Worst Case Available Settling Time: 62.573 ns
+Worst Case Available Settling Time: 62.504 ns
 
 Worst-Case MTBF values are calculated based on the worst-case silicon characteristics, with worst-case operating conditions.
   - Under worst-case conditions, an increase of 100ps in available settling time will increase MTBF values by a factor of 79.4
@@ -10458,7 +10458,7 @@ HTML report is unavailable in plain text report export.
 +-------------+-----------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------+
 ; Fmax        ; Restricted Fmax ; Clock Name                                                                                                                                                   ; Note                                           ;
 +-------------+-----------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------+
-; 118.25 MHz  ; 118.25 MHz      ; altera_reserved_tck                                                                                                                                          ;                                                ;
+; 105.16 MHz  ; 105.16 MHz      ; altera_reserved_tck                                                                                                                                          ;                                                ;
 ; 1237.62 MHz ; 717.36 MHz      ; system_on_chip_ARM:arm|system_on_chip_ARM_hps_io:hps_io|system_on_chip_ARM_hps_io_border:border|hps_sdram:hps_sdram_inst|hps_sdram_pll:pll|afi_clk_write_clk ; limit due to minimum period restriction (tmin) ;
 +-------------+-----------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------+
 This panel reports FMAX for every clock in the design, regardless of the user-specified clock periods.  FMAX is only computed for paths where the source and destination registers or ports are driven by the same clock.  Paths of different clocks, including generated clocks, are ignored.  For paths between a clock and its inversion, FMAX is computed as if the rising and falling edges are scaled along with FMAX, such that the duty cycle (in terms of a percentage) is maintained. Altera recommends that you always use clock constraints and other slack reports for sign-off analysis.
@@ -10470,7 +10470,7 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 ; Clock                                                                                                                                                        ; Slack  ; End Point TNS ;
 +--------------------------------------------------------------------------------------------------------------------------------------------------------------+--------+---------------+
 ; system_on_chip_ARM:arm|system_on_chip_ARM_hps_io:hps_io|system_on_chip_ARM_hps_io_border:border|hps_sdram:hps_sdram_inst|hps_sdram_pll:pll|afi_clk_write_clk ; 2.560  ; 0.000         ;
-; altera_reserved_tck                                                                                                                                          ; 12.438 ; 0.000         ;
+; altera_reserved_tck                                                                                                                                          ; 11.912 ; 0.000         ;
 +--------------------------------------------------------------------------------------------------------------------------------------------------------------+--------+---------------+
 
 
@@ -10479,8 +10479,8 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 +--------------------------------------------------------------------------------------------------------------------------------------------------------------+-------+---------------+
 ; Clock                                                                                                                                                        ; Slack ; End Point TNS ;
 +--------------------------------------------------------------------------------------------------------------------------------------------------------------+-------+---------------+
-; altera_reserved_tck                                                                                                                                          ; 0.102 ; 0.000         ;
 ; system_on_chip_ARM:arm|system_on_chip_ARM_hps_io:hps_io|system_on_chip_ARM_hps_io_border:border|hps_sdram:hps_sdram_inst|hps_sdram_pll:pll|afi_clk_write_clk ; 0.162 ; 0.000         ;
+; altera_reserved_tck                                                                                                                                          ; 0.365 ; 0.000         ;
 +--------------------------------------------------------------------------------------------------------------------------------------------------------------+-------+---------------+
 
 
@@ -10490,7 +10490,7 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 ; Clock                                                                                                                                                        ; Slack  ; End Point TNS ;
 +--------------------------------------------------------------------------------------------------------------------------------------------------------------+--------+---------------+
 ; system_on_chip_ARM:arm|system_on_chip_ARM_hps_io:hps_io|system_on_chip_ARM_hps_io_border:border|hps_sdram:hps_sdram_inst|hps_sdram_pll:pll|afi_clk_write_clk ; 5.134  ; 0.000         ;
-; altera_reserved_tck                                                                                                                                          ; 14.771 ; 0.000         ;
+; altera_reserved_tck                                                                                                                                          ; 15.034 ; 0.000         ;
 +--------------------------------------------------------------------------------------------------------------------------------------------------------------+--------+---------------+
 
 
@@ -10499,7 +10499,7 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 +--------------------------------------------------------------------------------------------------------------------------------------------------------------+-------+---------------+
 ; Clock                                                                                                                                                        ; Slack ; End Point TNS ;
 +--------------------------------------------------------------------------------------------------------------------------------------------------------------+-------+---------------+
-; altera_reserved_tck                                                                                                                                          ; 0.860 ; 0.000         ;
+; altera_reserved_tck                                                                                                                                          ; 0.686 ; 0.000         ;
 ; system_on_chip_ARM:arm|system_on_chip_ARM_hps_io:hps_io|system_on_chip_ARM_hps_io_border:border|hps_sdram:hps_sdram_inst|hps_sdram_pll:pll|afi_clk_write_clk ; 1.012 ; 0.000         ;
 +--------------------------------------------------------------------------------------------------------------------------------------------------------------+-------+---------------+
 
@@ -10511,7 +10511,7 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 +-----------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------+---------------+
 ; system_on_chip_ARM:arm|system_on_chip_ARM_hps_io:hps_io|system_on_chip_ARM_hps_io_border:border|hps_sdram:hps_sdram_inst|hps_sdram_pll:pll|pll_write_clk_dq_write_clk ; 1.030  ; 0.000         ;
 ; system_on_chip_ARM:arm|system_on_chip_ARM_hps_io:hps_io|system_on_chip_ARM_hps_io_border:border|hps_sdram:hps_sdram_inst|hps_sdram_pll:pll|afi_clk_write_clk          ; 1.046  ; 0.000         ;
-; altera_reserved_tck                                                                                                                                                   ; 15.758 ; 0.000         ;
+; altera_reserved_tck                                                                                                                                                   ; 15.752 ; 0.000         ;
 +-----------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------+---------------+
 
 
@@ -10524,7 +10524,7 @@ Typical MTBF of Design is 1e+09 years or 3.15e+16 seconds.
 Number of Synchronizer Chains Found: 2
 Shortest Synchronizer Chain: 2 Registers
 Fraction of Chains for which MTBFs Could Not be Calculated: 0.000
-Worst Case Available Settling Time: 62.644 ns
+Worst Case Available Settling Time: 62.613 ns
 
 Worst-Case MTBF values are calculated based on the worst-case silicon characteristics, with worst-case operating conditions.
   - Under worst-case conditions, an increase of 100ps in available settling time will increase MTBF values by a factor of 5.2
@@ -20236,7 +20236,7 @@ HTML report is unavailable in plain text report export.
 ; Clock                                                                                                                                                        ; Slack  ; End Point TNS ;
 +--------------------------------------------------------------------------------------------------------------------------------------------------------------+--------+---------------+
 ; system_on_chip_ARM:arm|system_on_chip_ARM_hps_io:hps_io|system_on_chip_ARM_hps_io_border:border|hps_sdram:hps_sdram_inst|hps_sdram_pll:pll|afi_clk_write_clk ; 2.943  ; 0.000         ;
-; altera_reserved_tck                                                                                                                                          ; 14.358 ; 0.000         ;
+; altera_reserved_tck                                                                                                                                          ; 13.721 ; 0.000         ;
 +--------------------------------------------------------------------------------------------------------------------------------------------------------------+--------+---------------+
 
 
@@ -20245,8 +20245,8 @@ HTML report is unavailable in plain text report export.
 +--------------------------------------------------------------------------------------------------------------------------------------------------------------+-------+---------------+
 ; Clock                                                                                                                                                        ; Slack ; End Point TNS ;
 +--------------------------------------------------------------------------------------------------------------------------------------------------------------+-------+---------------+
-; altera_reserved_tck                                                                                                                                          ; 0.017 ; 0.000         ;
 ; system_on_chip_ARM:arm|system_on_chip_ARM_hps_io:hps_io|system_on_chip_ARM_hps_io_border:border|hps_sdram:hps_sdram_inst|hps_sdram_pll:pll|afi_clk_write_clk ; 0.084 ; 0.000         ;
+; altera_reserved_tck                                                                                                                                          ; 0.159 ; 0.000         ;
 +--------------------------------------------------------------------------------------------------------------------------------------------------------------+-------+---------------+
 
 
@@ -20256,7 +20256,7 @@ HTML report is unavailable in plain text report export.
 ; Clock                                                                                                                                                        ; Slack  ; End Point TNS ;
 +--------------------------------------------------------------------------------------------------------------------------------------------------------------+--------+---------------+
 ; system_on_chip_ARM:arm|system_on_chip_ARM_hps_io:hps_io|system_on_chip_ARM_hps_io_border:border|hps_sdram:hps_sdram_inst|hps_sdram_pll:pll|afi_clk_write_clk ; 5.393  ; 0.000         ;
-; altera_reserved_tck                                                                                                                                          ; 15.599 ; 0.000         ;
+; altera_reserved_tck                                                                                                                                          ; 15.893 ; 0.000         ;
 +--------------------------------------------------------------------------------------------------------------------------------------------------------------+--------+---------------+
 
 
@@ -20265,7 +20265,7 @@ HTML report is unavailable in plain text report export.
 +--------------------------------------------------------------------------------------------------------------------------------------------------------------+-------+---------------+
 ; Clock                                                                                                                                                        ; Slack ; End Point TNS ;
 +--------------------------------------------------------------------------------------------------------------------------------------------------------------+-------+---------------+
-; altera_reserved_tck                                                                                                                                          ; 0.433 ; 0.000         ;
+; altera_reserved_tck                                                                                                                                          ; 0.349 ; 0.000         ;
 ; system_on_chip_ARM:arm|system_on_chip_ARM_hps_io:hps_io|system_on_chip_ARM_hps_io_border:border|hps_sdram:hps_sdram_inst|hps_sdram_pll:pll|afi_clk_write_clk ; 0.984 ; 0.000         ;
 +--------------------------------------------------------------------------------------------------------------------------------------------------------------+-------+---------------+
 
@@ -20277,7 +20277,7 @@ HTML report is unavailable in plain text report export.
 +-----------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------+---------------+
 ; system_on_chip_ARM:arm|system_on_chip_ARM_hps_io:hps_io|system_on_chip_ARM_hps_io_border:border|hps_sdram:hps_sdram_inst|hps_sdram_pll:pll|pll_write_clk_dq_write_clk ; 1.300  ; 0.000         ;
 ; system_on_chip_ARM:arm|system_on_chip_ARM_hps_io:hps_io|system_on_chip_ARM_hps_io_border:border|hps_sdram:hps_sdram_inst|hps_sdram_pll:pll|afi_clk_write_clk          ; 1.307  ; 0.000         ;
-; altera_reserved_tck                                                                                                                                                   ; 15.757 ; 0.000         ;
+; altera_reserved_tck                                                                                                                                                   ; 15.715 ; 0.000         ;
 +-----------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------+---------------+
 
 
@@ -20290,7 +20290,7 @@ Typical MTBF of Design is 1e+09 years or 3.15e+16 seconds.
 Number of Synchronizer Chains Found: 2
 Shortest Synchronizer Chain: 2 Registers
 Fraction of Chains for which MTBFs Could Not be Calculated: 0.000
-Worst Case Available Settling Time: 63.827 ns
+Worst Case Available Settling Time: 63.795 ns
 
 Worst-Case MTBF values are calculated based on the worst-case silicon characteristics, with worst-case operating conditions.
   - Under worst-case conditions, an increase of 100ps in available settling time will increase MTBF values by a factor of 79.4
@@ -30002,7 +30002,7 @@ HTML report is unavailable in plain text report export.
 ; Clock                                                                                                                                                        ; Slack  ; End Point TNS ;
 +--------------------------------------------------------------------------------------------------------------------------------------------------------------+--------+---------------+
 ; system_on_chip_ARM:arm|system_on_chip_ARM_hps_io:hps_io|system_on_chip_ARM_hps_io_border:border|hps_sdram:hps_sdram_inst|hps_sdram_pll:pll|afi_clk_write_clk ; 2.943  ; 0.000         ;
-; altera_reserved_tck                                                                                                                                          ; 14.604 ; 0.000         ;
+; altera_reserved_tck                                                                                                                                          ; 14.068 ; 0.000         ;
 +--------------------------------------------------------------------------------------------------------------------------------------------------------------+--------+---------------+
 
 
@@ -30011,8 +30011,8 @@ HTML report is unavailable in plain text report export.
 +--------------------------------------------------------------------------------------------------------------------------------------------------------------+-------+---------------+
 ; Clock                                                                                                                                                        ; Slack ; End Point TNS ;
 +--------------------------------------------------------------------------------------------------------------------------------------------------------------+-------+---------------+
-; altera_reserved_tck                                                                                                                                          ; 0.005 ; 0.000         ;
 ; system_on_chip_ARM:arm|system_on_chip_ARM_hps_io:hps_io|system_on_chip_ARM_hps_io_border:border|hps_sdram:hps_sdram_inst|hps_sdram_pll:pll|afi_clk_write_clk ; 0.077 ; 0.000         ;
+; altera_reserved_tck                                                                                                                                          ; 0.133 ; 0.000         ;
 +--------------------------------------------------------------------------------------------------------------------------------------------------------------+-------+---------------+
 
 
@@ -30022,7 +30022,7 @@ HTML report is unavailable in plain text report export.
 ; Clock                                                                                                                                                        ; Slack  ; End Point TNS ;
 +--------------------------------------------------------------------------------------------------------------------------------------------------------------+--------+---------------+
 ; system_on_chip_ARM:arm|system_on_chip_ARM_hps_io:hps_io|system_on_chip_ARM_hps_io_border:border|hps_sdram:hps_sdram_inst|hps_sdram_pll:pll|afi_clk_write_clk ; 5.491  ; 0.000         ;
-; altera_reserved_tck                                                                                                                                          ; 15.755 ; 0.000         ;
+; altera_reserved_tck                                                                                                                                          ; 15.992 ; 0.000         ;
 +--------------------------------------------------------------------------------------------------------------------------------------------------------------+--------+---------------+
 
 
@@ -30031,7 +30031,7 @@ HTML report is unavailable in plain text report export.
 +--------------------------------------------------------------------------------------------------------------------------------------------------------------+-------+---------------+
 ; Clock                                                                                                                                                        ; Slack ; End Point TNS ;
 +--------------------------------------------------------------------------------------------------------------------------------------------------------------+-------+---------------+
-; altera_reserved_tck                                                                                                                                          ; 0.381 ; 0.000         ;
+; altera_reserved_tck                                                                                                                                          ; 0.312 ; 0.000         ;
 ; system_on_chip_ARM:arm|system_on_chip_ARM_hps_io:hps_io|system_on_chip_ARM_hps_io_border:border|hps_sdram:hps_sdram_inst|hps_sdram_pll:pll|afi_clk_write_clk ; 0.889 ; 0.000         ;
 +--------------------------------------------------------------------------------------------------------------------------------------------------------------+-------+---------------+
 
@@ -30043,7 +30043,7 @@ HTML report is unavailable in plain text report export.
 +-----------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------+---------------+
 ; system_on_chip_ARM:arm|system_on_chip_ARM_hps_io:hps_io|system_on_chip_ARM_hps_io_border:border|hps_sdram:hps_sdram_inst|hps_sdram_pll:pll|pll_write_clk_dq_write_clk ; 1.304  ; 0.000         ;
 ; system_on_chip_ARM:arm|system_on_chip_ARM_hps_io:hps_io|system_on_chip_ARM_hps_io_border:border|hps_sdram:hps_sdram_inst|hps_sdram_pll:pll|afi_clk_write_clk          ; 1.311  ; 0.000         ;
-; altera_reserved_tck                                                                                                                                                   ; 15.774 ; 0.000         ;
+; altera_reserved_tck                                                                                                                                                   ; 15.751 ; 0.000         ;
 +-----------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------+---------------+
 
 
@@ -30056,7 +30056,7 @@ Typical MTBF of Design is 1e+09 years or 3.15e+16 seconds.
 Number of Synchronizer Chains Found: 2
 Shortest Synchronizer Chain: 2 Registers
 Fraction of Chains for which MTBFs Could Not be Calculated: 0.000
-Worst Case Available Settling Time: 64.015 ns
+Worst Case Available Settling Time: 63.994 ns
 
 Worst-Case MTBF values are calculated based on the worst-case silicon characteristics, with worst-case operating conditions.
   - Under worst-case conditions, an increase of 100ps in available settling time will increase MTBF values by a factor of 5.2
@@ -39767,8 +39767,8 @@ HTML report is unavailable in plain text report export.
 +------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------+-------+----------+---------+---------------------+
 ; Clock                                                                                                                                                                  ; Setup  ; Hold  ; Recovery ; Removal ; Minimum Pulse Width ;
 +------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------+-------+----------+---------+---------------------+
-; Worst-case Slack                                                                                                                                                       ; 2.560  ; 0.005 ; 5.041    ; 0.381   ; 1.025               ;
-;  altera_reserved_tck                                                                                                                                                   ; 12.366 ; 0.005 ; 14.669   ; 0.381   ; 15.757              ;
+; Worst-case Slack                                                                                                                                                       ; 2.560  ; 0.077 ; 5.041    ; 0.312   ; 1.025               ;
+;  altera_reserved_tck                                                                                                                                                   ; 11.763 ; 0.133 ; 15.019   ; 0.312   ; 15.715              ;
 ;  system_on_chip_ARM:arm|system_on_chip_ARM_hps_io:hps_io|system_on_chip_ARM_hps_io_border:border|hps_sdram:hps_sdram_inst|hps_sdram_pll:pll|afi_clk_write_clk          ; 2.560  ; 0.077 ; 5.041    ; 0.889   ; 1.039               ;
 ;  system_on_chip_ARM:arm|system_on_chip_ARM_hps_io:hps_io|system_on_chip_ARM_hps_io_border:border|hps_sdram:hps_sdram_inst|hps_sdram_pll:pll|pll_write_clk_dq_write_clk ; N/A    ; N/A   ; N/A      ; N/A     ; 1.025               ;
 ; Design-wide TNS                                                                                                                                                        ; 0.0    ; 0.0   ; 0.0      ; 0.0     ; 0.0                 ;
@@ -39909,8 +39909,8 @@ HTML report is unavailable in plain text report export.
 ; reset_reset_n       ; 2.5 V                           ; 2000 ps         ; 2000 ps         ;
 ; audio_DACLRCK       ; 2.5 V                           ; 2000 ps         ; 2000 ps         ;
 ; audio_BCLK          ; 2.5 V                           ; 2000 ps         ; 2000 ps         ;
-; button_export[0]    ; 2.5 V                           ; 2000 ps         ; 2000 ps         ;
 ; switches_export[0]  ; 2.5 V                           ; 2000 ps         ; 2000 ps         ;
+; button_export[0]    ; 2.5 V                           ; 2000 ps         ; 2000 ps         ;
 ; button_export[3]    ; 2.5 V                           ; 2000 ps         ; 2000 ps         ;
 ; button_export[1]    ; 2.5 V                           ; 2000 ps         ; 2000 ps         ;
 ; button_export[2]    ; 2.5 V                           ; 2000 ps         ; 2000 ps         ;
@@ -39942,7 +39942,7 @@ HTML report is unavailable in plain text report export.
 ; id7_segment_export[4]  ; 2.5 V                           ; 0 s                 ; 0 s                 ; 2.32 V                       ; 3.52e-07 V                   ; 2.42 V              ; -0.0557 V           ; 0.175 V                              ; 0.114 V                              ; 4.5e-10 s                   ; 4.35e-10 s                  ; No                         ; No                         ; 2.32 V                      ; 3.52e-07 V                  ; 2.42 V             ; -0.0557 V          ; 0.175 V                             ; 0.114 V                             ; 4.5e-10 s                  ; 4.35e-10 s                 ; No                        ; No                        ;
 ; id7_segment_export[5]  ; 2.5 V                           ; 0 s                 ; 0 s                 ; 2.32 V                       ; 3.52e-07 V                   ; 2.42 V              ; -0.0568 V           ; 0.173 V                              ; 0.113 V                              ; 4.5e-10 s                   ; 4.35e-10 s                  ; No                         ; No                         ; 2.32 V                      ; 3.52e-07 V                  ; 2.42 V             ; -0.0568 V          ; 0.173 V                             ; 0.113 V                             ; 4.5e-10 s                  ; 4.35e-10 s                 ; No                        ; No                        ;
 ; id7_segment_export[6]  ; 2.5 V                           ; 0 s                 ; 0 s                 ; 2.32 V                       ; 3.52e-07 V                   ; 2.42 V              ; -0.0557 V           ; 0.175 V                              ; 0.114 V                              ; 4.5e-10 s                   ; 4.35e-10 s                  ; No                         ; No                         ; 2.32 V                      ; 3.52e-07 V                  ; 2.42 V             ; -0.0557 V          ; 0.175 V                             ; 0.114 V                             ; 4.5e-10 s                  ; 4.35e-10 s                 ; No                        ; No                        ;
-; id7_segment_export[7]  ; 2.5 V                           ; 0 s                 ; 0 s                 ; 2.32 V                       ; 3.52e-07 V                   ; 2.42 V              ; -0.0568 V           ; 0.173 V                              ; 0.113 V                              ; 4.5e-10 s                   ; 4.35e-10 s                  ; No                         ; No                         ; 2.32 V                      ; 3.52e-07 V                  ; 2.42 V             ; -0.0568 V          ; 0.173 V                             ; 0.113 V                             ; 4.5e-10 s                  ; 4.35e-10 s                 ; No                        ; No                        ;
+; id7_segment_export[7]  ; 2.5 V                           ; 0 s                 ; 0 s                 ; 2.32 V                       ; 3.52e-07 V                   ; 2.42 V              ; -0.0557 V           ; 0.175 V                              ; 0.114 V                              ; 4.5e-10 s                   ; 4.35e-10 s                  ; No                         ; No                         ; 2.32 V                      ; 3.52e-07 V                  ; 2.42 V             ; -0.0557 V          ; 0.175 V                             ; 0.114 V                             ; 4.5e-10 s                  ; 4.35e-10 s                 ; No                        ; No                        ;
 ; id7_segment_export[8]  ; 2.5 V                           ; 0 s                 ; 0 s                 ; 2.32 V                       ; 3.52e-07 V                   ; 2.42 V              ; -0.0568 V           ; 0.173 V                              ; 0.113 V                              ; 4.5e-10 s                   ; 4.35e-10 s                  ; No                         ; No                         ; 2.32 V                      ; 3.52e-07 V                  ; 2.42 V             ; -0.0568 V          ; 0.173 V                             ; 0.113 V                             ; 4.5e-10 s                  ; 4.35e-10 s                 ; No                        ; No                        ;
 ; id7_segment_export[9]  ; 2.5 V                           ; 0 s                 ; 0 s                 ; 2.32 V                       ; 3.52e-07 V                   ; 2.42 V              ; -0.0557 V           ; 0.175 V                              ; 0.114 V                              ; 4.5e-10 s                   ; 4.35e-10 s                  ; No                         ; No                         ; 2.32 V                      ; 3.52e-07 V                  ; 2.42 V             ; -0.0557 V          ; 0.175 V                             ; 0.114 V                             ; 4.5e-10 s                  ; 4.35e-10 s                 ; No                        ; No                        ;
 ; id7_segment_export[10] ; 2.5 V                           ; 0 s                 ; 0 s                 ; 2.32 V                       ; 3.52e-07 V                   ; 2.42 V              ; -0.0568 V           ; 0.173 V                              ; 0.113 V                              ; 4.5e-10 s                   ; 4.35e-10 s                  ; No                         ; No                         ; 2.32 V                      ; 3.52e-07 V                  ; 2.42 V             ; -0.0568 V          ; 0.173 V                             ; 0.113 V                             ; 4.5e-10 s                  ; 4.35e-10 s                 ; No                        ; No                        ;
@@ -39950,7 +39950,7 @@ HTML report is unavailable in plain text report export.
 ; id7_segment_export[12] ; 2.5 V                           ; 0 s                 ; 0 s                 ; 2.32 V                       ; 3.52e-07 V                   ; 2.42 V              ; -0.0568 V           ; 0.173 V                              ; 0.113 V                              ; 4.5e-10 s                   ; 4.35e-10 s                  ; No                         ; No                         ; 2.32 V                      ; 3.52e-07 V                  ; 2.42 V             ; -0.0568 V          ; 0.173 V                             ; 0.113 V                             ; 4.5e-10 s                  ; 4.35e-10 s                 ; No                        ; No                        ;
 ; id7_segment_export[13] ; 2.5 V                           ; 0 s                 ; 0 s                 ; 2.32 V                       ; 3.52e-07 V                   ; 2.42 V              ; -0.0557 V           ; 0.175 V                              ; 0.114 V                              ; 4.5e-10 s                   ; 4.35e-10 s                  ; No                         ; No                         ; 2.32 V                      ; 3.52e-07 V                  ; 2.42 V             ; -0.0557 V          ; 0.175 V                             ; 0.114 V                             ; 4.5e-10 s                  ; 4.35e-10 s                 ; No                        ; No                        ;
 ; id7_segment_export[14] ; 2.5 V                           ; 0 s                 ; 0 s                 ; 2.32 V                       ; 3.52e-07 V                   ; 2.42 V              ; -0.0557 V           ; 0.175 V                              ; 0.114 V                              ; 4.5e-10 s                   ; 4.35e-10 s                  ; No                         ; No                         ; 2.32 V                      ; 3.52e-07 V                  ; 2.42 V             ; -0.0557 V          ; 0.175 V                             ; 0.114 V                             ; 4.5e-10 s                  ; 4.35e-10 s                 ; No                        ; No                        ;
-; id7_segment_export[15] ; 2.5 V                           ; 0 s                 ; 0 s                 ; 2.32 V                       ; 3.52e-07 V                   ; 2.42 V              ; -0.0557 V           ; 0.175 V                              ; 0.114 V                              ; 4.5e-10 s                   ; 4.35e-10 s                  ; No                         ; No                         ; 2.32 V                      ; 3.52e-07 V                  ; 2.42 V             ; -0.0557 V          ; 0.175 V                             ; 0.114 V                             ; 4.5e-10 s                  ; 4.35e-10 s                 ; No                        ; No                        ;
+; id7_segment_export[15] ; 2.5 V                           ; 0 s                 ; 0 s                 ; 2.32 V                       ; 3.07e-07 V                   ; 2.36 V              ; -0.0231 V           ; 0.14 V                               ; 0.089 V                              ; 4.52e-10 s                  ; 4.35e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 3.07e-07 V                  ; 2.36 V             ; -0.0231 V          ; 0.14 V                              ; 0.089 V                             ; 4.52e-10 s                 ; 4.35e-10 s                 ; No                        ; Yes                       ;
 ; id7_segment_export[16] ; 2.5 V                           ; 0 s                 ; 0 s                 ; 2.32 V                       ; 3.07e-07 V                   ; 2.36 V              ; -0.0231 V           ; 0.14 V                               ; 0.089 V                              ; 4.52e-10 s                  ; 4.35e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 3.07e-07 V                  ; 2.36 V             ; -0.0231 V          ; 0.14 V                              ; 0.089 V                             ; 4.52e-10 s                 ; 4.35e-10 s                 ; No                        ; Yes                       ;
 ; id7_segment_export[17] ; 2.5 V                           ; 0 s                 ; 0 s                 ; 2.32 V                       ; 3.52e-07 V                   ; 2.42 V              ; -0.0568 V           ; 0.173 V                              ; 0.113 V                              ; 4.5e-10 s                   ; 4.35e-10 s                  ; No                         ; No                         ; 2.32 V                      ; 3.52e-07 V                  ; 2.42 V             ; -0.0568 V          ; 0.173 V                             ; 0.113 V                             ; 4.5e-10 s                  ; 4.35e-10 s                 ; No                        ; No                        ;
 ; id7_segment_export[18] ; 2.5 V                           ; 0 s                 ; 0 s                 ; 2.32 V                       ; 3.52e-07 V                   ; 2.42 V              ; -0.0557 V           ; 0.175 V                              ; 0.114 V                              ; 4.5e-10 s                   ; 4.35e-10 s                  ; No                         ; No                         ; 2.32 V                      ; 3.52e-07 V                  ; 2.42 V             ; -0.0557 V          ; 0.175 V                             ; 0.114 V                             ; 4.5e-10 s                  ; 4.35e-10 s                 ; No                        ; No                        ;
@@ -40052,7 +40052,7 @@ HTML report is unavailable in plain text report export.
 ; id7_segment_export[4]  ; 2.5 V                           ; 0 s                 ; 0 s                 ; 2.32 V                       ; 3.88e-05 V                   ; 2.39 V              ; -0.037 V            ; 0.188 V                              ; 0.158 V                              ; 4.67e-10 s                  ; 4.67e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 3.88e-05 V                  ; 2.39 V             ; -0.037 V           ; 0.188 V                             ; 0.158 V                             ; 4.67e-10 s                 ; 4.67e-10 s                 ; No                        ; Yes                       ;
 ; id7_segment_export[5]  ; 2.5 V                           ; 0 s                 ; 0 s                 ; 2.32 V                       ; 3.88e-05 V                   ; 2.39 V              ; -0.0374 V           ; 0.189 V                              ; 0.158 V                              ; 4.66e-10 s                  ; 4.67e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 3.88e-05 V                  ; 2.39 V             ; -0.0374 V          ; 0.189 V                             ; 0.158 V                             ; 4.66e-10 s                 ; 4.67e-10 s                 ; No                        ; Yes                       ;
 ; id7_segment_export[6]  ; 2.5 V                           ; 0 s                 ; 0 s                 ; 2.32 V                       ; 3.88e-05 V                   ; 2.39 V              ; -0.037 V            ; 0.188 V                              ; 0.158 V                              ; 4.67e-10 s                  ; 4.67e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 3.88e-05 V                  ; 2.39 V             ; -0.037 V           ; 0.188 V                             ; 0.158 V                             ; 4.67e-10 s                 ; 4.67e-10 s                 ; No                        ; Yes                       ;
-; id7_segment_export[7]  ; 2.5 V                           ; 0 s                 ; 0 s                 ; 2.32 V                       ; 3.88e-05 V                   ; 2.39 V              ; -0.0374 V           ; 0.189 V                              ; 0.158 V                              ; 4.66e-10 s                  ; 4.67e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 3.88e-05 V                  ; 2.39 V             ; -0.0374 V          ; 0.189 V                             ; 0.158 V                             ; 4.66e-10 s                 ; 4.67e-10 s                 ; No                        ; Yes                       ;
+; id7_segment_export[7]  ; 2.5 V                           ; 0 s                 ; 0 s                 ; 2.32 V                       ; 3.88e-05 V                   ; 2.39 V              ; -0.037 V            ; 0.188 V                              ; 0.158 V                              ; 4.67e-10 s                  ; 4.67e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 3.88e-05 V                  ; 2.39 V             ; -0.037 V           ; 0.188 V                             ; 0.158 V                             ; 4.67e-10 s                 ; 4.67e-10 s                 ; No                        ; Yes                       ;
 ; id7_segment_export[8]  ; 2.5 V                           ; 0 s                 ; 0 s                 ; 2.32 V                       ; 3.88e-05 V                   ; 2.39 V              ; -0.0374 V           ; 0.189 V                              ; 0.158 V                              ; 4.66e-10 s                  ; 4.67e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 3.88e-05 V                  ; 2.39 V             ; -0.0374 V          ; 0.189 V                             ; 0.158 V                             ; 4.66e-10 s                 ; 4.67e-10 s                 ; No                        ; Yes                       ;
 ; id7_segment_export[9]  ; 2.5 V                           ; 0 s                 ; 0 s                 ; 2.32 V                       ; 3.88e-05 V                   ; 2.39 V              ; -0.037 V            ; 0.188 V                              ; 0.158 V                              ; 4.67e-10 s                  ; 4.67e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 3.88e-05 V                  ; 2.39 V             ; -0.037 V           ; 0.188 V                             ; 0.158 V                             ; 4.67e-10 s                 ; 4.67e-10 s                 ; No                        ; Yes                       ;
 ; id7_segment_export[10] ; 2.5 V                           ; 0 s                 ; 0 s                 ; 2.32 V                       ; 3.88e-05 V                   ; 2.39 V              ; -0.0374 V           ; 0.189 V                              ; 0.158 V                              ; 4.66e-10 s                  ; 4.67e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 3.88e-05 V                  ; 2.39 V             ; -0.0374 V          ; 0.189 V                             ; 0.158 V                             ; 4.66e-10 s                 ; 4.67e-10 s                 ; No                        ; Yes                       ;
@@ -40060,7 +40060,7 @@ HTML report is unavailable in plain text report export.
 ; id7_segment_export[12] ; 2.5 V                           ; 0 s                 ; 0 s                 ; 2.32 V                       ; 3.88e-05 V                   ; 2.39 V              ; -0.0374 V           ; 0.189 V                              ; 0.158 V                              ; 4.66e-10 s                  ; 4.67e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 3.88e-05 V                  ; 2.39 V             ; -0.0374 V          ; 0.189 V                             ; 0.158 V                             ; 4.66e-10 s                 ; 4.67e-10 s                 ; No                        ; Yes                       ;
 ; id7_segment_export[13] ; 2.5 V                           ; 0 s                 ; 0 s                 ; 2.32 V                       ; 3.88e-05 V                   ; 2.39 V              ; -0.037 V            ; 0.188 V                              ; 0.158 V                              ; 4.67e-10 s                  ; 4.67e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 3.88e-05 V                  ; 2.39 V             ; -0.037 V           ; 0.188 V                             ; 0.158 V                             ; 4.67e-10 s                 ; 4.67e-10 s                 ; No                        ; Yes                       ;
 ; id7_segment_export[14] ; 2.5 V                           ; 0 s                 ; 0 s                 ; 2.32 V                       ; 3.88e-05 V                   ; 2.39 V              ; -0.037 V            ; 0.188 V                              ; 0.158 V                              ; 4.67e-10 s                  ; 4.67e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 3.88e-05 V                  ; 2.39 V             ; -0.037 V           ; 0.188 V                             ; 0.158 V                             ; 4.67e-10 s                 ; 4.67e-10 s                 ; No                        ; Yes                       ;
-; id7_segment_export[15] ; 2.5 V                           ; 0 s                 ; 0 s                 ; 2.32 V                       ; 3.88e-05 V                   ; 2.39 V              ; -0.037 V            ; 0.188 V                              ; 0.158 V                              ; 4.67e-10 s                  ; 4.67e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 3.88e-05 V                  ; 2.39 V             ; -0.037 V           ; 0.188 V                             ; 0.158 V                             ; 4.67e-10 s                 ; 4.67e-10 s                 ; No                        ; Yes                       ;
+; id7_segment_export[15] ; 2.5 V                           ; 0 s                 ; 0 s                 ; 2.32 V                       ; 3.49e-05 V                   ; 2.34 V              ; -0.0118 V           ; 0.182 V                              ; 0.051 V                              ; 4.81e-10 s                  ; 4.83e-10 s                  ; Yes                        ; Yes                        ; 2.32 V                      ; 3.49e-05 V                  ; 2.34 V             ; -0.0118 V          ; 0.182 V                             ; 0.051 V                             ; 4.81e-10 s                 ; 4.83e-10 s                 ; Yes                       ; Yes                       ;
 ; id7_segment_export[16] ; 2.5 V                           ; 0 s                 ; 0 s                 ; 2.32 V                       ; 3.49e-05 V                   ; 2.34 V              ; -0.0118 V           ; 0.182 V                              ; 0.051 V                              ; 4.81e-10 s                  ; 4.83e-10 s                  ; Yes                        ; Yes                        ; 2.32 V                      ; 3.49e-05 V                  ; 2.34 V             ; -0.0118 V          ; 0.182 V                             ; 0.051 V                             ; 4.81e-10 s                 ; 4.83e-10 s                 ; Yes                       ; Yes                       ;
 ; id7_segment_export[17] ; 2.5 V                           ; 0 s                 ; 0 s                 ; 2.32 V                       ; 3.88e-05 V                   ; 2.39 V              ; -0.0374 V           ; 0.189 V                              ; 0.158 V                              ; 4.66e-10 s                  ; 4.67e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 3.88e-05 V                  ; 2.39 V             ; -0.0374 V          ; 0.189 V                             ; 0.158 V                             ; 4.66e-10 s                 ; 4.67e-10 s                 ; No                        ; Yes                       ;
 ; id7_segment_export[18] ; 2.5 V                           ; 0 s                 ; 0 s                 ; 2.32 V                       ; 3.88e-05 V                   ; 2.39 V              ; -0.037 V            ; 0.188 V                              ; 0.158 V                              ; 4.67e-10 s                  ; 4.67e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 3.88e-05 V                  ; 2.39 V             ; -0.037 V           ; 0.188 V                             ; 0.158 V                             ; 4.67e-10 s                 ; 4.67e-10 s                 ; No                        ; Yes                       ;
@@ -40162,7 +40162,7 @@ HTML report is unavailable in plain text report export.
 ; id7_segment_export[4]  ; 2.5 V                           ; 0 s                 ; 0 s                 ; 2.75 V                       ; 4.14e-06 V                   ; 2.91 V              ; -0.121 V            ; 0.326 V                              ; 0.297 V                              ; 2.74e-10 s                  ; 2.8e-10 s                   ; No                         ; No                         ; 2.75 V                      ; 4.14e-06 V                  ; 2.91 V             ; -0.121 V           ; 0.326 V                             ; 0.297 V                             ; 2.74e-10 s                 ; 2.8e-10 s                  ; No                        ; No                        ;
 ; id7_segment_export[5]  ; 2.5 V                           ; 0 s                 ; 0 s                 ; 2.75 V                       ; 4.14e-06 V                   ; 2.91 V              ; -0.119 V            ; 0.326 V                              ; 0.298 V                              ; 2.74e-10 s                  ; 2.8e-10 s                   ; No                         ; No                         ; 2.75 V                      ; 4.14e-06 V                  ; 2.91 V             ; -0.119 V           ; 0.326 V                             ; 0.298 V                             ; 2.74e-10 s                 ; 2.8e-10 s                  ; No                        ; No                        ;
 ; id7_segment_export[6]  ; 2.5 V                           ; 0 s                 ; 0 s                 ; 2.75 V                       ; 4.14e-06 V                   ; 2.91 V              ; -0.121 V            ; 0.326 V                              ; 0.297 V                              ; 2.74e-10 s                  ; 2.8e-10 s                   ; No                         ; No                         ; 2.75 V                      ; 4.14e-06 V                  ; 2.91 V             ; -0.121 V           ; 0.326 V                             ; 0.297 V                             ; 2.74e-10 s                 ; 2.8e-10 s                  ; No                        ; No                        ;
-; id7_segment_export[7]  ; 2.5 V                           ; 0 s                 ; 0 s                 ; 2.75 V                       ; 4.14e-06 V                   ; 2.91 V              ; -0.119 V            ; 0.326 V                              ; 0.298 V                              ; 2.74e-10 s                  ; 2.8e-10 s                   ; No                         ; No                         ; 2.75 V                      ; 4.14e-06 V                  ; 2.91 V             ; -0.119 V           ; 0.326 V                             ; 0.298 V                             ; 2.74e-10 s                 ; 2.8e-10 s                  ; No                        ; No                        ;
+; id7_segment_export[7]  ; 2.5 V                           ; 0 s                 ; 0 s                 ; 2.75 V                       ; 4.14e-06 V                   ; 2.91 V              ; -0.121 V            ; 0.326 V                              ; 0.297 V                              ; 2.74e-10 s                  ; 2.8e-10 s                   ; No                         ; No                         ; 2.75 V                      ; 4.14e-06 V                  ; 2.91 V             ; -0.121 V           ; 0.326 V                             ; 0.297 V                             ; 2.74e-10 s                 ; 2.8e-10 s                  ; No                        ; No                        ;
 ; id7_segment_export[8]  ; 2.5 V                           ; 0 s                 ; 0 s                 ; 2.75 V                       ; 4.14e-06 V                   ; 2.91 V              ; -0.119 V            ; 0.326 V                              ; 0.298 V                              ; 2.74e-10 s                  ; 2.8e-10 s                   ; No                         ; No                         ; 2.75 V                      ; 4.14e-06 V                  ; 2.91 V             ; -0.119 V           ; 0.326 V                             ; 0.298 V                             ; 2.74e-10 s                 ; 2.8e-10 s                  ; No                        ; No                        ;
 ; id7_segment_export[9]  ; 2.5 V                           ; 0 s                 ; 0 s                 ; 2.75 V                       ; 4.14e-06 V                   ; 2.91 V              ; -0.121 V            ; 0.326 V                              ; 0.297 V                              ; 2.74e-10 s                  ; 2.8e-10 s                   ; No                         ; No                         ; 2.75 V                      ; 4.14e-06 V                  ; 2.91 V             ; -0.121 V           ; 0.326 V                             ; 0.297 V                             ; 2.74e-10 s                 ; 2.8e-10 s                  ; No                        ; No                        ;
 ; id7_segment_export[10] ; 2.5 V                           ; 0 s                 ; 0 s                 ; 2.75 V                       ; 4.14e-06 V                   ; 2.91 V              ; -0.119 V            ; 0.326 V                              ; 0.298 V                              ; 2.74e-10 s                  ; 2.8e-10 s                   ; No                         ; No                         ; 2.75 V                      ; 4.14e-06 V                  ; 2.91 V             ; -0.119 V           ; 0.326 V                             ; 0.298 V                             ; 2.74e-10 s                 ; 2.8e-10 s                  ; No                        ; No                        ;
@@ -40170,7 +40170,7 @@ HTML report is unavailable in plain text report export.
 ; id7_segment_export[12] ; 2.5 V                           ; 0 s                 ; 0 s                 ; 2.75 V                       ; 4.14e-06 V                   ; 2.91 V              ; -0.119 V            ; 0.326 V                              ; 0.298 V                              ; 2.74e-10 s                  ; 2.8e-10 s                   ; No                         ; No                         ; 2.75 V                      ; 4.14e-06 V                  ; 2.91 V             ; -0.119 V           ; 0.326 V                             ; 0.298 V                             ; 2.74e-10 s                 ; 2.8e-10 s                  ; No                        ; No                        ;
 ; id7_segment_export[13] ; 2.5 V                           ; 0 s                 ; 0 s                 ; 2.75 V                       ; 4.14e-06 V                   ; 2.91 V              ; -0.121 V            ; 0.326 V                              ; 0.297 V                              ; 2.74e-10 s                  ; 2.8e-10 s                   ; No                         ; No                         ; 2.75 V                      ; 4.14e-06 V                  ; 2.91 V             ; -0.121 V           ; 0.326 V                             ; 0.297 V                             ; 2.74e-10 s                 ; 2.8e-10 s                  ; No                        ; No                        ;
 ; id7_segment_export[14] ; 2.5 V                           ; 0 s                 ; 0 s                 ; 2.75 V                       ; 4.14e-06 V                   ; 2.91 V              ; -0.121 V            ; 0.326 V                              ; 0.297 V                              ; 2.74e-10 s                  ; 2.8e-10 s                   ; No                         ; No                         ; 2.75 V                      ; 4.14e-06 V                  ; 2.91 V             ; -0.121 V           ; 0.326 V                             ; 0.297 V                             ; 2.74e-10 s                 ; 2.8e-10 s                  ; No                        ; No                        ;
-; id7_segment_export[15] ; 2.5 V                           ; 0 s                 ; 0 s                 ; 2.75 V                       ; 4.14e-06 V                   ; 2.91 V              ; -0.121 V            ; 0.326 V                              ; 0.297 V                              ; 2.74e-10 s                  ; 2.8e-10 s                   ; No                         ; No                         ; 2.75 V                      ; 4.14e-06 V                  ; 2.91 V             ; -0.121 V           ; 0.326 V                             ; 0.297 V                             ; 2.74e-10 s                 ; 2.8e-10 s                  ; No                        ; No                        ;
+; id7_segment_export[15] ; 2.5 V                           ; 0 s                 ; 0 s                 ; 2.75 V                       ; 3.54e-06 V                   ; 2.81 V              ; -0.0578 V           ; 0.303 V                              ; 0.28 V                               ; 2.93e-10 s                  ; 3.01e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 3.54e-06 V                  ; 2.81 V             ; -0.0578 V          ; 0.303 V                             ; 0.28 V                              ; 2.93e-10 s                 ; 3.01e-10 s                 ; No                        ; No                        ;
 ; id7_segment_export[16] ; 2.5 V                           ; 0 s                 ; 0 s                 ; 2.75 V                       ; 3.54e-06 V                   ; 2.81 V              ; -0.0578 V           ; 0.303 V                              ; 0.28 V                               ; 2.93e-10 s                  ; 3.01e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 3.54e-06 V                  ; 2.81 V             ; -0.0578 V          ; 0.303 V                             ; 0.28 V                              ; 2.93e-10 s                 ; 3.01e-10 s                 ; No                        ; No                        ;
 ; id7_segment_export[17] ; 2.5 V                           ; 0 s                 ; 0 s                 ; 2.75 V                       ; 4.14e-06 V                   ; 2.91 V              ; -0.119 V            ; 0.326 V                              ; 0.298 V                              ; 2.74e-10 s                  ; 2.8e-10 s                   ; No                         ; No                         ; 2.75 V                      ; 4.14e-06 V                  ; 2.91 V             ; -0.119 V           ; 0.326 V                             ; 0.298 V                             ; 2.74e-10 s                 ; 2.8e-10 s                  ; No                        ; No                        ;
 ; id7_segment_export[18] ; 2.5 V                           ; 0 s                 ; 0 s                 ; 2.75 V                       ; 4.14e-06 V                   ; 2.91 V              ; -0.121 V            ; 0.326 V                              ; 0.297 V                              ; 2.74e-10 s                  ; 2.8e-10 s                   ; No                         ; No                         ; 2.75 V                      ; 4.14e-06 V                  ; 2.91 V             ; -0.121 V           ; 0.326 V                             ; 0.297 V                             ; 2.74e-10 s                 ; 2.8e-10 s                  ; No                        ; No                        ;
@@ -40272,7 +40272,7 @@ HTML report is unavailable in plain text report export.
 ; id7_segment_export[4]  ; 2.5 V                           ; 0 s                 ; 0 s                 ; 2.75 V                       ; 0.000242 V                   ; 2.86 V              ; -0.0814 V           ; 0.36 V                               ; 0.156 V                              ; 3e-10 s                     ; 4.34e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 0.000242 V                  ; 2.86 V             ; -0.0814 V          ; 0.36 V                              ; 0.156 V                             ; 3e-10 s                    ; 4.34e-10 s                 ; No                        ; No                        ;
 ; id7_segment_export[5]  ; 2.5 V                           ; 0 s                 ; 0 s                 ; 2.75 V                       ; 0.000242 V                   ; 2.86 V              ; -0.0805 V           ; 0.358 V                              ; 0.156 V                              ; 3.01e-10 s                  ; 4.34e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 0.000242 V                  ; 2.86 V             ; -0.0805 V          ; 0.358 V                             ; 0.156 V                             ; 3.01e-10 s                 ; 4.34e-10 s                 ; No                        ; No                        ;
 ; id7_segment_export[6]  ; 2.5 V                           ; 0 s                 ; 0 s                 ; 2.75 V                       ; 0.000242 V                   ; 2.86 V              ; -0.0814 V           ; 0.36 V                               ; 0.156 V                              ; 3e-10 s                     ; 4.34e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 0.000242 V                  ; 2.86 V             ; -0.0814 V          ; 0.36 V                              ; 0.156 V                             ; 3e-10 s                    ; 4.34e-10 s                 ; No                        ; No                        ;
-; id7_segment_export[7]  ; 2.5 V                           ; 0 s                 ; 0 s                 ; 2.75 V                       ; 0.000242 V                   ; 2.86 V              ; -0.0805 V           ; 0.358 V                              ; 0.156 V                              ; 3.01e-10 s                  ; 4.34e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 0.000242 V                  ; 2.86 V             ; -0.0805 V          ; 0.358 V                             ; 0.156 V                             ; 3.01e-10 s                 ; 4.34e-10 s                 ; No                        ; No                        ;
+; id7_segment_export[7]  ; 2.5 V                           ; 0 s                 ; 0 s                 ; 2.75 V                       ; 0.000242 V                   ; 2.86 V              ; -0.0814 V           ; 0.36 V                               ; 0.156 V                              ; 3e-10 s                     ; 4.34e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 0.000242 V                  ; 2.86 V             ; -0.0814 V          ; 0.36 V                              ; 0.156 V                             ; 3e-10 s                    ; 4.34e-10 s                 ; No                        ; No                        ;
 ; id7_segment_export[8]  ; 2.5 V                           ; 0 s                 ; 0 s                 ; 2.75 V                       ; 0.000242 V                   ; 2.86 V              ; -0.0805 V           ; 0.358 V                              ; 0.156 V                              ; 3.01e-10 s                  ; 4.34e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 0.000242 V                  ; 2.86 V             ; -0.0805 V          ; 0.358 V                             ; 0.156 V                             ; 3.01e-10 s                 ; 4.34e-10 s                 ; No                        ; No                        ;
 ; id7_segment_export[9]  ; 2.5 V                           ; 0 s                 ; 0 s                 ; 2.75 V                       ; 0.000242 V                   ; 2.86 V              ; -0.0814 V           ; 0.36 V                               ; 0.156 V                              ; 3e-10 s                     ; 4.34e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 0.000242 V                  ; 2.86 V             ; -0.0814 V          ; 0.36 V                              ; 0.156 V                             ; 3e-10 s                    ; 4.34e-10 s                 ; No                        ; No                        ;
 ; id7_segment_export[10] ; 2.5 V                           ; 0 s                 ; 0 s                 ; 2.75 V                       ; 0.000242 V                   ; 2.86 V              ; -0.0805 V           ; 0.358 V                              ; 0.156 V                              ; 3.01e-10 s                  ; 4.34e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 0.000242 V                  ; 2.86 V             ; -0.0805 V          ; 0.358 V                             ; 0.156 V                             ; 3.01e-10 s                 ; 4.34e-10 s                 ; No                        ; No                        ;
@@ -40280,7 +40280,7 @@ HTML report is unavailable in plain text report export.
 ; id7_segment_export[12] ; 2.5 V                           ; 0 s                 ; 0 s                 ; 2.75 V                       ; 0.000242 V                   ; 2.86 V              ; -0.0805 V           ; 0.358 V                              ; 0.156 V                              ; 3.01e-10 s                  ; 4.34e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 0.000242 V                  ; 2.86 V             ; -0.0805 V          ; 0.358 V                             ; 0.156 V                             ; 3.01e-10 s                 ; 4.34e-10 s                 ; No                        ; No                        ;
 ; id7_segment_export[13] ; 2.5 V                           ; 0 s                 ; 0 s                 ; 2.75 V                       ; 0.000242 V                   ; 2.86 V              ; -0.0814 V           ; 0.36 V                               ; 0.156 V                              ; 3e-10 s                     ; 4.34e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 0.000242 V                  ; 2.86 V             ; -0.0814 V          ; 0.36 V                              ; 0.156 V                             ; 3e-10 s                    ; 4.34e-10 s                 ; No                        ; No                        ;
 ; id7_segment_export[14] ; 2.5 V                           ; 0 s                 ; 0 s                 ; 2.75 V                       ; 0.000242 V                   ; 2.86 V              ; -0.0814 V           ; 0.36 V                               ; 0.156 V                              ; 3e-10 s                     ; 4.34e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 0.000242 V                  ; 2.86 V             ; -0.0814 V          ; 0.36 V                              ; 0.156 V                             ; 3e-10 s                    ; 4.34e-10 s                 ; No                        ; No                        ;
-; id7_segment_export[15] ; 2.5 V                           ; 0 s                 ; 0 s                 ; 2.75 V                       ; 0.000242 V                   ; 2.86 V              ; -0.0814 V           ; 0.36 V                               ; 0.156 V                              ; 3e-10 s                     ; 4.34e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 0.000242 V                  ; 2.86 V             ; -0.0814 V          ; 0.36 V                              ; 0.156 V                             ; 3e-10 s                    ; 4.34e-10 s                 ; No                        ; No                        ;
+; id7_segment_export[15] ; 2.5 V                           ; 0 s                 ; 0 s                 ; 2.75 V                       ; 0.000213 V                   ; 2.79 V              ; -0.0324 V           ; 0.139 V                              ; 0.119 V                              ; 4.42e-10 s                  ; 4.33e-10 s                  ; No                         ; Yes                        ; 2.75 V                      ; 0.000213 V                  ; 2.79 V             ; -0.0324 V          ; 0.139 V                             ; 0.119 V                             ; 4.42e-10 s                 ; 4.33e-10 s                 ; No                        ; Yes                       ;
 ; id7_segment_export[16] ; 2.5 V                           ; 0 s                 ; 0 s                 ; 2.75 V                       ; 0.000213 V                   ; 2.79 V              ; -0.0324 V           ; 0.139 V                              ; 0.119 V                              ; 4.42e-10 s                  ; 4.33e-10 s                  ; No                         ; Yes                        ; 2.75 V                      ; 0.000213 V                  ; 2.79 V             ; -0.0324 V          ; 0.139 V                             ; 0.119 V                             ; 4.42e-10 s                 ; 4.33e-10 s                 ; No                        ; Yes                       ;
 ; id7_segment_export[17] ; 2.5 V                           ; 0 s                 ; 0 s                 ; 2.75 V                       ; 0.000242 V                   ; 2.86 V              ; -0.0805 V           ; 0.358 V                              ; 0.156 V                              ; 3.01e-10 s                  ; 4.34e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 0.000242 V                  ; 2.86 V             ; -0.0805 V          ; 0.358 V                             ; 0.156 V                             ; 3.01e-10 s                 ; 4.34e-10 s                 ; No                        ; No                        ;
 ; id7_segment_export[18] ; 2.5 V                           ; 0 s                 ; 0 s                 ; 2.75 V                       ; 0.000242 V                   ; 2.86 V              ; -0.0814 V           ; 0.36 V                               ; 0.156 V                              ; 3e-10 s                     ; 4.34e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 0.000242 V                  ; 2.86 V             ; -0.0814 V          ; 0.36 V                              ; 0.156 V                             ; 3e-10 s                    ; 4.34e-10 s                 ; No                        ; No                        ;
@@ -40372,7 +40372,7 @@ HTML report is unavailable in plain text report export.
 +-----------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------+----------+----------+----------+
 ; From Clock                                                                                                                                                            ; To Clock                                                                                                                                                              ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
 +-----------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------+----------+----------+----------+
-; altera_reserved_tck                                                                                                                                                   ; altera_reserved_tck                                                                                                                                                   ; 1505     ; 0        ; 37       ; 2        ;
+; altera_reserved_tck                                                                                                                                                   ; altera_reserved_tck                                                                                                                                                   ; 1541     ; 0        ; 37       ; 2        ;
 ; system_on_chip_ARM:arm|system_on_chip_ARM_hps_io:hps_io|system_on_chip_ARM_hps_io_border:border|hps_sdram:hps_sdram_inst|hps_sdram_pll:pll|afi_clk_write_clk          ; memory_mem_ck                                                                                                                                                         ; inactive ; inactive ; 0        ; 0        ;
 ; arm|hps_io|border|hps_sdram_inst|hps_sdram_p0_sampling_clock                                                                                                          ; memory_mem_dqs_IN                                                                                                                                                     ; 0        ; 0        ; inactive ; inactive ;
 ; memory_mem_dqs_IN                                                                                                                                                     ; memory_mem_dqs_IN                                                                                                                                                     ; inactive ; 0        ; inactive ; 0        ;
@@ -40391,7 +40391,7 @@ Entries labeled "false path" only account for clock-to-clock false paths and not
 +-----------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------+----------+----------+----------+
 ; From Clock                                                                                                                                                            ; To Clock                                                                                                                                                              ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
 +-----------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------+----------+----------+----------+
-; altera_reserved_tck                                                                                                                                                   ; altera_reserved_tck                                                                                                                                                   ; 1505     ; 0        ; 37       ; 2        ;
+; altera_reserved_tck                                                                                                                                                   ; altera_reserved_tck                                                                                                                                                   ; 1541     ; 0        ; 37       ; 2        ;
 ; system_on_chip_ARM:arm|system_on_chip_ARM_hps_io:hps_io|system_on_chip_ARM_hps_io_border:border|hps_sdram:hps_sdram_inst|hps_sdram_pll:pll|afi_clk_write_clk          ; memory_mem_ck                                                                                                                                                         ; inactive ; inactive ; 0        ; 0        ;
 ; arm|hps_io|border|hps_sdram_inst|hps_sdram_p0_sampling_clock                                                                                                          ; memory_mem_dqs_IN                                                                                                                                                     ; 0        ; 0        ; inactive ; inactive ;
 ; memory_mem_dqs_IN                                                                                                                                                     ; memory_mem_dqs_IN                                                                                                                                                     ; inactive ; 0        ; inactive ; 0        ;
@@ -40410,7 +40410,7 @@ Entries labeled "false path" only account for clock-to-clock false paths and not
 +--------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------+----------+----------+----------+----------+
 ; From Clock                                                                                                                                                   ; To Clock                                                                                                                                                     ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
 +--------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------+----------+----------+----------+----------+
-; altera_reserved_tck                                                                                                                                          ; altera_reserved_tck                                                                                                                                          ; 70       ; 0        ; 2        ; 0        ;
+; altera_reserved_tck                                                                                                                                          ; altera_reserved_tck                                                                                                                                          ; 73       ; 0        ; 2        ; 0        ;
 ; system_on_chip_ARM:arm|system_on_chip_ARM_hps_io:hps_io|system_on_chip_ARM_hps_io_border:border|hps_sdram:hps_sdram_inst|hps_sdram_pll:pll|afi_clk_write_clk ; memory_mem_dqs_IN                                                                                                                                            ; 0        ; 0        ; inactive ; 0        ;
 ; system_on_chip_ARM:arm|system_on_chip_ARM_hps_io:hps_io|system_on_chip_ARM_hps_io_border:border|hps_sdram:hps_sdram_inst|hps_sdram_pll:pll|afi_clk_write_clk ; memory_mem_dqs_OUT                                                                                                                                           ; 0        ; 0        ; inactive ; 0        ;
 ; system_on_chip_ARM:arm|system_on_chip_ARM_hps_io:hps_io|system_on_chip_ARM_hps_io_border:border|hps_sdram:hps_sdram_inst|hps_sdram_pll:pll|afi_clk_write_clk ; system_on_chip_ARM:arm|system_on_chip_ARM_hps_io:hps_io|system_on_chip_ARM_hps_io_border:border|hps_sdram:hps_sdram_inst|hps_sdram_pll:pll|afi_clk_write_clk ; 12       ; 0        ; 0        ; 0        ;
@@ -40423,7 +40423,7 @@ Entries labeled "false path" only account for clock-to-clock false paths and not
 +--------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------+----------+----------+----------+----------+
 ; From Clock                                                                                                                                                   ; To Clock                                                                                                                                                     ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
 +--------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------+----------+----------+----------+----------+
-; altera_reserved_tck                                                                                                                                          ; altera_reserved_tck                                                                                                                                          ; 70       ; 0        ; 2        ; 0        ;
+; altera_reserved_tck                                                                                                                                          ; altera_reserved_tck                                                                                                                                          ; 73       ; 0        ; 2        ; 0        ;
 ; system_on_chip_ARM:arm|system_on_chip_ARM_hps_io:hps_io|system_on_chip_ARM_hps_io_border:border|hps_sdram:hps_sdram_inst|hps_sdram_pll:pll|afi_clk_write_clk ; memory_mem_dqs_IN                                                                                                                                            ; 0        ; 0        ; inactive ; 0        ;
 ; system_on_chip_ARM:arm|system_on_chip_ARM_hps_io:hps_io|system_on_chip_ARM_hps_io_border:border|hps_sdram:hps_sdram_inst|hps_sdram_pll:pll|afi_clk_write_clk ; memory_mem_dqs_OUT                                                                                                                                           ; 0        ; 0        ; inactive ; 0        ;
 ; system_on_chip_ARM:arm|system_on_chip_ARM_hps_io:hps_io|system_on_chip_ARM_hps_io_border:border|hps_sdram:hps_sdram_inst|hps_sdram_pll:pll|afi_clk_write_clk ; system_on_chip_ARM:arm|system_on_chip_ARM_hps_io:hps_io|system_on_chip_ARM_hps_io_border:border|hps_sdram:hps_sdram_inst|hps_sdram_pll:pll|afi_clk_write_clk ; 12       ; 0        ; 0        ; 0        ;
@@ -40679,7 +40679,7 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 Info: *******************************************************************
 Info: Running Quartus Prime Timing Analyzer
     Info: Version 18.0.0 Build 614 04/24/2018 SJ Lite Edition
-    Info: Processing started: Sat Nov 29 18:15:18 2025
+    Info: Processing started: Wed Dec 03 07:56:12 2025
 Info: Command: quartus_sta SystemOnChip -c SystemOnChip
 Info: qsta_default_script.tcl version: #2
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
@@ -41060,28 +41060,28 @@ Info (332146): Worst-case setup slack is 2.563
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
     Info (332119):     2.563               0.000 system_on_chip_ARM:arm|system_on_chip_ARM_hps_io:hps_io|system_on_chip_ARM_hps_io_border:border|hps_sdram:hps_sdram_inst|hps_sdram_pll:pll|afi_clk_write_clk 
-    Info (332119):    12.366               0.000 altera_reserved_tck 
-Info (332146): Worst-case hold slack is 0.115
+    Info (332119):    11.763               0.000 altera_reserved_tck 
+Info (332146): Worst-case hold slack is 0.143
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     0.115               0.000 altera_reserved_tck 
     Info (332119):     0.143               0.000 system_on_chip_ARM:arm|system_on_chip_ARM_hps_io:hps_io|system_on_chip_ARM_hps_io_border:border|hps_sdram:hps_sdram_inst|hps_sdram_pll:pll|afi_clk_write_clk 
+    Info (332119):     0.367               0.000 altera_reserved_tck 
 Info (332146): Worst-case recovery slack is 5.041
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
     Info (332119):     5.041               0.000 system_on_chip_ARM:arm|system_on_chip_ARM_hps_io:hps_io|system_on_chip_ARM_hps_io_border:border|hps_sdram:hps_sdram_inst|hps_sdram_pll:pll|afi_clk_write_clk 
-    Info (332119):    14.669               0.000 altera_reserved_tck 
-Info (332146): Worst-case removal slack is 0.904
+    Info (332119):    15.019               0.000 altera_reserved_tck 
+Info (332146): Worst-case removal slack is 0.711
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     0.904               0.000 altera_reserved_tck 
+    Info (332119):     0.711               0.000 altera_reserved_tck 
     Info (332119):     1.063               0.000 system_on_chip_ARM:arm|system_on_chip_ARM_hps_io:hps_io|system_on_chip_ARM_hps_io_border:border|hps_sdram:hps_sdram_inst|hps_sdram_pll:pll|afi_clk_write_clk 
 Info (332146): Worst-case minimum pulse width slack is 1.025
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
     Info (332119):     1.025               0.000 system_on_chip_ARM:arm|system_on_chip_ARM_hps_io:hps_io|system_on_chip_ARM_hps_io_border:border|hps_sdram:hps_sdram_inst|hps_sdram_pll:pll|pll_write_clk_dq_write_clk 
     Info (332119):     1.039               0.000 system_on_chip_ARM:arm|system_on_chip_ARM_hps_io:hps_io|system_on_chip_ARM_hps_io_border:border|hps_sdram:hps_sdram_inst|hps_sdram_pll:pll|afi_clk_write_clk 
-    Info (332119):    15.760               0.000 altera_reserved_tck 
+    Info (332119):    15.735               0.000 altera_reserved_tck 
 Info (332114): Report Metastability: Found 2 synchronizer chains.
     Info (332114): Worst-Case MTBF of Design is 1e+09 years or 3.15e+16 seconds.
     Info (332114): Typical MTBF of Design is 1e+09 years or 3.15e+16 seconds.
@@ -41089,7 +41089,7 @@ Info (332114): Report Metastability: Found 2 synchronizer chains.
     Info (332114): Number of Synchronizer Chains Found: 2
     Info (332114): Shortest Synchronizer Chain: 2 Registers
     Info (332114): Fraction of Chains for which MTBFs Could Not be Calculated: 0.000
-    Info (332114): Worst Case Available Settling Time: 62.573 ns
+    Info (332114): Worst Case Available Settling Time: 62.504 ns
     Info (332114): 
     Info (332114): Worst-Case MTBF values are calculated based on the worst-case silicon characteristics, with worst-case operating conditions.
     Info (332114):   - Under worst-case conditions, an increase of 100ps in available settling time will increase MTBF values by a factor of 79.4
@@ -41168,28 +41168,28 @@ Info (332146): Worst-case setup slack is 2.560
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
     Info (332119):     2.560               0.000 system_on_chip_ARM:arm|system_on_chip_ARM_hps_io:hps_io|system_on_chip_ARM_hps_io_border:border|hps_sdram:hps_sdram_inst|hps_sdram_pll:pll|afi_clk_write_clk 
-    Info (332119):    12.438               0.000 altera_reserved_tck 
-Info (332146): Worst-case hold slack is 0.102
+    Info (332119):    11.912               0.000 altera_reserved_tck 
+Info (332146): Worst-case hold slack is 0.162
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     0.102               0.000 altera_reserved_tck 
     Info (332119):     0.162               0.000 system_on_chip_ARM:arm|system_on_chip_ARM_hps_io:hps_io|system_on_chip_ARM_hps_io_border:border|hps_sdram:hps_sdram_inst|hps_sdram_pll:pll|afi_clk_write_clk 
+    Info (332119):     0.365               0.000 altera_reserved_tck 
 Info (332146): Worst-case recovery slack is 5.134
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
     Info (332119):     5.134               0.000 system_on_chip_ARM:arm|system_on_chip_ARM_hps_io:hps_io|system_on_chip_ARM_hps_io_border:border|hps_sdram:hps_sdram_inst|hps_sdram_pll:pll|afi_clk_write_clk 
-    Info (332119):    14.771               0.000 altera_reserved_tck 
-Info (332146): Worst-case removal slack is 0.860
+    Info (332119):    15.034               0.000 altera_reserved_tck 
+Info (332146): Worst-case removal slack is 0.686
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     0.860               0.000 altera_reserved_tck 
+    Info (332119):     0.686               0.000 altera_reserved_tck 
     Info (332119):     1.012               0.000 system_on_chip_ARM:arm|system_on_chip_ARM_hps_io:hps_io|system_on_chip_ARM_hps_io_border:border|hps_sdram:hps_sdram_inst|hps_sdram_pll:pll|afi_clk_write_clk 
 Info (332146): Worst-case minimum pulse width slack is 1.030
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
     Info (332119):     1.030               0.000 system_on_chip_ARM:arm|system_on_chip_ARM_hps_io:hps_io|system_on_chip_ARM_hps_io_border:border|hps_sdram:hps_sdram_inst|hps_sdram_pll:pll|pll_write_clk_dq_write_clk 
     Info (332119):     1.046               0.000 system_on_chip_ARM:arm|system_on_chip_ARM_hps_io:hps_io|system_on_chip_ARM_hps_io_border:border|hps_sdram:hps_sdram_inst|hps_sdram_pll:pll|afi_clk_write_clk 
-    Info (332119):    15.758               0.000 altera_reserved_tck 
+    Info (332119):    15.752               0.000 altera_reserved_tck 
 Info (332114): Report Metastability: Found 2 synchronizer chains.
     Info (332114): Worst-Case MTBF of Design is 1e+09 years or 3.15e+16 seconds.
     Info (332114): Typical MTBF of Design is 1e+09 years or 3.15e+16 seconds.
@@ -41197,7 +41197,7 @@ Info (332114): Report Metastability: Found 2 synchronizer chains.
     Info (332114): Number of Synchronizer Chains Found: 2
     Info (332114): Shortest Synchronizer Chain: 2 Registers
     Info (332114): Fraction of Chains for which MTBFs Could Not be Calculated: 0.000
-    Info (332114): Worst Case Available Settling Time: 62.644 ns
+    Info (332114): Worst Case Available Settling Time: 62.613 ns
     Info (332114): 
     Info (332114): Worst-Case MTBF values are calculated based on the worst-case silicon characteristics, with worst-case operating conditions.
     Info (332114):   - Under worst-case conditions, an increase of 100ps in available settling time will increase MTBF values by a factor of 5.2
@@ -41276,28 +41276,28 @@ Info (332146): Worst-case setup slack is 2.943
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
     Info (332119):     2.943               0.000 system_on_chip_ARM:arm|system_on_chip_ARM_hps_io:hps_io|system_on_chip_ARM_hps_io_border:border|hps_sdram:hps_sdram_inst|hps_sdram_pll:pll|afi_clk_write_clk 
-    Info (332119):    14.358               0.000 altera_reserved_tck 
-Info (332146): Worst-case hold slack is 0.017
+    Info (332119):    13.721               0.000 altera_reserved_tck 
+Info (332146): Worst-case hold slack is 0.084
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     0.017               0.000 altera_reserved_tck 
     Info (332119):     0.084               0.000 system_on_chip_ARM:arm|system_on_chip_ARM_hps_io:hps_io|system_on_chip_ARM_hps_io_border:border|hps_sdram:hps_sdram_inst|hps_sdram_pll:pll|afi_clk_write_clk 
+    Info (332119):     0.159               0.000 altera_reserved_tck 
 Info (332146): Worst-case recovery slack is 5.393
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
     Info (332119):     5.393               0.000 system_on_chip_ARM:arm|system_on_chip_ARM_hps_io:hps_io|system_on_chip_ARM_hps_io_border:border|hps_sdram:hps_sdram_inst|hps_sdram_pll:pll|afi_clk_write_clk 
-    Info (332119):    15.599               0.000 altera_reserved_tck 
-Info (332146): Worst-case removal slack is 0.433
+    Info (332119):    15.893               0.000 altera_reserved_tck 
+Info (332146): Worst-case removal slack is 0.349
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     0.433               0.000 altera_reserved_tck 
+    Info (332119):     0.349               0.000 altera_reserved_tck 
     Info (332119):     0.984               0.000 system_on_chip_ARM:arm|system_on_chip_ARM_hps_io:hps_io|system_on_chip_ARM_hps_io_border:border|hps_sdram:hps_sdram_inst|hps_sdram_pll:pll|afi_clk_write_clk 
 Info (332146): Worst-case minimum pulse width slack is 1.300
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
     Info (332119):     1.300               0.000 system_on_chip_ARM:arm|system_on_chip_ARM_hps_io:hps_io|system_on_chip_ARM_hps_io_border:border|hps_sdram:hps_sdram_inst|hps_sdram_pll:pll|pll_write_clk_dq_write_clk 
     Info (332119):     1.307               0.000 system_on_chip_ARM:arm|system_on_chip_ARM_hps_io:hps_io|system_on_chip_ARM_hps_io_border:border|hps_sdram:hps_sdram_inst|hps_sdram_pll:pll|afi_clk_write_clk 
-    Info (332119):    15.757               0.000 altera_reserved_tck 
+    Info (332119):    15.715               0.000 altera_reserved_tck 
 Info (332114): Report Metastability: Found 2 synchronizer chains.
     Info (332114): Worst-Case MTBF of Design is 1e+09 years or 3.15e+16 seconds.
     Info (332114): Typical MTBF of Design is 1e+09 years or 3.15e+16 seconds.
@@ -41305,7 +41305,7 @@ Info (332114): Report Metastability: Found 2 synchronizer chains.
     Info (332114): Number of Synchronizer Chains Found: 2
     Info (332114): Shortest Synchronizer Chain: 2 Registers
     Info (332114): Fraction of Chains for which MTBFs Could Not be Calculated: 0.000
-    Info (332114): Worst Case Available Settling Time: 63.827 ns
+    Info (332114): Worst Case Available Settling Time: 63.795 ns
     Info (332114): 
     Info (332114): Worst-Case MTBF values are calculated based on the worst-case silicon characteristics, with worst-case operating conditions.
     Info (332114):   - Under worst-case conditions, an increase of 100ps in available settling time will increase MTBF values by a factor of 79.4
@@ -41382,28 +41382,28 @@ Info (332146): Worst-case setup slack is 2.943
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
     Info (332119):     2.943               0.000 system_on_chip_ARM:arm|system_on_chip_ARM_hps_io:hps_io|system_on_chip_ARM_hps_io_border:border|hps_sdram:hps_sdram_inst|hps_sdram_pll:pll|afi_clk_write_clk 
-    Info (332119):    14.604               0.000 altera_reserved_tck 
-Info (332146): Worst-case hold slack is 0.005
+    Info (332119):    14.068               0.000 altera_reserved_tck 
+Info (332146): Worst-case hold slack is 0.077
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     0.005               0.000 altera_reserved_tck 
     Info (332119):     0.077               0.000 system_on_chip_ARM:arm|system_on_chip_ARM_hps_io:hps_io|system_on_chip_ARM_hps_io_border:border|hps_sdram:hps_sdram_inst|hps_sdram_pll:pll|afi_clk_write_clk 
+    Info (332119):     0.133               0.000 altera_reserved_tck 
 Info (332146): Worst-case recovery slack is 5.491
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
     Info (332119):     5.491               0.000 system_on_chip_ARM:arm|system_on_chip_ARM_hps_io:hps_io|system_on_chip_ARM_hps_io_border:border|hps_sdram:hps_sdram_inst|hps_sdram_pll:pll|afi_clk_write_clk 
-    Info (332119):    15.755               0.000 altera_reserved_tck 
-Info (332146): Worst-case removal slack is 0.381
+    Info (332119):    15.992               0.000 altera_reserved_tck 
+Info (332146): Worst-case removal slack is 0.312
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     0.381               0.000 altera_reserved_tck 
+    Info (332119):     0.312               0.000 altera_reserved_tck 
     Info (332119):     0.889               0.000 system_on_chip_ARM:arm|system_on_chip_ARM_hps_io:hps_io|system_on_chip_ARM_hps_io_border:border|hps_sdram:hps_sdram_inst|hps_sdram_pll:pll|afi_clk_write_clk 
 Info (332146): Worst-case minimum pulse width slack is 1.304
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
     Info (332119):     1.304               0.000 system_on_chip_ARM:arm|system_on_chip_ARM_hps_io:hps_io|system_on_chip_ARM_hps_io_border:border|hps_sdram:hps_sdram_inst|hps_sdram_pll:pll|pll_write_clk_dq_write_clk 
     Info (332119):     1.311               0.000 system_on_chip_ARM:arm|system_on_chip_ARM_hps_io:hps_io|system_on_chip_ARM_hps_io_border:border|hps_sdram:hps_sdram_inst|hps_sdram_pll:pll|afi_clk_write_clk 
-    Info (332119):    15.774               0.000 altera_reserved_tck 
+    Info (332119):    15.751               0.000 altera_reserved_tck 
 Info (332114): Report Metastability: Found 2 synchronizer chains.
     Info (332114): Worst-Case MTBF of Design is 1e+09 years or 3.15e+16 seconds.
     Info (332114): Typical MTBF of Design is 1e+09 years or 3.15e+16 seconds.
@@ -41411,7 +41411,7 @@ Info (332114): Report Metastability: Found 2 synchronizer chains.
     Info (332114): Number of Synchronizer Chains Found: 2
     Info (332114): Shortest Synchronizer Chain: 2 Registers
     Info (332114): Fraction of Chains for which MTBFs Could Not be Calculated: 0.000
-    Info (332114): Worst Case Available Settling Time: 64.015 ns
+    Info (332114): Worst Case Available Settling Time: 63.994 ns
     Info (332114): 
     Info (332114): Worst-Case MTBF values are calculated based on the worst-case silicon characteristics, with worst-case operating conditions.
     Info (332114):   - Under worst-case conditions, an increase of 100ps in available settling time will increase MTBF values by a factor of 5.2
@@ -41456,9 +41456,9 @@ Info: Write (Fast 1100mV 0C Model)                          |  0.499  0.499
 Info (332102): Design is not fully constrained for setup requirements
 Info (332102): Design is not fully constrained for hold requirements
 Info: Quartus Prime Timing Analyzer was successful. 0 errors, 213 warnings
-    Info: Peak virtual memory: 5809 megabytes
-    Info: Processing ended: Sat Nov 29 18:15:36 2025
-    Info: Elapsed time: 00:00:18
-    Info: Total CPU time (on all processors): 00:00:29
+    Info: Peak virtual memory: 5806 megabytes
+    Info: Processing ended: Wed Dec 03 07:56:34 2025
+    Info: Elapsed time: 00:00:22
+    Info: Total CPU time (on all processors): 00:00:30
 
 

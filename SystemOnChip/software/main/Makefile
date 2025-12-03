@@ -139,18 +139,21 @@ ACDS_VERSION := 18.0
 # Define path to the application ELF. 
 # It may be used by the makefile fragments so is defined before including them. 
 # 
-ELF := prueba.elf
+ELF := main.elf
 
 # Paths to C, C++, and assembly source files.
-C_SRCS += 7_segments.c
-C_SRCS += audio.c
+C_SRCS += hello_world.c
 C_SRCS += buttons.c
 C_SRCS += filter.c
 C_SRCS += main.c
 C_SRCS += player.c
 C_SRCS += switches.c
 C_SRCS += timer.c
+C_SRCS += ui.c
+C_SRCS += utils.c
 C_SRCS += vga.c
+C_SRCS += 7_segments.c
+C_SRCS += audio.c
 CXX_SRCS :=
 ASM_SRCS :=
 
@@ -170,7 +173,7 @@ CREATE_LINKER_MAP := 1
 # Common arguments for ALT_CFLAGSs
 APP_CFLAGS_DEFINED_SYMBOLS :=
 APP_CFLAGS_UNDEFINED_SYMBOLS :=
-APP_CFLAGS_OPTIMIZATION := -Os
+APP_CFLAGS_OPTIMIZATION := -O0
 APP_CFLAGS_DEBUG_LEVEL := -g
 APP_CFLAGS_WARNINGS := -Wall
 APP_CFLAGS_USER_FLAGS :=
@@ -185,7 +188,7 @@ CRT0 :=
 SYS_LIB :=
 
 # Define path to the root of the BSP.
-BSP_ROOT_DIR := ../prueba_bsp/
+BSP_ROOT_DIR := ../main_bsp/
 
 # List of application specific include directories, library directories and library names
 APP_INCLUDE_DIRS :=
