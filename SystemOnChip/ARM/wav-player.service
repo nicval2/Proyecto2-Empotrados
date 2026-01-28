@@ -1,0 +1,13 @@
+# /etc/systemd/system/wav-player.service
+[Unit]
+Description=WAV Player HPS
+After=multi-user.target
+
+[Service]
+Type=simple
+ExecStart=/home/root/wav_player /home/root/music/*.wav
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
