@@ -1,12 +1,12 @@
-Fitter Status : Successful - Sat Nov 29 22:26:00 2025
+Fitter Status : Successful - Sat Nov 29 18:15:07 2025
 Quartus Prime Version : 18.0.0 Build 614 04/24/2018 SJ Lite Edition
 Revision Name : SystemOnChip
 Top-level Entity Name : system_on_chip
 Family : Cyclone V
 Device : 5CSEMA5F31C6
 Timing Models : Final
-Logic utilization (in ALMs) : 2,321 / 32,070 ( 7 % )
-Total registers : 3524
+Logic utilization (in ALMs) : 2,330 / 32,070 ( 7 % )
+Total registers : 3513
 Total pins : 118 / 457 ( 26 % )
 Total virtual pins : 0
 Total block memory bits : 348,160 / 4,065,280 ( 9 % )

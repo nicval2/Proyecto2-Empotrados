@@ -6,15 +6,22 @@
 module system_on_chip_tb (
 	);
 
-	wire        system_on_chip_inst_clk_bfm_clk_clk;       // system_on_chip_inst_clk_bfm:clk -> [irq_mapper:clk, system_on_chip_inst:clk_clk, system_on_chip_inst_reset_bfm:clk, system_on_chip_inst_timer_irq_bfm:clk]
-	wire        system_on_chip_inst_reset_bfm_reset_reset; // system_on_chip_inst_reset_bfm:reset -> [irq_mapper:reset, system_on_chip_inst:reset_reset_n, system_on_chip_inst_timer_irq_bfm:reset]
-	wire        irq_mapper_receiver0_irq;                  // system_on_chip_inst:timer_irq_irq -> irq_mapper:receiver0_irq
-	wire  [0:0] system_on_chip_inst_timer_irq_bfm_irq_irq; // irq_mapper:sender_irq -> system_on_chip_inst_timer_irq_bfm:irq
+	wire         system_on_chip_inst_clk_bfm_clk_clk;             // system_on_chip_inst_clk_bfm:clk -> [system_on_chip_inst:clk_clk, system_on_chip_inst_reset_bfm:clk]
+	wire   [3:0] system_on_chip_inst_button_bfm_conduit_export;   // system_on_chip_inst_button_bfm:sig_export -> system_on_chip_inst:button_export
+	wire  [31:0] system_on_chip_inst_id7_segment_export;          // system_on_chip_inst:id7_segment_export -> system_on_chip_inst_id7_segment_bfm:sig_export
+	wire   [7:0] system_on_chip_inst_switches_bfm_conduit_export; // system_on_chip_inst_switches_bfm:sig_export -> system_on_chip_inst:switches_export
+	wire         system_on_chip_inst_reset_bfm_reset_reset;       // system_on_chip_inst_reset_bfm:reset -> system_on_chip_inst:reset_reset_n
 
 	system_on_chip system_on_chip_inst (
-		.clk_clk       (system_on_chip_inst_clk_bfm_clk_clk),       //       clk.clk
-		.reset_reset_n (system_on_chip_inst_reset_bfm_reset_reset), //     reset.reset_n
-		.timer_irq_irq (irq_mapper_receiver0_irq)                   // timer_irq.irq
+		.button_export      (system_on_chip_inst_button_bfm_conduit_export),   //      button.export
+		.clk_clk            (system_on_chip_inst_clk_bfm_clk_clk),             //         clk.clk
+		.id7_segment_export (system_on_chip_inst_id7_segment_export),          // id7_segment.export
+		.reset_reset_n      (system_on_chip_inst_reset_bfm_reset_reset),       //       reset.reset_n
+		.switches_export    (system_on_chip_inst_switches_bfm_conduit_export)  //    switches.export
+	);
+
+	altera_conduit_bfm system_on_chip_inst_button_bfm (
+		.sig_export (system_on_chip_inst_button_bfm_conduit_export)  // conduit.export
 	);
 
 	altera_avalon_clock_source #(
@@ -22,6 +29,10 @@ module system_on_chip_tb (
 		.CLOCK_UNIT (1)
 	) system_on_chip_inst_clk_bfm (
 		.clk (system_on_chip_inst_clk_bfm_clk_clk)  // clk.clk
+	);
+
+	altera_conduit_bfm_0002 system_on_chip_inst_id7_segment_bfm (
+		.sig_export (system_on_chip_inst_id7_segment_export)  // conduit.export
 	);
 
 	altera_avalon_reset_source #(
@@ -32,22 +43,8 @@ module system_on_chip_tb (
 		.clk   (system_on_chip_inst_clk_bfm_clk_clk)        //   clk.clk
 	);
 
-	altera_avalon_interrupt_sink #(
-		.ASSERT_HIGH_IRQ        (1),
-		.AV_IRQ_W               (1),
-		.ASYNCHRONOUS_INTERRUPT (0),
-		.VHDL_ID                (0)
-	) system_on_chip_inst_timer_irq_bfm (
-		.clk   (system_on_chip_inst_clk_bfm_clk_clk),        //       clock_reset.clk
-		.reset (~system_on_chip_inst_reset_bfm_reset_reset), // clock_reset_reset.reset
-		.irq   (system_on_chip_inst_timer_irq_bfm_irq_irq)   //               irq.irq
-	);
-
-	altera_irq_mapper irq_mapper (
-		.clk           (system_on_chip_inst_clk_bfm_clk_clk),        //       clk.clk
-		.reset         (~system_on_chip_inst_reset_bfm_reset_reset), // clk_reset.reset
-		.receiver0_irq (irq_mapper_receiver0_irq),                   // receiver0.irq
-		.sender_irq    (system_on_chip_inst_timer_irq_bfm_irq_irq)   //    sender.irq
+	altera_conduit_bfm_0003 system_on_chip_inst_switches_bfm (
+		.sig_export (system_on_chip_inst_switches_bfm_conduit_export)  // conduit.export
 	);
 
 endmodule

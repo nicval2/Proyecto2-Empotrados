@@ -5,11 +5,27 @@
  version="1.0"
  fabric="QSYS">
  <!-- Format version 18.0 614 (Future versions may contain additional information.) -->
- <!-- 2025.11.29.22:06:57 -->
+<<<<<<< HEAD
+ <!-- 2025.11.29.18:07:42 -->
  <!-- A collection of modules and connections -->
  <parameter name="AUTO_GENERATION_ID">
   <type>java.lang.Integer</type>
-  <value>1764475616</value>
+  <value>1764461262</value>
+=======
+<<<<<<< HEAD
+ <!-- 2025.11.27.12:14:43 -->
+ <!-- A collection of modules and connections -->
+ <parameter name="AUTO_GENERATION_ID">
+  <type>java.lang.Integer</type>
+  <value>1764267283</value>
+=======
+ <!-- 2025.11.24.20:29:19 -->
+ <!-- A collection of modules and connections -->
+ <parameter name="AUTO_GENERATION_ID">
+  <type>java.lang.Integer</type>
+  <value>1764037759</value>
+>>>>>>> origin/Develop
+>>>>>>> origin/Develop
   <derived>false</derived>
   <enabled>true</enabled>
   <visible>false</visible>
@@ -99,6 +115,7 @@
   <visible>true</visible>
   <valid>true</valid>
  </parameter>
+<<<<<<< HEAD
  <module name="ARM" kind="altera_hps" version="18.0" path="ARM">
   <!-- Describes a single module. Module parameters are
 the requested settings for a module instance. -->
@@ -15832,7 +15849,7 @@ parameters are a RESULT of the module parameters. -->
     <moduleName>FIFO2</moduleName>
     <slaveName>out</slaveName>
     <name>FIFO2.out</name>
-    <baseAddress>35168</baseAddress>
+    <baseAddress>35152</baseAddress>
     <span>4</span>
    </memoryBlock>
    <memoryBlock>
@@ -15840,7 +15857,7 @@ parameters are a RESULT of the module parameters. -->
     <moduleName>FIFO2</moduleName>
     <slaveName>out_csr</slaveName>
     <name>FIFO2.out_csr</name>
-    <baseAddress>35200</baseAddress>
+    <baseAddress>35168</baseAddress>
     <span>32</span>
    </memoryBlock>
   </interface>
@@ -42522,7 +42539,7 @@ parameters are a RESULT of the module parameters. -->
     <moduleName>FIFO2</moduleName>
     <slaveName>out</slaveName>
     <name>FIFO2.out</name>
-    <baseAddress>35168</baseAddress>
+    <baseAddress>35152</baseAddress>
     <span>4</span>
    </memoryBlock>
    <memoryBlock>
@@ -42530,7 +42547,7 @@ parameters are a RESULT of the module parameters. -->
     <moduleName>FIFO2</moduleName>
     <slaveName>out_csr</slaveName>
     <name>FIFO2.out_csr</name>
-    <baseAddress>35200</baseAddress>
+    <baseAddress>35168</baseAddress>
     <span>32</span>
    </memoryBlock>
   </interface>
@@ -44805,7 +44822,7 @@ parameters are a RESULT of the module parameters. -->
     <moduleName>FIFO2</moduleName>
     <slaveName>out</slaveName>
     <name>FIFO2.out</name>
-    <baseAddress>3221260640</baseAddress>
+    <baseAddress>3221260624</baseAddress>
     <span>4</span>
    </memoryBlock>
    <memoryBlock>
@@ -44813,7 +44830,7 @@ parameters are a RESULT of the module parameters. -->
     <moduleName>FIFO2</moduleName>
     <slaveName>out_csr</slaveName>
     <name>FIFO2.out_csr</name>
-    <baseAddress>3221260672</baseAddress>
+    <baseAddress>3221260640</baseAddress>
     <span>32</span>
    </memoryBlock>
    <memoryBlock>
@@ -45656,7 +45673,7 @@ parameters are a RESULT of the module parameters. -->
     <moduleName>FIFO2</moduleName>
     <slaveName>out</slaveName>
     <name>FIFO2.out</name>
-    <baseAddress>3221260640</baseAddress>
+    <baseAddress>3221260624</baseAddress>
     <span>4</span>
    </memoryBlock>
    <memoryBlock>
@@ -45664,7 +45681,7 @@ parameters are a RESULT of the module parameters. -->
     <moduleName>FIFO2</moduleName>
     <slaveName>out_csr</slaveName>
     <name>FIFO2.out_csr</name>
-    <baseAddress>3221260672</baseAddress>
+    <baseAddress>3221260640</baseAddress>
     <span>32</span>
    </memoryBlock>
    <memoryBlock>
@@ -74631,6 +74648,9 @@ parameters are a RESULT of the module parameters. -->
    </port>
   </interface>
  </module>
+=======
+<<<<<<< HEAD
+>>>>>>> origin/Develop
  <module
    name="AUDIO_PLL"
    kind="altera_up_avalon_audio_pll"
@@ -76981,6 +77001,7 @@ parameters are a RESULT of the module parameters. -->
    </port>
   </interface>
  </module>
+<<<<<<< HEAD
  <module name="FIFO2" kind="altera_avalon_fifo" version="18.0" path="FIFO2">
   <!-- Describes a single module. Module parameters are
 the requested settings for a module instance. -->
@@ -79036,6 +79057,10 @@ parameters are a RESULT of the module parameters. -->
    </port>
   </interface>
  </module>
+=======
+=======
+>>>>>>> origin/Develop
+>>>>>>> origin/Develop
  <module name="NIOS" kind="altera_nios2_gen2" version="18.0" path="NIOS">
   <!-- Describes a single module. Module parameters are
 the requested settings for a module instance. -->
@@ -80647,7 +80672,15 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="dataSlaveMapParam">
    <type>java.lang.String</type>
-   <value><![CDATA[<address-map><slave name='RAM.s1' start='0x0' end='0x8000' type='altera_avalon_onchip_memory2.s1' /><slave name='NIOS.debug_mem_slave' start='0x8000' end='0x8800' type='altera_nios2_gen2.debug_mem_slave' /><slave name='REG_7_SEGMENTS.s1' start='0x8800' end='0x8810' type='altera_avalon_pio.s1' /><slave name='REG_BUTTONS.s1' start='0x8810' end='0x8820' type='altera_avalon_pio.s1' /><slave name='TIMER.s1' start='0x8820' end='0x8840' type='altera_avalon_timer.s1' /><slave name='UART.avalon_jtag_slave' start='0x8840' end='0x8848' type='altera_avalon_jtag_uart.avalon_jtag_slave' /><slave name='REG_SWITCHES.s1' start='0x8850' end='0x8860' type='altera_avalon_pio.s1' /><slave name='FIFO.out' start='0x8870' end='0x8874' type='altera_avalon_fifo.out' /><slave name='FIFO.out_csr' start='0x8880' end='0x88A0' type='altera_avalon_fifo.out_csr' /><slave name='AUDIO.avalon_audio_slave' start='0x8920' end='0x8930' type='altera_up_avalon_audio.avalon_audio_slave' /><slave name='AUDIO_CONFIG.avalon_av_config_slave' start='0x8930' end='0x8940' type='altera_up_avalon_audio_and_video_config.avalon_av_config_slave' /><slave name='VGA_CONFIG.avalon_char_control_slave' start='0x8940' end='0x8948' type='altera_up_avalon_video_character_buffer_with_dma.avalon_char_control_slave' /><slave name='FIFO2.in' start='0x8950' end='0x8954' type='altera_avalon_fifo.in' /><slave name='FIFO2.in_csr' start='0x8A00' end='0x8A20' type='altera_avalon_fifo.in_csr' /><slave name='VGA_CONFIG.avalon_char_buffer_slave' start='0xA000' end='0xC000' type='altera_up_avalon_video_character_buffer_with_dma.avalon_char_buffer_slave' /></address-map>]]></value>
+<<<<<<< HEAD
+   <value><![CDATA[<address-map><slave name='RAM.s1' start='0x0' end='0x8000' type='altera_avalon_onchip_memory2.s1' /><slave name='NIOS.debug_mem_slave' start='0x8000' end='0x8800' type='altera_nios2_gen2.debug_mem_slave' /><slave name='REG_7_SEGMENTS.s1' start='0x8800' end='0x8810' type='altera_avalon_pio.s1' /><slave name='REG_BUTTONS.s1' start='0x8810' end='0x8820' type='altera_avalon_pio.s1' /><slave name='TIMER.s1' start='0x8820' end='0x8840' type='altera_avalon_timer.s1' /><slave name='UART.avalon_jtag_slave' start='0x8840' end='0x8848' type='altera_avalon_jtag_uart.avalon_jtag_slave' /><slave name='REG_SWITCHES.s1' start='0x8850' end='0x8860' type='altera_avalon_pio.s1' /><slave name='FIFO.out' start='0x8870' end='0x8874' type='altera_avalon_fifo.out' /><slave name='FIFO.out_csr' start='0x8880' end='0x88A0' type='altera_avalon_fifo.out_csr' /><slave name='AUDIO.avalon_audio_slave' start='0x8920' end='0x8930' type='altera_up_avalon_audio.avalon_audio_slave' /><slave name='AUDIO_CONFIG.avalon_av_config_slave' start='0x8930' end='0x8940' type='altera_up_avalon_audio_and_video_config.avalon_av_config_slave' /><slave name='FIFO2.in' start='0x8940' end='0x8944' type='altera_avalon_fifo.in' /><slave name='FIFO2.in_csr' start='0x8980' end='0x89A0' type='altera_avalon_fifo.in_csr' /><slave name='VGA_BUFFER.avalon_char_control_slave' start='0x9010' end='0x9018' type='altera_up_avalon_video_character_buffer_with_dma.avalon_char_control_slave' /><slave name='VGA_BUFFER.avalon_char_buffer_slave' start='0xA000' end='0xC000' type='altera_up_avalon_video_character_buffer_with_dma.avalon_char_buffer_slave' /></address-map>]]></value>
+=======
+<<<<<<< HEAD
+   <value><![CDATA[<address-map><slave name='RAM.s1' start='0x0' end='0x2000' type='altera_avalon_onchip_memory2.s1' /><slave name='NIOS.debug_mem_slave' start='0x2000' end='0x2800' type='altera_nios2_gen2.debug_mem_slave' /><slave name='REG_7_SEGMENTS.s1' start='0x3000' end='0x3010' type='altera_avalon_pio.s1' /><slave name='REG_BUTTONS.s1' start='0x3010' end='0x3020' type='altera_avalon_pio.s1' /><slave name='TIMER.s1' start='0x3020' end='0x3040' type='altera_avalon_timer.s1' /><slave name='UART.avalon_jtag_slave' start='0x3040' end='0x3048' type='altera_avalon_jtag_uart.avalon_jtag_slave' /><slave name='REG_SWITCHES.s1' start='0x3050' end='0x3060' type='altera_avalon_pio.s1' /><slave name='FIFO.in' start='0x3060' end='0x3064' type='altera_avalon_fifo.in' /><slave name='FIFO.out' start='0x3070' end='0x3074' type='altera_avalon_fifo.out' /><slave name='FIFO.out_csr' start='0x3080' end='0x30A0' type='altera_avalon_fifo.out_csr' /><slave name='FIFO.in_csr' start='0x3100' end='0x3120' type='altera_avalon_fifo.in_csr' /></address-map>]]></value>
+=======
+   <value><![CDATA[<address-map><slave name='RAM.s1' start='0x0' end='0x2000' type='altera_avalon_onchip_memory2.s1' /><slave name='NIOS.debug_mem_slave' start='0x2000' end='0x2800' type='altera_nios2_gen2.debug_mem_slave' /><slave name='REG_7_SEGMENTS.s1' start='0x3000' end='0x3010' type='altera_avalon_pio.s1' /><slave name='REG_BUTTONS.s1' start='0x3010' end='0x3020' type='altera_avalon_pio.s1' /><slave name='TIMER.s1' start='0x3020' end='0x3040' type='altera_avalon_timer.s1' /><slave name='UART.avalon_jtag_slave' start='0x3040' end='0x3048' type='altera_avalon_jtag_uart.avalon_jtag_slave' /><slave name='REG_SWITCHES.s1' start='0x3050' end='0x3060' type='altera_avalon_pio.s1' /></address-map>]]></value>
+>>>>>>> origin/Develop
+>>>>>>> origin/Develop
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -81331,18 +81364,18 @@ parameters are a RESULT of the module parameters. -->
    </memoryBlock>
    <memoryBlock>
     <isBridge>false</isBridge>
-    <moduleName>VGA_CONFIG</moduleName>
+    <moduleName>VGA_BUFFER</moduleName>
     <slaveName>avalon_char_buffer_slave</slaveName>
-    <name>VGA_CONFIG.avalon_char_buffer_slave</name>
+    <name>VGA_BUFFER.avalon_char_buffer_slave</name>
     <baseAddress>40960</baseAddress>
     <span>8192</span>
    </memoryBlock>
    <memoryBlock>
     <isBridge>false</isBridge>
-    <moduleName>VGA_CONFIG</moduleName>
+    <moduleName>VGA_BUFFER</moduleName>
     <slaveName>avalon_char_control_slave</slaveName>
-    <name>VGA_CONFIG.avalon_char_control_slave</name>
-    <baseAddress>35136</baseAddress>
+    <name>VGA_BUFFER.avalon_char_control_slave</name>
+    <baseAddress>36880</baseAddress>
     <span>8</span>
    </memoryBlock>
    <memoryBlock>
@@ -81363,18 +81396,33 @@ parameters are a RESULT of the module parameters. -->
    </memoryBlock>
    <memoryBlock>
     <isBridge>false</isBridge>
+<<<<<<< HEAD
     <moduleName>FIFO2</moduleName>
     <slaveName>in</slaveName>
     <name>FIFO2.in</name>
-    <baseAddress>35152</baseAddress>
+    <baseAddress>35136</baseAddress>
+=======
+<<<<<<< HEAD
+    <moduleName>FIFO</moduleName>
+    <slaveName>in</slaveName>
+    <name>FIFO.in</name>
+    <baseAddress>12384</baseAddress>
+>>>>>>> origin/Develop
     <span>4</span>
    </memoryBlock>
    <memoryBlock>
     <isBridge>false</isBridge>
+<<<<<<< HEAD
     <moduleName>FIFO2</moduleName>
     <slaveName>in_csr</slaveName>
     <name>FIFO2.in_csr</name>
-    <baseAddress>35328</baseAddress>
+    <baseAddress>35200</baseAddress>
+=======
+    <moduleName>FIFO</moduleName>
+    <slaveName>in_csr</slaveName>
+    <name>FIFO.in_csr</name>
+    <baseAddress>12544</baseAddress>
+>>>>>>> origin/Develop
     <span>32</span>
    </memoryBlock>
    <memoryBlock>
@@ -81395,6 +81443,8 @@ parameters are a RESULT of the module parameters. -->
    </memoryBlock>
    <memoryBlock>
     <isBridge>false</isBridge>
+=======
+>>>>>>> origin/Develop
     <moduleName>RAM</moduleName>
     <slaveName>s1</slaveName>
     <name>RAM.s1</name>
@@ -81814,17 +81864,17 @@ parameters are a RESULT of the module parameters. -->
    </interrupt>
    <interrupt>
     <isBridge>false</isBridge>
-    <moduleName>UART</moduleName>
-    <slaveName>irq</slaveName>
-    <name>UART.irq</name>
-    <interruptNumber>0</interruptNumber>
-   </interrupt>
-   <interrupt>
-    <isBridge>false</isBridge>
     <moduleName>REG_BUTTONS</moduleName>
     <slaveName>irq</slaveName>
     <name>REG_BUTTONS.irq</name>
     <interruptNumber>1</interruptNumber>
+   </interrupt>
+   <interrupt>
+    <isBridge>false</isBridge>
+    <moduleName>UART</moduleName>
+    <slaveName>irq</slaveName>
+    <name>UART.irq</name>
+    <interruptNumber>0</interruptNumber>
    </interrupt>
   </interface>
   <interface name="debug_reset_request" kind="reset_source" version="18.0">
@@ -87155,10 +87205,10 @@ parameters are a RESULT of the module parameters. -->
   </interface>
  </module>
  <module
-   name="VGA_CONFIG"
+   name="VGA_BUFFER"
    kind="altera_up_avalon_video_character_buffer_with_dma"
    version="18.0"
-   path="VGA_CONFIG">
+   path="VGA_BUFFER">
   <!-- Describes a single module. Module parameters are
 the requested settings for a module instance. -->
   <parameter name="vga_device">
@@ -92629,9 +92679,9 @@ parameters are a RESULT of the module parameters. -->
    </clockDomainMember>
    <clockDomainMember>
     <isBridge>false</isBridge>
-    <moduleName>VGA_CONFIG</moduleName>
+    <moduleName>VGA_BUFFER</moduleName>
     <slaveName>clk</slaveName>
-    <name>VGA_CONFIG.clk</name>
+    <name>VGA_BUFFER.clk</name>
    </clockDomainMember>
   </interface>
   <interface name="locked" kind="conduit_end" version="18.0">
@@ -92945,18 +92995,13 @@ parameters are a RESULT of the module parameters. -->
    </clockDomainMember>
    <clockDomainMember>
     <isBridge>false</isBridge>
-    <moduleName>UART</moduleName>
-    <slaveName>clk</slaveName>
-    <name>UART.clk</name>
-   </clockDomainMember>
-   <clockDomainMember>
-    <isBridge>false</isBridge>
     <moduleName>REG_SWITCHES</moduleName>
     <slaveName>clk</slaveName>
     <name>REG_SWITCHES.clk</name>
    </clockDomainMember>
    <clockDomainMember>
     <isBridge>false</isBridge>
+<<<<<<< HEAD
     <moduleName>AUDIO</moduleName>
     <slaveName>clk</slaveName>
     <name>AUDIO.clk</name>
@@ -92969,10 +93014,19 @@ parameters are a RESULT of the module parameters. -->
    </clockDomainMember>
    <clockDomainMember>
     <isBridge>false</isBridge>
+    <moduleName>UART</moduleName>
+    <slaveName>clk</slaveName>
+    <name>UART.clk</name>
+   </clockDomainMember>
+   <clockDomainMember>
+    <isBridge>false</isBridge>
+=======
+>>>>>>> origin/Develop
     <moduleName>RAM</moduleName>
     <slaveName>clk1</slaveName>
     <name>RAM.clk1</name>
    </clockDomainMember>
+<<<<<<< HEAD
    <clockDomainMember>
     <isBridge>false</isBridge>
     <moduleName>FIFO</moduleName>
@@ -92993,6 +93047,7 @@ parameters are a RESULT of the module parameters. -->
    </clockDomainMember>
    <clockDomainMember>
     <isBridge>false</isBridge>
+<<<<<<< HEAD
     <moduleName>FIFO2</moduleName>
     <slaveName>clk_out</slaveName>
     <name>FIFO2.clk_out</name>
@@ -93024,6 +93079,9 @@ parameters are a RESULT of the module parameters. -->
    <clockDomainMember>
     <isBridge>false</isBridge>
     <moduleName>AUDIO_PLL</moduleName>
+=======
+    <moduleName>Audio_PLL</moduleName>
+>>>>>>> origin/Develop
     <slaveName>ref_clk</slaveName>
     <name>AUDIO_PLL.ref_clk</name>
    </clockDomainMember>
@@ -93033,6 +93091,8 @@ parameters are a RESULT of the module parameters. -->
     <slaveName>refclk</slaveName>
     <name>VGA_PLL.refclk</name>
    </clockDomainMember>
+=======
+>>>>>>> origin/Develop
   </interface>
   <interface name="clk_reset" kind="reset_source" version="18.0">
    <!-- The connection points exposed by a module instance for the
@@ -93097,6 +93157,7 @@ parameters are a RESULT of the module parameters. -->
   </interface>
  </module>
  <connection
+<<<<<<< HEAD
    name="ARM_clk_0.clk_reset/ARM_bridges.reset_sink"
    kind="reset"
    version="18.0"
@@ -103325,11 +103386,11 @@ parameters are a RESULT of the module parameters. -->
   <endConnectionPoint>avalon_av_config_slave</endConnectionPoint>
  </connection>
  <connection
-   name="NIOS.data_master/VGA_CONFIG.avalon_char_buffer_slave"
+   name="NIOS.data_master/VGA_BUFFER.avalon_char_buffer_slave"
    kind="avalon"
    version="18.0"
    start="NIOS.data_master"
-   end="VGA_CONFIG.avalon_char_buffer_slave">
+   end="VGA_BUFFER.avalon_char_buffer_slave">
   <parameter name="arbitrationPriority">
    <type>int</type>
    <value>1</value>
@@ -103372,15 +103433,15 @@ parameters are a RESULT of the module parameters. -->
   </parameter>
   <startModule>NIOS</startModule>
   <startConnectionPoint>data_master</startConnectionPoint>
-  <endModule>VGA_CONFIG</endModule>
+  <endModule>VGA_BUFFER</endModule>
   <endConnectionPoint>avalon_char_buffer_slave</endConnectionPoint>
  </connection>
  <connection
-   name="NIOS.data_master/VGA_CONFIG.avalon_char_control_slave"
+   name="NIOS.data_master/VGA_BUFFER.avalon_char_control_slave"
    kind="avalon"
    version="18.0"
    start="NIOS.data_master"
-   end="VGA_CONFIG.avalon_char_control_slave">
+   end="VGA_BUFFER.avalon_char_control_slave">
   <parameter name="arbitrationPriority">
    <type>int</type>
    <value>1</value>
@@ -103391,7 +103452,7 @@ parameters are a RESULT of the module parameters. -->
   </parameter>
   <parameter name="baseAddress">
    <type>java.math.BigInteger</type>
-   <value>0x8940</value>
+   <value>0x9010</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -103423,10 +103484,12 @@ parameters are a RESULT of the module parameters. -->
   </parameter>
   <startModule>NIOS</startModule>
   <startConnectionPoint>data_master</startConnectionPoint>
-  <endModule>VGA_CONFIG</endModule>
+  <endModule>VGA_BUFFER</endModule>
   <endConnectionPoint>avalon_char_control_slave</endConnectionPoint>
  </connection>
  <connection
+=======
+>>>>>>> origin/Develop
    name="NIOS.data_master/UART.avalon_jtag_slave"
    kind="avalon"
    version="18.0"
@@ -103529,11 +103592,20 @@ parameters are a RESULT of the module parameters. -->
   <endConnectionPoint>debug_mem_slave</endConnectionPoint>
  </connection>
  <connection
+<<<<<<< HEAD
    name="NIOS.data_master/FIFO2.in"
    kind="avalon"
    version="18.0"
    start="NIOS.data_master"
    end="FIFO2.in">
+=======
+<<<<<<< HEAD
+   name="NIOS.data_master/FIFO.in"
+   kind="avalon"
+   version="18.0"
+   start="NIOS.data_master"
+   end="FIFO.in">
+>>>>>>> origin/Develop
   <parameter name="arbitrationPriority">
    <type>int</type>
    <value>1</value>
@@ -103544,7 +103616,11 @@ parameters are a RESULT of the module parameters. -->
   </parameter>
   <parameter name="baseAddress">
    <type>java.math.BigInteger</type>
-   <value>0x8950</value>
+<<<<<<< HEAD
+   <value>0x8940</value>
+=======
+   <value>0x3060</value>
+>>>>>>> origin/Develop
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -103576,6 +103652,7 @@ parameters are a RESULT of the module parameters. -->
   </parameter>
   <startModule>NIOS</startModule>
   <startConnectionPoint>data_master</startConnectionPoint>
+<<<<<<< HEAD
   <endModule>FIFO2</endModule>
   <endConnectionPoint>in</endConnectionPoint>
  </connection>
@@ -103585,6 +103662,17 @@ parameters are a RESULT of the module parameters. -->
    version="18.0"
    start="NIOS.data_master"
    end="FIFO2.in_csr">
+=======
+  <endModule>FIFO</endModule>
+  <endConnectionPoint>in</endConnectionPoint>
+ </connection>
+ <connection
+   name="NIOS.data_master/FIFO.in_csr"
+   kind="avalon"
+   version="18.0"
+   start="NIOS.data_master"
+   end="FIFO.in_csr">
+>>>>>>> origin/Develop
   <parameter name="arbitrationPriority">
    <type>int</type>
    <value>1</value>
@@ -103595,7 +103683,11 @@ parameters are a RESULT of the module parameters. -->
   </parameter>
   <parameter name="baseAddress">
    <type>java.math.BigInteger</type>
-   <value>0x8a00</value>
+<<<<<<< HEAD
+   <value>0x8980</value>
+=======
+   <value>0x3100</value>
+>>>>>>> origin/Develop
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -103627,7 +103719,11 @@ parameters are a RESULT of the module parameters. -->
   </parameter>
   <startModule>NIOS</startModule>
   <startConnectionPoint>data_master</startConnectionPoint>
+<<<<<<< HEAD
   <endModule>FIFO2</endModule>
+=======
+  <endModule>FIFO</endModule>
+>>>>>>> origin/Develop
   <endConnectionPoint>in_csr</endConnectionPoint>
  </connection>
  <connection
@@ -103733,6 +103829,8 @@ parameters are a RESULT of the module parameters. -->
   <endConnectionPoint>out_csr</endConnectionPoint>
  </connection>
  <connection
+=======
+>>>>>>> origin/Develop
    name="NIOS.data_master/RAM.s1"
    kind="avalon"
    version="18.0"
@@ -103988,6 +104086,7 @@ parameters are a RESULT of the module parameters. -->
   <endConnectionPoint>s1</endConnectionPoint>
  </connection>
  <connection
+<<<<<<< HEAD
    name="ARM_bridges.h2f/FIFO.in"
    kind="avalon"
    version="18.0"
@@ -104105,7 +104204,7 @@ parameters are a RESULT of the module parameters. -->
   </parameter>
   <parameter name="baseAddress">
    <type>java.math.BigInteger</type>
-   <value>0x8960</value>
+   <value>0x8950</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -104156,7 +104255,7 @@ parameters are a RESULT of the module parameters. -->
   </parameter>
   <parameter name="baseAddress">
    <type>java.math.BigInteger</type>
-   <value>0x8980</value>
+   <value>0x8960</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -104192,6 +104291,8 @@ parameters are a RESULT of the module parameters. -->
   <endConnectionPoint>out_csr</endConnectionPoint>
  </connection>
  <connection
+=======
+>>>>>>> origin/Develop
    name="NIOS.instruction_master/NIOS.debug_mem_slave"
    kind="avalon"
    version="18.0"
@@ -104294,10 +104395,10 @@ parameters are a RESULT of the module parameters. -->
   <endConnectionPoint>s1</endConnectionPoint>
  </connection>
  <connection
-   name="VGA_CONFIG.avalon_char_source/VGA_CONTROLLER.avalon_vga_sink"
+   name="VGA_BUFFER.avalon_char_source/VGA_CONTROLLER.avalon_vga_sink"
    kind="avalon_streaming"
    version="18.0"
-   start="VGA_CONFIG.avalon_char_source"
+   start="VGA_BUFFER.avalon_char_source"
    end="VGA_CONTROLLER.avalon_vga_sink">
   <parameter name="deviceFamily">
    <type>java.lang.String</type>
@@ -104315,7 +104416,7 @@ parameters are a RESULT of the module parameters. -->
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
-  <startModule>VGA_CONFIG</startModule>
+  <startModule>VGA_BUFFER</startModule>
   <startConnectionPoint>avalon_char_source</startConnectionPoint>
   <endModule>VGA_CONTROLLER</endModule>
   <endConnectionPoint>avalon_vga_sink</endConnectionPoint>
@@ -104429,33 +104530,6 @@ parameters are a RESULT of the module parameters. -->
   <endConnectionPoint>clk</endConnectionPoint>
  </connection>
  <connection
-   name="clk_0.clk/UART.clk"
-   kind="clock"
-   version="18.0"
-   start="clk_0.clk"
-   end="UART.clk">
-  <parameter name="deviceFamily">
-   <type>java.lang.String</type>
-   <value>UNKNOWN</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="generateLegacySim">
-   <type>boolean</type>
-   <value>false</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <startModule>clk_0</startModule>
-  <startConnectionPoint>clk</startConnectionPoint>
-  <endModule>UART</endModule>
-  <endConnectionPoint>clk</endConnectionPoint>
- </connection>
- <connection
    name="clk_0.clk/REG_SWITCHES.clk"
    kind="clock"
    version="18.0"
@@ -104483,6 +104557,7 @@ parameters are a RESULT of the module parameters. -->
   <endConnectionPoint>clk</endConnectionPoint>
  </connection>
  <connection
+<<<<<<< HEAD
    name="clk_0.clk/AUDIO.clk"
    kind="clock"
    version="18.0"
@@ -104537,6 +104612,35 @@ parameters are a RESULT of the module parameters. -->
   <endConnectionPoint>clk</endConnectionPoint>
  </connection>
  <connection
+   name="clk_0.clk/UART.clk"
+   kind="clock"
+   version="18.0"
+   start="clk_0.clk"
+   end="UART.clk">
+  <parameter name="deviceFamily">
+   <type>java.lang.String</type>
+   <value>UNKNOWN</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="generateLegacySim">
+   <type>boolean</type>
+   <value>false</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <startModule>clk_0</startModule>
+  <startConnectionPoint>clk</startConnectionPoint>
+  <endModule>UART</endModule>
+  <endConnectionPoint>clk</endConnectionPoint>
+ </connection>
+ <connection
+=======
+>>>>>>> origin/Develop
    name="clk_0.clk/RAM.clk1"
    kind="clock"
    version="18.0"
@@ -104564,6 +104668,7 @@ parameters are a RESULT of the module parameters. -->
   <endConnectionPoint>clk1</endConnectionPoint>
  </connection>
  <connection
+<<<<<<< HEAD
    name="clk_0.clk/FIFO.clk_in"
    kind="clock"
    version="18.0"
@@ -104645,6 +104750,7 @@ parameters are a RESULT of the module parameters. -->
   <endConnectionPoint>clk_out</endConnectionPoint>
  </connection>
  <connection
+<<<<<<< HEAD
    name="clk_0.clk/FIFO2.clk_out"
    kind="clock"
    version="18.0"
@@ -104781,6 +104887,9 @@ parameters are a RESULT of the module parameters. -->
  </connection>
  <connection
    name="clk_0.clk/AUDIO_PLL.ref_clk"
+=======
+   name="clk_0.clk/Audio_PLL.ref_clk"
+>>>>>>> origin/Develop
    kind="clock"
    version="18.0"
    start="clk_0.clk"
@@ -104861,11 +104970,11 @@ parameters are a RESULT of the module parameters. -->
   <endConnectionPoint>clk</endConnectionPoint>
  </connection>
  <connection
-   name="VGA_PLL.outclk0/VGA_CONFIG.clk"
+   name="VGA_PLL.outclk0/VGA_BUFFER.clk"
    kind="clock"
    version="18.0"
    start="VGA_PLL.outclk0"
-   end="VGA_CONFIG.clk">
+   end="VGA_BUFFER.clk">
   <parameter name="deviceFamily">
    <type>java.lang.String</type>
    <value>UNKNOWN</value>
@@ -104884,7 +104993,7 @@ parameters are a RESULT of the module parameters. -->
   </parameter>
   <startModule>VGA_PLL</startModule>
   <startConnectionPoint>outclk0</startConnectionPoint>
-  <endModule>VGA_CONFIG</endModule>
+  <endModule>VGA_BUFFER</endModule>
   <endConnectionPoint>clk</endConnectionPoint>
  </connection>
  <connection
@@ -104923,41 +105032,6 @@ parameters are a RESULT of the module parameters. -->
   <endConnectionPoint>irq</endConnectionPoint>
  </connection>
  <connection
-   name="NIOS.irq/UART.irq"
-   kind="interrupt"
-   version="18.0"
-   start="NIOS.irq"
-   end="UART.irq">
-  <parameter name="irqNumber">
-   <type>int</type>
-   <value>0</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="deviceFamily">
-   <type>java.lang.String</type>
-   <value>UNKNOWN</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="generateLegacySim">
-   <type>boolean</type>
-   <value>false</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <startModule>NIOS</startModule>
-  <startConnectionPoint>irq</startConnectionPoint>
-  <endModule>UART</endModule>
-  <endConnectionPoint>irq</endConnectionPoint>
- </connection>
- <connection
    name="NIOS.irq/REG_BUTTONS.irq"
    kind="interrupt"
    version="18.0"
@@ -104993,6 +105067,41 @@ parameters are a RESULT of the module parameters. -->
   <endConnectionPoint>irq</endConnectionPoint>
  </connection>
  <connection
+   name="NIOS.irq/UART.irq"
+   kind="interrupt"
+   version="18.0"
+   start="NIOS.irq"
+   end="UART.irq">
+  <parameter name="irqNumber">
+   <type>int</type>
+   <value>0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="deviceFamily">
+   <type>java.lang.String</type>
+   <value>UNKNOWN</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="generateLegacySim">
+   <type>boolean</type>
+   <value>false</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <startModule>NIOS</startModule>
+  <startConnectionPoint>irq</startConnectionPoint>
+  <endModule>UART</endModule>
+  <endConnectionPoint>irq</endConnectionPoint>
+ </connection>
+ <connection
    name="clk_0.clk_reset/AUDIO_PLL.ref_reset"
    kind="reset"
    version="18.0"
@@ -105020,6 +105129,8 @@ parameters are a RESULT of the module parameters. -->
   <endConnectionPoint>ref_reset</endConnectionPoint>
  </connection>
  <connection
+=======
+>>>>>>> origin/Develop
    name="clk_0.clk_reset/NIOS.reset"
    kind="reset"
    version="18.0"
@@ -105128,33 +105239,6 @@ parameters are a RESULT of the module parameters. -->
   <endConnectionPoint>reset</endConnectionPoint>
  </connection>
  <connection
-   name="clk_0.clk_reset/UART.reset"
-   kind="reset"
-   version="18.0"
-   start="clk_0.clk_reset"
-   end="UART.reset">
-  <parameter name="deviceFamily">
-   <type>java.lang.String</type>
-   <value>UNKNOWN</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="generateLegacySim">
-   <type>boolean</type>
-   <value>false</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <startModule>clk_0</startModule>
-  <startConnectionPoint>clk_reset</startConnectionPoint>
-  <endModule>UART</endModule>
-  <endConnectionPoint>reset</endConnectionPoint>
- </connection>
- <connection
    name="clk_0.clk_reset/REG_SWITCHES.reset"
    kind="reset"
    version="18.0"
@@ -105182,6 +105266,7 @@ parameters are a RESULT of the module parameters. -->
   <endConnectionPoint>reset</endConnectionPoint>
  </connection>
  <connection
+<<<<<<< HEAD
    name="clk_0.clk_reset/AUDIO.reset"
    kind="reset"
    version="18.0"
@@ -105263,11 +105348,11 @@ parameters are a RESULT of the module parameters. -->
   <endConnectionPoint>reset</endConnectionPoint>
  </connection>
  <connection
-   name="clk_0.clk_reset/VGA_CONFIG.reset"
+   name="clk_0.clk_reset/VGA_BUFFER.reset"
    kind="reset"
    version="18.0"
    start="clk_0.clk_reset"
-   end="VGA_CONFIG.reset">
+   end="VGA_BUFFER.reset">
   <parameter name="deviceFamily">
    <type>java.lang.String</type>
    <value>UNKNOWN</value>
@@ -105286,7 +105371,7 @@ parameters are a RESULT of the module parameters. -->
   </parameter>
   <startModule>clk_0</startModule>
   <startConnectionPoint>clk_reset</startConnectionPoint>
-  <endModule>VGA_CONFIG</endModule>
+  <endModule>VGA_BUFFER</endModule>
   <endConnectionPoint>reset</endConnectionPoint>
  </connection>
  <connection
@@ -105317,6 +105402,35 @@ parameters are a RESULT of the module parameters. -->
   <endConnectionPoint>reset</endConnectionPoint>
  </connection>
  <connection
+   name="clk_0.clk_reset/UART.reset"
+   kind="reset"
+   version="18.0"
+   start="clk_0.clk_reset"
+   end="UART.reset">
+  <parameter name="deviceFamily">
+   <type>java.lang.String</type>
+   <value>UNKNOWN</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="generateLegacySim">
+   <type>boolean</type>
+   <value>false</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <startModule>clk_0</startModule>
+  <startConnectionPoint>clk_reset</startConnectionPoint>
+  <endModule>UART</endModule>
+  <endConnectionPoint>reset</endConnectionPoint>
+ </connection>
+ <connection
+=======
+>>>>>>> origin/Develop
    name="clk_0.clk_reset/RAM.reset1"
    kind="reset"
    version="18.0"
@@ -105343,6 +105457,7 @@ parameters are a RESULT of the module parameters. -->
   <endModule>RAM</endModule>
   <endConnectionPoint>reset1</endConnectionPoint>
  </connection>
+<<<<<<< HEAD
  <connection
    name="clk_0.clk_reset/FIFO.reset_in"
    kind="reset"
@@ -105453,9 +105568,10 @@ parameters are a RESULT of the module parameters. -->
  </connection>
  <plugin>
   <instanceCount>1</instanceCount>
-  <name>altera_hps</name>
+  <name>altera_up_avalon_audio_pll</name>
   <type>com.altera.entityinterfaces.IElementClass</type>
   <subtype>com.altera.entityinterfaces.IModule</subtype>
+<<<<<<< HEAD
   <displayName>Arria V/Cyclone V Hard Processor System</displayName>
   <version>18.0</version>
  </plugin>
@@ -105465,10 +105581,14 @@ parameters are a RESULT of the module parameters. -->
   <type>com.altera.entityinterfaces.IElementClass</type>
   <subtype>com.altera.entityinterfaces.IMutableConnectionPoint</subtype>
   <displayName>Conduit</displayName>
+=======
+  <displayName>Audio Clock for DE-series Boards</displayName>
+>>>>>>> origin/Develop
   <version>18.0</version>
  </plugin>
  <plugin>
   <instanceCount>10</instanceCount>
+<<<<<<< HEAD
   <name>reset_source</name>
   <type>com.altera.entityinterfaces.IElementClass</type>
   <subtype>com.altera.entityinterfaces.IMutableConnectionPoint</subtype>
@@ -105477,6 +105597,8 @@ parameters are a RESULT of the module parameters. -->
  </plugin>
  <plugin>
   <instanceCount>71</instanceCount>
+=======
+>>>>>>> origin/Develop
   <name>clock_sink</name>
   <type>com.altera.entityinterfaces.IElementClass</type>
   <subtype>com.altera.entityinterfaces.IMutableConnectionPoint</subtype>
@@ -105484,6 +105606,7 @@ parameters are a RESULT of the module parameters. -->
   <version>18.0</version>
  </plugin>
  <plugin>
+<<<<<<< HEAD
   <instanceCount>49</instanceCount>
   <name>altera_axi_slave</name>
   <type>com.altera.entityinterfaces.IElementClass</type>
@@ -105541,6 +105664,9 @@ parameters are a RESULT of the module parameters. -->
  </plugin>
  <plugin>
   <instanceCount>59</instanceCount>
+=======
+  <instanceCount>10</instanceCount>
+>>>>>>> origin/Develop
   <name>reset_sink</name>
   <type>com.altera.entityinterfaces.IElementClass</type>
   <subtype>com.altera.entityinterfaces.IMutableConnectionPoint</subtype>
@@ -105548,38 +105674,15 @@ parameters are a RESULT of the module parameters. -->
   <version>18.0</version>
  </plugin>
  <plugin>
-  <instanceCount>4</instanceCount>
-  <name>hps_virt_clk</name>
-  <type>com.altera.entityinterfaces.IElementClass</type>
-  <subtype>com.altera.entityinterfaces.IModule</subtype>
-  <displayName>HPS Virtual Clock</displayName>
-  <version>18.0</version>
- </plugin>
- <plugin>
-  <instanceCount>2</instanceCount>
-  <name>arm_a9</name>
-  <type>com.altera.entityinterfaces.IElementClass</type>
-  <subtype>com.altera.entityinterfaces.IModule</subtype>
-  <displayName>ARM A9</displayName>
-  <version>18.0</version>
- </plugin>
- <plugin>
   <instanceCount>1</instanceCount>
-  <name>arm_gic</name>
-  <type>com.altera.entityinterfaces.IElementClass</type>
-  <subtype>com.altera.entityinterfaces.IModule</subtype>
-  <displayName>ARM GIC</displayName>
-  <version>18.0</version>
- </plugin>
- <plugin>
-  <instanceCount>9</instanceCount>
-  <name>interrupt_receiver</name>
+  <name>clock_source</name>
   <type>com.altera.entityinterfaces.IElementClass</type>
   <subtype>com.altera.entityinterfaces.IMutableConnectionPoint</subtype>
-  <displayName>Interrupt Receiver</displayName>
+  <displayName>Clock Output</displayName>
   <version>18.0</version>
  </plugin>
  <plugin>
+<<<<<<< HEAD
   <instanceCount>1</instanceCount>
   <name>arm_pl310_L2</name>
   <type>com.altera.entityinterfaces.IElementClass</type>
@@ -105817,6 +105920,13 @@ parameters are a RESULT of the module parameters. -->
   <type>com.altera.entityinterfaces.IElementClass</type>
   <subtype>com.altera.entityinterfaces.IModule</subtype>
   <displayName>Audio Clock for DE-series Boards</displayName>
+=======
+  <instanceCount>2</instanceCount>
+  <name>reset_source</name>
+  <type>com.altera.entityinterfaces.IElementClass</type>
+  <subtype>com.altera.entityinterfaces.IMutableConnectionPoint</subtype>
+  <displayName>Reset Output</displayName>
+>>>>>>> origin/Develop
   <version>18.0</version>
  </plugin>
  <plugin>
@@ -105828,11 +105938,45 @@ parameters are a RESULT of the module parameters. -->
   <version>18.0</version>
  </plugin>
  <plugin>
+  <instanceCount>11</instanceCount>
+  <name>avalon_slave</name>
+  <type>com.altera.entityinterfaces.IElementClass</type>
+  <subtype>com.altera.entityinterfaces.IMutableConnectionPoint</subtype>
+  <displayName>Avalon Memory Mapped Slave</displayName>
+  <version>18.0</version>
+ </plugin>
+=======
+>>>>>>> origin/Develop
+ <plugin>
+  <instanceCount>6</instanceCount>
+  <name>interrupt_sender</name>
+  <type>com.altera.entityinterfaces.IElementClass</type>
+  <subtype>com.altera.entityinterfaces.IMutableConnectionPoint</subtype>
+  <displayName>Interrupt Sender</displayName>
+  <version>18.0</version>
+ </plugin>
+ <plugin>
   <instanceCount>1</instanceCount>
   <name>altera_nios2_gen2</name>
   <type>com.altera.entityinterfaces.IElementClass</type>
   <subtype>com.altera.entityinterfaces.IModule</subtype>
   <displayName>Nios II Processor</displayName>
+  <version>18.0</version>
+ </plugin>
+ <plugin>
+  <instanceCount>7</instanceCount>
+  <name>clock_sink</name>
+  <type>com.altera.entityinterfaces.IElementClass</type>
+  <subtype>com.altera.entityinterfaces.IMutableConnectionPoint</subtype>
+  <displayName>Clock Input</displayName>
+  <version>18.0</version>
+ </plugin>
+ <plugin>
+  <instanceCount>7</instanceCount>
+  <name>reset_sink</name>
+  <type>com.altera.entityinterfaces.IElementClass</type>
+  <subtype>com.altera.entityinterfaces.IMutableConnectionPoint</subtype>
+  <displayName>Reset Input</displayName>
   <version>18.0</version>
  </plugin>
  <plugin>
@@ -105845,6 +105989,33 @@ parameters are a RESULT of the module parameters. -->
  </plugin>
  <plugin>
   <instanceCount>1</instanceCount>
+  <name>interrupt_receiver</name>
+  <type>com.altera.entityinterfaces.IElementClass</type>
+  <subtype>com.altera.entityinterfaces.IMutableConnectionPoint</subtype>
+  <displayName>Interrupt Receiver</displayName>
+  <version>18.0</version>
+ </plugin>
+ <plugin>
+  <instanceCount>1</instanceCount>
+<<<<<<< HEAD
+=======
+  <name>reset_source</name>
+  <type>com.altera.entityinterfaces.IElementClass</type>
+  <subtype>com.altera.entityinterfaces.IMutableConnectionPoint</subtype>
+  <displayName>Reset Output</displayName>
+  <version>18.0</version>
+ </plugin>
+ <plugin>
+  <instanceCount>7</instanceCount>
+  <name>avalon_slave</name>
+  <type>com.altera.entityinterfaces.IElementClass</type>
+  <subtype>com.altera.entityinterfaces.IMutableConnectionPoint</subtype>
+  <displayName>Avalon Memory Mapped Slave</displayName>
+  <version>18.0</version>
+ </plugin>
+ <plugin>
+  <instanceCount>1</instanceCount>
+>>>>>>> origin/Develop
   <name>nios_custom_instruction_master</name>
   <type>com.altera.entityinterfaces.IElementClass</type>
   <subtype>com.altera.entityinterfaces.IMutableConnectionPoint</subtype>
@@ -105868,11 +106039,27 @@ parameters are a RESULT of the module parameters. -->
   <version>18.0</version>
  </plugin>
  <plugin>
+  <instanceCount>3</instanceCount>
+  <name>conduit_end</name>
+  <type>com.altera.entityinterfaces.IElementClass</type>
+  <subtype>com.altera.entityinterfaces.IMutableConnectionPoint</subtype>
+  <displayName>Conduit</displayName>
+  <version>18.0</version>
+ </plugin>
+ <plugin>
   <instanceCount>1</instanceCount>
   <name>altera_avalon_timer</name>
   <type>com.altera.entityinterfaces.IElementClass</type>
   <subtype>com.altera.entityinterfaces.IModule</subtype>
   <displayName>Interval Timer Intel FPGA IP</displayName>
+  <version>18.0</version>
+ </plugin>
+ <plugin>
+  <instanceCount>2</instanceCount>
+  <name>interrupt_sender</name>
+  <type>com.altera.entityinterfaces.IElementClass</type>
+  <subtype>com.altera.entityinterfaces.IMutableConnectionPoint</subtype>
+  <displayName>Interrupt Sender</displayName>
   <version>18.0</version>
  </plugin>
  <plugin>
@@ -105964,6 +106151,7 @@ parameters are a RESULT of the module parameters. -->
   <version>18.0</version>
  </plugin>
  <plugin>
+<<<<<<< HEAD
   <instanceCount>59</instanceCount>
   <name>reset</name>
   <type>com.altera.entityinterfaces.IElementClass</type>
@@ -105981,6 +106169,13 @@ parameters are a RESULT of the module parameters. -->
  </plugin>
  <plugin>
   <instanceCount>151</instanceCount>
+=======
+<<<<<<< HEAD
+  <instanceCount>13</instanceCount>
+=======
+  <instanceCount>9</instanceCount>
+>>>>>>> origin/Develop
+>>>>>>> origin/Develop
   <name>avalon</name>
   <type>com.altera.entityinterfaces.IElementClass</type>
   <subtype>com.altera.entityinterfaces.IConnection</subtype>
@@ -105988,11 +106183,40 @@ parameters are a RESULT of the module parameters. -->
   <version>18.0</version>
  </plugin>
  <plugin>
-  <instanceCount>35</instanceCount>
-  <name>interrupt</name>
+<<<<<<< HEAD
+  <instanceCount>10</instanceCount>
+  <name>clock</name>
   <type>com.altera.entityinterfaces.IElementClass</type>
   <subtype>com.altera.entityinterfaces.IConnection</subtype>
-  <displayName>Interrupt Connection</displayName>
+  <displayName>Clock Connection</displayName>
+  <version>18.0</version>
+ </plugin>
+ <plugin>
+  <instanceCount>3</instanceCount>
+  <name>interrupt</name>
+=======
+  <instanceCount>7</instanceCount>
+  <name>clock</name>
+>>>>>>> origin/Develop
+  <type>com.altera.entityinterfaces.IElementClass</type>
+  <subtype>com.altera.entityinterfaces.IConnection</subtype>
+  <displayName>Clock Connection</displayName>
+  <version>18.0</version>
+ </plugin>
+ <plugin>
+  <instanceCount>7</instanceCount>
+  <name>reset</name>
+  <type>com.altera.entityinterfaces.IElementClass</type>
+  <subtype>com.altera.entityinterfaces.IConnection</subtype>
+  <displayName>Reset Connection</displayName>
+  <version>18.0</version>
+ </plugin>
+ <plugin>
+  <instanceCount>10</instanceCount>
+  <name>reset</name>
+  <type>com.altera.entityinterfaces.IElementClass</type>
+  <subtype>com.altera.entityinterfaces.IConnection</subtype>
+  <displayName>Reset Connection</displayName>
   <version>18.0</version>
  </plugin>
  <plugin>
